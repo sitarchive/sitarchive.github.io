@@ -13,8 +13,8 @@ const SIT_ARCHIVE_DATA = {
                     name: "CSE",
                     icon: "computer",
                     years: {
-                        "2024-25": {
-                            name: "2024-25",
+                        "2025-29": {
+                            name: "2025-29",
                             sems: {
                                 "Sem 1": {
                                     name: "Semester 1",
@@ -34,8 +34,8 @@ const SIT_ARCHIVE_DATA = {
                     name: "CSE AIML",
                     icon: "psychology",
                     years: {
-                        "2024-25": {
-                            name: "2024-25",
+                        "2025-29": {
+                            name: "2025-29",
                             sems: {
                                 "Sem 1": {
                                     name: "Semester 1",
