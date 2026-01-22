@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>FAQ - SIT Archive</title>
+    <meta name="description" content="Frequently asked questions about SIT Archive - your question paper repository.">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Noto+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Animation Styles -->
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- Theme Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#C8102E",
+                        "primary-hover": "#A60D26",
+                        "bg-light": "#FFFFFF",
+                        "bg-light-secondary": "#F8F6F6",
+                        "bg-light-tertiary": "#F0EEEE",
+                        "text-light": "#181112",
+                        "text-light-muted": "#6B7280",
+                        "border-light": "#E5E7EB",
+                        "bg-dark": "#0D0D0D",
+                        "bg-dark-secondary": "#161616",
+                        "bg-dark-tertiary": "#1A1A1A",
+                        "text-dark": "#FFFFFF",
+                        "text-dark-muted": "#A1A1AA",
+                        "border-dark": "#2A2A2A",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    boxShadow: {
+                        'glow': '0 0 40px -10px rgba(200, 16, 46, 0.3)',
+                        'glow-sm': '0 0 20px -5px rgba(200, 16, 46, 0.2)',
+                    }
+                },
+            },
+        }
+    </script>
+
+    <!-- Theme Script -->
+    <script src="js/theme.js"></script>
+
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .dark ::-webkit-scrollbar-track {
+            background: #0D0D0D;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #2A2A2A;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #3A3A3A;
+        }
+
+        * {
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        /* Accordion styles */
+        details>summary {
+            list-style: none;
+        }
+
+        details>summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark font-display antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white">
+
+    <!-- Navigation -->
+    <nav
+        class="sticky top-0 z-50 w-full border-b border-border-light dark:border-border-dark bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-md">
+        <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <a class="flex items-center gap-3 group" href="index.html">
+                <div
+                    class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                    <span class="material-symbols-outlined text-[24px]">school</span>
+                </div>
+                <span class="text-xl font-bold tracking-tight">SIT Archive</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8">
+                <div class="flex items-center gap-6">
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="index.html">Home</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="browse.html">Browse Papers</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="submit.html">Submit Papers</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="about.html">About Us</a>
+                    <a class="text-sm font-semibold text-primary" href="faq.html">FAQ</a>
+                </div>
+
+                <button onclick="toggleTheme()"
+                    class="flex items-center justify-center w-10 h-10 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary border border-border-light dark:border-border-dark transition-colors">
+                    <span id="theme-icon" class="material-symbols-outlined text-[20px]">dark_mode</span>
+                </button>
+            </div>
+
+            <div class="md:hidden flex items-center gap-3">
+                <button onclick="toggleTheme()"
+                    class="flex items-center justify-center w-10 h-10 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark">
+                    <span id="theme-icon-mobile" class="material-symbols-outlined text-[20px]">dark_mode</span>
+                </button>
+                <button class="text-text-light dark:text-text-dark" id="mobile-menu-btn">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu"
+            class="hidden md:hidden border-t border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark">
+            <div class="px-4 py-4 space-y-3">
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="index.html">Home</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="browse.html">Browse Papers</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="submit.html">Submit Papers</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="about.html">About Us</a>
+                <a class="block text-sm font-semibold text-primary py-2" href="faq.html">FAQ</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow relative overflow-hidden">
+        <!-- Background decorative glow -->
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-primary/5 to-transparent pointer-events-none">
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 relative z-10">
+            <!-- Page Heading -->
+            <div class="text-center mb-16 space-y-4 animate-on-scroll">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight drop-shadow-sm">
+                    Frequently Asked <span class="text-primary anim-gradient-text">Questions</span>
+                </h1>
+                <p
+                    class="text-lg text-text-light-muted dark:text-text-dark-muted max-w-2xl mx-auto font-light leading-relaxed">
+                    Everything you need to know about the archive. Can't find the answer you're looking for? Reach out
+                    to our support team.
+                </p>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div class="flex flex-col gap-4 stagger-children">
+                <!-- Item 1 -->
+                <details
+                    class="group rounded-xl bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark open:border-primary/50 transition-all duration-300 animate-on-scroll hover-lift-sm"
+                    open>
+                    <summary
+                        class="flex cursor-pointer items-center justify-between px-6 py-5 outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                        <h3 class="text-base sm:text-lg font-medium group-hover:text-primary transition-colors">
+                            Is SIT Archive free?
+                        </h3>
+                        <span
+                            class="material-symbols-outlined text-text-light-muted dark:text-text-dark-muted group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
+                    </summary>
+                    <div class="px-6 pb-6 pt-0">
+                        <p
+                            class="text-text-light-muted dark:text-text-dark-muted font-body leading-relaxed border-t border-border-light dark:border-border-dark pt-4">
+                            Yes, SIT Archive is a completely free resource. Our goal is to facilitate the sharing and
+                            accessing of academic materials without any cost barriers. No login required to browse or
+                            download papers.
+                        </p>
+                    </div>
+                </details>
+
+                <!-- Item 2 -->
+                <details
+                    class="group rounded-xl bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark open:border-primary/50 transition-all duration-300 animate-on-scroll hover-lift-sm">
+                    <summary
+                        class="flex cursor-pointer items-center justify-between px-6 py-5 outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                        <h3 class="text-base sm:text-lg font-medium group-hover:text-primary transition-colors">
+                            How do I find papers?
+                        </h3>
+                        <span
+                            class="material-symbols-outlined text-text-light-muted dark:text-text-dark-muted group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
+                    </summary>
+                    <div class="px-6 pb-6 pt-0">
+                        <p
+                            class="text-text-light-muted dark:text-text-dark-muted font-body leading-relaxed border-t border-border-light dark:border-border-dark pt-4">
+                            Papers are organized in a folder-based navigation system. Navigate through Institutes →
+                            Branches → Years → Semesters → Subjects. Each level shows folders you can click to drill
+                            down, with a breadcrumb trail to go back. You can also use the search bar to filter items
+                            within the current folder.
+                        </p>
+                    </div>
+                </details>
+
+                <!-- Item 3 -->
+                <details
+                    class="group rounded-xl bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark open:border-primary/50 transition-all duration-300 animate-on-scroll hover-lift-sm">
+                    <summary
+                        class="flex cursor-pointer items-center justify-between px-6 py-5 outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                        <h3 class="text-base sm:text-lg font-medium group-hover:text-primary transition-colors">
+                            Are papers verified?
+                        </h3>
+                        <span
+                            class="material-symbols-outlined text-text-light-muted dark:text-text-dark-muted group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
+                    </summary>
+                    <div class="px-6 pb-6 pt-0">
+                        <p
+                            class="text-text-light-muted dark:text-text-dark-muted font-body leading-relaxed border-t border-border-light dark:border-border-dark pt-4">
+                            Yes. All papers are uploaded and verified by our admin team. We check for relevance,
+                            quality, and accurate labeling before the files become publicly available in the browse
+                            section.
+                        </p>
+                    </div>
+                </details>
+
+                <!-- Item 4 -->
+                <details
+                    class="group rounded-xl bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark open:border-primary/50 transition-all duration-300 animate-on-scroll hover-lift-sm">
+                    <summary
+                        class="flex cursor-pointer items-center justify-between px-6 py-5 outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                        <h3 class="text-base sm:text-lg font-medium group-hover:text-primary transition-colors">
+                            Can I report incorrect papers?
+                        </h3>
+                        <span
+                            class="material-symbols-outlined text-text-light-muted dark:text-text-dark-muted group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
+                    </summary>
+                    <div class="px-6 pb-6 pt-0">
+                        <p
+                            class="text-text-light-muted dark:text-text-dark-muted font-body leading-relaxed border-t border-border-light dark:border-border-dark pt-4">
+                            Absolutely. If you find a paper that is mislabeled, low quality, or incorrect, please
+                            contact us through our support page and we'll review and correct it promptly.
+                        </p>
+                    </div>
+                </details>
+
+                <!-- Item 5 -->
+                <details
+                    class="group rounded-xl bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark open:border-primary/50 transition-all duration-300">
+                    <summary
+                        class="flex cursor-pointer items-center justify-between px-6 py-5 outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                        <h3 class="text-base sm:text-lg font-medium group-hover:text-primary transition-colors">
+                            Can I request a missing paper?
+                        </h3>
+                        <span
+                            class="material-symbols-outlined text-text-light-muted dark:text-text-dark-muted group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
+                    </summary>
+                    <div class="px-6 pb-6 pt-0">
+                        <p
+                            class="text-text-light-muted dark:text-text-dark-muted font-body leading-relaxed border-t border-border-light dark:border-border-dark pt-4">
+                            Yes! If you can't find a paper you're looking for, you can reach out to us with the details
+                            (institute, branch, year, semester, subject) and we'll try to add it to the archive.
+                        </p>
+                    </div>
+                </details>
+
+                <!-- Item 6 -->
+                <details
+                    class="group rounded-xl bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark open:border-primary/50 transition-all duration-300">
+                    <summary
+                        class="flex cursor-pointer items-center justify-between px-6 py-5 outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                        <h3 class="text-base sm:text-lg font-medium group-hover:text-primary transition-colors">
+                            How do I switch between dark and light mode?
+                        </h3>
+                        <span
+                            class="material-symbols-outlined text-text-light-muted dark:text-text-dark-muted group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
+                    </summary>
+                    <div class="px-6 pb-6 pt-0">
+                        <p
+                            class="text-text-light-muted dark:text-text-dark-muted font-body leading-relaxed border-t border-border-light dark:border-border-dark pt-4">
+                            Click the sun/moon icon in the navigation bar to toggle between dark and light themes. Your
+                            preference will be saved and remembered when you return to the site.
+                        </p>
+                    </div>
+                </details>
+
+                <!-- Item 7 -->
+                <details
+                    class="group rounded-xl bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark open:border-primary/50 transition-all duration-300">
+                    <summary
+                        class="flex cursor-pointer items-center justify-between px-6 py-5 outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                        <h3 class="text-base sm:text-lg font-medium group-hover:text-primary transition-colors">
+                            Which institute is covered?
+                        </h3>
+                        <span
+                            class="material-symbols-outlined text-text-light-muted dark:text-text-dark-muted group-open:rotate-180 group-open:text-primary transition-transform duration-300">expand_more</span>
+                    </summary>
+                    <div class="px-6 pb-6 pt-0">
+                        <p
+                            class="text-text-light-muted dark:text-text-dark-muted font-body leading-relaxed border-t border-border-light dark:border-border-dark pt-4">
+                            Currently, we have papers from SIT Hyderabad (SITHYD) with branches including Computer
+                            Science and Engineering (CSE) and CSE-AIML.
+                            We're continuously adding more papers and expanding coverage across all semesters.
+                        </p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Support CTA -->
+            <div class="mt-20 text-center">
+                <div
+                    class="inline-flex flex-col items-center gap-6 p-8 rounded-2xl border border-border-light dark:border-border-dark bg-bg-light-secondary/50 dark:bg-bg-dark-secondary/50 backdrop-blur-sm max-w-2xl w-full">
+                    <div class="size-12 rounded-full bg-primary/20 flex items-center justify-center text-primary mb-2">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold mb-2">Still have questions?</h2>
+                        <p class="text-text-light-muted dark:text-text-dark-muted">If you couldn't find the answer to
+                            your question, feel free to contact us.</p>
+                    </div>
+                    <a href="mailto:archive.sit@protonmail.com?subject=SIT%20Archive%20-%20General%20Inquiry&body=Hi%20SIT%20Archive%20Team%2C%0A%0AI%20have%20a%20question%20regarding%3A%0A%0A%5BPlease%20describe%20your%20question%20here%5D%0A%0AThank%20you!"
+                        class="inline-flex items-center justify-center h-12 px-8 font-bold text-white bg-primary rounded-lg transition-all hover:bg-primary-hover hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                        Contact Support
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer
+        class="border-t border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="text-center md:text-left max-w-sm">
+                    <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
+                        <span class="material-symbols-outlined text-primary">school</span>
+                        <span class="text-lg font-bold">SIT Archive</span>
+                    </div>
+                    <p class="text-sm text-text-light-muted dark:text-text-dark-muted leading-relaxed">
+                        An academic initiative by students, for students. Not officially affiliated with the university.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="index.html">Home</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="browse.html">Browse</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="privacy.html">Privacy Policy</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="terms.html">Terms</a>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-border-light dark:border-border-dark text-center">
+                <p class="text-xs text-text-light-muted dark:text-text-dark-muted">© 2026 SIT Archive. All rights
+                    reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Sync theme icons
+        function updateToggleIcon(isDark) {
+            const icon = document.getElementById('theme-icon');
+            const iconMobile = document.getElementById('theme-icon-mobile');
+            if (icon) icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            if (iconMobile) iconMobile.textContent = isDark ? 'light_mode' : 'dark_mode';
+        }
+    </script>
+
+    <!-- Animation Controller -->
+    <script src="js/animations.js"></script>
+</body>
+
+</html>
