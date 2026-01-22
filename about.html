@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>About Us - SIT Archive</title>
+    <meta name="description"
+        content="Learn about SIT Archive - a student-built repository designed to centralize and preserve academic history.">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Noto+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Animation Styles -->
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- Theme Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#C8102E",
+                        "primary-hover": "#A60D26",
+                        "bg-light": "#FFFFFF",
+                        "bg-light-secondary": "#F8F6F6",
+                        "bg-light-tertiary": "#F0EEEE",
+                        "text-light": "#181112",
+                        "text-light-muted": "#6B7280",
+                        "border-light": "#E5E7EB",
+                        "bg-dark": "#0D0D0D",
+                        "bg-dark-secondary": "#161616",
+                        "bg-dark-tertiary": "#1A1A1A",
+                        "text-dark": "#FFFFFF",
+                        "text-dark-muted": "#A1A1AA",
+                        "border-dark": "#2A2A2A",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    boxShadow: {
+                        'glow': '0 0 40px -10px rgba(200, 16, 46, 0.3)',
+                        'glow-sm': '0 0 20px -5px rgba(200, 16, 46, 0.2)',
+                    }
+                },
+            },
+        }
+    </script>
+
+    <!-- Theme Script -->
+    <script src="js/theme.js"></script>
+
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .dark ::-webkit-scrollbar-track {
+            background: #0D0D0D;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #2A2A2A;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #3A3A3A;
+        }
+
+        * {
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark font-display antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white">
+
+    <!-- Navigation -->
+    <nav
+        class="sticky top-0 z-50 w-full border-b border-border-light dark:border-border-dark bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-md">
+        <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <a class="flex items-center gap-3 group" href="index.html">
+                <div
+                    class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                    <span class="material-symbols-outlined text-[24px]">school</span>
+                </div>
+                <span class="text-xl font-bold tracking-tight">SIT Archive</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8">
+                <div class="flex items-center gap-6">
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="index.html">Home</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="browse.html">Browse Papers</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="submit.html">Submit Papers</a>
+                    <a class="text-sm font-semibold text-primary" href="about.html">About Us</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="faq.html">FAQ</a>
+                </div>
+
+                <button onclick="toggleTheme()"
+                    class="flex items-center justify-center w-10 h-10 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary border border-border-light dark:border-border-dark transition-colors">
+                    <span id="theme-icon" class="material-symbols-outlined text-[20px]">dark_mode</span>
+                </button>
+            </div>
+
+            <div class="md:hidden flex items-center gap-3">
+                <button onclick="toggleTheme()"
+                    class="flex items-center justify-center w-10 h-10 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark">
+                    <span id="theme-icon-mobile" class="material-symbols-outlined text-[20px]">dark_mode</span>
+                </button>
+                <button class="text-text-light dark:text-text-dark" id="mobile-menu-btn">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu"
+            class="hidden md:hidden border-t border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark">
+            <div class="px-4 py-4 space-y-3">
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="index.html">Home</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="browse.html">Browse Papers</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="submit.html">Submit Papers</a>
+                <a class="block text-sm font-semibold text-primary py-2" href="about.html">About Us</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="faq.html">FAQ</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative w-full overflow-hidden">
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/10 blur-[100px] rounded-full pointer-events-none">
+            </div>
+
+            <div class="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+                <div class="flex flex-col items-center text-center gap-6">
+                    <div
+                        class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary mb-2">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                        </span>
+                        Now with 2026 Papers
+                    </div>
+
+                    <h1
+                        class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-4xl bg-gradient-to-b from-text-light to-text-light/60 dark:from-text-dark dark:to-text-dark/60 bg-clip-text text-transparent pb-2">
+                        Democratizing academic resources.
+                    </h1>
+
+                    <p
+                        class="max-w-2xl text-lg text-text-light-muted dark:text-text-dark-muted font-light leading-relaxed">
+                        SIT Archive is a student-built repository designed to centralize and preserve academic history.
+                        A reliable space for everyone.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mt-4">
+                        <a href="browse.html"
+                            class="h-12 px-8 rounded-lg bg-primary text-white font-bold text-sm tracking-wide shadow-glow hover:bg-primary-hover transition-all flex items-center justify-center gap-2">
+                            Explore Repository
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section class="w-full py-16">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="mb-12 animate-on-scroll">
+                    <h2 class="text-3xl font-bold tracking-tight">Our Mission</h2>
+                    <p class="mt-2 text-text-light-muted dark:text-text-dark-muted max-w-2xl">
+                        Core principles that guide the development and maintenance of this archive.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
+                    <div
+                        class="group relative overflow-hidden rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary p-8 transition-all hover:border-primary/30 hover:shadow-glow-sm hover-lift animate-on-scroll">
+                        <div
+                            class="mb-6 inline-flex size-12 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-[28px]">lock_open</span>
+                        </div>
+                        <h3 class="text-xl font-bold">Open Access</h3>
+                        <p class="mt-3 text-text-light-muted dark:text-text-dark-muted leading-relaxed">
+                            Knowledge should have no barriers. All resources on SIT Archive are free to access,
+                            download, and share without hidden paywalls.
+                        </p>
+                    </div>
+
+                    <div
+                        class="group relative overflow-hidden rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary p-8 transition-all hover:border-primary/30 hover:shadow-glow-sm animate-on-scroll hover-lift card-animated">
+                        <div
+                            class="mb-6 inline-flex size-12 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-[28px]">folder_open</span>
+                        </div>
+                        <h3 class="text-xl font-bold">Well Organized</h3>
+                        <p class="mt-3 text-text-light-muted dark:text-text-dark-muted leading-relaxed">
+                            Papers are organized in a clear folder structure by institute, branch, year, and semester.
+                            Find what you need quickly and easily.
+                        </p>
+                    </div>
+
+                    <div
+                        class="group relative overflow-hidden rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary p-8 transition-all hover:border-primary/30 hover:shadow-glow-sm animate-on-scroll hover-lift card-animated">
+                        <div
+                            class="mb-6 inline-flex size-12 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-[28px]">verified_user</span>
+                        </div>
+                        <h3 class="text-xl font-bold">Reliable & Verified</h3>
+                        <p class="mt-3 text-text-light-muted dark:text-text-dark-muted leading-relaxed">
+                            We manually verify uploads to ensure quality and relevance, filtering out outdated or
+                            incorrect materials.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why It Exists Section -->
+        <section class="w-full py-16">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div
+                    class="relative overflow-hidden rounded-2xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <div class="p-10 lg:p-16 flex flex-col justify-center animate-on-scroll-left">
+                            <h2 class="text-3xl font-bold tracking-tight mb-6">Why SIT Archive Exists</h2>
+                            <div class="space-y-8">
+                                <div class="flex gap-4">
+                                    <div
+                                        class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-500">
+                                        <span class="material-symbols-outlined text-[16px]">close</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">The Old Way</h4>
+                                        <p class="mt-1 text-sm text-text-light-muted dark:text-text-dark-muted">
+                                            Scattered PDF files across random Telegram groups, Google Drives with broken
+                                            links, and asking seniors repeatedly for materials.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div
+                                        class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-500">
+                                        <span class="material-symbols-outlined text-[16px]">check</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">The Archive Way</h4>
+                                        <p class="mt-1 text-sm text-text-light-muted dark:text-text-dark-muted">
+                                            A centralized, searchable database categorized by institute, branch, year,
+                                            and semester. Always online, always accessible.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="relative h-64 lg:h-auto bg-bg-light-tertiary dark:bg-bg-dark-tertiary overflow-hidden">
+                            <div
+                                class="absolute inset-0 opacity-30 dark:opacity-50 bg-[radial-gradient(#C8102E_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]">
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div
+                                    class="relative size-40 rounded-full border border-primary/20 bg-gradient-to-tr from-bg-light-secondary dark:from-bg-dark-secondary to-primary/10 flex items-center justify-center shadow-glow">
+                                    <span
+                                        class="material-symbols-outlined text-6xl text-primary opacity-80">folder_open</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="w-full py-16">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="mb-12 text-center">
+                    <h2 class="text-3xl font-bold tracking-tight">How It Works</h2>
+                    <p class="mt-2 text-text-light-muted dark:text-text-dark-muted">Simple, streamlined, and effective.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                    <div
+                        class="hidden md:block absolute top-12 left-[16%] right-[16%] h-[2px] bg-gradient-to-r from-transparent via-primary/30 to-transparent z-0">
+                    </div>
+
+                    <div class="relative z-10 flex flex-col items-center text-center group">
+                        <div
+                            class="flex size-24 items-center justify-center rounded-full bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark shadow-lg group-hover:border-primary/50 group-hover:shadow-glow-sm transition-all duration-300">
+                            <span
+                                class="material-symbols-outlined text-[40px] text-text-light-muted dark:text-text-dark-muted group-hover:text-primary transition-colors">folder_open</span>
+                        </div>
+                        <div class="mt-6">
+                            <div
+                                class="inline-flex items-center justify-center rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary mb-2">
+                                Step 01</div>
+                            <h3 class="text-lg font-bold">Navigate Folders</h3>
+                            <p class="mt-2 text-sm text-text-light-muted dark:text-text-dark-muted px-4">
+                                Browse through institutes, branches, years, and semesters like a file system.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="relative z-10 flex flex-col items-center text-center group">
+                        <div
+                            class="flex size-24 items-center justify-center rounded-full bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark shadow-lg group-hover:border-primary/50 group-hover:shadow-glow-sm transition-all duration-300">
+                            <span
+                                class="material-symbols-outlined text-[40px] text-text-light-muted dark:text-text-dark-muted group-hover:text-primary transition-colors">description</span>
+                        </div>
+                        <div class="mt-6">
+                            <div
+                                class="inline-flex items-center justify-center rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary mb-2">
+                                Step 02</div>
+                            <h3 class="text-lg font-bold">Select Paper</h3>
+                            <p class="mt-2 text-sm text-text-light-muted dark:text-text-dark-muted px-4">
+                                Browse through semesters to find the exact exam paper you need.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="relative z-10 flex flex-col items-center text-center group">
+                        <div
+                            class="flex size-24 items-center justify-center rounded-full bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark shadow-lg group-hover:border-primary/50 group-hover:shadow-glow-sm transition-all duration-300">
+                            <span
+                                class="material-symbols-outlined text-[40px] text-text-light-muted dark:text-text-dark-muted group-hover:text-primary transition-colors">download</span>
+                        </div>
+                        <div class="mt-6">
+                            <div
+                                class="inline-flex items-center justify-center rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary mb-2">
+                                Step 03</div>
+                            <h3 class="text-lg font-bold">Download PDF</h3>
+                            <p class="mt-2 text-sm text-text-light-muted dark:text-text-dark-muted px-4">
+                                Get the file instantly. No ads, no wait times, direct PDF access.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Disclaimer Section -->
+        <section class="w-full py-12">
+            <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+                <div
+                    class="rounded-lg border border-primary/20 bg-primary/5 p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-start">
+                    <div class="shrink-0 text-primary">
+                        <span class="material-symbols-outlined text-[32px]">info</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold">Academic Disclaimer</h3>
+                        <p class="mt-2 text-sm text-text-light-muted dark:text-text-dark-muted leading-relaxed">
+                            SIT Archive is a student-led initiative and is <strong>not</strong> officially affiliated
+                            with the university administration. The materials provided here are for educational
+                            reference purposes only. We do not encourage plagiarism or academic dishonesty. Please use
+                            these resources responsibly to aid your revision.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+        class="border-t border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <a class="flex items-center gap-3 mb-4" href="index.html">
+                        <div class="flex size-8 items-center justify-center rounded-md bg-primary/10 text-primary">
+                            <span class="material-symbols-outlined text-[20px]">school</span>
+                        </div>
+                        <span class="text-lg font-bold tracking-tight">SIT Archive</span>
+                    </a>
+                    <p class="text-sm text-text-light-muted dark:text-text-dark-muted leading-relaxed max-w-sm">
+                        The central hub for past year papers, built to support the academic journey of every SIT
+                        student.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider mb-4">Explore</h4>
+                    <ul class="space-y-3">
+                        <li><a class="text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                                href="browse.html">Browse Papers</a></li>
+                        <li><a class="text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                                href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider mb-4">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a class="text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                                href="privacy.html">Privacy Policy</a></li>
+                        <li><a class="text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                                href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-border-light dark:border-border-dark pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-text-light-muted dark:text-text-dark-muted">© 2026 SIT Archive. All rights
+                    reserved.</p>
+                <div class="flex items-center gap-2">
+                    <span class="h-2 w-2 rounded-full bg-green-500"></span>
+                    <span class="text-xs text-text-light-muted dark:text-text-dark-muted">System Operational</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Sync theme icons
+        function updateToggleIcon(isDark) {
+            const icon = document.getElementById('theme-icon');
+            const iconMobile = document.getElementById('theme-icon-mobile');
+            if (icon) icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            if (iconMobile) iconMobile.textContent = isDark ? 'light_mode' : 'dark_mode';
+        }
+    </script>
+
+    <!-- Animation Controller -->
+    <script src="js/animations.js"></script>
+</body>
+
+</html>
