@@ -51,10 +51,10 @@ const SIT_ARCHIVE_DATA = {
                                     name: "Semester 1",
                                     icon: "looks_one",
                                     subjects: [
-                                        { name: "Linear Algebra", code: "0707250101", file: "#", type: "End-Sem" },
-                                        { name: "Chemistry", code: "0707250102", file: "#", type: "End-Sem" },
-                                        { name: "Digital Electronics and Logic Design", code: "0707250104", file: "#", type: "End-Sem" },
-                                        { name: "Programming in C", code: "0707250105", file: "#", type: "End-Sem" }
+                                        { name: "Linear Algebra", code: "0707250101", file: "https://drive.google.com/file/d/14Xlj25fZOpzIssRnW4Q1JdP_a5UQPE2n/view?usp=drivesdk", type: "End-Sem" },
+                                        { name: "Chemistry", code: "0707250102", file: "https://drive.google.com/file/d/1MQa-oLlpZQ0Arq0SwLvAYRkb-msvrGFD/view?usp=drivesdk", type: "End-Sem" },
+                                        { name: "Digital Electronics and Logic Design", code: "0707250104", file: "https://drive.google.com/file/d/1btqFGBYKVWPxwMVJbO3GHQXC8GD3QZFj/view?usp=drivesdk", type: "End-Sem" },
+                                        { name: "Programming in C", code: "0707250105", file: "https://drive.google.com/file/d/1S_E3Ka6OThSFdz7n7_9S75LhyTeaJ7Xc/view?usp=drivesdk", type: "End-Sem" }
                                     ]
                                 }
                             }
