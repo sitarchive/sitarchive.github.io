@@ -50,6 +50,22 @@ const SIT_ARCHIVE_DATA = {
                             }
                         }
                     }
+                },
+                "CST": {
+                    name: "CST",
+                    icon: "memory",
+                    years: {
+                        "2024-29": {
+                            name: "2024-29",
+                            sems: {
+                                "Sem 1": {
+                                    name: "Semester 1",
+                                    icon: "looks_one",
+                                    subjects: []
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
