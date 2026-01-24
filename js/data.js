@@ -13,6 +13,16 @@ const SIT_ARCHIVE_DATA = {
                     name: "CSE",
                     icon: "computer",
                     years: {
+                        "2024-28": {
+                            name: "2024-28",
+                            sems: {
+                                "Sem 1": {
+                                    name: "Semester 1",
+                                    icon: "looks_one",
+                                    subjects: []
+                                }
+                            }
+                        },
                         "2025-29": {
                             name: "2025-29",
                             sems: {
