@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documentation - SIT Archive</title>
+    <meta name="description"
+        content="Learn how to use SIT Archive - comprehensive guide to browsing, downloading, and submitting question papers.">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Noto+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Animation Styles -->
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- Theme Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#C8102E",
+                        "primary-hover": "#A60D26",
+                        "bg-light": "#FFFFFF",
+                        "bg-light-secondary": "#F8F6F6",
+                        "bg-light-tertiary": "#F0EEEE",
+                        "text-light": "#181112",
+                        "text-light-muted": "#6B7280",
+                        "border-light": "#E5E7EB",
+                        "bg-dark": "#0D0D0D",
+                        "bg-dark-secondary": "#161616",
+                        "bg-dark-tertiary": "#1A1A1A",
+                        "text-dark": "#FFFFFF",
+                        "text-dark-muted": "#A1A1AA",
+                        "border-dark": "#2A2A2A",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    boxShadow: {
+                        'glow': '0 0 40px -10px rgba(200, 16, 46, 0.3)',
+                        'glow-sm': '0 0 20px -5px rgba(200, 16, 46, 0.2)',
+                    }
+                },
+            },
+        }
+    </script>
+
+    <!-- Theme Script -->
+    <script src="js/theme.js"></script>
+
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .dark ::-webkit-scrollbar-track {
+            background: #0D0D0D;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #2A2A2A;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #3A3A3A;
+        }
+
+        * {
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        /* Sidebar active state */
+        .sidebar-link.active {
+            background: linear-gradient(90deg, rgba(200, 16, 46, 0.1) 0%, transparent 100%);
+            border-left: 2px solid #C8102E;
+            color: #C8102E;
+        }
+
+        .dark .sidebar-link.active {
+            background: linear-gradient(90deg, rgba(200, 16, 46, 0.2) 0%, transparent 100%);
+        }
+
+        /* Code block styling */
+        .code-block {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Sidebar scroll */
+        .sidebar-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        /* On this page - right sidebar */
+        .toc-link.active {
+            color: #C8102E;
+            border-left-color: #C8102E;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark font-display antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white">
+
+    <!-- Navigation -->
+    <nav
+        class="sticky top-0 z-50 w-full border-b border-border-light dark:border-border-dark bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-md">
+        <div class="mx-auto flex h-16 max-w-[1600px] items-center justify-between px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-6">
+                <a class="flex items-center gap-3 group" href="index.html">
+                    <div
+                        class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                        <span class="material-symbols-outlined text-[24px]">school</span>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight">SIT Archive</span>
+                </a>
+                <div
+                    class="hidden md:flex items-center gap-1 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
+                    <span class="material-symbols-outlined text-[14px]">menu_book</span>
+                    Docs
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center gap-8">
+                <div class="flex items-center gap-6">
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="index.html">Home</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="browse.html">Browse Papers</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="submit.html">Submit Papers</a>
+                    <a class="text-sm font-semibold text-primary" href="docs.html">Docs</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="faq.html">FAQ</a>
+                </div>
+
+                <button onclick="toggleTheme()"
+                    class="flex items-center justify-center w-10 h-10 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary border border-border-light dark:border-border-dark transition-colors">
+                    <span id="theme-icon" class="material-symbols-outlined text-[20px]">dark_mode</span>
+                </button>
+            </div>
+
+            <div class="md:hidden flex items-center gap-3">
+                <button onclick="toggleTheme()"
+                    class="flex items-center justify-center w-10 h-10 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark">
+                    <span id="theme-icon-mobile" class="material-symbols-outlined text-[20px]">dark_mode</span>
+                </button>
+                <button class="text-text-light dark:text-text-dark" id="mobile-menu-btn">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu"
+            class="hidden md:hidden border-t border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark">
+            <div class="px-4 py-4 space-y-3">
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="index.html">Home</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="browse.html">Browse Papers</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="submit.html">Submit Papers</a>
+                <a class="block text-sm font-semibold text-primary py-2" href="docs.html">Docs</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="faq.html">FAQ</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex-grow flex">
+        <!-- Left Sidebar -->
+        <aside
+            class="hidden lg:flex flex-col w-72 shrink-0 border-r border-border-light dark:border-border-dark bg-bg-light-secondary/50 dark:bg-bg-dark-secondary/50 sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto sidebar-scroll">
+            <div class="p-6">
+                <!-- Search -->
+                <div class="relative mb-6">
+                    <span
+                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-text-light-muted dark:text-text-dark-muted">search</span>
+                    <input type="text" id="docs-search" placeholder="Search documentation..."
+                        class="w-full h-10 pl-10 pr-4 rounded-lg border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors" />
+                    <kbd
+                        class="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:flex items-center gap-1 px-2 py-0.5 rounded bg-bg-light-tertiary dark:bg-bg-dark-tertiary text-[10px] text-text-light-muted dark:text-text-dark-muted border border-border-light dark:border-border-dark">⌘K</kbd>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="space-y-6">
+                    <!-- Getting Started -->
+                    <div>
+                        <h3
+                            class="text-xs font-bold uppercase tracking-wider text-text-light-muted dark:text-text-dark-muted mb-3">
+                            Getting Started</h3>
+                        <ul class="space-y-1">
+                            <li>
+                                <a href="#introduction"
+                                    class="sidebar-link active flex items-center gap-3 px-3 py-2 text-sm rounded-lg hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">home</span>
+                                    Introduction
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#quick-start"
+                                    class="sidebar-link flex items-center gap-3 px-3 py-2 text-sm text-text-light-muted dark:text-text-dark-muted rounded-lg hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+                                    Quick Start
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Browsing Papers -->
+                    <div>
+                        <h3
+                            class="text-xs font-bold uppercase tracking-wider text-text-light-muted dark:text-text-dark-muted mb-3">
+                            Browsing Papers</h3>
+                        <ul class="space-y-1">
+                            <li>
+                                <a href="#navigation"
+                                    class="sidebar-link flex items-center gap-3 px-3 py-2 text-sm text-text-light-muted dark:text-text-dark-muted rounded-lg hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">folder_open</span>
+                                    Navigation
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#folder-structure"
+                                    class="sidebar-link flex items-center gap-3 px-3 py-2 text-sm text-text-light-muted dark:text-text-dark-muted rounded-lg hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">account_tree</span>
+                                    Folder Structure
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#downloading"
+                                    class="sidebar-link flex items-center gap-3 px-3 py-2 text-sm text-text-light-muted dark:text-text-dark-muted rounded-lg hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">download</span>
+                                    Downloading Papers
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Submitting Papers -->
+                    <div>
+                        <h3
+                            class="text-xs font-bold uppercase tracking-wider text-text-light-muted dark:text-text-dark-muted mb-3">
+                            Contributing</h3>
+                        <ul class="space-y-1">
+                            <li>
+                                <a href="#submit-paper"
+                                    class="sidebar-link flex items-center gap-3 px-3 py-2 text-sm text-text-light-muted dark:text-text-dark-muted rounded-lg hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">upload_file</span>
+                                    Submit a Paper
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#submission-guidelines"
+                                    class="sidebar-link flex items-center gap-3 px-3 py-2 text-sm text-text-light-muted dark:text-text-dark-muted rounded-lg hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">rule</span>
+                                    Guidelines
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Reference -->
+                    <div>
+                        <h3
+                            class="text-xs font-bold uppercase tracking-wider text-text-light-muted dark:text-text-dark-muted mb-3">
+                            Reference</h3>
+                        <ul class="space-y-1">
+                            <li>
+                                <a href="#institutes"
+                                    class="sidebar-link flex items-center gap-3 px-3 py-2 text-sm text-text-light-muted dark:text-text-dark-muted rounded-lg hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">domain</span>
+                                    Institutes
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#branches"
+                                    class="sidebar-link flex items-center gap-3 px-3 py-2 text-sm text-text-light-muted dark:text-text-dark-muted rounded-lg hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">category</span>
+                                    Branches
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#support"
+                                    class="sidebar-link flex items-center gap-3 px-3 py-2 text-sm text-text-light-muted dark:text-text-dark-muted rounded-lg hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">support_agent</span>
+                                    Support
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-grow max-w-4xl mx-auto px-6 py-12 lg:px-12">
+            <!-- Introduction -->
+            <section id="introduction" class="mb-16">
+                <div class="flex items-center gap-3 mb-4">
+                    <span
+                        class="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium">
+                        <span class="material-symbols-outlined text-[14px]">verified</span>
+                        v1.0
+                    </span>
+                    <span class="text-xs text-text-light-muted dark:text-text-dark-muted">Last updated: Jan 2026</span>
+                </div>
+
+                <h1
+                    class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6 bg-gradient-to-r from-text-light to-text-light/70 dark:from-text-dark dark:to-text-dark/70 bg-clip-text text-transparent">
+                    SIT Archive Documentation
+                </h1>
+
+                <p class="text-lg text-text-light-muted dark:text-text-dark-muted leading-relaxed mb-8">
+                    Welcome to SIT Archive — your centralized repository for previous years' question papers. This
+                    guide will help you navigate, download, and contribute to the archive.
+                </p>
+
+                <!-- Quick Links -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                    <a href="#quick-start"
+                        class="group flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary hover:border-primary/30 hover:shadow-glow-sm transition-all">
+                        <span
+                            class="material-symbols-outlined text-[24px] text-primary mb-2 group-hover:scale-110 transition-transform">rocket_launch</span>
+                        <span class="font-semibold text-sm">Quick Start</span>
+                        <span class="text-xs text-text-light-muted dark:text-text-dark-muted">Get started in 2
+                            mins</span>
+                    </a>
+                    <a href="#navigation"
+                        class="group flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary hover:border-primary/30 hover:shadow-glow-sm transition-all">
+                        <span
+                            class="material-symbols-outlined text-[24px] text-primary mb-2 group-hover:scale-110 transition-transform">folder_open</span>
+                        <span class="font-semibold text-sm">Browse Papers</span>
+                        <span class="text-xs text-text-light-muted dark:text-text-dark-muted">Navigate the
+                            archive</span>
+                    </a>
+                    <a href="#submit-paper"
+                        class="group flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary hover:border-primary/30 hover:shadow-glow-sm transition-all">
+                        <span
+                            class="material-symbols-outlined text-[24px] text-primary mb-2 group-hover:scale-110 transition-transform">upload_file</span>
+                        <span class="font-semibold text-sm">Contribute</span>
+                        <span class="text-xs text-text-light-muted dark:text-text-dark-muted">Submit your papers</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Quick Start -->
+            <section id="quick-start" class="mb-16">
+                <h2 class="text-2xl font-bold tracking-tight mb-4 flex items-center gap-3">
+                    <span
+                        class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary text-sm font-bold">1</span>
+                    Quick Start
+                </h2>
+
+                <p class="text-text-light-muted dark:text-text-dark-muted mb-6">
+                    Get up and running with SIT Archive in just a few simple steps.
+                </p>
+
+                <!-- Steps -->
+                <div class="space-y-4">
+                    <div
+                        class="flex gap-4 p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
+                        <div
+                            class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-white font-bold text-sm">
+                            1</div>
+                        <div>
+                            <h4 class="font-semibold mb-1">Go to Browse Papers</h4>
+                            <p class="text-sm text-text-light-muted dark:text-text-dark-muted">
+                                Click on <a href="browse.html" class="text-primary hover:underline font-medium">Browse
+                                    Papers</a> in the
+                                navigation menu.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex gap-4 p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
+                        <div
+                            class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-white font-bold text-sm">
+                            2</div>
+                        <div>
+                            <h4 class="font-semibold mb-1">Select Your Institute</h4>
+                            <p class="text-sm text-text-light-muted dark:text-text-dark-muted">
+                                Choose your institute (e.g., SIT Hyderabad) from the folder list.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex gap-4 p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
+                        <div
+                            class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-white font-bold text-sm">
+                            3</div>
+                        <div>
+                            <h4 class="font-semibold mb-1">Navigate to Your Subject</h4>
+                            <p class="text-sm text-text-light-muted dark:text-text-dark-muted">
+                                Click through Branch → Batch → Semester to find your papers.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex gap-4 p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
+                        <div
+                            class="flex size-10 shrink-0 items-center justify-center rounded-full bg-green-600 text-white font-bold text-sm">
+                            <span class="material-symbols-outlined text-[18px]">check</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-1">Download!</h4>
+                            <p class="text-sm text-text-light-muted dark:text-text-dark-muted">
+                                Click on any paper to download the PDF directly.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <section id="navigation" class="mb-16">
+                <h2 class="text-2xl font-bold tracking-tight mb-4 flex items-center gap-3">
+                    <span
+                        class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary text-sm font-bold">2</span>
+                    Navigation
+                </h2>
+
+                <p class="text-text-light-muted dark:text-text-dark-muted mb-6">
+                    The archive uses a folder-based navigation system that mirrors how academic resources are
+                    organized.
+                </p>
+
+                <!-- Tip Box -->
+                <div
+                    class="flex gap-4 p-4 mb-6 rounded-xl border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20">
+                    <span class="material-symbols-outlined text-blue-600 dark:text-blue-400 shrink-0">lightbulb</span>
+                    <div>
+                        <h4 class="font-semibold text-blue-900 dark:text-blue-300 text-sm mb-1">Pro Tip</h4>
+                        <p class="text-sm text-blue-700 dark:text-blue-400">
+                            Use the breadcrumb trail at the top to quickly navigate back to parent folders.
+                        </p>
+                    </div>
+                </div>
+
+                <h3 class="text-lg font-semibold mb-3">Breadcrumb Navigation</h3>
+                <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-4">
+                    As you navigate deeper, a breadcrumb trail appears showing your current path:
+                </p>
+
+                <!-- Breadcrumb Example -->
+                <div
+                    class="flex items-center gap-2 p-4 rounded-xl bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark mb-6 overflow-x-auto">
+                    <span class="material-symbols-outlined text-primary text-[18px]">home</span>
+                    <span class="text-sm font-medium text-primary">Institutes</span>
+                    <span class="material-symbols-outlined text-[16px] text-text-light-muted">chevron_right</span>
+                    <span class="text-sm">SITHYD</span>
+                    <span class="material-symbols-outlined text-[16px] text-text-light-muted">chevron_right</span>
+                    <span class="text-sm">CSE</span>
+                    <span class="material-symbols-outlined text-[16px] text-text-light-muted">chevron_right</span>
+                    <span class="text-sm text-text-light-muted dark:text-text-dark-muted">2025-29</span>
+                </div>
+
+                <h3 class="text-lg font-semibold mb-3">Search Feature</h3>
+                <p class="text-sm text-text-light-muted dark:text-text-dark-muted">
+                    Use the search bar on the Browse page to filter items within the current folder. Search works on
+                    both folder names and file names.
+                </p>
+            </section>
+
+            <!-- Folder Structure -->
+            <section id="folder-structure" class="mb-16">
+                <h2 class="text-2xl font-bold tracking-tight mb-4 flex items-center gap-3">
+                    <span
+                        class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary text-sm font-bold">3</span>
+                    Folder Structure
+                </h2>
+
+                <p class="text-text-light-muted dark:text-text-dark-muted mb-6">
+                    Papers are organized in a hierarchical folder structure for easy access.
+                </p>
+
+                <!-- Folder Tree -->
+                <div
+                    class="p-6 rounded-xl bg-bg-dark dark:bg-bg-dark-secondary border border-border-dark font-mono text-sm overflow-x-auto">
+                    <pre class="text-green-400"><span class="text-yellow-400">📁</span> Institutes
+├── <span class="text-yellow-400">📁</span> <span class="text-blue-400">SIT Hyderabad</span>
+│   ├── <span class="text-yellow-400">📁</span> CSE
+│   │   └── <span class="text-yellow-400">📁</span> 2025-29
+│   │       └── <span class="text-yellow-400">📁</span> Semester 1
+│   │           ├── <span class="text-red-400">📄</span> Calculus.pdf
+│   │           ├── <span class="text-red-400">📄</span> Physics.pdf
+│   │           └── <span class="text-red-400">📄</span> Programming.pdf
+│   ├── <span class="text-yellow-400">📁</span> CSE AIML
+│   └── <span class="text-yellow-400">📁</span> CST
+├── <span class="text-yellow-400">📁</span> <span class="text-blue-400">SIT Nagpur</span>
+└── <span class="text-yellow-400">📁</span> <span class="text-blue-400">SIT Pune</span></pre>
+                </div>
+
+                <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div
+                        class="flex gap-3 p-4 rounded-lg border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
+                        <span class="material-symbols-outlined text-yellow-500">folder</span>
+                        <div>
+                            <h4 class="font-medium text-sm">Folders</h4>
+                            <p class="text-xs text-text-light-muted dark:text-text-dark-muted">Contain sub-folders or
+                                papers</p>
+                        </div>
+                    </div>
+                    <div
+                        class="flex gap-3 p-4 rounded-lg border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
+                        <span class="material-symbols-outlined text-red-500">description</span>
+                        <div>
+                            <h4 class="font-medium text-sm">Papers</h4>
+                            <p class="text-xs text-text-light-muted dark:text-text-dark-muted">PDF files - click to
+                                download</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Downloading -->
+            <section id="downloading" class="mb-16">
+                <h2 class="text-2xl font-bold tracking-tight mb-4 flex items-center gap-3">
+                    <span
+                        class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary text-sm font-bold">4</span>
+                    Downloading Papers
+                </h2>
+
+                <p class="text-text-light-muted dark:text-text-dark-muted mb-6">
+                    Downloading is simple and straightforward. No sign-ups, no waiting.
+                </p>
+
+                <div class="space-y-4">
+                    <div class="flex gap-3 items-start">
+                        <span
+                            class="flex size-6 shrink-0 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 mt-0.5">
+                            <span class="material-symbols-outlined text-[14px]">check</span>
+                        </span>
+                        <p class="text-sm"><strong>Direct Downloads:</strong> Click on any paper to start the download
+                            immediately.</p>
+                    </div>
+                    <div class="flex gap-3 items-start">
+                        <span
+                            class="flex size-6 shrink-0 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 mt-0.5">
+                            <span class="material-symbols-outlined text-[14px]">check</span>
+                        </span>
+                        <p class="text-sm"><strong>Google Drive Links:</strong> Some papers open in Google Drive where
+                            you can view or download.</p>
+                    </div>
+                    <div class="flex gap-3 items-start">
+                        <span
+                            class="flex size-6 shrink-0 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 mt-0.5">
+                            <span class="material-symbols-outlined text-[14px]">check</span>
+                        </span>
+                        <p class="text-sm"><strong>No Account Required:</strong> Access is completely free and open to
+                            everyone.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Submit Paper -->
+            <section id="submit-paper" class="mb-16">
+                <h2 class="text-2xl font-bold tracking-tight mb-4 flex items-center gap-3">
+                    <span
+                        class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary text-sm font-bold">5</span>
+                    Submit a Paper
+                </h2>
+
+                <p class="text-text-light-muted dark:text-text-dark-muted mb-6">
+                    Help grow the archive by contributing your question papers.
+                </p>
+
+                <div class="space-y-4 mb-6">
+                    <div
+                        class="flex gap-4 p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
+                        <div
+                            class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-sm">
+                            1</div>
+                        <div>
+                            <h4 class="font-semibold mb-1">Go to Submit Papers</h4>
+                            <p class="text-sm text-text-light-muted dark:text-text-dark-muted">
+                                Navigate to <a href="submit.html"
+                                    class="text-primary hover:underline font-medium">Submit Papers</a> page.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex gap-4 p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
+                        <div
+                            class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-sm">
+                            2</div>
+                        <div>
+                            <h4 class="font-semibold mb-1">Fill in Paper Details</h4>
+                            <p class="text-sm text-text-light-muted dark:text-text-dark-muted">
+                                Select institute, branch, batch, semester, and enter subject details.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex gap-4 p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
+                        <div
+                            class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-sm">
+                            3</div>
+                        <div>
+                            <h4 class="font-semibold mb-1">Generate Email & Attach Paper</h4>
+                            <p class="text-sm text-text-light-muted dark:text-text-dark-muted">
+                                Click "Submit via Email" — this opens your email client with pre-filled details.
+                                <strong>Attach the PDF</strong> before sending.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex gap-4 p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
+                        <div
+                            class="flex size-10 shrink-0 items-center justify-center rounded-full bg-green-600 text-white font-bold text-sm">
+                            <span class="material-symbols-outlined text-[18px]">check</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-1">We'll Add It!</h4>
+                            <p class="text-sm text-text-light-muted dark:text-text-dark-muted">
+                                Our team will verify and add your paper to the archive within 24-48 hours.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Warning Box -->
+                <div
+                    class="flex gap-4 p-4 rounded-xl border border-yellow-300 dark:border-yellow-700 bg-yellow-50 dark:bg-yellow-900/20">
+                    <span class="material-symbols-outlined text-yellow-600 dark:text-yellow-400 shrink-0">warning</span>
+                    <div>
+                        <h4 class="font-semibold text-yellow-800 dark:text-yellow-300 text-sm mb-1">Important</h4>
+                        <p class="text-sm text-yellow-700 dark:text-yellow-400">
+                            Don't forget to attach the question paper PDF to your email before sending!
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Submission Guidelines -->
+            <section id="submission-guidelines" class="mb-16">
+                <h2 class="text-2xl font-bold tracking-tight mb-4 flex items-center gap-3">
+                    <span
+                        class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary text-sm font-bold">6</span>
+                    Submission Guidelines
+                </h2>
+
+                <p class="text-text-light-muted dark:text-text-dark-muted mb-6">
+                    Follow these guidelines to ensure your submission is accepted.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div
+                        class="p-4 rounded-xl border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20">
+                        <h4
+                            class="font-semibold text-green-800 dark:text-green-300 text-sm mb-3 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[18px]">check_circle</span>
+                            Do's
+                        </h4>
+                        <ul class="space-y-2 text-sm text-green-700 dark:text-green-400">
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-[14px] mt-0.5">check</span>
+                                Submit clear, readable scans
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-[14px] mt-0.5">check</span>
+                                Use PDF format only
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-[14px] mt-0.5">check</span>
+                                Include complete papers
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-[14px] mt-0.5">check</span>
+                                Provide accurate details
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="p-4 rounded-xl border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20">
+                        <h4 class="font-semibold text-red-800 dark:text-red-300 text-sm mb-3 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[18px]">cancel</span>
+                            Don'ts
+                        </h4>
+                        <ul class="space-y-2 text-sm text-red-700 dark:text-red-400">
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-[14px] mt-0.5">close</span>
+                                Submit blurry or unreadable scans
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-[14px] mt-0.5">close</span>
+                                Send image files (JPG, PNG)
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-[14px] mt-0.5">close</span>
+                                Submit partial or incomplete papers
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-[14px] mt-0.5">close</span>
+                                Provide incorrect metadata
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Institutes -->
+            <section id="institutes" class="mb-16">
+                <h2 class="text-2xl font-bold tracking-tight mb-4 flex items-center gap-3">
+                    <span class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                        <span class="material-symbols-outlined text-[18px]">domain</span>
+                    </span>
+                    Supported Institutes
+                </h2>
+
+                <p class="text-text-light-muted dark:text-text-dark-muted mb-6">
+                    SIT Archive currently supports the following institutes:
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div
+                        class="p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary text-center">
+                        <span class="material-symbols-outlined text-[32px] text-primary mb-2">domain</span>
+                        <h4 class="font-semibold">SIT Hyderabad</h4>
+                        <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-1">CSE, CSE AIML, CST</p>
+                    </div>
+                    <div
+                        class="p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary text-center">
+                        <span class="material-symbols-outlined text-[32px] text-primary mb-2">domain</span>
+                        <h4 class="font-semibold">SIT Nagpur</h4>
+                        <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-1">CSE</p>
+                    </div>
+                    <div
+                        class="p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary text-center">
+                        <span class="material-symbols-outlined text-[32px] text-primary mb-2">domain</span>
+                        <h4 class="font-semibold">SIT Pune</h4>
+                        <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-1">All Branches</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Branches -->
+            <section id="branches" class="mb-16">
+                <h2 class="text-2xl font-bold tracking-tight mb-4 flex items-center gap-3">
+                    <span class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                        <span class="material-symbols-outlined text-[18px]">category</span>
+                    </span>
+                    Branches & Batches
+                </h2>
+
+                <p class="text-text-light-muted dark:text-text-dark-muted mb-6">
+                    Here's a quick reference of available branches and batch years:
+                </p>
+
+                <div class="overflow-x-auto">
+                    <table
+                        class="w-full text-sm border border-border-light dark:border-border-dark rounded-xl overflow-hidden">
+                        <thead class="bg-bg-light-secondary dark:bg-bg-dark-secondary">
+                            <tr>
+                                <th
+                                    class="text-left p-4 font-semibold border-b border-border-light dark:border-border-dark">
+                                    Institute</th>
+                                <th
+                                    class="text-left p-4 font-semibold border-b border-border-light dark:border-border-dark">
+                                    Branch</th>
+                                <th
+                                    class="text-left p-4 font-semibold border-b border-border-light dark:border-border-dark">
+                                    Batch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-border-light dark:border-border-dark">
+                                <td class="p-4" rowspan="3">SIT Hyderabad</td>
+                                <td class="p-4">CSE</td>
+                                <td class="p-4"><span
+                                        class="px-2 py-1 rounded bg-primary/10 text-primary text-xs font-medium">2025-29</span>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-border-light dark:border-border-dark">
+                                <td class="p-4">CSE AIML</td>
+                                <td class="p-4"><span
+                                        class="px-2 py-1 rounded bg-primary/10 text-primary text-xs font-medium">2025-29</span>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-border-light dark:border-border-dark">
+                                <td class="p-4">CST</td>
+                                <td class="p-4"><span
+                                        class="px-2 py-1 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-medium">2024-29</span>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-border-light dark:border-border-dark">
+                                <td class="p-4">SIT Nagpur</td>
+                                <td class="p-4">CSE</td>
+                                <td class="p-4"><span
+                                        class="text-xs text-text-light-muted dark:text-text-dark-muted italic">Custom
+                                        entry</span></td>
+                            </tr>
+                            <tr>
+                                <td class="p-4">SIT Pune</td>
+                                <td class="p-4"><span
+                                        class="text-xs text-text-light-muted dark:text-text-dark-muted italic">Custom
+                                        entry</span></td>
+                                <td class="p-4"><span
+                                        class="text-xs text-text-light-muted dark:text-text-dark-muted italic">Custom
+                                        entry</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Support -->
+            <section id="support" class="mb-16">
+                <h2 class="text-2xl font-bold tracking-tight mb-4 flex items-center gap-3">
+                    <span class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                        <span class="material-symbols-outlined text-[18px]">support_agent</span>
+                    </span>
+                    Support
+                </h2>
+
+                <p class="text-text-light-muted dark:text-text-dark-muted mb-6">
+                    Need help? We're here for you.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="faq.html"
+                        class="flex items-center gap-4 p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary hover:border-primary/30 hover:shadow-glow-sm transition-all group">
+                        <div
+                            class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-[24px]">help</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">FAQ</h4>
+                            <p class="text-xs text-text-light-muted dark:text-text-dark-muted">Check frequently asked
+                                questions</p>
+                        </div>
+                    </a>
+                    <a href="mailto:students.sit.archive@gmail.com"
+                        class="flex items-center gap-4 p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary hover:border-primary/30 hover:shadow-glow-sm transition-all group">
+                        <div
+                            class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-[24px]">mail</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Email Us</h4>
+                            <p class="text-xs text-text-light-muted dark:text-text-dark-muted">
+                                students.sit.archive@gmail.com</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Footer CTA -->
+            <section class="mb-8">
+                <div
+                    class="p-8 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 text-center">
+                    <h3 class="text-xl font-bold mb-2">Ready to explore?</h3>
+                    <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-6">Start browsing the archive
+                        and find the papers you need.</p>
+                    <a href="browse.html"
+                        class="inline-flex items-center gap-2 h-12 px-8 rounded-lg bg-primary text-white font-bold text-sm tracking-wide shadow-glow hover:bg-primary-hover transition-all">
+                        Browse Papers
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Right Sidebar - On This Page -->
+        <aside class="hidden xl:flex flex-col w-56 shrink-0 sticky top-16 h-[calc(100vh-4rem)] py-12 pr-6">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-text-light-muted dark:text-text-dark-muted mb-4">
+                On this page
+            </h4>
+            <nav class="space-y-1">
+                <a href="#introduction"
+                    class="toc-link block text-sm text-text-light-muted dark:text-text-dark-muted py-1.5 pl-3 border-l-2 border-transparent hover:text-text-light dark:hover:text-text-dark transition-colors">Introduction</a>
+                <a href="#quick-start"
+                    class="toc-link block text-sm text-text-light-muted dark:text-text-dark-muted py-1.5 pl-3 border-l-2 border-transparent hover:text-text-light dark:hover:text-text-dark transition-colors">Quick
+                    Start</a>
+                <a href="#navigation"
+                    class="toc-link block text-sm text-text-light-muted dark:text-text-dark-muted py-1.5 pl-3 border-l-2 border-transparent hover:text-text-light dark:hover:text-text-dark transition-colors">Navigation</a>
+                <a href="#folder-structure"
+                    class="toc-link block text-sm text-text-light-muted dark:text-text-dark-muted py-1.5 pl-3 border-l-2 border-transparent hover:text-text-light dark:hover:text-text-dark transition-colors">Folder
+                    Structure</a>
+                <a href="#downloading"
+                    class="toc-link block text-sm text-text-light-muted dark:text-text-dark-muted py-1.5 pl-3 border-l-2 border-transparent hover:text-text-light dark:hover:text-text-dark transition-colors">Downloading</a>
+                <a href="#submit-paper"
+                    class="toc-link block text-sm text-text-light-muted dark:text-text-dark-muted py-1.5 pl-3 border-l-2 border-transparent hover:text-text-light dark:hover:text-text-dark transition-colors">Submit
+                    Paper</a>
+                <a href="#submission-guidelines"
+                    class="toc-link block text-sm text-text-light-muted dark:text-text-dark-muted py-1.5 pl-3 border-l-2 border-transparent hover:text-text-light dark:hover:text-text-dark transition-colors">Guidelines</a>
+                <a href="#institutes"
+                    class="toc-link block text-sm text-text-light-muted dark:text-text-dark-muted py-1.5 pl-3 border-l-2 border-transparent hover:text-text-light dark:hover:text-text-dark transition-colors">Institutes</a>
+                <a href="#branches"
+                    class="toc-link block text-sm text-text-light-muted dark:text-text-dark-muted py-1.5 pl-3 border-l-2 border-transparent hover:text-text-light dark:hover:text-text-dark transition-colors">Branches</a>
+                <a href="#support"
+                    class="toc-link block text-sm text-text-light-muted dark:text-text-dark-muted py-1.5 pl-3 border-l-2 border-transparent hover:text-text-light dark:hover:text-text-dark transition-colors">Support</a>
+            </nav>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer
+        class="border-t border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary mt-auto">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary">school</span>
+                    <span class="font-bold">SIT Archive</span>
+                </div>
+                <p class="text-xs text-text-light-muted dark:text-text-dark-muted">© 2026 SIT Archive. All rights
+                    reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Sync theme icons
+        function updateToggleIcon(isDark) {
+            const icon = document.getElementById('theme-icon');
+            const iconMobile = document.getElementById('theme-icon-mobile');
+            if (icon) icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            if (iconMobile) iconMobile.textContent = isDark ? 'light_mode' : 'dark_mode';
+        }
+
+        // Active sidebar link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+        const tocLinks = document.querySelectorAll('.toc-link');
+
+        function updateActiveLinks() {
+            const scrollPos = window.scrollY + 150;
+            const pageBottom = window.scrollY + window.innerHeight >= document.body.scrollHeight - 50;
+
+            let activeSection = null;
+
+            // Find the current active section
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    activeSection = section;
+                }
+            });
+
+            // If scrolled to bottom, activate the last section
+            if (pageBottom) {
+                activeSection = sections[sections.length - 1];
+            }
+
+            // Update active states
+            if (activeSection) {
+                const sectionId = activeSection.getAttribute('id');
+
+                sidebarLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        }
+
+        window.addEventListener('scroll', updateActiveLinks);
+        updateActiveLinks();
+
+        // Search functionality
+        const searchInput = document.getElementById('docs-search');
+        const navSections = document.querySelectorAll('aside nav > div');
+
+        searchInput.addEventListener('input', function () {
+            const query = this.value.toLowerCase().trim();
+
+            navSections.forEach(section => {
+                const links = section.querySelectorAll('.sidebar-link');
+                let hasVisibleLinks = false;
+
+                links.forEach(link => {
+                    const text = link.textContent.toLowerCase();
+                    const li = link.parentElement;
+
+                    if (query === '' || text.includes(query)) {
+                        li.style.display = '';
+                        hasVisibleLinks = true;
+                    } else {
+                        li.style.display = 'none';
+                    }
+                });
+
+                // Hide section header if no links match
+                section.style.display = hasVisibleLinks || query === '' ? '' : 'none';
+            });
+        });
+
+        // Keyboard shortcut (Cmd/Ctrl + K) to focus search
+        document.addEventListener('keydown', function (e) {
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        });
+    </script>
+
+    <!-- Animation Controller -->
+    <script src="js/animations.js"></script>
+</body>
+
+</html>
