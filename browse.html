@@ -340,10 +340,14 @@
                 folderName.textContent = lastItem;
 
                 if (level === 'subjects') {
-                    folderCount.textContent = `${currentData.length} papers available`;
+                    folderCount.textContent = `${currentData.length} ${currentData.length === 1 ? 'paper' : 'papers'} available`;
                 } else {
                     const count = Object.keys(currentData).length;
-                    const itemType = level === 'branches' ? 'branches' : level === 'years' ? 'years' : level === 'sems' ? 'semesters' : 'items';
+                    let itemType;
+                    if (level === 'branches') itemType = count === 1 ? 'branch' : 'branches';
+                    else if (level === 'years') itemType = count === 1 ? 'year' : 'years';
+                    else if (level === 'sems') itemType = count === 1 ? 'semester' : 'semesters';
+                    else itemType = count === 1 ? 'item' : 'items';
                     folderCount.textContent = `${count} ${itemType} available`;
                 }
             }
@@ -423,7 +427,7 @@ Thank you!`);
                         subCount = `${yearCount} years`;
                     } else if (level === 'years') {
                         const semCount = Object.keys(value.sems || {}).length;
-                        subCount = `${semCount} semesters`;
+                        subCount = `${semCount} ${semCount === 1 ? 'semester' : 'semesters'}`;
                     } else if (level === 'sems') {
                         const subjectCount = (value.subjects || []).length;
                         subCount = `${subjectCount} papers`;
