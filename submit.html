@@ -144,6 +144,8 @@
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
                         href="about.html">About Us</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="docs.html">Docs</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
                         href="faq.html">FAQ</a>
                 </div>
 
@@ -174,6 +176,8 @@
                 <a class="block text-sm font-semibold text-primary py-2" href="submit.html">Submit Papers</a>
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
                     href="about.html">About Us</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="docs.html">Docs</a>
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
                     href="faq.html">FAQ</a>
             </div>
@@ -242,6 +246,8 @@
                         class="w-full h-12 px-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors">
                         <option value="">Select Institute</option>
                         <option value="SITHYD">SIT Hyderabad</option>
+                        <option value="SITNGP">SIT Nagpur</option>
+                        <option value="SITPUNE">SIT Pune</option>
                     </select>
                 </div>
 
@@ -255,37 +261,42 @@
                         </div>
                         <div>
                             <h3 class="font-semibold">Branch</h3>
-                            <p class="text-xs text-text-light-muted dark:text-text-dark-muted">Select your branch/stream
-                            </p>
+                            <p id="branch-description" class="text-xs text-text-light-muted dark:text-text-dark-muted">
+                                Select your branch/stream</p>
                         </div>
                     </div>
+                    <!-- Branch Dropdown (for HYD and Nagpur) -->
                     <select id="branch" required
                         class="w-full h-12 px-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors">
                         <option value="">Select Branch</option>
-                        <option value="CSE">CSE</option>
-                        <option value="CSE-AIML">CSE AIML</option>
                     </select>
+                    <!-- Branch Text Input (for Pune) -->
+                    <input type="text" id="branch-input" placeholder="e.g., Computer Science"
+                        class="hidden w-full h-12 px-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark placeholder-text-light-muted dark:placeholder-text-dark-muted focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors" />
                 </div>
 
-                <!-- Academic Year -->
-                <div
+                <!-- Batch -->
+                <div id="batch-card"
                     class="form-card p-6 rounded-2xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary">
                     <div class="flex items-center gap-3 mb-4">
                         <div
                             class="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary shrink-0">
-                            <span class="material-symbols-outlined">calendar_month</span>
+                            <span class="material-symbols-outlined">groups</span>
                         </div>
                         <div>
-                            <h3 class="font-semibold">Academic Year</h3>
-                            <p class="text-xs text-text-light-muted dark:text-text-dark-muted">When was this exam
-                                conducted?</p>
+                            <h3 class="font-semibold">Batch</h3>
+                            <p id="batch-description" class="text-xs text-text-light-muted dark:text-text-dark-muted">
+                                Select your batch year</p>
                         </div>
                     </div>
-                    <select id="year" required
+                    <!-- Batch Dropdown (for HYD and Nagpur) -->
+                    <select id="batch" required
                         class="w-full h-12 px-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors">
-                        <option value="">Select Year</option>
-                        <option value="2024-25">2024-25</option>
+                        <option value="">Select Batch</option>
                     </select>
+                    <!-- Batch Text Input (for Pune) -->
+                    <input type="text" id="batch-input" placeholder="e.g., 2023-27"
+                        class="hidden w-full h-12 px-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark placeholder-text-light-muted dark:placeholder-text-dark-muted focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors" />
                 </div>
 
                 <!-- Semester -->
@@ -305,6 +316,13 @@
                         class="w-full h-12 px-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors">
                         <option value="">Select Semester</option>
                         <option value="Sem 1">Semester 1</option>
+                        <option value="Sem 2">Semester 2</option>
+                        <option value="Sem 3">Semester 3</option>
+                        <option value="Sem 4">Semester 4</option>
+                        <option value="Sem 5">Semester 5</option>
+                        <option value="Sem 6">Semester 6</option>
+                        <option value="Sem 7">Semester 7</option>
+                        <option value="Sem 8">Semester 8</option>
                     </select>
                 </div>
 
@@ -440,14 +458,151 @@
     </footer>
 
     <script>
+        // Branch options per institute
+        const branchOptions = {
+            'SITHYD': [
+                { value: 'CSE', label: 'CSE' },
+                { value: 'CSE-AIML', label: 'CSE AIML' },
+                { value: 'CST', label: 'CST' }
+            ],
+            'SITNGP': [
+                { value: 'CSE', label: 'CSE' }
+            ],
+            'SITPUNE': null // Text input for Pune
+        };
+
+        // Batch options: depends on institute AND branch
+        // For SITHYD: CSE/CSE-AIML get 2025-29, CST gets 2024-29
+        // For SITNGP and SITPUNE: text input
+        const getBatchOptions = (institute, branch) => {
+            if (institute === 'SITHYD') {
+                if (branch === 'CSE' || branch === 'CSE-AIML') {
+                    return ['2025-29'];
+                } else if (branch === 'CST') {
+                    return ['2024-29'];
+                }
+            }
+            // Nagpur and Pune use text input
+            return null;
+        };
+
+        // Institute change handler - update branch and batch fields
+        document.getElementById('institute').addEventListener('change', function () {
+            const institute = this.value;
+            const branchSelect = document.getElementById('branch');
+            const branchInput = document.getElementById('branch-input');
+            const branchDescription = document.getElementById('branch-description');
+            const batchSelect = document.getElementById('batch');
+            const batchInput = document.getElementById('batch-input');
+            const batchDescription = document.getElementById('batch-description');
+
+            // Reset batch to empty state
+            batchSelect.innerHTML = '<option value="">Select Batch</option>';
+            batchSelect.classList.remove('hidden');
+            batchInput.classList.add('hidden');
+            batchInput.value = '';
+            batchSelect.required = true;
+            batchInput.required = false;
+
+            if (!institute) {
+                // No institute selected - show empty dropdowns
+                branchSelect.classList.remove('hidden');
+                branchInput.classList.add('hidden');
+                branchSelect.innerHTML = '<option value="">Select Branch</option>';
+                branchSelect.required = true;
+                branchInput.required = false;
+                branchDescription.textContent = 'Select your branch/stream';
+                batchDescription.textContent = 'Select your batch year';
+                return;
+            }
+
+            const branches = branchOptions[institute];
+
+            if (branches === null) {
+                // Pune - show text inputs for both branch and batch
+                branchSelect.classList.add('hidden');
+                branchInput.classList.remove('hidden');
+                branchSelect.required = false;
+                branchInput.required = true;
+                branchInput.value = '';
+                branchDescription.textContent = 'Enter your branch/stream';
+
+                // Batch also text input for Pune
+                batchSelect.classList.add('hidden');
+                batchInput.classList.remove('hidden');
+                batchSelect.required = false;
+                batchInput.required = true;
+                batchDescription.textContent = 'Enter your batch year (e.g., 2023-27)';
+            } else {
+                // HYD or Nagpur - show dropdown with branch options
+                branchSelect.classList.remove('hidden');
+                branchInput.classList.add('hidden');
+                branchSelect.required = true;
+                branchInput.required = false;
+                branchSelect.innerHTML = '<option value="">Select Branch</option>' +
+                    branches.map(b => `<option value="${b.value}">${b.label}</option>`).join('');
+                branchDescription.textContent = 'Select your branch/stream';
+
+                // For Nagpur, batch is always text input
+                if (institute === 'SITNGP') {
+                    batchSelect.classList.add('hidden');
+                    batchInput.classList.remove('hidden');
+                    batchSelect.required = false;
+                    batchInput.required = true;
+                    batchDescription.textContent = 'Enter your batch year (e.g., 2021-25)';
+                } else {
+                    batchDescription.textContent = 'Select your batch year (choose branch first)';
+                }
+            }
+        });
+
+        // Branch change handler - update batch options for SITHYD
+        document.getElementById('branch').addEventListener('change', function () {
+            const institute = document.getElementById('institute').value;
+            const branch = this.value;
+            const batchSelect = document.getElementById('batch');
+            const batchInput = document.getElementById('batch-input');
+            const batchDescription = document.getElementById('batch-description');
+
+            if (institute !== 'SITHYD') return; // Only SITHYD has branch-specific batches
+
+            if (!branch) {
+                batchSelect.innerHTML = '<option value="">Select Batch</option>';
+                batchDescription.textContent = 'Select your batch year (choose branch first)';
+                return;
+            }
+
+            const batchOpts = getBatchOptions(institute, branch);
+
+            if (batchOpts) {
+                batchSelect.classList.remove('hidden');
+                batchInput.classList.add('hidden');
+                batchSelect.required = true;
+                batchInput.required = false;
+                batchSelect.innerHTML = '<option value="">Select Batch</option>' +
+                    batchOpts.map(opt => `<option value="${opt}">${opt}</option>`).join('');
+                batchDescription.textContent = 'Select your batch year';
+            } else {
+                batchSelect.classList.add('hidden');
+                batchInput.classList.remove('hidden');
+                batchSelect.required = false;
+                batchInput.required = true;
+                batchDescription.textContent = 'Enter your batch year (e.g., 2023-27)';
+            }
+        });
+
         // Form submission handler
         document.getElementById('submit-form').addEventListener('submit', function (e) {
             e.preventDefault();
 
             // Gather form data
             const institute = document.getElementById('institute').value;
-            const branch = document.getElementById('branch').value;
-            const year = document.getElementById('year').value;
+            const branchSelect = document.getElementById('branch');
+            const branchInput = document.getElementById('branch-input');
+            const branch = branchInput.classList.contains('hidden') ? branchSelect.value : branchInput.value;
+            const batchSelect = document.getElementById('batch');
+            const batchInput = document.getElementById('batch-input');
+            const batch = batchInput.classList.contains('hidden') ? batchSelect.value : batchInput.value;
             const semester = document.getElementById('semester').value;
             const subjectName = document.getElementById('subject-name').value;
             const subjectCode = document.getElementById('subject-code').value;
@@ -455,10 +610,18 @@
             const notes = document.getElementById('notes').value;
 
             // Validate
-            if (!institute || !branch || !year || !semester || !subjectName || !subjectCode) {
+            if (!institute || !branch || !batch || !semester || !subjectName || !subjectCode) {
                 alert('Please fill in all required fields.');
                 return;
             }
+
+            // Get institute display name
+            const instituteNames = {
+                'SITHYD': 'SIT Hyderabad',
+                'SITNGP': 'SIT Nagpur',
+                'SITPUNE': 'SIT Pune'
+            };
+            const instituteName = instituteNames[institute] || institute;
 
             // Build email subject
             const emailSubject = encodeURIComponent(`SIT Archive - Paper Submission: ${subjectName} (${subjectCode})`);
@@ -470,9 +633,9 @@ I would like to submit the following question paper to the archive:
 
 📍 PAPER DETAILS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🏛️ Institute: ${institute}
+🏛️ Institute: ${instituteName}
 📚 Branch: ${branch}
-📅 Academic Year: ${year}
+👥 Batch: ${batch}
 🎓 Semester: ${semester}
 
 📄 SUBJECT INFORMATION
