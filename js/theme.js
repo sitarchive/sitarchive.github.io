@@ -8,8 +8,8 @@ const THEME_KEY = 'sit-archive-theme';
 // Initialize theme on page load
 function initTheme() {
     const saved = localStorage.getItem(THEME_KEY);
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const isDark = saved ? saved === 'dark' : prefersDark;
+    // Default to light theme if no preference saved
+    const isDark = saved ? saved === 'dark' : false;
 
     document.documentElement.classList.toggle('dark', isDark);
     updateToggleIcon(isDark);
