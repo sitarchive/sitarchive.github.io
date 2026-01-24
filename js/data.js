@@ -55,8 +55,8 @@ const SIT_ARCHIVE_DATA = {
                     name: "CST",
                     icon: "memory",
                     years: {
-                        "2024-29": {
-                            name: "2024-29",
+                        "2024-28": {
+                            name: "2024-28",
                             sems: {
                                 "Sem 1": {
                                     name: "Semester 1",
