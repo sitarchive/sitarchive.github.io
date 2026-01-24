@@ -472,14 +472,14 @@
         };
 
         // Batch options: depends on institute AND branch
-        // For SITHYD: CSE/CSE-AIML get 2025-29, CST gets 2024-29
+        // For SITHYD: CSE/CSE-AIML get 2025-29, CST gets 2024-28
         // For SITNGP and SITPUNE: text input
         const getBatchOptions = (institute, branch) => {
             if (institute === 'SITHYD') {
                 if (branch === 'CSE' || branch === 'CSE-AIML') {
                     return ['2025-29'];
                 } else if (branch === 'CST') {
-                    return ['2024-29'];
+                    return ['2024-28'];
                 }
             }
             // Nagpur and Pune use text input
