@@ -28,7 +28,13 @@ const SIT_ARCHIVE_DATA = {
                                     name: "Semester 2",
                                     icon: "looks_two",
                                     types: {
-                                        "End-Sem": { name: "End-Sem", icon: "description", subjects: [] },
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: [
+                                                { name: "Programming in C", code: "0707220204", file: "", type: "End-Sem" }
+                                            ]
+                                        },
                                         "Mid-Sem (Unit Tests)": { name: "Mid-Sem (Unit Tests)", icon: "quiz", subjects: [] }
                                     }
                                 },
@@ -114,9 +120,9 @@ const SIT_ARCHIVE_DATA = {
                         }
                     }
                 },
-                "CST": {
-                    name: "CST",
-                    icon: "memory",
+                "AIML": {
+                    name: "AIML",
+                    icon: "smart_toy",
                     years: {
                         "2024-28": {
                             name: "2024-28",
@@ -133,8 +139,86 @@ const SIT_ARCHIVE_DATA = {
                                     name: "Semester 2",
                                     icon: "looks_two",
                                     types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: [
+                                                { name: "Programming in C", code: "0707210206", file: "", type: "End-Sem" }
+                                            ]
+                                        },
+                                        "Mid-Sem (Unit Tests)": { name: "Mid-Sem (Unit Tests)", icon: "quiz", subjects: [] }
+                                    }
+                                },
+                                "Sem 3": {
+                                    name: "Semester 3",
+                                    icon: "looks_3",
+                                    types: {
                                         "End-Sem": { name: "End-Sem", icon: "description", subjects: [] },
                                         "Mid-Sem (Unit Tests)": { name: "Mid-Sem (Unit Tests)", icon: "quiz", subjects: [] }
+                                    }
+                                },
+                                "Sem 4": {
+                                    name: "Semester 4",
+                                    icon: "looks_4",
+                                    types: {
+                                        "End-Sem": { name: "End-Sem", icon: "description", subjects: [] },
+                                        "Mid-Sem (Unit Tests)": { name: "Mid-Sem (Unit Tests)", icon: "quiz", subjects: [] }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "CST": {
+                    name: "CST",
+                    icon: "memory",
+                    years: {
+                        "2024-28": {
+                            name: "2024-28",
+                            sems: {
+                                "Sem 1": {
+                                    name: "Semester 1",
+                                    icon: "looks_one",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: [
+                                                { name: "Mathematics-I", code: "0707240101", file: "", type: "End-Sem" },
+                                                { name: "Programming and Problem Solving", code: "0707240106", file: "", type: "End-Sem" },
+                                                { name: "Basic Electrical and Electronics Engineering", code: "0707210104", file: "", type: "End-Sem" }
+                                            ]
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: [
+                                                { name: "Basic Electrical and Electronics Engineering", code: "T7540", file: "", type: "Mid-Sem (Unit Tests)" },
+                                                { name: "Critical Thinking", code: "T6732", file: "", type: "Mid-Sem (Unit Tests)" },
+                                                { name: "Programming and Problem Solving", code: "TE7286", file: "", type: "Mid-Sem (Unit Tests)" },
+                                                { name: "Mathematics-I", code: "ET7680", file: "", type: "Mid-Sem (Unit Tests)" }
+                                            ]
+                                        }
+                                    }
+                                },
+                                "Sem 2": {
+                                    name: "Semester 2",
+                                    icon: "looks_two",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: [
+                                                { name: "Programming in C", code: "0707240206", file: "", type: "End-Sem" }
+                                            ]
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: [
+                                                { name: "Basic Electrical and Electronics Engineering", code: "0707240204", file: "", type: "Mid-Sem (Unit Tests)" }
+                                            ]
+                                        }
                                     }
                                 },
                                 "Sem 3": {
