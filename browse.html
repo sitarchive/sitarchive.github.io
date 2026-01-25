@@ -298,7 +298,7 @@
         }
 
         // Get current folder data based on path
-        // Structure: institutes -> branches -> years -> sems -> subjects
+        // Structure: institutes -> branches -> years -> sems -> [types] -> subjects
         function getCurrentData() {
             let current = data.institutes;
             let level = 'institutes';
@@ -315,6 +315,15 @@
                     current = current[key].sems;
                     level = 'sems';
                 } else if (level === 'sems') {
+                    // Check if we have types or direct subjects
+                    if (current[key].types) {
+                        current = current[key].types;
+                        level = 'types';
+                    } else {
+                        current = current[key].subjects;
+                        level = 'subjects';
+                    }
+                } else if (level === 'types') {
                     current = current[key].subjects;
                     level = 'subjects';
                 }
@@ -347,6 +356,7 @@
                     if (level === 'branches') itemType = count === 1 ? 'branch' : 'branches';
                     else if (level === 'years') itemType = count === 1 ? 'year' : 'years';
                     else if (level === 'sems') itemType = count === 1 ? 'semester' : 'semesters';
+                    else if (level === 'types') itemType = count === 1 ? 'category' : 'categories';
                     else itemType = count === 1 ? 'item' : 'items';
                     folderCount.textContent = `${count} ${itemType} available`;
                 }
@@ -389,7 +399,7 @@ Thank you!`);
                             </div>
                         </div>
                         <div class="flex items-center justify-between mt-auto gap-2">
-                            <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type === 'Mid-Sem' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : 'bg-primary/10 text-primary'}">
+                            <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type === 'Mid-Sem (Unit Tests)' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')}">
                                 ${paper.type}
                             </span>
                             <a href="${paper.file}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors">
@@ -429,6 +439,15 @@ Thank you!`);
                         const semCount = Object.keys(value.sems || {}).length;
                         subCount = `${semCount} ${semCount === 1 ? 'semester' : 'semesters'}`;
                     } else if (level === 'sems') {
+                        // Types level
+                        const typesCount = Object.keys(value.types || {}).length;
+                        const subjectDirectCount = (value.subjects || []).length;
+                        if (value.types) {
+                            subCount = `${typesCount} ${typesCount === 1 ? 'category' : 'categories'}`;
+                        } else {
+                            subCount = `${subjectDirectCount} papers`;
+                        }
+                    } else if (level === 'types') {
                         const subjectCount = (value.subjects || []).length;
                         subCount = `${subjectCount} papers`;
                     }
