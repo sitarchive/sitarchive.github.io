@@ -42,7 +42,7 @@ const SIT_ARCHIVE_DATA = {
                                             subjects: [
                                                 { name: "Sensors and Microcontrollers", code: "0707240307", file: "https://drive.google.com/file/d/1g8Zt3YJUCRBy8pw8WiTCJi-Y_SxqpMQG/view?usp=share_link", type: "End-Sem" },
                                                 { name: "Programming Paradigms", code: "070740305", file: "https://drive.google.com/file/d/1alFtcLUqvOd0XFizlDUfrtk6ILwbcSGN/view?usp=share_link", type: "End-Sem" },
-                                                { name: "Discrete Mathematics and Graph Theory", code: "0707240301", file: "https://drive.google.com/file/d/14IpKGhRKPIR2o54soY7Cu6Njudzrw5eI/view?usp=share_link", type: "End-Sem" },
+                                                { name: "Discrete Mathematics and Graph Theory", code: "0707240301", file: "https://drive.google.com/file/d/1TQ4XrnxF8-6ZqPDu2_kFPQHEof_I-tkY/view?usp=share_link", type: "End-Sem" },
                                                 { name: "Data Structures", code: "0707240303", file: "https://drive.google.com/file/d/1pYZcC1XWo7DL5PrWoox3VcKlMNF7nQjf/view?usp=share_link", type: "End-Sem" },
                                                 { name: "Computer Organization", code: "0707240302", file: "https://drive.google.com/file/d/1fFKap6AcQGfyDWtAC2n1wYkzP_8NqsJ_/view?usp=share_link", type: "End-Sem" }
                                             ]
@@ -147,7 +147,7 @@ const SIT_ARCHIVE_DATA = {
                                             subjects: [
                                                 { name: "Sensors and Microcontrollers", code: "0707240307", file: "https://drive.google.com/file/d/1taK5JO0jEkgLWpMseLmfibGeTjfSwHjm/view?usp=share_link", type: "End-Sem" },
                                                 { name: "Programming Paradigms", code: "070740305", file: "https://drive.google.com/file/d/1ZOvUDMMHjGGc3LQbrkxIbnkYlWtEcZRQ/view?usp=share_link", type: "End-Sem" },
-                                                { name: "Discrete Mathematics and Graph Theory", code: "0707240301", file: "https://drive.google.com/file/d/1J3xEm67-3D-BtbxlAlyf7blVhh1xIWM7/view?usp=share_link", type: "End-Sem" },
+                                                { name: "Discrete Mathematics and Graph Theory", code: "0707240301", file: "https://drive.google.com/file/d/1A45ooSJw4_oYyiJP4xK_wYMTO_6Y-c_P/view?usp=share_link", type: "End-Sem" },
                                                 { name: "Data Structures", code: "0707240303", file: "https://drive.google.com/file/d/1viMaflzKwZLXbSwyEHXJPHqhaRoQ0h9f/view?usp=share_link", type: "End-Sem" },
                                                 { name: "Computer Organization", code: "0707240302", file: "https://drive.google.com/file/d/1VZWOxe5JyjQXImHHxTWnlDTU9sdbpcvV/view?usp=share_link", type: "End-Sem" }
                                             ]
