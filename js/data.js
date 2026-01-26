@@ -20,8 +20,24 @@ const SIT_ARCHIVE_DATA = {
                                     name: "Semester 1",
                                     icon: "looks_one",
                                     types: {
-                                        "End-Sem": { name: "End-Sem", icon: "description", subjects: [] },
-                                        "Mid-Sem (Unit Tests)": { name: "Mid-Sem (Unit Tests)", icon: "quiz", subjects: [] }
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: [
+                                                { name: "Basic Electrical and Electronics Engineering", code: "0707210104", file: "https://drive.google.com/file/d/1lxjKlep_3pB-A5_QCkyma2EJy_qEfPzI/view?usp=share_link", type: "End-Sem" },
+                                                { name: "Programming and Problem Solving", code: "0707240106", file: "https://drive.google.com/file/d/1DggNdn3kwTYQO9Wbl9APVQBiSZxAWO97/view?usp=share_link", type: "End-Sem" }
+                                            ]
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: [
+                                                { name: "Mathematics-I", code: "ET7680", file: "https://drive.google.com/file/d/1cnIq81yGl7QOgLL8YdkhU1Vn_WHW64_8/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
+                                                { name: "Programming and Problem Solving", code: "TE7286", file: "https://drive.google.com/file/d/1SrcfUadFuNcRKut0CcXhKk0rVB2HDmim/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
+                                                { name: "Critical Thinking", code: "T6732", file: "https://drive.google.com/file/d/1SQgLtBR1c7sHZZnMeUyMHPhtpenQkL8j/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
+                                                { name: "Basic Electrical and Electronics Engineering", code: "T7540", file: "https://drive.google.com/file/d/1IW9KItlvEAWYT6n0FKHwOibwBDZZggBD/view?usp=share_link", type: "Mid-Sem (Unit Tests)" }
+                                            ]
+                                        }
                                     }
                                 },
                                 "Sem 2": {
@@ -32,7 +48,7 @@ const SIT_ARCHIVE_DATA = {
                                             name: "End-Sem",
                                             icon: "description",
                                             subjects: [
-                                                { name: "Programming in C", code: "0707220204", file: "", type: "End-Sem" }
+                                                { name: "Programming in C", code: "0707220204", file: "https://drive.google.com/file/d/1A--GGnGsy7NzqAvmJYAL7O0pdtsjFQhz/view?usp=share_link", type: "End-Sem" }
                                             ]
                                         },
                                         "Mid-Sem (Unit Tests)": { name: "Mid-Sem (Unit Tests)", icon: "quiz", subjects: [] }
@@ -132,7 +148,14 @@ const SIT_ARCHIVE_DATA = {
                                     icon: "looks_one",
                                     types: {
                                         "End-Sem": { name: "End-Sem", icon: "description", subjects: [] },
-                                        "Mid-Sem (Unit Tests)": { name: "Mid-Sem (Unit Tests)", icon: "quiz", subjects: [] }
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: [
+                                                { name: "Critical Thinking", code: "T6732", file: "https://drive.google.com/file/d/1Th09FNg5qMEkviCztZffgRMvY1qfRQXv/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
+                                                { name: "Basic Electrical and Electronics Engineering", code: "T7540", file: "https://drive.google.com/file/d/1BmVPpkm_jejYDJuSb1FFs9q95-JDI58K/view?usp=share_link", type: "Mid-Sem (Unit Tests)" }
+                                            ]
+                                        }
                                     }
                                 },
                                 "Sem 2": {
@@ -143,7 +166,7 @@ const SIT_ARCHIVE_DATA = {
                                             name: "End-Sem",
                                             icon: "description",
                                             subjects: [
-                                                { name: "Programming in C", code: "0707210206", file: "", type: "End-Sem" }
+                                                { name: "Programming in C", code: "0707210206", file: "https://drive.google.com/file/d/1UhyRAdGq5xkznNS97YW45NmMbZbq-tDc/view?usp=share_link", type: "End-Sem" }
                                             ]
                                         },
                                         "Mid-Sem (Unit Tests)": { name: "Mid-Sem (Unit Tests)", icon: "quiz", subjects: [] }
@@ -184,19 +207,16 @@ const SIT_ARCHIVE_DATA = {
                                             name: "End-Sem",
                                             icon: "description",
                                             subjects: [
-                                                { name: "Mathematics-I", code: "0707240101", file: "", type: "End-Sem" },
-                                                { name: "Programming and Problem Solving", code: "0707240106", file: "", type: "End-Sem" },
-                                                { name: "Basic Electrical and Electronics Engineering", code: "0707210104", file: "", type: "End-Sem" }
+                                                { name: "Mathematics-I", code: "0707240101", file: "https://drive.google.com/file/d/13snOFzVyb8dLURQQtLKjo5kAQynLjmxE/view?usp=share_link", type: "End-Sem" }
                                             ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
                                             name: "Mid-Sem (Unit Tests)",
                                             icon: "quiz",
                                             subjects: [
-                                                { name: "Basic Electrical and Electronics Engineering", code: "T7540", file: "", type: "Mid-Sem (Unit Tests)" },
-                                                { name: "Critical Thinking", code: "T6732", file: "", type: "Mid-Sem (Unit Tests)" },
-                                                { name: "Programming and Problem Solving", code: "TE7286", file: "", type: "Mid-Sem (Unit Tests)" },
-                                                { name: "Mathematics-I", code: "ET7680", file: "", type: "Mid-Sem (Unit Tests)" }
+                                                { name: "Critical Thinking", code: "T6732", file: "https://drive.google.com/file/d/1VL6_fFt6mR-yPTU0mmtGsEpQwObgO5Du/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
+                                                { name: "Programming and Problem Solving", code: "TE7286", file: "https://drive.google.com/file/d/1OWdBUHqmQZ21hHRdQnHve6vTzrYQqK7F/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
+                                                { name: "Mathematics-I", code: "ET7680", file: "https://drive.google.com/file/d/1n_YcGbSWFEvy_6ocP6lHFX36u4DVdbaT/view?usp=share_link", type: "Mid-Sem (Unit Tests)" }
                                             ]
                                         }
                                     }
@@ -209,14 +229,14 @@ const SIT_ARCHIVE_DATA = {
                                             name: "End-Sem",
                                             icon: "description",
                                             subjects: [
-                                                { name: "Programming in C", code: "0707240206", file: "", type: "End-Sem" }
+                                                { name: "Programming in C", code: "0707240206", file: "https://drive.google.com/file/d/1XH7mBCDHkMlVea4yvugWiKY4Ny3DWtgF/view?usp=share_link", type: "End-Sem" }
                                             ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
                                             name: "Mid-Sem (Unit Tests)",
                                             icon: "quiz",
                                             subjects: [
-                                                { name: "Basic Electrical and Electronics Engineering", code: "0707240204", file: "", type: "Mid-Sem (Unit Tests)" }
+                                                { name: "Basic Electrical and Electronics Engineering", code: "0707240204", file: "https://drive.google.com/file/d/1BNgN2E9bQw8T4ySeGHXEh64ewhLHDU5M/view?usp=share_link", type: "Mid-Sem (Unit Tests)" }
                                             ]
                                         }
                                     }
