@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Changelog - SIT Archive</title>
+    <meta name="description"
+        content="View the latest updates and changes to SIT Archive - new papers, branches, and improvements.">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Noto+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Animation Styles -->
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- Theme Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#C8102E",
+                        "primary-hover": "#A60D26",
+                        "bg-light": "#FFFFFF",
+                        "bg-light-secondary": "#F8F6F6",
+                        "bg-light-tertiary": "#F0EEEE",
+                        "text-light": "#181112",
+                        "text-light-muted": "#6B7280",
+                        "border-light": "#E5E7EB",
+                        "bg-dark": "#0D0D0D",
+                        "bg-dark-secondary": "#161616",
+                        "bg-dark-tertiary": "#1A1A1A",
+                        "text-dark": "#FFFFFF",
+                        "text-dark-muted": "#A1A1AA",
+                        "border-dark": "#2A2A2A",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    boxShadow: {
+                        'glow': '0 0 40px -10px rgba(200, 16, 46, 0.3)',
+                        'glow-sm': '0 0 20px -5px rgba(200, 16, 46, 0.2)',
+                    }
+                },
+            },
+        }
+    </script>
+
+    <!-- Theme Script -->
+    <script src="js/theme.js"></script>
+
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .dark ::-webkit-scrollbar-track {
+            background: #0D0D0D;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #2A2A2A;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #3A3A3A;
+        }
+
+        * {
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 23px;
+            top: 40px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #C8102E, transparent);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark font-display antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white">
+
+    <!-- Navigation -->
+    <nav
+        class="sticky top-0 z-50 w-full border-b border-border-light dark:border-border-dark bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-md">
+        <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <a class="flex items-center gap-3 group" href="index.html">
+                <div
+                    class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                    <span class="material-symbols-outlined text-[24px]">school</span>
+                </div>
+                <span class="text-xl font-bold tracking-tight">SIT Archive</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8">
+                <div class="flex items-center gap-6">
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="index.html">Home</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="browse.html">Browse Papers</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="submit.html">Submit Papers</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="about.html">About Us</a>
+                    <a class="text-sm font-semibold text-primary" href="changelog.html">Changelog</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="docs.html">Docs</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="faq.html">FAQ</a>
+                </div>
+
+                <button onclick="toggleTheme()"
+                    class="flex items-center justify-center w-10 h-10 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary border border-border-light dark:border-border-dark transition-colors">
+                    <span id="theme-icon" class="material-symbols-outlined text-[20px]">dark_mode</span>
+                </button>
+            </div>
+
+            <div class="md:hidden flex items-center gap-3">
+                <button onclick="toggleTheme()"
+                    class="flex items-center justify-center w-10 h-10 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark">
+                    <span id="theme-icon-mobile" class="material-symbols-outlined text-[20px]">dark_mode</span>
+                </button>
+                <button class="text-text-light dark:text-text-dark" id="mobile-menu-btn">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu"
+            class="hidden md:hidden border-t border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark">
+            <div class="px-4 py-4 space-y-3">
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="index.html">Home</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="browse.html">Browse Papers</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="submit.html">Submit Papers</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="about.html">About Us</a>
+                <a class="block text-sm font-semibold text-primary py-2" href="changelog.html">Changelog</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="docs.html">Docs</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="faq.html">FAQ</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative w-full overflow-hidden">
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/10 blur-[100px] rounded-full pointer-events-none">
+            </div>
+
+            <div class="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+                <div class="flex flex-col items-center text-center gap-4 animate-on-scroll">
+                    <div
+                        class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary mb-2">
+                        <span class="material-symbols-outlined text-[14px]">update</span>
+                        Latest Updates
+                    </div>
+
+                    <h1
+                        class="text-4xl sm:text-5xl font-extrabold tracking-tight max-w-4xl bg-gradient-to-b from-text-light to-text-light/60 dark:from-text-dark dark:to-text-dark/60 bg-clip-text text-transparent pb-2">
+                        Changelog
+                    </h1>
+
+                    <p
+                        class="max-w-2xl text-lg text-text-light-muted dark:text-text-dark-muted font-light leading-relaxed">
+                        Track all the latest additions, updates, and improvements to SIT Archive.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Changelog Timeline -->
+        <section class="w-full py-8 pb-20">
+            <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+
+                <!-- January 2026 -->
+                <div class="mb-12 animate-on-scroll">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-primary text-white">
+                            <span class="material-symbols-outlined text-[24px]">calendar_month</span>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold">January 2026</h2>
+                            <p class="text-sm text-text-light-muted dark:text-text-dark-muted">Recent updates</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6 ml-6 relative stagger-children">
+                        <div class="timeline-line"></div>
+
+                        <!-- Update Entry -->
+                        <div class="relative pl-12 animate-on-scroll">
+                            <div
+                                class="absolute left-0 top-1 w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                                <span
+                                    class="material-symbols-outlined text-[16px] text-blue-600 dark:text-blue-400">library_add</span>
+                            </div>
+                            <div
+                                class="rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary p-6">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span
+                                        class="text-xs font-medium text-text-light-muted dark:text-text-dark-muted">Jan
+                                        26, 2026</span>
+                                    <span
+                                        class="px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-medium">Mass
+                                        Update</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2">Comprehensive Paper Addition</h3>
+                                <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-3">
+                                    Added 16+ new papers and updated links for CST, CSE, and AIML branches (2024-28
+                                    Batch).
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <h4 class="text-xs font-bold text-primary mb-2">Sem 1 (Mid & End)</h4>
+                                        <ul class="text-xs text-text-light-muted dark:text-text-dark-muted space-y-1">
+                                            <li>• Mathematics-I (Mid/End)</li>
+                                            <li>• Programming & Problem Solving</li>
+                                            <li>• Critical Thinking</li>
+                                            <li>• Basic Electrical Engineering</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xs font-bold text-primary mb-2">Sem 2 (Mid & End)</h4>
+                                        <ul class="text-xs text-text-light-muted dark:text-text-dark-muted space-y-1">
+                                            <li>• Programming in C (End)</li>
+                                            <li>• Basic Electrical Engineering (Mid)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Update Entry -->
+                        <div class="relative pl-12 animate-on-scroll">
+                            <div
+                                class="absolute left-0 top-1 w-8 h-8 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+                                <span
+                                    class="material-symbols-outlined text-[16px] text-red-600 dark:text-red-400">cleaning_services</span>
+                            </div>
+                            <div
+                                class="rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary p-6">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span
+                                        class="text-xs font-medium text-text-light-muted dark:text-text-dark-muted">Jan
+                                        26, 2026</span>
+                                    <span
+                                        class="px-2 py-0.5 rounded-full bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-xs font-medium">Cleanup</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2">Removed Placeholder Entries</h3>
+                                <p class="text-sm text-text-light-muted dark:text-text-dark-muted">
+                                    Removed 3 CST Sem 1 entries that had no links available yet (Programming & Problem
+                                    Solving End-Sem, Basic Electrical End-Sem & Mid-Sem).
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Update Entry -->
+                        <div class="relative pl-12 animate-on-scroll">
+                            <div
+                                class="absolute left-0 top-1 w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                                <span
+                                    class="material-symbols-outlined text-[16px] text-green-600 dark:text-green-400">add</span>
+                            </div>
+                            <div
+                                class="rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary p-6">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span
+                                        class="text-xs font-medium text-text-light-muted dark:text-text-dark-muted">Jan
+                                        26, 2026</span>
+                                    <span
+                                        class="px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium">New
+                                        Branch</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2">AIML Branch Added</h3>
+                                <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-3">
+                                    Added new AIML branch under SIT Hyderabad with 2024-28 batch.
+                                </p>
+                                <ul class="text-sm text-text-light-muted dark:text-text-dark-muted space-y-1">
+                                    <li class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-[14px] text-primary">folder</span>
+                                        AIML → 2024-28 → Sem 1, 2, 3, 4
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <span
+                                            class="material-symbols-outlined text-[14px] text-primary">description</span>
+                                        Sem 2 End-Sem: Programming in C
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Update Entry -->
+                        <div class="relative pl-12 animate-on-scroll">
+                            <div
+                                class="absolute left-0 top-1 w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                                <span
+                                    class="material-symbols-outlined text-[16px] text-blue-600 dark:text-blue-400">upload_file</span>
+                            </div>
+                            <div
+                                class="rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary p-6">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span
+                                        class="text-xs font-medium text-text-light-muted dark:text-text-dark-muted">Jan
+                                        26, 2026</span>
+                                    <span
+                                        class="px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-medium">Papers
+                                        Added</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2">CST 2024-28 Sem 1 & 2 Papers</h3>
+                                <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-3">
+                                    Added multiple papers for CST branch Semester 1 and 2.
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <h4 class="text-xs font-bold text-primary mb-2">Sem 1 End-Sem</h4>
+                                        <ul class="text-xs text-text-light-muted dark:text-text-dark-muted space-y-1">
+                                            <li>• Mathematics-I</li>
+                                            <li>• Programming and Problem Solving</li>
+                                            <li>• Basic Electrical and Electronics Engineering</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xs font-bold text-primary mb-2">Sem 1 Mid-Sem</h4>
+                                        <ul class="text-xs text-text-light-muted dark:text-text-dark-muted space-y-1">
+                                            <li>• Basic Electrical and Electronics Engineering</li>
+                                            <li>• Critical Thinking</li>
+                                            <li>• Programming and Problem Solving</li>
+                                            <li>• Mathematics-I</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Update Entry -->
+                        <div class="relative pl-12 animate-on-scroll">
+                            <div
+                                class="absolute left-0 top-1 w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                                <span
+                                    class="material-symbols-outlined text-[16px] text-blue-600 dark:text-blue-400">upload_file</span>
+                            </div>
+                            <div
+                                class="rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary p-6">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span
+                                        class="text-xs font-medium text-text-light-muted dark:text-text-dark-muted">Jan
+                                        25, 2026</span>
+                                    <span
+                                        class="px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-medium">Papers
+                                        Added</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2">CSE 2024-28 Sem 2 & 3 Papers</h3>
+                                <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-3">
+                                    Added papers for CSE branch Semester 2 and 3.
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <h4 class="text-xs font-bold text-primary mb-2">Sem 2 End-Sem</h4>
+                                        <ul class="text-xs text-text-light-muted dark:text-text-dark-muted space-y-1">
+                                            <li>• Programming in C</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xs font-bold text-primary mb-2">Sem 3 End-Sem</h4>
+                                        <ul class="text-xs text-text-light-muted dark:text-text-dark-muted space-y-1">
+                                            <li>• Sensors and Microcontrollers</li>
+                                            <li>• Programming Paradigms</li>
+                                            <li>• Discrete Mathematics</li>
+                                            <li>• Data Structures</li>
+                                            <li>• Computer Organization</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Update Entry -->
+                        <div class="relative pl-12 animate-on-scroll">
+                            <div
+                                class="absolute left-0 top-1 w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
+                                <span
+                                    class="material-symbols-outlined text-[16px] text-purple-600 dark:text-purple-400">edit</span>
+                            </div>
+                            <div
+                                class="rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary p-6">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span
+                                        class="text-xs font-medium text-text-light-muted dark:text-text-dark-muted">Jan
+                                        25, 2026</span>
+                                    <span
+                                        class="px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 text-xs font-medium">Link
+                                        Updated</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2">Discrete Mathematics Links Fixed</h3>
+                                <p class="text-sm text-text-light-muted dark:text-text-dark-muted">
+                                    Updated Google Drive links for "Discrete Mathematics and Graph Theory" in CSE and
+                                    CST branches (Sem 3 End-Sem).
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Update Entry -->
+                        <div class="relative pl-12 animate-on-scroll">
+                            <div
+                                class="absolute left-0 top-1 w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center">
+                                <span
+                                    class="material-symbols-outlined text-[16px] text-amber-600 dark:text-amber-400">palette</span>
+                            </div>
+                            <div
+                                class="rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary p-6">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span
+                                        class="text-xs font-medium text-text-light-muted dark:text-text-dark-muted">Jan
+                                        24, 2026</span>
+                                    <span
+                                        class="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-medium">UI
+                                        Update</span>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2">Default Theme Changed to Light</h3>
+                                <p class="text-sm text-text-light-muted dark:text-text-dark-muted">
+                                    Changed the default theme from dark to light mode. Dark mode is still available via
+                                    the toggle.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+        class="border-t border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <a class="flex items-center gap-3 mb-4" href="index.html">
+                        <div class="flex size-8 items-center justify-center rounded-md bg-primary/10 text-primary">
+                            <span class="material-symbols-outlined text-[20px]">school</span>
+                        </div>
+                        <span class="text-lg font-bold tracking-tight">SIT Archive</span>
+                    </a>
+                    <p class="text-sm text-text-light-muted dark:text-text-dark-muted leading-relaxed max-w-sm">
+                        The central hub for past year papers, built to support the academic journey of every SIT
+                        student.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider mb-4">Explore</h4>
+                    <ul class="space-y-3">
+                        <li><a class="text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                                href="browse.html">Browse Papers</a></li>
+                        <li><a class="text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                                href="changelog.html">Changelog</a></li>
+                        <li><a class="text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                                href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider mb-4">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a class="text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                                href="privacy.html">Privacy Policy</a></li>
+                        <li><a class="text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                                href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-border-light dark:border-border-dark pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-text-light-muted dark:text-text-dark-muted">© 2026 SIT Archive. All rights
+                    reserved.</p>
+                <div class="flex items-center gap-2">
+                    <span class="h-2 w-2 rounded-full bg-green-500"></span>
+                    <span class="text-xs text-text-light-muted dark:text-text-dark-muted">System Operational</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Sync theme icons
+        function updateToggleIcon(isDark) {
+            const icon = document.getElementById('theme-icon');
+            const iconMobile = document.getElementById('theme-icon-mobile');
+            if (icon) icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            if (iconMobile) iconMobile.textContent = isDark ? 'light_mode' : 'dark_mode';
+        }
+    </script>
+
+    <!-- Animation Controller -->
+    <script src="js/animations.js"></script>
+</body>
+
+</html>
