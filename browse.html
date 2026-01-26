@@ -204,7 +204,7 @@
                         class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-text-light-muted dark:text-text-dark-muted">
                         <span class="material-symbols-outlined text-[20px]">search</span>
                     </div>
-                    <input id="search-input" type="text" placeholder="Search in current folder..."
+                    <input id="search-input" type="text" placeholder="Search all papers..."
                         class="w-full h-12 pl-12 pr-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary text-text-light dark:text-text-dark placeholder-text-light-muted dark:placeholder-text-dark-muted focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors" />
                 </div>
             </div>
@@ -483,14 +483,142 @@ Thank you!`);
 
         // Search functionality
         document.getElementById('search-input').addEventListener('input', function (e) {
-            const query = e.target.value.toLowerCase();
-            const cards = document.querySelectorAll('.folder-card');
+            const query = e.target.value.toLowerCase().trim();
+            const grid = document.getElementById('content-grid');
+            const folderName = document.getElementById('current-folder-name');
+            const folderCount = document.getElementById('current-folder-count');
+            const breadcrumb = document.getElementById('breadcrumb');
 
-            cards.forEach(card => {
-                const text = card.textContent.toLowerCase();
-                card.style.display = text.includes(query) ? '' : 'none';
-            });
+            if (query === '') {
+                // Restore current view
+                renderContent();
+                breadcrumb.style.opacity = '1';
+                return;
+            }
+
+            // Hide breadcrumb during search
+            breadcrumb.style.opacity = '0.5';
+
+            // Perform global search
+            const results = searchAll(data.institutes, query);
+
+            // Update UI
+            folderName.textContent = `Search Results for "${e.target.value}"`;
+            folderCount.textContent = `${results.length} found`;
+
+            if (results.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full flex flex-col items-center justify-center py-16 text-center">
+                        <span class="material-symbols-outlined text-6xl text-text-light-muted dark:text-text-dark-muted mb-4">search_off</span>
+                        <h3 class="text-lg font-semibold mb-2">No results found</h3>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted">Try a different search term.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Render results
+            grid.innerHTML = results.map(item => {
+                const paper = item.paper;
+                const pathStr = item.path.join(' › ');
+
+                // Report link generation
+                const reportSubject = encodeURIComponent(`SIT Archive - Report Issue: ${paper.name} (${paper.code})`);
+                const reportBody = encodeURIComponent(`Hi SIT Archive Team,\n\nI would like to report an issue with the following paper:\n\n📍 Location: ${pathStr}\n📄 Paper: ${paper.name}\n📝 Code: ${paper.code}\n📌 Type: ${paper.type}\n\n🔴 Issue Description:\n[Please describe the issue here]\n\nThank you!`);
+                const reportLink = `mailto:students.sit.archive@gmail.com?subject=${reportSubject}&body=${reportBody}`;
+
+                return `
+                <div class="folder-card relative flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm cursor-pointer group">
+                    <a href="${reportLink}" class="absolute top-3 right-3 p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-red-500 dark:hover:text-red-400 transition-colors" title="Report an issue">
+                        <span class="material-symbols-outlined text-[18px]">flag</span>
+                    </a>
+                    <div class="flex items-start gap-3 mb-2 pr-8">
+                        <span class="material-symbols-outlined text-primary text-2xl shrink-0">description</span>
+                        <div class="min-w-0 flex-1">
+                            <h3 class="font-semibold text-sm group-hover:text-primary transition-colors truncate">${paper.name}</h3>
+                            <p class="text-xs text-text-light-muted dark:text-text-dark-muted">${paper.code}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Path Context -->
+                    <div class="mb-3 px-2 py-1 rounded bg-bg-light-tertiary dark:bg-bg-dark-tertiary">
+                        <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted truncate" title="${pathStr}">
+                            ${pathStr}
+                        </p>
+                    </div>
+
+                    <div class="flex items-center justify-between mt-auto gap-2">
+                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type.includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')}">
+                            ${paper.type.split(' ')[0]}
+                        </span>
+                        <a href="${paper.file}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors">
+                            <span class="material-symbols-outlined text-[16px]">download</span>
+                            Download
+                        </a>
+                    </div>
+                </div>
+            `}).join('');
         });
+
+        function searchAll(root, query) {
+            const results = [];
+
+            // Recursive traversal
+            // Structure: Institutes -> Branches -> Years -> Sems -> (Types) -> Subjects
+
+            function traverse(node, pathNames) {
+                if (!node) return;
+
+                // Check for subjects array (Leaf node)
+                if (node.subjects && Array.isArray(node.subjects)) {
+                    node.subjects.forEach(subject => {
+                        const nameMatch = subject.name.toLowerCase().includes(query);
+                        const codeMatch = subject.code && subject.code.toLowerCase().includes(query);
+
+                        if (nameMatch || codeMatch) {
+                            results.push({
+                                paper: subject,
+                                path: pathNames
+                            });
+                        }
+                    });
+                    return; // Stop processing this node as it's a leaf container
+                }
+
+                // Recurse through children
+                // We handle specific hierarchy levels based on structure conventions
+                // But generic traversal is safer for catching everything provided we skip non-containers
+
+                for (const key in node) {
+                    const child = node[key];
+                    if (typeof child === 'object' && child !== null) {
+                        // Skip metadata keys that are strings/icons
+                        if (key === 'icon' || key === 'name') continue;
+
+                        // Determine readable name for path
+                        const readableName = child.name || key;
+
+                        // Recurse
+                        // Special handling to drill down: institutes->branches, branches->years, etc.
+                        // The structure in data.js uses wrapping keys: 'branches', 'years', 'sems', 'types'
+                        // We iterate INTO those wrapping keys.
+
+                        if (key === 'branches' || key === 'years' || key === 'sems' || key === 'types') {
+                            // This is a wrapper object, recurse into its values
+                            // But the wrapper itself doesn't add to path name, its CHILDREN do
+                            traverse(child, pathNames);
+                        } else {
+                            // This is an actual entity (SITHYD, CSE, 2024-28, etc)
+                            // So we add it to path
+                            traverse(child, [...pathNames, readableName]);
+                        }
+                    }
+                }
+            }
+
+            traverse(root, []);
+            return results;
+        }
 
         // Mobile menu toggle
         document.getElementById('mobile-menu-btn').addEventListener('click', function () {
