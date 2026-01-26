@@ -170,6 +170,8 @@
                         href="submit.html">Submit Papers</a>
                     <a class="text-sm font-semibold text-primary" href="docs.html">Docs</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
+                        href="changelog.html">Changelog</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
                         href="faq.html">FAQ</a>
                 </div>
 
@@ -200,6 +202,8 @@
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
                     href="submit.html">Submit Papers</a>
                 <a class="block text-sm font-semibold text-primary py-2" href="docs.html">Docs</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="changelog.html">Changelog</a>
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
                     href="faq.html">FAQ</a>
             </div>
@@ -324,6 +328,13 @@
                                     class="sidebar-link flex items-center gap-3 px-3 py-2 text-sm text-text-light-muted dark:text-text-dark-muted rounded-lg hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary transition-colors">
                                     <span class="material-symbols-outlined text-[18px]">support_agent</span>
                                     Support
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#changelog"
+                                    class="sidebar-link flex items-center gap-3 px-3 py-2 text-sm text-text-light-muted dark:text-text-dark-muted rounded-lg hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">update</span>
+                                    Changelog
                                 </a>
                             </li>
                         </ul>
@@ -528,6 +539,7 @@
 │   │           ├── <span class="text-red-400">📄</span> Physics.pdf
 │   │           └── <span class="text-red-400">📄</span> Programming.pdf
 │   ├── <span class="text-yellow-400">📁</span> CSE AIML
+│   ├── <span class="text-yellow-400">📁</span> AIML
 │   └── <span class="text-yellow-400">📁</span> CST
 ├── <span class="text-yellow-400">📁</span> <span class="text-blue-400">SIT Nagpur</span>
 └── <span class="text-yellow-400">📁</span> <span class="text-blue-400">SIT Pune</span></pre>
@@ -809,7 +821,7 @@
                         </thead>
                         <tbody>
                             <tr class="border-b border-border-light dark:border-border-dark">
-                                <td class="p-4" rowspan="3">SIT Hyderabad</td>
+                                <td class="p-4" rowspan="4">SIT Hyderabad</td>
                                 <td class="p-4">CSE</td>
                                 <td class="p-4">
                                     <span
@@ -822,6 +834,12 @@
                                 <td class="p-4">CSE AIML</td>
                                 <td class="p-4"><span
                                         class="px-2 py-1 rounded bg-primary/10 text-primary text-xs font-medium">2025-29</span>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-border-light dark:border-border-dark">
+                                <td class="p-4">AIML</td>
+                                <td class="p-4"><span
+                                        class="px-2 py-1 rounded bg-primary/10 text-primary text-xs font-medium">2024-28</span>
                                 </td>
                             </tr>
                             <tr class="border-b border-border-light dark:border-border-dark">
@@ -890,6 +908,54 @@
                         </div>
                     </a>
                 </div>
+            </section>
+
+            <!-- Changelog -->
+            <section id="changelog" class="mb-16">
+                <h2 class="text-2xl font-bold tracking-tight mb-4 flex items-center gap-3">
+                    <span class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                        <span class="material-symbols-outlined text-[18px]">update</span>
+                    </span>
+                    Changelog
+                </h2>
+
+                <p class="text-text-light-muted dark:text-text-dark-muted mb-6">
+                    The Changelog page tracks all the latest additions, updates, and improvements to SIT Archive. Stay
+                    informed about new papers and features.
+                </p>
+
+                <div
+                    class="rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary p-6 mb-6">
+                    <h3 class="font-semibold mb-3">What's Included</h3>
+                    <ul class="space-y-2 text-sm text-text-light-muted dark:text-text-dark-muted">
+                        <li class="flex items-center gap-2">
+                            <span
+                                class="material-symbols-outlined text-[16px] text-green-600 dark:text-green-400">add</span>
+                            <strong>New Branches</strong> — New departments and batches added to the archive
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span
+                                class="material-symbols-outlined text-[16px] text-blue-600 dark:text-blue-400">upload_file</span>
+                            <strong>Papers Added</strong> — New question papers uploaded for existing branches
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span
+                                class="material-symbols-outlined text-[16px] text-purple-600 dark:text-purple-400">edit</span>
+                            <strong>Link Updates</strong> — Fixed or updated Google Drive links
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span
+                                class="material-symbols-outlined text-[16px] text-amber-600 dark:text-amber-400">palette</span>
+                            <strong>UI Updates</strong> — Design improvements and feature updates
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="changelog.html"
+                    class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary/10 text-primary font-semibold text-sm hover:bg-primary hover:text-white transition-colors">
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    View Full Changelog
+                </a>
             </section>
 
             <!-- Footer CTA -->
