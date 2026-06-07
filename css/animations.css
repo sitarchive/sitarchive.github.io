@@ -2487,6 +2487,44 @@ body.page-loaded {
     animation: pulseDot 2s ease-in-out infinite;
 }
 
+/* === Mobile performance: disable GPU-heavy effects on small screens === */
+@media (max-width: 767px) {
+    /* Disable expensive blur / continuously animating elements */
+    .orb-red,
+    .orb-red-sm { display: none !important; }
+
+    .bg-dot-grid { background-image: none !important; }
+
+    .hero-bg-animated {
+        animation: none;
+        background: none;
+    }
+
+    .float-gentle,
+    .anim-float,
+    .anim-float-slow { animation: none; }
+
+    .ambient-cursor { display: none !important; }
+
+    /* Disable btn shimmer streak on mobile (avoids continuous repaint) */
+    .btn-shimmer::after { animation: none; display: none; }
+
+    /* Simplify card entry animation */
+    @keyframes cardSlideIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Lighter scroll-reveal distance */
+    .animate-on-scroll { transform: translateY(18px); }
+
+    /* Kill the progress bar animated gradient on mobile */
+    .scroll-progress {
+        background: #C8102E;
+        animation: none;
+    }
+}
+
 /* === Reduced motion override === */
 @media (prefers-reduced-motion: reduce) {
     .ambient-cursor,

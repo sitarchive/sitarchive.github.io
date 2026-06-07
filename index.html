@@ -378,12 +378,12 @@
             <div
                 class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 dark:from-primary/10 dark:via-transparent dark:to-primary/5">
             </div>
-            <!-- Animated Orbs -->
-            <div class="orb-red w-[600px] h-[600px] top-[-100px] left-[-150px] opacity-60 float-gentle"></div>
-            <div class="orb-red-sm w-[350px] h-[350px] bottom-[-80px] right-[-80px] float-gentle float-gentle-delay-1"></div>
-            <div class="orb-red-sm w-[250px] h-[250px] top-[40%] right-[15%] float-gentle float-gentle-delay-2"></div>
-            <!-- Dot grid overlay -->
-            <div class="absolute inset-0 bg-dot-grid opacity-40 pointer-events-none"></div>
+            <!-- Animated Orbs (desktop only — GPU-heavy, skip on mobile) -->
+            <div class="hidden md:block orb-red w-[600px] h-[600px] top-[-100px] left-[-150px] opacity-60 float-gentle"></div>
+            <div class="hidden md:block orb-red-sm w-[350px] h-[350px] bottom-[-80px] right-[-80px] float-gentle float-gentle-delay-1"></div>
+            <div class="hidden lg:block orb-red-sm w-[250px] h-[250px] top-[40%] right-[15%] float-gentle float-gentle-delay-2"></div>
+            <!-- Dot grid overlay (desktop only) -->
+            <div class="hidden md:block absolute inset-0 bg-dot-grid opacity-40 pointer-events-none"></div>
 
             <div class="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
                 <div class="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-16">
