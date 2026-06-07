@@ -246,7 +246,7 @@
         </div>
     </nav>
 
-    <div class="flex-grow flex">
+    <div class="flex-grow flex min-w-0">
         <!-- Left Sidebar -->
         <aside
             class="hidden lg:flex flex-col w-72 shrink-0 border-r border-border-light dark:border-border-dark bg-bg-light-secondary/50 dark:bg-bg-dark-secondary/50 sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto sidebar-scroll">
@@ -380,7 +380,7 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-grow max-w-4xl mx-auto px-6 py-12 lg:px-12">
+        <main class="flex-grow min-w-0 max-w-4xl mx-auto px-6 py-12 lg:px-12">
             <!-- Introduction -->
             <section id="introduction" class="mb-16">
                 <div class="flex items-center gap-3 mb-4">
@@ -533,7 +533,7 @@
 
                 <!-- Breadcrumb Example -->
                 <div
-                    class="flex items-center gap-2 p-4 rounded-xl bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark mb-6 overflow-x-auto">
+                    class="flex items-center gap-2 p-4 rounded-xl bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark mb-6 overflow-x-auto min-w-0">
                     <span class="material-symbols-outlined text-primary text-[18px]">home</span>
                     <span class="text-sm font-medium text-primary">Institutes</span>
                     <span class="material-symbols-outlined text-[16px] text-text-light-muted">chevron_right</span>
@@ -566,7 +566,7 @@
                 <!-- Folder Tree -->
                 <div
                     class="p-6 rounded-xl bg-bg-dark dark:bg-bg-dark-secondary border border-border-dark font-mono text-sm overflow-x-auto">
-                    <pre class="text-green-400"><span class="text-yellow-400">📁</span> Institutes
+                    <pre class="text-green-400 min-w-0"><span class="text-yellow-400">📁</span> Institutes
 ├── <span class="text-yellow-400">📁</span> <span class="text-blue-400">SIT Hyderabad</span>
 │   ├── <span class="text-yellow-400">📁</span> CSE
 │   │   └── <span class="text-yellow-400">📁</span> 2025-29

@@ -280,12 +280,18 @@
                                 </div>
                                 <h3 class="text-lg font-bold mb-2">Mobile Layout & Performance Fixes</h3>
                                 <p class="text-sm text-text-light-muted dark:text-text-dark-muted">
-                                    Fixed the <a href="docs.html" class="text-primary hover:underline font-medium">Docs
-                                        page</a> nav overflowing on mobile (desktop links were always visible, causing
-                                    horizontal scroll). Rebuilt the nav with correct responsive structure and added the
-                                    SIT Archive logo. Also fixed homepage lag on mobile — heavy GPU effects (animated
-                                    blur orbs, dot grid, gradient animations) are now disabled on small screens for
-                                    smooth scrolling performance.
+                                    Fixed two <a href="docs.html" class="text-primary hover:underline font-medium">Docs
+                                        page</a> mobile issues: (1) Nav was missing
+                                    <code class="text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded">hidden md:flex</code>
+                                    so all desktop links showed on mobile causing horizontal overflow — rebuilt the nav
+                                    with proper responsive structure and logo. (2) The
+                                    <code class="text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded">pre</code>
+                                    folder-tree code block was pushing the flex layout wider than the viewport — fixed
+                                    by adding
+                                    <code class="text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded">min-w-0</code>
+                                    to the main flex item so code blocks scroll horizontally instead of expanding the
+                                    page. Also disabled heavy GPU animations (blur orbs, dot grid) on mobile to fix
+                                    homepage scroll lag.
                                 </p>
                             </div>
                         </div>
