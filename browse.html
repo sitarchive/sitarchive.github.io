@@ -438,10 +438,10 @@ Thank you!`);
                             </div>
                         </div>
                         <div class="flex items-center justify-between mt-auto gap-2">
-                            <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type === 'Mid-Sem (Unit Tests)' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')}">
+                            <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type === 'Mid-Sem (Unit Tests)' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">
                                 ${paper.type}
                             </span>
-                            <a href="${paper.file}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors">
+                            <a href="${paper.file}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
                                 <span class="material-symbols-outlined text-[16px]">download</span>
                                 Download
                             </a>
@@ -493,7 +493,7 @@ Thank you!`);
 
                     return `
                         <button data-folder-key="${key}"
-                            class="folder-card flex items-center gap-4 p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm text-left group w-full">
+                            class="folder-card flex items-center gap-4 p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm text-left group w-full hover-lift transition-all">
                             <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors shrink-0">
                                 <span class="material-symbols-outlined text-2xl">${icon}</span>
                             </div>
@@ -511,6 +511,12 @@ Thank you!`);
                     btn.addEventListener('click', function () {
                         const key = this.getAttribute('data-folder-key');
                         navigateTo([...currentPath, key]);
+                    });
+                    // Spotlight mouse-tracking effect
+                    btn.addEventListener('mousemove', e => {
+                        const rect = btn.getBoundingClientRect();
+                        btn.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                        btn.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
                     });
                 });
             }
@@ -583,10 +589,10 @@ Thank you!`);
                     </div>
 
                     <div class="flex items-center justify-between mt-auto gap-2">
-                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type.includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')}">
+                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type.includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">
                             ${paper.type.split(' ')[0]}
                         </span>
-                        <a href="${paper.file}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors">
+                        <a href="${paper.file}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
                             <span class="material-symbols-outlined text-[16px]">download</span>
                             Download
                         </a>

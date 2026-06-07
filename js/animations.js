@@ -16,6 +16,12 @@ document.addEventListener('DOMContentLoaded', function () {
     initTextReveal();
     initCursorEffects();
     addLoadedClass();
+    initScrollProgress();
+    initAmbientCursor();
+    initCardSpotlight();
+    initAutoReveal();
+    initAutoStagger();
+    initPageTransitions();
 });
 
 // ===== PAGE LOAD ANIMATION =====
@@ -331,14 +337,129 @@ if (navbar) {
 
 // ===== SCROLL PROGRESS INDICATOR =====
 function initScrollProgress() {
-    const progressBar = document.querySelector('.scroll-progress');
-    if (!progressBar) return;
+    // Create progress bar if not in DOM
+    let progressBar = document.querySelector('.scroll-progress');
+    if (!progressBar) {
+        progressBar = document.createElement('div');
+        progressBar.className = 'scroll-progress';
+        document.body.appendChild(progressBar);
+    }
 
     window.addEventListener('scroll', () => {
         const scrollTop = window.pageYOffset;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = (scrollTop / docHeight) * 100;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
         progressBar.style.width = `${progress}%`;
+    });
+}
+
+// ===== AMBIENT CURSOR BLOB (Linear / Vercel style) =====
+function initAmbientCursor() {
+    if (window.matchMedia('(hover: none)').matches) return;
+
+    const blob = document.createElement('div');
+    blob.className = 'ambient-cursor';
+    document.body.appendChild(blob);
+
+    let curX = window.innerWidth / 2;
+    let curY = window.innerHeight / 2;
+    let targetX = curX, targetY = curY;
+
+    document.addEventListener('mousemove', e => {
+        targetX = e.clientX;
+        targetY = e.clientY;
+    });
+
+    (function animate() {
+        curX += (targetX - curX) * 0.07;
+        curY += (targetY - curY) * 0.07;
+        blob.style.transform = `translate(${curX - 250}px, ${curY - 250}px)`;
+        requestAnimationFrame(animate);
+    })();
+}
+
+// ===== CARD SPOTLIGHT (mouse-tracking inner glow) =====
+function initCardSpotlight() {
+    function applySpotlight(card) {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+            card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        });
+    }
+
+    document.querySelectorAll('.card-spotlight').forEach(applySpotlight);
+
+    // Also watch for dynamically added cards (browse page)
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(m => {
+            m.addedNodes.forEach(node => {
+                if (node.nodeType !== 1) return;
+                if (node.classList && node.classList.contains('card-spotlight')) applySpotlight(node);
+                if (node.querySelectorAll) node.querySelectorAll('.card-spotlight').forEach(applySpotlight);
+            });
+        });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+}
+
+// ===== AUTO REVEAL (auto-detect and animate sections) =====
+function initAutoReveal() {
+    const targets = [
+        ...document.querySelectorAll('section > div > .text-center:not([class*="animate-on-scroll"])'),
+        ...document.querySelectorAll('.grid > div:not([class*="animate-on-scroll"]):not([class*="absolute"])'),
+        ...document.querySelectorAll('.grid > a:not([class*="animate-on-scroll"])'),
+        ...document.querySelectorAll('.space-y-4 > .rounded-xl:not([class*="animate-on-scroll"])'),
+        ...document.querySelectorAll('.space-y-6 > .rounded-xl:not([class*="animate-on-scroll"])'),
+        ...document.querySelectorAll('.space-y-8 > .rounded-xl:not([class*="animate-on-scroll"])'),
+        ...document.querySelectorAll('.space-y-4 > details:not([class*="animate-on-scroll"])'),
+        ...document.querySelectorAll('.space-y-3 > .flex.items-start:not([class*="animate-on-scroll"])'),
+    ];
+
+    targets.forEach(el => {
+        if (!el.closest('nav') && !el.closest('footer') && !el.closest('[id*="mobile"]') && !el.closest('[id*="breadcrumb"]')) {
+            el.classList.add('animate-on-scroll');
+        }
+    });
+
+    initScrollAnimations();
+}
+
+// ===== AUTO STAGGER (stagger grid children) =====
+function initAutoStagger() {
+    document.querySelectorAll('.stagger-children, .grid').forEach(container => {
+        const items = container.querySelectorAll(':scope > .animate-on-scroll');
+        items.forEach((item, i) => {
+            if (!item.dataset.delay) {
+                item.dataset.delay = i * 90;
+            }
+        });
+    });
+}
+
+// ===== PAGE TRANSITIONS (smooth exit) =====
+function initPageTransitions() {
+    document.querySelectorAll('a').forEach(link => {
+        if (
+            link.href &&
+            !link.href.startsWith('mailto:') &&
+            !link.href.startsWith('javascript:') &&
+            !link.hash &&
+            !link.hasAttribute('download') &&
+            !link.target &&
+            link.hostname === window.location.hostname &&
+            link.href !== window.location.href
+        ) {
+            link.addEventListener('click', function (e) {
+                if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+                e.preventDefault();
+                const href = this.href;
+                document.body.style.transition = 'opacity 0.22s ease, transform 0.22s ease';
+                document.body.style.opacity = '0';
+                document.body.style.transform = 'translateY(10px)';
+                setTimeout(() => { window.location.href = href; }, 230);
+            });
+        }
     });
 }
 
@@ -415,15 +536,19 @@ dynamicStyles.textContent = `
         opacity: 1;
     }
     
-    /* Scroll progress bar */
+    /* Scroll progress bar (created dynamically) */
     .scroll-progress {
         position: fixed;
         top: 0;
         left: 0;
-        height: 3px;
-        background: linear-gradient(90deg, #C8102E, #ff4d6d);
-        z-index: 9999;
-        transition: width 0.1s linear;
+        height: 2.5px;
+        width: 0;
+        background: linear-gradient(90deg, #C8102E, #ff4d6d, #C8102E);
+        background-size: 200% 100%;
+        z-index: 99999;
+        transition: width 0.08s linear;
+        border-radius: 0 2px 2px 0;
+        animation: gradientFlow 2s linear infinite;
     }
 `;
 document.head.appendChild(dynamicStyles);
@@ -446,4 +571,7 @@ window.reinitAnimations = function () {
     initStaggeredAnimations();
     initMagneticButtons();
     initTiltCards();
+    initCardSpotlight();
+    initAutoReveal();
+    initAutoStagger();
 };
