@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Collaborate - SIT Archive</title>
+    <meta name="description"
+        content="Contribute to SIT Archive on GitHub. Learn how to add papers, fix bugs, and improve the platform for all SIT students.">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Noto+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Animation Styles -->
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- Theme Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#C8102E",
+                        "primary-hover": "#A60D26",
+                        "bg-light": "#FFFFFF",
+                        "bg-light-secondary": "#F8F6F6",
+                        "bg-light-tertiary": "#F0EEEE",
+                        "text-light": "#181112",
+                        "text-light-muted": "#6B7280",
+                        "border-light": "#E5E7EB",
+                        "bg-dark": "#0D0D0D",
+                        "bg-dark-secondary": "#161616",
+                        "bg-dark-tertiary": "#1A1A1A",
+                        "text-dark": "#FFFFFF",
+                        "text-dark-muted": "#A1A1AA",
+                        "border-dark": "#2A2A2A",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    boxShadow: {
+                        'glow': '0 0 40px -10px rgba(200, 16, 46, 0.3)',
+                        'glow-sm': '0 0 20px -5px rgba(200, 16, 46, 0.2)',
+                    }
+                },
+            },
+        }
+    </script>
+
+    <!-- Theme Script -->
+    <script src="js/theme.js"></script>
+
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        .dark ::-webkit-scrollbar-track { background: #0D0D0D; }
+        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #2A2A2A; }
+        ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+        .dark ::-webkit-scrollbar-thumb:hover { background: #3A3A3A; }
+
+        * { transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
+
+        .step-card {
+            transition: all 0.2s ease;
+        }
+        .step-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .code-block {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .gh-btn:hover svg path {
+            fill: #ffffff;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark font-display antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white">
+
+    <!-- Visitor Counter Bar -->
+    <div id="visitor-bar" class="w-full bg-bg-light-secondary dark:bg-bg-dark-secondary border-b border-border-light dark:border-border-dark py-1.5">
+        <div class="flex items-center justify-center gap-2 text-xs text-text-light-muted dark:text-text-dark-muted">
+            <span class="material-symbols-outlined text-primary" style="font-size:14px;">people</span>
+            <span>Total Visitors: <span id="visitor-count" class="font-semibold text-primary">—</span></span>
+        </div>
+    </div>
+    <script>
+    (function() {
+        var el = document.getElementById('visitor-count');
+        var api = 'https://api.counterapi.dev/v1/sitarchive/visits';
+        if (!localStorage.getItem('vc_visited')) {
+            localStorage.setItem('vc_visited', '1');
+            fetch(api + '/up')
+                .then(function(r) { return r.json(); })
+                .then(function(d) { if (el && d.count != null) el.textContent = Number(d.count).toLocaleString(); })
+                .catch(function() {});
+        } else {
+            fetch(api + '/')
+                .then(function(r) { return r.json(); })
+                .then(function(d) { if (el && d.count != null) el.textContent = Number(d.count).toLocaleString(); })
+                .catch(function() {});
+        }
+    })();
+    </script>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 w-full border-b border-border-light dark:border-border-dark bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-md">
+        <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <a class="flex items-center gap-3 group" href="index.html">
+                <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                    <span class="material-symbols-outlined text-[24px]">school</span>
+                </div>
+                <span class="text-xl font-bold tracking-tight">SIT Archive</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8">
+                <div class="flex items-center gap-6">
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="index.html">Home</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="browse.html">Browse Papers</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="submit.html">Submit Papers</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="about.html">About Us</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="changelog.html">Changelog</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="docs.html">Docs</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="faq.html">FAQ</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="feedback.html">Feedback</a>
+                    <a class="text-sm font-semibold text-primary" href="collaborate.html">Collaborate</a>
+                </div>
+                <button onclick="toggleTheme()"
+                    class="flex items-center justify-center w-10 h-10 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary border border-border-light dark:border-border-dark transition-colors">
+                    <span id="theme-icon" class="material-symbols-outlined text-[20px]">dark_mode</span>
+                </button>
+            </div>
+
+            <div class="md:hidden flex items-center gap-3">
+                <button onclick="toggleTheme()"
+                    class="flex items-center justify-center w-10 h-10 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark">
+                    <span id="theme-icon-mobile" class="material-symbols-outlined text-[20px]">dark_mode</span>
+                </button>
+                <button class="text-text-light dark:text-text-dark" id="mobile-menu-btn">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden border-t border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark">
+            <div class="px-4 py-4 space-y-3">
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="index.html">Home</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="browse.html">Browse Papers</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="submit.html">Submit Papers</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="about.html">About Us</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="changelog.html">Changelog</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="docs.html">Docs</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="faq.html">FAQ</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="feedback.html">Feedback</a>
+                <a class="block text-sm font-semibold text-primary py-2" href="collaborate.html">Collaborate</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-8">
+
+            <!-- Page Header -->
+            <div class="text-center mb-10 animate-on-scroll">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 anim-pulse">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    Open Source
+                </div>
+                <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-3">Collaborate on SIT Archive</h1>
+                <p class="text-text-light-muted dark:text-text-dark-muted max-w-2xl mx-auto">SIT Archive is open source and built by students, for students. Whether you want to add papers, fix a bug, or improve the site — every contribution matters.</p>
+            </div>
+
+            <!-- GitHub CTA -->
+            <div class="mb-10 animate-on-scroll">
+                <a href="https://github.com/sitarchive/sitarchive.github.io" target="_blank" rel="noopener noreferrer"
+                    class="gh-btn flex items-center justify-center gap-3 w-full sm:w-auto mx-auto sm:mx-0 h-14 px-8 rounded-xl bg-[#24292e] dark:bg-[#161b22] hover:bg-[#1a1e22] dark:hover:bg-[#0d1117] text-white font-bold text-base transition-colors border border-[#30363d] shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white">
+                        <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    View Repository on GitHub
+                    <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+                </a>
+            </div>
+
+            <!-- Ways to Contribute -->
+            <div class="mb-10 animate-on-scroll">
+                <h2 class="text-2xl font-bold mb-6">Ways to Contribute</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="step-card p-6 rounded-2xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/40 hover:shadow-glow-sm transition-all">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 mb-4">
+                            <span class="material-symbols-outlined">description</span>
+                        </div>
+                        <h3 class="font-bold mb-1">Add Question Papers</h3>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted">Upload PDFs of past exam papers organized by branch, batch, semester, and subject.</p>
+                    </div>
+                    <div class="step-card p-6 rounded-2xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/40 hover:shadow-glow-sm transition-all">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 mb-4">
+                            <span class="material-symbols-outlined">bug_report</span>
+                        </div>
+                        <h3 class="font-bold mb-1">Fix Bugs</h3>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted">Found something broken? Open an issue or submit a fix directly via a pull request.</p>
+                    </div>
+                    <div class="step-card p-6 rounded-2xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/40 hover:shadow-glow-sm transition-all">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 mb-4">
+                            <span class="material-symbols-outlined">palette</span>
+                        </div>
+                        <h3 class="font-bold mb-1">Improve the UI</h3>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted">Suggest or implement design improvements, better mobile layouts, or new features.</p>
+                    </div>
+                    <div class="step-card p-6 rounded-2xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/40 hover:shadow-glow-sm transition-all">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 mb-4">
+                            <span class="material-symbols-outlined">data_object</span>
+                        </div>
+                        <h3 class="font-bold mb-1">Update Data</h3>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted">Fix incorrect paper links, update branch/batch info, or add missing entries in <code class="text-primary text-xs">js/data.js</code>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step by Step Guide -->
+            <div class="mb-10 animate-on-scroll">
+                <h2 class="text-2xl font-bold mb-2">How to Contribute — Step by Step</h2>
+                <p class="text-text-light-muted dark:text-text-dark-muted mb-8 text-sm">You'll need a <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">GitHub account</a> and <a href="https://git-scm.com/downloads" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">Git</a> installed on your computer. No prior open-source experience needed.</p>
+
+                <div class="space-y-6">
+
+                    <!-- Step 1 -->
+                    <div class="step-card relative pl-16 p-6 rounded-2xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/30 transition-all">
+                        <div class="absolute left-5 top-6 flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white text-sm font-bold shrink-0">1</div>
+                        <h3 class="font-bold text-lg mb-2">Fork the Repository</h3>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-3">
+                            Go to the SIT Archive GitHub repository and click the <strong class="text-text-light dark:text-text-dark">Fork</strong> button in the top-right corner. This creates your own copy of the project under your GitHub account where you can freely make changes.
+                        </p>
+                        <a href="https://github.com/sitarchive/sitarchive.github.io/fork" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 text-sm text-primary font-semibold hover:underline">
+                            <span class="material-symbols-outlined text-[16px]">fork_right</span>
+                            Fork sitarchive/sitarchive.github.io
+                        </a>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="step-card relative pl-16 p-6 rounded-2xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/30 transition-all">
+                        <div class="absolute left-5 top-6 flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white text-sm font-bold shrink-0">2</div>
+                        <h3 class="font-bold text-lg mb-2">Clone Your Fork Locally</h3>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-3">
+                            Open a terminal and clone your forked repo to your local machine. Replace <code class="text-primary text-xs font-mono">YOUR_USERNAME</code> with your GitHub username.
+                        </p>
+                        <div class="rounded-xl bg-bg-dark dark:bg-[#0d0d0d] p-4 overflow-x-auto">
+                            <pre class="code-block text-green-400"><span class="text-text-dark-muted"># Clone your fork</span>
+git clone https://github.com/YOUR_USERNAME/sitarchive.github.io.git
+
+<span class="text-text-dark-muted"># Move into the project folder</span>
+cd sitarchive.github.io
+
+<span class="text-text-dark-muted"># Add the original repo as "upstream"</span>
+git remote add upstream https://github.com/sitarchive/sitarchive.github.io.git</pre>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="step-card relative pl-16 p-6 rounded-2xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/30 transition-all">
+                        <div class="absolute left-5 top-6 flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white text-sm font-bold shrink-0">3</div>
+                        <h3 class="font-bold text-lg mb-2">Create a New Branch</h3>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-3">
+                            Always create a new branch for your changes — never work directly on <code class="text-primary text-xs font-mono">main</code>. Name your branch something descriptive, like <code class="text-primary text-xs font-mono">add-cse-sem3-papers</code> or <code class="text-primary text-xs font-mono">fix-browse-bug</code>.
+                        </p>
+                        <div class="rounded-xl bg-bg-dark dark:bg-[#0d0d0d] p-4 overflow-x-auto">
+                            <pre class="code-block text-green-400"><span class="text-text-dark-muted"># Create and switch to a new branch</span>
+git checkout -b your-branch-name
+
+<span class="text-text-dark-muted"># Example:</span>
+git checkout -b add-cse-aiml-sem4-papers</pre>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="step-card relative pl-16 p-6 rounded-2xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/30 transition-all">
+                        <div class="absolute left-5 top-6 flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white text-sm font-bold shrink-0">4</div>
+                        <h3 class="font-bold text-lg mb-2">Make Your Changes</h3>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-3">
+                            Make whatever changes you need. Here are the most common ones:
+                        </p>
+                        <div class="space-y-4">
+                            <div class="rounded-xl border border-border-light dark:border-border-dark p-4">
+                                <h4 class="text-sm font-bold mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-[16px]">description</span>
+                                    Adding a Question Paper
+                                </h4>
+                                <p class="text-xs text-text-light-muted dark:text-text-dark-muted mb-2">Open <code class="text-primary font-mono">js/data.js</code> and find the correct location (institute → branch → batch → semester). Add an entry like this:</p>
+                                <div class="rounded-lg bg-bg-dark dark:bg-[#0d0d0d] p-3 overflow-x-auto">
+                                    <pre class="code-block text-green-400">{ name: "Data Structures", url: "YOUR_GOOGLE_DRIVE_LINK" }</pre>
+                                </div>
+                                <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-2">
+                                    Upload the PDF to Google Drive, set it to <strong class="text-text-light dark:text-text-dark">"Anyone with the link can view"</strong>, and paste the share link as the <code class="text-primary font-mono text-xs">url</code>.
+                                </p>
+                            </div>
+                            <div class="rounded-xl border border-border-light dark:border-border-dark p-4">
+                                <h4 class="text-sm font-bold mb-2 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-[16px]">code</span>
+                                    Fixing a Bug or Improving the Site
+                                </h4>
+                                <p class="text-xs text-text-light-muted dark:text-text-dark-muted">Edit the relevant HTML files (<code class="text-primary font-mono text-xs">index.html</code>, <code class="text-primary font-mono text-xs">browse.html</code>, etc.) or <code class="text-primary font-mono text-xs">css/animations.css</code> / <code class="text-primary font-mono text-xs">js/</code> files. Open the HTML file in your browser to preview changes before committing.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="step-card relative pl-16 p-6 rounded-2xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/30 transition-all">
+                        <div class="absolute left-5 top-6 flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white text-sm font-bold shrink-0">5</div>
+                        <h3 class="font-bold text-lg mb-2">Commit and Push</h3>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-3">
+                            Save your changes with a clear, descriptive commit message, then push your branch to GitHub.
+                        </p>
+                        <div class="rounded-xl bg-bg-dark dark:bg-[#0d0d0d] p-4 overflow-x-auto">
+                            <pre class="code-block text-green-400"><span class="text-text-dark-muted"># Stage all changed files</span>
+git add .
+
+<span class="text-text-dark-muted"># Commit with a descriptive message</span>
+git commit -m "Add CSE AIML Sem 4 end-sem papers (2024-28 batch)"
+
+<span class="text-text-dark-muted"># Push your branch to your fork on GitHub</span>
+git push origin your-branch-name</pre>
+                        </div>
+                    </div>
+
+                    <!-- Step 6 -->
+                    <div class="step-card relative pl-16 p-6 rounded-2xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/30 transition-all">
+                        <div class="absolute left-5 top-6 flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white text-sm font-bold shrink-0">6</div>
+                        <h3 class="font-bold text-lg mb-2">Open a Pull Request</h3>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-3">
+                            Go to <strong class="text-text-light dark:text-text-dark">your fork</strong> on GitHub. You'll see a banner saying your branch was recently pushed — click <strong class="text-text-light dark:text-text-dark">"Compare &amp; pull request"</strong>. Fill in a clear title and description of what you changed and why, then click <strong class="text-text-light dark:text-text-dark">"Create pull request"</strong>.
+                        </p>
+                        <div class="rounded-xl border border-border-light dark:border-border-dark p-4 space-y-2">
+                            <p class="text-xs font-bold text-text-light-muted dark:text-text-dark-muted uppercase tracking-wide">Good PR description example</p>
+                            <div class="rounded-lg bg-bg-dark dark:bg-[#0d0d0d] p-3">
+                                <pre class="code-block text-text-dark-muted whitespace-pre-wrap">Title: Add CSE AIML Sem 4 end-sem papers (2024-28)
+
+Added 3 end-semester papers for CSE AIML branch,
+2024-28 batch, Semester 4:
+- Machine Learning (0707210401)
+- Computer Networks (0707210402)
+- Operating Systems (0707210403)
+
+PDFs uploaded to Google Drive with public view access.</pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 7 -->
+                    <div class="step-card relative pl-16 p-6 rounded-2xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/30 transition-all">
+                        <div class="absolute left-5 top-6 flex items-center justify-center w-8 h-8 rounded-full bg-green-500 text-white text-sm font-bold shrink-0">
+                            <span class="material-symbols-outlined text-[16px]">check</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Wait for Review &amp; Merge</h3>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted">
+                            The SIT Archive maintainers will review your pull request. They may ask for small changes or clarifications. Once approved, your contribution gets merged into the main site and goes live for all students. We try to review within a few days!
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Tips -->
+            <div class="mb-10 animate-on-scroll">
+                <h2 class="text-2xl font-bold mb-6">Tips for a Smooth Contribution</h2>
+                <div class="rounded-2xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary p-6 space-y-4">
+                    <div class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">check_circle</span>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted"><strong class="text-text-light dark:text-text-dark">Keep Google Drive links public.</strong> Set share permissions to "Anyone with the link → Viewer" — otherwise the paper won't load for other students.</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">check_circle</span>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted"><strong class="text-text-light dark:text-text-dark">One feature or fix per PR.</strong> Smaller, focused pull requests are easier to review and get merged faster.</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">check_circle</span>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted"><strong class="text-text-light dark:text-text-dark">Double-check paper details.</strong> Make sure the institute, branch, batch, semester, subject name, and subject code are all correct before submitting.</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">check_circle</span>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted"><strong class="text-text-light dark:text-text-dark">Sync your fork before starting.</strong> Run <code class="text-primary font-mono text-xs">git pull upstream main</code> before creating a new branch so you're working with the latest version.</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">check_circle</span>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted"><strong class="text-text-light dark:text-text-dark">Not comfortable with Git?</strong> Use the <a href="submit.html" class="text-primary hover:underline font-medium">Submit Papers</a> page to send papers via email and we'll add them for you.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Questions -->
+            <div class="animate-on-scroll rounded-2xl border border-primary/20 bg-primary/5 p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-start">
+                <div class="shrink-0 text-primary">
+                    <span class="material-symbols-outlined text-[32px]">help</span>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-2">Have questions or need help?</h3>
+                    <p class="text-sm text-text-light-muted dark:text-text-dark-muted leading-relaxed">
+                        Not sure where to start, or running into issues? Head to the <a href="feedback.html" class="text-primary hover:underline font-medium">Feedback page</a> and drop us a message — we're happy to guide you through your first contribution.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary mt-auto">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <a class="flex items-center gap-3 mb-4" href="index.html">
+                        <div class="flex size-8 items-center justify-center rounded-md bg-primary/10 text-primary">
+                            <span class="material-symbols-outlined text-[20px]">school</span>
+                        </div>
+                        <span class="text-lg font-bold tracking-tight">SIT Archive</span>
+                    </a>
+                    <p class="text-sm text-text-light-muted dark:text-text-dark-muted leading-relaxed max-w-sm">
+                        Your central hub for previous years' question papers. Built by students, for students.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a class="text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="browse.html">Browse Papers</a></li>
+                        <li><a class="text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="about.html">About Us</a></li>
+                        <li><a class="text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="faq.html">FAQ</a></li>
+                        <li><a class="text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="feedback.html">Feedback</a></li>
+                        <li><a class="text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="collaborate.html">Collaborate</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider mb-4">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a class="text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="privacy.html">Privacy Policy</a></li>
+                        <li><a class="text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-border-light dark:border-border-dark pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-text-light-muted dark:text-text-dark-muted">© 2026 SIT Archive. All rights reserved.</p>
+                <div class="flex items-center gap-2">
+                    <span class="h-2 w-2 rounded-full bg-green-500"></span>
+                    <span class="text-xs text-text-light-muted dark:text-text-dark-muted">System Operational</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        function updateToggleIcon(isDark) {
+            const icon = document.getElementById('theme-icon');
+            const iconMobile = document.getElementById('theme-icon-mobile');
+            if (icon) icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            if (iconMobile) iconMobile.textContent = isDark ? 'light_mode' : 'dark_mode';
+        }
+    </script>
+
+    <!-- Animation Controller -->
+    <script src="js/animations.js"></script>
+</body>
+
+</html>
