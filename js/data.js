@@ -37,6 +37,11 @@ const SIT_ARCHIVE_DATA = {
                                                 { name: "Critical Thinking", code: "T6732", file: "https://drive.google.com/file/d/1SQgLtBR1c7sHZZnMeUyMHPhtpenQkL8j/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
                                                 { name: "Basic Electrical and Electronics Engineering", code: "T7540", file: "https://drive.google.com/file/d/1IW9KItlvEAWYT6n0FKHwOibwBDZZggBD/view?usp=share_link", type: "Mid-Sem (Unit Tests)" }
                                             ]
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
                                         }
                                     }
                                 },
@@ -51,7 +56,16 @@ const SIT_ARCHIVE_DATA = {
                                                 { name: "Programming in C", code: "0707220204", file: "https://drive.google.com/file/d/1A--GGnGsy7NzqAvmJYAL7O0pdtsjFQhz/view?usp=share_link", type: "End-Sem" }
                                             ]
                                         },
-                                        "Mid-Sem (Unit Tests)": { name: "Mid-Sem (Unit Tests)", icon: "quiz", subjects: [] }
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
                                     }
                                 },
                                 "Sem 3": {
@@ -79,6 +93,116 @@ const SIT_ARCHIVE_DATA = {
                                                 { name: "Java", code: "T7499", file: "https://drive.google.com/file/d/10yBqDmCJTzzOhU1Cg_weOJELGRibiOqg/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
                                                 { name: "Computer Organization", code: "0707210302", file: "https://drive.google.com/file/d/1I_WQQeBi4LcVbsDs7Fd4vcOHmTSYOUMT/view?usp=share_link", type: "Mid-Sem (Unit Tests)" }
                                             ]
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 4": {
+                                    name: "Semester 4",
+                                    icon: "looks_4",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 5": {
+                                    name: "Semester 5",
+                                    icon: "looks_5",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 6": {
+                                    name: "Semester 6",
+                                    icon: "looks_6",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 7": {
+                                    name: "Semester 7",
+                                    icon: "filter_7",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 8": {
+                                    name: "Semester 8",
+                                    icon: "filter_8",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
                                         }
                                     }
                                 }
@@ -101,7 +225,163 @@ const SIT_ARCHIVE_DATA = {
                                                 { name: "Programming Paradigm and Problem Solving", code: "0707210104", file: "https://drive.google.com/file/d/1zT8592X_5asszEfS9DSidk0hqKMnEqNu/view?usp=drivesdk", type: "End-Sem" }
                                             ]
                                         },
-                                        "Mid-Sem (Unit Tests)": { name: "Mid-Sem (Unit Tests)", icon: "quiz", subjects: [] }
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 2": {
+                                    name: "Semester 2",
+                                    icon: "looks_two",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 3": {
+                                    name: "Semester 3",
+                                    icon: "looks_3",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 4": {
+                                    name: "Semester 4",
+                                    icon: "looks_4",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 5": {
+                                    name: "Semester 5",
+                                    icon: "looks_5",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 6": {
+                                    name: "Semester 6",
+                                    icon: "looks_6",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 7": {
+                                    name: "Semester 7",
+                                    icon: "filter_7",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 8": {
+                                    name: "Semester 8",
+                                    icon: "filter_8",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
                                     }
                                 }
                             }
@@ -129,7 +409,163 @@ const SIT_ARCHIVE_DATA = {
                                                 { name: "Programming in C", code: "0707250105", file: "https://drive.google.com/file/d/1S_E3Ka6OThSFdz7n7_9S75LhyTeaJ7Xc/view?usp=drivesdk", type: "End-Sem" }
                                             ]
                                         },
-                                        "Mid-Sem (Unit Tests)": { name: "Mid-Sem (Unit Tests)", icon: "quiz", subjects: [] }
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 2": {
+                                    name: "Semester 2",
+                                    icon: "looks_two",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 3": {
+                                    name: "Semester 3",
+                                    icon: "looks_3",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 4": {
+                                    name: "Semester 4",
+                                    icon: "looks_4",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 5": {
+                                    name: "Semester 5",
+                                    icon: "looks_5",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 6": {
+                                    name: "Semester 6",
+                                    icon: "looks_6",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 7": {
+                                    name: "Semester 7",
+                                    icon: "filter_7",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 8": {
+                                    name: "Semester 8",
+                                    icon: "filter_8",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
                                     }
                                 }
                             }
@@ -147,7 +583,11 @@ const SIT_ARCHIVE_DATA = {
                                     name: "Semester 1",
                                     icon: "looks_one",
                                     types: {
-                                        "End-Sem": { name: "End-Sem", icon: "description", subjects: [] },
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
                                         "Mid-Sem (Unit Tests)": {
                                             name: "Mid-Sem (Unit Tests)",
                                             icon: "quiz",
@@ -155,6 +595,11 @@ const SIT_ARCHIVE_DATA = {
                                                 { name: "Critical Thinking", code: "T6732", file: "https://drive.google.com/file/d/1Th09FNg5qMEkviCztZffgRMvY1qfRQXv/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
                                                 { name: "Basic Electrical and Electronics Engineering", code: "T7540", file: "https://drive.google.com/file/d/1BmVPpkm_jejYDJuSb1FFs9q95-JDI58K/view?usp=share_link", type: "Mid-Sem (Unit Tests)" }
                                             ]
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
                                         }
                                     }
                                 },
@@ -169,23 +614,142 @@ const SIT_ARCHIVE_DATA = {
                                                 { name: "Programming in C", code: "0707210206", file: "https://drive.google.com/file/d/1UhyRAdGq5xkznNS97YW45NmMbZbq-tDc/view?usp=share_link", type: "End-Sem" }
                                             ]
                                         },
-                                        "Mid-Sem (Unit Tests)": { name: "Mid-Sem (Unit Tests)", icon: "quiz", subjects: [] }
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
                                     }
                                 },
                                 "Sem 3": {
                                     name: "Semester 3",
                                     icon: "looks_3",
                                     types: {
-                                        "End-Sem": { name: "End-Sem", icon: "description", subjects: [] },
-                                        "Mid-Sem (Unit Tests)": { name: "Mid-Sem (Unit Tests)", icon: "quiz", subjects: [] }
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
                                     }
                                 },
                                 "Sem 4": {
                                     name: "Semester 4",
                                     icon: "looks_4",
                                     types: {
-                                        "End-Sem": { name: "End-Sem", icon: "description", subjects: [] },
-                                        "Mid-Sem (Unit Tests)": { name: "Mid-Sem (Unit Tests)", icon: "quiz", subjects: [] }
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 5": {
+                                    name: "Semester 5",
+                                    icon: "looks_5",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 6": {
+                                    name: "Semester 6",
+                                    icon: "looks_6",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 7": {
+                                    name: "Semester 7",
+                                    icon: "filter_7",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 8": {
+                                    name: "Semester 8",
+                                    icon: "filter_8",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
                                     }
                                 }
                             }
@@ -218,6 +782,11 @@ const SIT_ARCHIVE_DATA = {
                                                 { name: "Programming and Problem Solving", code: "TE7286", file: "https://drive.google.com/file/d/1OWdBUHqmQZ21hHRdQnHve6vTzrYQqK7F/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
                                                 { name: "Mathematics-I", code: "ET7680", file: "https://drive.google.com/file/d/1n_YcGbSWFEvy_6ocP6lHFX36u4DVdbaT/view?usp=share_link", type: "Mid-Sem (Unit Tests)" }
                                             ]
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
                                         }
                                     }
                                 },
@@ -238,6 +807,11 @@ const SIT_ARCHIVE_DATA = {
                                             subjects: [
                                                 { name: "Basic Electrical and Electronics Engineering", code: "0707240204", file: "https://drive.google.com/file/d/1BNgN2E9bQw8T4ySeGHXEh64ewhLHDU5M/view?usp=share_link", type: "Mid-Sem (Unit Tests)" }
                                             ]
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
                                         }
                                     }
                                 },
@@ -266,6 +840,116 @@ const SIT_ARCHIVE_DATA = {
                                                 { name: "Java", code: "T7499", file: "https://drive.google.com/file/d/1xI--wSFS6YIfJW4OjrNVfz_qq50P85jd/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
                                                 { name: "Computer Organization", code: "0707210302", file: "https://drive.google.com/file/d/1X3hNj7sa8Sb7FQo6cq7dnS18g5f7Q5So/view?usp=share_link", type: "Mid-Sem (Unit Tests)" }
                                             ]
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 4": {
+                                    name: "Semester 4",
+                                    icon: "looks_4",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 5": {
+                                    name: "Semester 5",
+                                    icon: "looks_5",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 6": {
+                                    name: "Semester 6",
+                                    icon: "looks_6",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 7": {
+                                    name: "Semester 7",
+                                    icon: "filter_7",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
+                                        }
+                                    }
+                                },
+                                "Sem 8": {
+                                    name: "Semester 8",
+                                    icon: "filter_8",
+                                    types: {
+                                        "End-Sem": {
+                                            name: "End-Sem",
+                                            icon: "description",
+                                            subjects: []
+                                        },
+                                        "Mid-Sem (Unit Tests)": {
+                                            name: "Mid-Sem (Unit Tests)",
+                                            icon: "quiz",
+                                            subjects: []
+                                        },
+                                        "Backlog": {
+                                            name: "Backlog",
+                                            icon: "history",
+                                            subjects: []
                                         }
                                     }
                                 }
@@ -276,7 +960,7 @@ const SIT_ARCHIVE_DATA = {
             }
         }
     }
-};
+};;
 
 // ===== DYNAMIC STATS CALCULATOR =====
 function calculateStats() {
