@@ -277,7 +277,9 @@
     <div id="preview-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
         <div class="relative w-full max-w-3xl h-[85vh] rounded-2xl bg-bg-light dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark overflow-hidden flex flex-col">
             <div class="flex items-center justify-between gap-3 p-4 border-b border-border-light dark:border-border-dark">
-                <h3 id="preview-title" class="text-sm font-semibold truncate"></h3>
+                <div class="min-w-0 flex-1">
+                    <h3 id="preview-title" class="text-sm font-semibold truncate"></h3>
+                </div>
                 <div class="flex items-center gap-2 shrink-0">
                     <a id="preview-download" href="#" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors">
                         <span class="material-symbols-outlined text-[16px]">download</span>

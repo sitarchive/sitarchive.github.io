@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Jul 20, 2026",
+                "color": "green",
+                "icon": "menu_book",
+                "badgeText": "Docs Update",
+                "title": "Docs Updated for New Features, Layout Fixes",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Housekeeping pass after today's feature additions.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\"><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">menu_book</span>Docs page now covers shareable Browse links, the Preview button, Download Entire Semester, and has a new \"What's Missing\" section; also fixed a stale branch list that was missing AIML</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">space_bar</span>Fixed excessive spacing between the homepage's Recently Added section and How It Works below it</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">smartphone</span>Fixed a mobile layout bug in the PDF preview modal where a long paper title could push the Download/Close buttons off-screen</li></ul>"
+            },
+            {
+                "date": "Jul 20, 2026",
                 "color": "blue",
                 "icon": "visibility",
                 "badgeText": "New Feature",

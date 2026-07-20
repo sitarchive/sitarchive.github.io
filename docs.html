@@ -322,6 +322,13 @@
                                     Downloading Papers
                                 </a>
                             </li>
+                            <li>
+                                <a href="#missing-papers"
+                                    class="sidebar-link flex items-center gap-3 px-3 py-2 text-sm text-text-light-muted dark:text-text-dark-muted rounded-lg hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">checklist</span>
+                                    What's Missing
+                                </a>
+                            </li>
                         </ul>
                     </div>
 
@@ -554,9 +561,16 @@
                 </div>
 
                 <h3 class="text-lg font-semibold mb-3">Search Feature</h3>
-                <p class="text-sm text-text-light-muted dark:text-text-dark-muted">
+                <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-6">
                     Use the search bar on the Browse page to filter items within the current folder. Search works on
                     both folder names and file names.
+                </p>
+
+                <h3 class="text-lg font-semibold mb-3">Shareable Links</h3>
+                <p class="text-sm text-text-light-muted dark:text-text-dark-muted">
+                    The URL updates as you navigate, so you can copy the link from your address bar and send it
+                    straight to a specific folder (e.g. a particular semester's papers) - and refreshing the page
+                    keeps you where you were instead of resetting to the top.
                 </p>
             </section>
 
@@ -649,7 +663,43 @@
                         <p class="text-sm"><strong>No Account Required:</strong> Access is completely free and open to
                             everyone.</p>
                     </div>
+                    <div class="flex gap-3 items-start">
+                        <span
+                            class="flex size-6 shrink-0 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 mt-0.5">
+                            <span class="material-symbols-outlined text-[14px]">check</span>
+                        </span>
+                        <p class="text-sm"><strong>Preview Before Downloading:</strong> Click the eye icon on any
+                            paper to view it in an on-page preview without leaving the site.</p>
+                    </div>
+                    <div class="flex gap-3 items-start">
+                        <span
+                            class="flex size-6 shrink-0 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 mt-0.5">
+                            <span class="material-symbols-outlined text-[14px]">check</span>
+                        </span>
+                        <p class="text-sm"><strong>Download an Entire Semester:</strong> Where available, a "Download
+                            Entire Semester" button lets you grab every paper for that semester at once via Google
+                            Drive.</p>
+                    </div>
                 </div>
+            </section>
+
+            <!-- Missing Papers -->
+            <section id="missing-papers" class="mb-16">
+                <h2 class="text-2xl font-bold tracking-tight mb-4 flex items-center gap-3">
+                    <span
+                        class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary text-sm font-bold">
+                        <span class="material-symbols-outlined text-[18px]">checklist</span>
+                    </span>
+                    What's Missing
+                </h2>
+
+                <p class="text-text-light-muted dark:text-text-dark-muted mb-6">
+                    Not every subject has papers uploaded yet. The
+                    <a href="missing.html" class="text-primary hover:underline font-medium">What's Missing</a>
+                    page lists exactly which categories still need papers - if you have one, hit "I Have This" and
+                    it'll take you straight to the submit form with your institute, branch, batch, semester, and
+                    exam type already filled in.
+                </p>
             </section>
 
             <!-- Submit Paper -->
@@ -818,7 +868,7 @@
                         class="p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary text-center">
                         <span class="material-symbols-outlined text-[32px] text-primary mb-2">domain</span>
                         <h4 class="font-semibold">SIT Hyderabad</h4>
-                        <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-1">CSE, CSE AIML, CST</p>
+                        <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-1">CSE, CSE AIML, AIML, CST</p>
                     </div>
                     <div
                         class="p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary text-center">
