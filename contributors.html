@@ -172,12 +172,22 @@
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="submit.html">Submit Papers</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="missing.html">Missing</a>
                     <a class="text-sm font-semibold text-primary" href="contributors.html">Contributors</a>
-                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="collaborate.html">Collaborate</a>
-                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="about.html">About Us</a>
-                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="faq.html">FAQ</a>
-                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="docs.html">Docs</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="changelog.html">Changelog</a>
-                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="feedback.html">Feedback</a>
+                    <div class="relative" id="more-dropdown-wrap">
+                        <button type="button" id="more-dropdown-btn" onclick="toggleMoreDropdown()"
+                            class="flex items-center gap-1 text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors">
+                            More
+                            <span class="material-symbols-outlined text-[18px]">expand_more</span>
+                        </button>
+                        <div id="more-dropdown-menu"
+                            class="hidden absolute right-0 mt-2 w-48 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary shadow-lg py-2 z-50">
+                            <a href="collaborate.html" class="block px-4 py-2 text-sm text-text-light-muted dark:text-text-dark-muted hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary hover:text-text-light dark:hover:text-text-dark transition-colors">Collaborate</a>
+                            <a href="about.html" class="block px-4 py-2 text-sm text-text-light-muted dark:text-text-dark-muted hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary hover:text-text-light dark:hover:text-text-dark transition-colors">About Us</a>
+                            <a href="faq.html" class="block px-4 py-2 text-sm text-text-light-muted dark:text-text-dark-muted hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary hover:text-text-light dark:hover:text-text-dark transition-colors">FAQ</a>
+                            <a href="docs.html" class="block px-4 py-2 text-sm text-text-light-muted dark:text-text-dark-muted hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary hover:text-text-light dark:hover:text-text-dark transition-colors">Docs</a>
+                            <a href="feedback.html" class="block px-4 py-2 text-sm text-text-light-muted dark:text-text-dark-muted hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary hover:text-text-light dark:hover:text-text-dark transition-colors">Feedback</a>
+                        </div>
+                    </div>
                 </div>
 
                 <button onclick="toggleTheme()"
@@ -200,27 +210,20 @@
         <div id="mobile-menu"
             class="hidden md:hidden border-t border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark">
             <div class="px-4 py-4 space-y-3">
-                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
-                    href="index.html">Home</a>
-                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
-                    href="browse.html">Browse Papers</a>
-                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
-                    href="submit.html">Submit Papers</a>
-                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
-                    href="missing.html">Missing</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="index.html">Home</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="browse.html">Browse Papers</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="submit.html">Submit Papers</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="missing.html">Missing</a>
                 <a class="block text-sm font-semibold text-primary py-2" href="contributors.html">Contributors</a>
-                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
-                    href="collaborate.html">Collaborate</a>
-                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
-                    href="about.html">About Us</a>
-                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
-                    href="faq.html">FAQ</a>
-                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
-                    href="docs.html">Docs</a>
-                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
-                    href="changelog.html">Changelog</a>
-                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
-                    href="feedback.html">Feedback</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="changelog.html">Changelog</a>
+                <div class="pt-2 mt-2 border-t border-border-light dark:border-border-dark">
+                    <p class="px-0 pb-1 text-xs font-bold uppercase tracking-wider text-text-light-muted dark:text-text-dark-muted">More</p>
+                    <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="collaborate.html">Collaborate</a>
+                    <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="about.html">About Us</a>
+                    <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="faq.html">FAQ</a>
+                    <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="docs.html">Docs</a>
+                    <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="feedback.html">Feedback</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -287,10 +290,11 @@
 
             countEl.textContent = `${CONTRIBUTORS_DATA.length} ${CONTRIBUTORS_DATA.length === 1 ? 'student has' : 'students have'} contributed papers`;
 
-            grid.innerHTML = CONTRIBUTORS_DATA.map(rollNo => `
-                <div class="contributor-card flex items-center justify-center gap-2 p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm animate-on-scroll">
-                    <span class="material-symbols-outlined text-primary text-[18px]">badge</span>
-                    <span class="text-sm font-semibold">${rollNo}</span>
+            grid.innerHTML = CONTRIBUTORS_DATA.map(c => `
+                <div class="contributor-card flex flex-col items-center justify-center gap-1 p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm animate-on-scroll">
+                    <span class="material-symbols-outlined text-primary text-[20px] mb-1">badge</span>
+                    <span class="text-sm font-semibold">${c.rollNo}</span>
+                    <span class="text-xs text-text-light-muted dark:text-text-dark-muted">${c.branch} &middot; ${c.batch}</span>
                 </div>
             `).join('');
         }
@@ -301,6 +305,23 @@
         document.getElementById('mobile-menu-btn').addEventListener('click', function () {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
+        });
+
+        // "More" nav dropdown
+        function toggleMoreDropdown() {
+            const menu = document.getElementById('more-dropdown-menu');
+            if (menu) menu.classList.toggle('hidden');
+        }
+        document.addEventListener('click', function (e) {
+            const wrap = document.getElementById('more-dropdown-wrap');
+            const menu = document.getElementById('more-dropdown-menu');
+            if (wrap && menu && !wrap.contains(e.target)) menu.classList.add('hidden');
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                const menu = document.getElementById('more-dropdown-menu');
+                if (menu) menu.classList.add('hidden');
+            }
         });
 
         // Sync theme icons

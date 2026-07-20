@@ -15,7 +15,15 @@ const CHANGELOG_DATA = [
                 "icon": "volunteer_activism",
                 "badgeText": "New Page",
                 "title": "Contributors Page Added",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">New <a href=\"contributors.html\" class=\"font-medium text-primary hover:underline\">Contributors</a> page recognizing students who've sent in question papers, listed by roll number (not full name, to keep things privacy-conscious since papers are usually shared informally rather than through a form that asks permission to publish a name). Linked in the nav on every page. Starts empty and gets filled in manually as contributors are identified.</p>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">New <a href=\"contributors.html\" class=\"font-medium text-primary hover:underline\">Contributors</a> page recognizing students who've sent in question papers, listed by roll number plus branch and batch (not full name, to keep things privacy-conscious since papers are usually shared informally rather than through a form that asks permission to publish a name). Linked in the nav on every page. Starts empty and gets filled in manually as contributors are identified.</p>"
+            },
+            {
+                "date": "Jul 20, 2026",
+                "color": "blue",
+                "icon": "expand_more",
+                "badgeText": "UI",
+                "title": "Nav Cleaned Up with a \"More\" Menu",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">With Missing and Contributors added, the top nav had grown to 11 items and was getting tight on smaller desktop screens. Collaborate, About Us, FAQ, Docs, and Feedback are now grouped under a \"More\" dropdown, leaving Home, Browse Papers, Submit Papers, Missing, Contributors, and Changelog directly visible. Mobile menu keeps everything visible as a flat list with a \"More\" divider, since a dropdown-inside-a-dropdown isn't worth the extra tap there.</p>"
             },
             {
                 "date": "Jul 20, 2026",
