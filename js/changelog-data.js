@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Jul 20, 2026",
+                "color": "purple",
+                "icon": "volunteer_activism",
+                "badgeText": "New Page",
+                "title": "Contributors Page Added",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">New <a href=\"contributors.html\" class=\"font-medium text-primary hover:underline\">Contributors</a> page recognizing students who've sent in question papers, listed by roll number (not full name, to keep things privacy-conscious since papers are usually shared informally rather than through a form that asks permission to publish a name). Linked in the nav on every page. Starts empty and gets filled in manually as contributors are identified.</p>"
+            },
+            {
+                "date": "Jul 20, 2026",
                 "color": "green",
                 "icon": "upload_file",
                 "badgeText": "Papers Added",

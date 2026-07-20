@@ -4,21 +4,22 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Terms of Service - SIT Archive</title>
-    <meta name="description" content="Terms of Service for SIT Archive - your question paper repository.">
-    <link rel="canonical" href="https://sitarchive.github.io/terms.html" />
+    <title>Contributors - SIT Archive</title>
+    <meta name="description"
+        content="Students who've contributed question papers to SIT Archive.">
+    <link rel="canonical" href="https://sitarchive.github.io/contributors.html" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://sitarchive.github.io/terms.html" />
-    <meta property="og:title" content="Terms of Service - SIT Archive" />
-    <meta property="og:description" content="Terms of Service for SIT Archive - your question paper repository." />
+    <meta property="og:url" content="https://sitarchive.github.io/contributors.html" />
+    <meta property="og:title" content="Contributors - SIT Archive" />
+    <meta property="og:description" content="Students who've contributed question papers to SIT Archive." />
     <meta property="og:site_name" content="SIT Archive" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Terms of Service - SIT Archive" />
-    <meta name="twitter:description" content="Terms of Service for SIT Archive - your question paper repository." />
+    <meta name="twitter:title" content="Contributors - SIT Archive" />
+    <meta name="twitter:description" content="Students who've contributed question papers to SIT Archive." />
 
 
     <!-- Fonts -->
@@ -32,6 +33,9 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Animation Styles -->
+    <link rel="stylesheet" href="css/animations.css">
 
     <!-- Theme Configuration -->
     <script>
@@ -59,6 +63,10 @@
                         "display": ["Lexend", "sans-serif"],
                         "body": ["Noto Sans", "sans-serif"]
                     },
+                    boxShadow: {
+                        'glow': '0 0 40px -10px rgba(200, 16, 46, 0.3)',
+                        'glow-sm': '0 0 20px -5px rgba(200, 16, 46, 0.2)',
+                    }
                 },
             },
         }
@@ -103,6 +111,14 @@
 
         * {
             transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .contributor-card {
+            transition: all 0.2s ease;
+        }
+
+        .contributor-card:hover {
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -155,7 +171,7 @@
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="browse.html">Browse Papers</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="submit.html">Submit Papers</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="missing.html">Missing</a>
-                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="contributors.html">Contributors</a>
+                    <a class="text-sm font-semibold text-primary" href="contributors.html">Contributors</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="collaborate.html">Collaborate</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="about.html">About Us</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="faq.html">FAQ</a>
@@ -192,8 +208,7 @@
                     href="submit.html">Submit Papers</a>
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
                     href="missing.html">Missing</a>
-                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
-                    href="contributors.html">Contributors</a>
+                <a class="block text-sm font-semibold text-primary py-2" href="contributors.html">Contributors</a>
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
                     href="collaborate.html">Collaborate</a>
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
@@ -211,90 +226,31 @@
     </nav>
 
     <main class="flex-grow">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-            <!-- Page Heading -->
-            <div class="mb-12">
-                <h1 class="text-4xl font-extrabold tracking-tight mb-4">Terms of Service</h1>
-                <p class="text-text-light-muted dark:text-text-dark-muted">Last updated: January 22, 2026</p>
+        <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Page Header -->
+            <div class="mb-8 text-center animate-on-scroll">
+                <span class="material-symbols-outlined text-5xl text-primary mb-3">volunteer_activism</span>
+                <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-2">Contributors</h1>
+                <p class="text-text-light-muted dark:text-text-dark-muted max-w-xl mx-auto">
+                    Thank you to every student who sent in a question paper. This archive exists because of you.
+                </p>
             </div>
 
-            <!-- Content -->
-            <div class="prose prose-lg dark:prose-invert max-w-none space-y-8">
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">1. Acceptance of Terms</h2>
-                    <p class="text-text-light-muted dark:text-text-dark-muted leading-relaxed">
-                        By accessing and using SIT Archive, you accept and agree to be bound by these Terms of Service.
-                        If you do not agree to these terms, please do not use our service.
-                    </p>
-                </section>
+            <p id="contributor-count" class="text-center text-sm text-text-light-muted dark:text-text-dark-muted mb-8"></p>
 
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">2. Description of Service</h2>
-                    <p class="text-text-light-muted dark:text-text-dark-muted leading-relaxed">
-                        SIT Archive is a student-built repository that provides access to previous years' question
-                        papers for educational purposes. The service is provided free of charge to all users.
-                    </p>
-                </section>
+            <div id="contributors-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 stagger-children">
+            </div>
 
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">3. Use of Content</h2>
-                    <p class="text-text-light-muted dark:text-text-dark-muted leading-relaxed mb-4">
-                        All materials available on SIT Archive are intended for personal, educational use only. You
-                        agree to:
-                    </p>
-                    <ul class="list-disc list-inside text-text-light-muted dark:text-text-dark-muted space-y-2 ml-4">
-                        <li>Use the materials solely for academic preparation and revision</li>
-                        <li>Not redistribute or sell the materials for commercial purposes</li>
-                        <li>Not use the materials to engage in academic dishonesty or plagiarism</li>
-                        <li>Respect intellectual property rights of content creators</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">4. Disclaimer</h2>
-                    <p class="text-text-light-muted dark:text-text-dark-muted leading-relaxed">
-                        SIT Archive is not officially affiliated with the university administration. The materials are
-                        provided "as is" without warranty of any kind. We do not guarantee the accuracy, completeness,
-                        or reliability of any content on this platform.
-                    </p>
-                </section>
-
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">5. User Conduct</h2>
-                    <p class="text-text-light-muted dark:text-text-dark-muted leading-relaxed mb-4">
-                        Users are expected to:
-                    </p>
-                    <ul class="list-disc list-inside text-text-light-muted dark:text-text-dark-muted space-y-2 ml-4">
-                        <li>Use the service responsibly and ethically</li>
-                        <li>Not attempt to disrupt or compromise the platform's functionality</li>
-                        <li>Report any errors or issues with the materials</li>
-                        <li>Respect other users and the community</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">6. Limitation of Liability</h2>
-                    <p class="text-text-light-muted dark:text-text-dark-muted leading-relaxed">
-                        SIT Archive and its contributors shall not be liable for any direct, indirect, incidental, or
-                        consequential damages arising from the use or inability to use the service or its content.
-                    </p>
-                </section>
-
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">7. Changes to Terms</h2>
-                    <p class="text-text-light-muted dark:text-text-dark-muted leading-relaxed">
-                        We reserve the right to modify these terms at any time. Continued use of the service after
-                        changes constitutes acceptance of the new terms.
-                    </p>
-                </section>
-
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">8. Contact</h2>
-                    <p class="text-text-light-muted dark:text-text-dark-muted leading-relaxed">
-                        If you have any questions about these Terms of Service, please contact us through our support
-                        channels.
-                    </p>
-                </section>
+            <!-- CTA -->
+            <div class="mt-12 text-center animate-on-scroll">
+                <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-3">
+                    Sent us a paper and don't see your roll number here yet? It'll be added soon.
+                </p>
+                <a href="submit.html"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-sm font-bold transition-colors shadow-glow-sm hover:shadow-glow btn-shimmer">
+                    <span class="material-symbols-outlined text-[18px]">add_circle</span>
+                    Submit a Paper
+                </a>
             </div>
         </div>
     </main>
@@ -303,25 +259,44 @@
     <footer
         class="border-t border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-            <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-                <div class="flex items-center gap-3">
-                    <span class="material-symbols-outlined text-primary">school</span>
-                    <span class="font-bold">SIT Archive</span>
-                </div>
-                <div class="flex gap-6">
-                    <a class="text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
-                        href="privacy.html">Privacy Policy</a>
-                    <a class="text-sm text-primary font-medium" href="terms.html">Terms of Service</a>
-                </div>
-            </div>
-            <div class="mt-6 pt-6 border-t border-border-light dark:border-border-dark text-center">
-                <p class="text-xs text-text-light-muted dark:text-text-dark-muted">© 2026 SIT Archive. All rights
-                    reserved.</p>
-            </div>
+            <p class="text-center text-sm text-text-light-muted dark:text-text-dark-muted">
+                &copy; 2026 SIT Archive. Built by students, for students.
+            </p>
         </div>
     </footer>
 
+    <!-- Contributors Data -->
+    <script src="js/contributors-data.js"></script>
+
     <script>
+        function renderContributors() {
+            const grid = document.getElementById('contributors-grid');
+            const countEl = document.getElementById('contributor-count');
+
+            if (!CONTRIBUTORS_DATA || CONTRIBUTORS_DATA.length === 0) {
+                countEl.textContent = '';
+                grid.innerHTML = `
+                    <div class="col-span-full flex flex-col items-center justify-center py-16 text-center">
+                        <span class="material-symbols-outlined text-6xl text-text-light-muted dark:text-text-dark-muted mb-4">person_add</span>
+                        <h3 class="text-lg font-semibold mb-2">No contributors listed yet</h3>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted">Be the first - submit a paper and get credited here.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            countEl.textContent = `${CONTRIBUTORS_DATA.length} ${CONTRIBUTORS_DATA.length === 1 ? 'student has' : 'students have'} contributed papers`;
+
+            grid.innerHTML = CONTRIBUTORS_DATA.map(rollNo => `
+                <div class="contributor-card flex items-center justify-center gap-2 p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm animate-on-scroll">
+                    <span class="material-symbols-outlined text-primary text-[18px]">badge</span>
+                    <span class="text-sm font-semibold">${rollNo}</span>
+                </div>
+            `).join('');
+        }
+
+        renderContributors();
+
         // Mobile menu toggle
         document.getElementById('mobile-menu-btn').addEventListener('click', function () {
             const menu = document.getElementById('mobile-menu');
@@ -336,6 +311,9 @@
             if (iconMobile) iconMobile.textContent = isDark ? 'light_mode' : 'dark_mode';
         }
     </script>
+
+    <!-- Animation Controller -->
+    <script src="js/animations.js"></script>
 </body>
 
 </html>
