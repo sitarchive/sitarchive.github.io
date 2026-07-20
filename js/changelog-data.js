@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Jul 20, 2026",
+                "color": "purple",
+                "icon": "checklist",
+                "badgeText": "Refinement",
+                "title": "\"What's Missing\" Curated to Real Gaps, Added to Every Page's Nav",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Follow-up on the What's Missing page from earlier today, based on actual known gaps rather than a blind scan of empty folders.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\"><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">checklist</span>The page previously auto-flagged every empty folder in the data, including future semesters nobody has reached yet and Mid-Sem categories nobody tracks. It's now a hand-curated list of exactly 22 categories that genuinely still need papers — including a few that are partially filled, not just fully empty</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">menu</span>Added the Missing link to the navigation on every page (not just Browse), desktop and mobile</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">smartphone</span>Verified the mobile menu still opens/closes correctly on every page after the nav change</li></ul>"
+            },
+            {
+                "date": "Jul 20, 2026",
                 "color": "green",
                 "icon": "travel_explore",
                 "badgeText": "New Feature",

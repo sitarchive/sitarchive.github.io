@@ -170,7 +170,7 @@
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="index.html">Home</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="browse.html">Browse Papers</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="submit.html">Submit Papers</a>
-                    <a class="text-sm font-semibold text-primary" href="missing.html">What's Missing</a>
+                    <a class="text-sm font-semibold text-primary" href="missing.html">Missing</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="collaborate.html">Collaborate</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="about.html">About Us</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="faq.html">FAQ</a>
@@ -205,7 +205,7 @@
                     href="browse.html">Browse Papers</a>
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
                     href="submit.html">Submit Papers</a>
-                <a class="block text-sm font-semibold text-primary py-2" href="missing.html">What's Missing</a>
+                <a class="block text-sm font-semibold text-primary py-2" href="missing.html">Missing</a>
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
                     href="collaborate.html">Collaborate</a>
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
@@ -228,28 +228,21 @@
             <div class="mb-8 animate-on-scroll">
                 <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-2">What's Missing</h1>
                 <p class="text-text-light-muted dark:text-text-dark-muted max-w-2xl">
-                    Every subject/semester/category below still has zero papers uploaded. If you have one of these,
-                    hit "I Have This" and it'll take you straight to the submit form with everything pre-filled.
+                    These categories still need papers uploaded (some are empty, some just need a few more subjects).
+                    If you have one of these, hit "I Have This" and it'll take you straight to the submit form with
+                    everything pre-filled.
                 </p>
             </div>
 
             <!-- Summary Stats -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 stagger-children">
+            <div class="grid grid-cols-2 gap-4 mb-8 stagger-children">
                 <div class="p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary animate-on-scroll">
                     <p id="stat-total-papers" class="text-2xl font-bold text-primary">—</p>
                     <p class="text-xs text-text-light-muted dark:text-text-dark-muted">Papers Available</p>
                 </div>
                 <div class="p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary animate-on-scroll">
                     <p id="stat-missing-count" class="text-2xl font-bold text-primary">—</p>
-                    <p class="text-xs text-text-light-muted dark:text-text-dark-muted">Categories Missing</p>
-                </div>
-                <div class="p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary animate-on-scroll">
-                    <p id="stat-total-categories" class="text-2xl font-bold text-primary">—</p>
-                    <p class="text-xs text-text-light-muted dark:text-text-dark-muted">Total Categories</p>
-                </div>
-                <div class="p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary animate-on-scroll">
-                    <p id="stat-coverage" class="text-2xl font-bold text-primary">—</p>
-                    <p class="text-xs text-text-light-muted dark:text-text-dark-muted">Coverage</p>
+                    <p class="text-xs text-text-light-muted dark:text-text-dark-muted">Categories Still Needing Papers</p>
                 </div>
             </div>
 
@@ -276,62 +269,75 @@
 
     <!-- Site Data -->
     <script src="js/data.js"></script>
+    <script src="js/missing-data.js"></script>
 
     <script>
         const data = SIT_ARCHIVE_DATA;
 
-        function computeMissing() {
-            const groups = []; // { branchLabel, items: [{institute, branch, batch, semester, type, params}] }
-            let totalCategories = 0;
-            let missingCount = 0;
-            let totalPapers = 0;
-
-            for (const [instKey, inst] of Object.entries(data.institutes)) {
-                for (const [branchKey, branch] of Object.entries(inst.branches)) {
-                    const groupLabel = `${inst.name} — ${branch.name}`;
-                    const items = [];
-                    for (const [batchKey, batch] of Object.entries(branch.years)) {
-                        for (const [semKey, sem] of Object.entries(batch.sems)) {
+        // Site-wide paper count, for context alongside the curated gap list below.
+        function countTotalPapers() {
+            let total = 0;
+            for (const inst of Object.values(data.institutes)) {
+                for (const branch of Object.values(inst.branches)) {
+                    for (const batch of Object.values(branch.years)) {
+                        for (const sem of Object.values(batch.sems)) {
                             const types = sem.types || { 'Papers': sem };
-                            for (const [typeKey, type] of Object.entries(types)) {
-                                totalCategories++;
-                                const count = (type.subjects || []).length;
-                                totalPapers += count;
-                                if (count === 0) {
-                                    missingCount++;
-                                    const params = new URLSearchParams({
-                                        institute: instKey,
-                                        branch: branchKey,
-                                        batch: batchKey,
-                                        semester: semKey,
-                                        examType: typeKey === 'Papers' ? '' : typeKey,
-                                    });
-                                    items.push({
-                                        batch: batch.name || batchKey,
-                                        semester: sem.name || semKey,
-                                        type: type.name || typeKey,
-                                        href: `submit.html?${params.toString()}`,
-                                    });
-                                }
+                            for (const type of Object.values(types)) {
+                                total += (type.subjects || []).length;
                             }
                         }
                     }
-                    if (items.length) groups.push({ groupLabel, items });
                 }
             }
+            return total;
+        }
 
-            return { groups, totalCategories, missingCount, totalPapers };
+        // Resolve each curated gap against data.js so display names/params
+        // stay correct even if data.js labels change later.
+        function computeMissing() {
+            const groups = []; // { groupLabel, items: [{batch, semester, type, href}] }
+            const byGroup = new Map();
+
+            for (const gap of MISSING_DATA) {
+                const inst = data.institutes[gap.institute];
+                const branch = inst && inst.branches[gap.branch];
+                const batch = branch && branch.years[gap.batch];
+                const sem = batch && batch.sems[gap.semester];
+                const type = sem && sem.types && sem.types[gap.type];
+                if (!inst || !branch || !batch || !sem || !type) continue; // stale curated entry, skip safely
+
+                const groupLabel = `${inst.name} — ${branch.name}`;
+                const params = new URLSearchParams({
+                    institute: gap.institute,
+                    branch: gap.branch,
+                    batch: gap.batch,
+                    semester: gap.semester,
+                    examType: gap.type,
+                });
+                const item = {
+                    batch: batch.name || gap.batch,
+                    semester: sem.name || gap.semester,
+                    type: type.name || gap.type,
+                    href: `submit.html?${params.toString()}`,
+                };
+
+                if (!byGroup.has(groupLabel)) {
+                    const g = { groupLabel, items: [] };
+                    byGroup.set(groupLabel, g);
+                    groups.push(g);
+                }
+                byGroup.get(groupLabel).items.push(item);
+            }
+
+            return { groups, missingCount: MISSING_DATA.length };
         }
 
         function render(filterText) {
-            const { groups, totalCategories, missingCount, totalPapers } = computeMissing();
+            const { groups, missingCount } = computeMissing();
             const filter = (filterText || '').toLowerCase().trim();
 
-            document.getElementById('stat-total-papers').textContent = totalPapers;
+            document.getElementById('stat-total-papers').textContent = countTotalPapers();
             document.getElementById('stat-missing-count').textContent = missingCount;
-            document.getElementById('stat-total-categories').textContent = totalCategories;
-            document.getElementById('stat-coverage').textContent =
-                totalCategories ? Math.round(((totalCategories - missingCount) / totalCategories) * 100) + '%' : '—';
 
             const list = document.getElementById('missing-list');
 
