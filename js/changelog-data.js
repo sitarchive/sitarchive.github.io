@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Jul 20, 2026",
+                "color": "green",
+                "icon": "travel_explore",
+                "badgeText": "New Feature",
+                "title": "Shareable Browse Links, \"What's Missing\" Page, and Search Visibility",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">More improvements aimed directly at making it easier to find papers and know what still needs uploading.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\"><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">link</span>Browse Papers now syncs your current folder to the URL, so links can be shared or bookmarked directly to a specific institute/branch/batch/semester/category, and refreshing the page no longer resets you to the top</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">travel_explore</span>New <a href=\"missing.html\" class=\"font-medium text-primary hover:underline\">What's Missing</a> page lists every subject/semester/category that still has zero papers, with a one-click button to submit the one you have</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">manage_search</span>Added a sitemap, robots.txt, canonical URLs, and social preview (Open Graph/Twitter) tags across every page so the archive is easier to find via search and looks right when shared as a link</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">rule</span>Removed \"Internals\" and \"Supplementary\" from the Submit page's exam type options — they weren't real categories anywhere on the site, so picking them had nowhere to go; \"Backlog\" covers the same case</li></ul>"
+            },
+            {
+                "date": "Jul 20, 2026",
                 "color": "blue",
                 "icon": "auto_fix_high",
                 "badgeText": "Enhancement",

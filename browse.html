@@ -7,6 +7,20 @@
     <title>Browse Papers - SIT Archive</title>
     <meta name="description"
         content="Browse and download previous years' question papers by institute, branch, year, and semester.">
+    <link rel="canonical" href="https://sitarchive.github.io/browse.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sitarchive.github.io/browse.html" />
+    <meta property="og:title" content="Browse Papers - SIT Archive" />
+    <meta property="og:description" content="Browse and download previous years' question papers by institute, branch, year, and semester." />
+    <meta property="og:site_name" content="SIT Archive" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Browse Papers - SIT Archive" />
+    <meta name="twitter:description" content="Browse and download previous years' question papers by institute, branch, year, and semester." />
+
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
@@ -156,6 +170,7 @@
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="index.html">Home</a>
                     <a class="text-sm font-semibold text-primary" href="browse.html">Browse Papers</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="submit.html">Submit Papers</a>
+                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="missing.html">What's Missing</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="collaborate.html">Collaborate</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="about.html">About Us</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="faq.html">FAQ</a>
@@ -189,6 +204,8 @@
                 <a class="block text-sm font-semibold text-primary py-2" href="browse.html">Browse Papers</a>
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
                     href="submit.html">Submit Papers</a>
+                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
+                    href="missing.html">What's Missing</a>
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
                     href="collaborate.html">Collaborate</a>
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
@@ -276,21 +293,66 @@
         // Current path state
         let currentPath = [];
 
-        // Navigate to a specific path
-        function navigateTo(path) {
+        // Sync currentPath with the URL hash so folders are shareable/bookmarkable
+        // and survive a refresh (e.g. #SITHYD/CSE/2025-29/Sem%202/End-Sem).
+        function pathToHash(path) {
+            return path.length ? '#' + path.map(encodeURIComponent).join('/') : '#';
+        }
+
+        function hashToPath() {
+            const raw = window.location.hash.replace(/^#/, '');
+            return raw ? raw.split('/').map(decodeURIComponent) : [];
+        }
+
+        // Confirms a path actually resolves in the data tree before trusting it
+        // (handles stale/hand-edited/invalid hashes without throwing).
+        function isValidPath(path) {
+            try {
+                let node = data.institutes;
+                let level = 'institutes';
+                for (const key of path) {
+                    if (level === 'institutes') { node = node[key].branches; level = 'branches'; }
+                    else if (level === 'branches') { node = node[key].years; level = 'years'; }
+                    else if (level === 'years') { node = node[key].sems; level = 'sems'; }
+                    else if (level === 'sems') {
+                        if (node[key].types) { node = node[key].types; level = 'types'; }
+                        else { node = node[key].subjects; level = 'subjects'; }
+                    } else if (level === 'types') { node = node[key].subjects; level = 'subjects'; }
+                    else { return false; } // path too deep
+                    if (node === undefined) return false;
+                }
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        // Apply a path to the UI without touching browser history (used by
+        // popstate/initial load, where history already reflects the path).
+        function applyPath(path) {
             currentPath = path;
             renderBreadcrumb();
             renderContent();
         }
 
+        // Navigate to a specific path
+        function navigateTo(path) {
+            applyPath(path);
+            history.pushState(null, '', pathToHash(path));
+        }
+
         // Go back one level
         function goBack() {
             if (currentPath.length > 0) {
-                currentPath.pop();
-                renderBreadcrumb();
-                renderContent();
+                navigateTo(currentPath.slice(0, -1));
             }
         }
+
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', function () {
+            const path = hashToPath();
+            applyPath(isValidPath(path) ? path : []);
+        });
 
         // Render breadcrumb navigation
         function renderBreadcrumb() {
@@ -693,9 +755,16 @@ Thank you!`);
             if (iconMobile) iconMobile.textContent = isDark ? 'light_mode' : 'dark_mode';
         }
 
-        // Initial render
-        renderBreadcrumb();
-        renderContent();
+        // Initial render — restore folder from the URL hash if present (deep link / refresh)
+        (function initialRender() {
+            const path = hashToPath();
+            if (path.length && isValidPath(path)) {
+                applyPath(path);
+            } else {
+                if (path.length) history.replaceState(null, '', pathToHash([]));
+                applyPath([]);
+            }
+        })();
     </script>
 
     <!-- Animation Controller -->

@@ -4,21 +4,22 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Terms of Service - SIT Archive</title>
-    <meta name="description" content="Terms of Service for SIT Archive - your question paper repository.">
-    <link rel="canonical" href="https://sitarchive.github.io/terms.html" />
+    <title>What's Missing - SIT Archive</title>
+    <meta name="description"
+        content="See exactly which subjects and exam categories still need question papers uploaded, and submit the ones you have.">
+    <link rel="canonical" href="https://sitarchive.github.io/missing.html" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://sitarchive.github.io/terms.html" />
-    <meta property="og:title" content="Terms of Service - SIT Archive" />
-    <meta property="og:description" content="Terms of Service for SIT Archive - your question paper repository." />
+    <meta property="og:url" content="https://sitarchive.github.io/missing.html" />
+    <meta property="og:title" content="What's Missing - SIT Archive" />
+    <meta property="og:description" content="See exactly which subjects and exam categories still need question papers uploaded, and submit the ones you have." />
     <meta property="og:site_name" content="SIT Archive" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Terms of Service - SIT Archive" />
-    <meta name="twitter:description" content="Terms of Service for SIT Archive - your question paper repository." />
+    <meta name="twitter:title" content="What's Missing - SIT Archive" />
+    <meta name="twitter:description" content="See exactly which subjects and exam categories still need question papers uploaded, and submit the ones you have." />
 
 
     <!-- Fonts -->
@@ -32,6 +33,9 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Animation Styles -->
+    <link rel="stylesheet" href="css/animations.css">
 
     <!-- Theme Configuration -->
     <script>
@@ -59,6 +63,10 @@
                         "display": ["Lexend", "sans-serif"],
                         "body": ["Noto Sans", "sans-serif"]
                     },
+                    boxShadow: {
+                        'glow': '0 0 40px -10px rgba(200, 16, 46, 0.3)',
+                        'glow-sm': '0 0 20px -5px rgba(200, 16, 46, 0.2)',
+                    }
                 },
             },
         }
@@ -103,6 +111,14 @@
 
         * {
             transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .gap-card {
+            transition: all 0.2s ease;
+        }
+
+        .gap-card:hover {
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -154,6 +170,7 @@
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="index.html">Home</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="browse.html">Browse Papers</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="submit.html">Submit Papers</a>
+                    <a class="text-sm font-semibold text-primary" href="missing.html">What's Missing</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="collaborate.html">Collaborate</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="about.html">About Us</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="faq.html">FAQ</a>
@@ -188,6 +205,7 @@
                     href="browse.html">Browse Papers</a>
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
                     href="submit.html">Submit Papers</a>
+                <a class="block text-sm font-semibold text-primary py-2" href="missing.html">What's Missing</a>
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
                     href="collaborate.html">Collaborate</a>
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2"
@@ -205,91 +223,44 @@
     </nav>
 
     <main class="flex-grow">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-            <!-- Page Heading -->
-            <div class="mb-12">
-                <h1 class="text-4xl font-extrabold tracking-tight mb-4">Terms of Service</h1>
-                <p class="text-text-light-muted dark:text-text-dark-muted">Last updated: January 22, 2026</p>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Page Header -->
+            <div class="mb-8 animate-on-scroll">
+                <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-2">What's Missing</h1>
+                <p class="text-text-light-muted dark:text-text-dark-muted max-w-2xl">
+                    Every subject/semester/category below still has zero papers uploaded. If you have one of these,
+                    hit "I Have This" and it'll take you straight to the submit form with everything pre-filled.
+                </p>
             </div>
 
-            <!-- Content -->
-            <div class="prose prose-lg dark:prose-invert max-w-none space-y-8">
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">1. Acceptance of Terms</h2>
-                    <p class="text-text-light-muted dark:text-text-dark-muted leading-relaxed">
-                        By accessing and using SIT Archive, you accept and agree to be bound by these Terms of Service.
-                        If you do not agree to these terms, please do not use our service.
-                    </p>
-                </section>
-
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">2. Description of Service</h2>
-                    <p class="text-text-light-muted dark:text-text-dark-muted leading-relaxed">
-                        SIT Archive is a student-built repository that provides access to previous years' question
-                        papers for educational purposes. The service is provided free of charge to all users.
-                    </p>
-                </section>
-
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">3. Use of Content</h2>
-                    <p class="text-text-light-muted dark:text-text-dark-muted leading-relaxed mb-4">
-                        All materials available on SIT Archive are intended for personal, educational use only. You
-                        agree to:
-                    </p>
-                    <ul class="list-disc list-inside text-text-light-muted dark:text-text-dark-muted space-y-2 ml-4">
-                        <li>Use the materials solely for academic preparation and revision</li>
-                        <li>Not redistribute or sell the materials for commercial purposes</li>
-                        <li>Not use the materials to engage in academic dishonesty or plagiarism</li>
-                        <li>Respect intellectual property rights of content creators</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">4. Disclaimer</h2>
-                    <p class="text-text-light-muted dark:text-text-dark-muted leading-relaxed">
-                        SIT Archive is not officially affiliated with the university administration. The materials are
-                        provided "as is" without warranty of any kind. We do not guarantee the accuracy, completeness,
-                        or reliability of any content on this platform.
-                    </p>
-                </section>
-
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">5. User Conduct</h2>
-                    <p class="text-text-light-muted dark:text-text-dark-muted leading-relaxed mb-4">
-                        Users are expected to:
-                    </p>
-                    <ul class="list-disc list-inside text-text-light-muted dark:text-text-dark-muted space-y-2 ml-4">
-                        <li>Use the service responsibly and ethically</li>
-                        <li>Not attempt to disrupt or compromise the platform's functionality</li>
-                        <li>Report any errors or issues with the materials</li>
-                        <li>Respect other users and the community</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">6. Limitation of Liability</h2>
-                    <p class="text-text-light-muted dark:text-text-dark-muted leading-relaxed">
-                        SIT Archive and its contributors shall not be liable for any direct, indirect, incidental, or
-                        consequential damages arising from the use or inability to use the service or its content.
-                    </p>
-                </section>
-
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">7. Changes to Terms</h2>
-                    <p class="text-text-light-muted dark:text-text-dark-muted leading-relaxed">
-                        We reserve the right to modify these terms at any time. Continued use of the service after
-                        changes constitutes acceptance of the new terms.
-                    </p>
-                </section>
-
-                <section>
-                    <h2 class="text-2xl font-bold mb-4">8. Contact</h2>
-                    <p class="text-text-light-muted dark:text-text-dark-muted leading-relaxed">
-                        If you have any questions about these Terms of Service, please contact us through our support
-                        channels.
-                    </p>
-                </section>
+            <!-- Summary Stats -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 stagger-children">
+                <div class="p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary animate-on-scroll">
+                    <p id="stat-total-papers" class="text-2xl font-bold text-primary">—</p>
+                    <p class="text-xs text-text-light-muted dark:text-text-dark-muted">Papers Available</p>
+                </div>
+                <div class="p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary animate-on-scroll">
+                    <p id="stat-missing-count" class="text-2xl font-bold text-primary">—</p>
+                    <p class="text-xs text-text-light-muted dark:text-text-dark-muted">Categories Missing</p>
+                </div>
+                <div class="p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary animate-on-scroll">
+                    <p id="stat-total-categories" class="text-2xl font-bold text-primary">—</p>
+                    <p class="text-xs text-text-light-muted dark:text-text-dark-muted">Total Categories</p>
+                </div>
+                <div class="p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary animate-on-scroll">
+                    <p id="stat-coverage" class="text-2xl font-bold text-primary">—</p>
+                    <p class="text-xs text-text-light-muted dark:text-text-dark-muted">Coverage</p>
+                </div>
             </div>
+
+            <!-- Filter -->
+            <div class="mb-6 animate-on-scroll">
+                <input id="filter-input" type="text" placeholder="Filter by branch, batch, semester..."
+                    class="w-full sm:w-96 h-11 px-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark text-sm text-text-light dark:text-text-dark placeholder-text-light-muted dark:placeholder-text-dark-muted focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors" />
+            </div>
+
+            <!-- Missing List -->
+            <div id="missing-list" class="space-y-8"></div>
         </div>
     </main>
 
@@ -297,25 +268,126 @@
     <footer
         class="border-t border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-            <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-                <div class="flex items-center gap-3">
-                    <span class="material-symbols-outlined text-primary">school</span>
-                    <span class="font-bold">SIT Archive</span>
-                </div>
-                <div class="flex gap-6">
-                    <a class="text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors"
-                        href="privacy.html">Privacy Policy</a>
-                    <a class="text-sm text-primary font-medium" href="terms.html">Terms of Service</a>
-                </div>
-            </div>
-            <div class="mt-6 pt-6 border-t border-border-light dark:border-border-dark text-center">
-                <p class="text-xs text-text-light-muted dark:text-text-dark-muted">© 2026 SIT Archive. All rights
-                    reserved.</p>
-            </div>
+            <p class="text-center text-sm text-text-light-muted dark:text-text-dark-muted">
+                &copy; 2026 SIT Archive. Built by students, for students.
+            </p>
         </div>
     </footer>
 
+    <!-- Site Data -->
+    <script src="js/data.js"></script>
+
     <script>
+        const data = SIT_ARCHIVE_DATA;
+
+        function computeMissing() {
+            const groups = []; // { branchLabel, items: [{institute, branch, batch, semester, type, params}] }
+            let totalCategories = 0;
+            let missingCount = 0;
+            let totalPapers = 0;
+
+            for (const [instKey, inst] of Object.entries(data.institutes)) {
+                for (const [branchKey, branch] of Object.entries(inst.branches)) {
+                    const groupLabel = `${inst.name} — ${branch.name}`;
+                    const items = [];
+                    for (const [batchKey, batch] of Object.entries(branch.years)) {
+                        for (const [semKey, sem] of Object.entries(batch.sems)) {
+                            const types = sem.types || { 'Papers': sem };
+                            for (const [typeKey, type] of Object.entries(types)) {
+                                totalCategories++;
+                                const count = (type.subjects || []).length;
+                                totalPapers += count;
+                                if (count === 0) {
+                                    missingCount++;
+                                    const params = new URLSearchParams({
+                                        institute: instKey,
+                                        branch: branchKey,
+                                        batch: batchKey,
+                                        semester: semKey,
+                                        examType: typeKey === 'Papers' ? '' : typeKey,
+                                    });
+                                    items.push({
+                                        batch: batch.name || batchKey,
+                                        semester: sem.name || semKey,
+                                        type: type.name || typeKey,
+                                        href: `submit.html?${params.toString()}`,
+                                    });
+                                }
+                            }
+                        }
+                    }
+                    if (items.length) groups.push({ groupLabel, items });
+                }
+            }
+
+            return { groups, totalCategories, missingCount, totalPapers };
+        }
+
+        function render(filterText) {
+            const { groups, totalCategories, missingCount, totalPapers } = computeMissing();
+            const filter = (filterText || '').toLowerCase().trim();
+
+            document.getElementById('stat-total-papers').textContent = totalPapers;
+            document.getElementById('stat-missing-count').textContent = missingCount;
+            document.getElementById('stat-total-categories').textContent = totalCategories;
+            document.getElementById('stat-coverage').textContent =
+                totalCategories ? Math.round(((totalCategories - missingCount) / totalCategories) * 100) + '%' : '—';
+
+            const list = document.getElementById('missing-list');
+
+            const filteredGroups = groups
+                .map(g => ({
+                    groupLabel: g.groupLabel,
+                    items: g.items.filter(item =>
+                        !filter ||
+                        g.groupLabel.toLowerCase().includes(filter) ||
+                        item.batch.toLowerCase().includes(filter) ||
+                        item.semester.toLowerCase().includes(filter) ||
+                        item.type.toLowerCase().includes(filter)
+                    ),
+                }))
+                .filter(g => g.items.length > 0);
+
+            if (filteredGroups.length === 0) {
+                list.innerHTML = `
+                    <div class="flex flex-col items-center justify-center py-16 text-center">
+                        <span class="material-symbols-outlined text-6xl text-text-light-muted dark:text-text-dark-muted mb-4">${filter ? 'search_off' : 'celebration'}</span>
+                        <h3 class="text-lg font-semibold mb-2">${filter ? 'No matches' : 'Nothing missing!'}</h3>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted">${filter ? 'Try a different search term.' : 'Every category currently has at least one paper.'}</p>
+                    </div>
+                `;
+                return;
+            }
+
+            list.innerHTML = filteredGroups.map(g => `
+                <div class="animate-on-scroll">
+                    <h2 class="text-lg font-bold mb-3 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">folder_off</span>
+                        ${g.groupLabel}
+                        <span class="text-xs font-medium text-text-light-muted dark:text-text-dark-muted">(${g.items.length} missing)</span>
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 stagger-children">
+                        ${g.items.map(item => `
+                            <a href="${item.href}"
+                                class="gap-card flex items-center justify-between gap-3 p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm animate-on-scroll">
+                                <div class="min-w-0">
+                                    <p class="text-sm font-semibold truncate">${item.batch} · ${item.semester}</p>
+                                    <p class="text-xs text-text-light-muted dark:text-text-dark-muted">${item.type}</p>
+                                </div>
+                                <span class="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-bold group-hover:bg-primary group-hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-[14px]">add</span>
+                                    I Have This
+                                </span>
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        render('');
+        document.getElementById('filter-input').addEventListener('input', (e) => render(e.target.value));
+
         // Mobile menu toggle
         document.getElementById('mobile-menu-btn').addEventListener('click', function () {
             const menu = document.getElementById('mobile-menu');
@@ -330,6 +402,9 @@
             if (iconMobile) iconMobile.textContent = isDark ? 'light_mode' : 'dark_mode';
         }
     </script>
+
+    <!-- Animation Controller -->
+    <script src="js/animations.js"></script>
 </body>
 
 </html>
