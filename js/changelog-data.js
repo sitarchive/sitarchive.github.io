@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Jul 20, 2026",
+                "color": "amber",
+                "icon": "smartphone",
+                "badgeText": "Bug Fix",
+                "title": "Mobile: \"Browse All\" Link and Preview Button on Recently Added",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Two gaps in the homepage's Recently Added section, reported from mobile testing.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\"><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">visibility_off</span>The \"Browse all\" link next to the Recently Added heading was hidden on mobile by mistake - it's now visible on every screen size</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">visibility</span>Recently Added cards were missing the Preview button that Browse Papers cards have - added the same preview modal here too, so you can glance at a paper straight from the homepage</li></ul>"
+            },
+            {
+                "date": "Jul 20, 2026",
                 "color": "green",
                 "icon": "menu_book",
                 "badgeText": "Docs Update",

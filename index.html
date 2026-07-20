@@ -534,14 +534,14 @@
         <!-- Recently Added Section -->
         <section id="recently-added-section" class="hidden w-full pt-12 pb-4 lg:pt-16 lg:pb-6">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between gap-3 mb-8 animate-on-scroll">
+                <div class="flex items-center justify-between gap-3 mb-8 flex-wrap animate-on-scroll">
                     <div>
                         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Recently Added</h2>
                         <p class="text-text-light-muted dark:text-text-dark-muted">The latest papers uploaded to the
                             archive</p>
                     </div>
                     <a href="browse.html"
-                        class="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline shrink-0">
+                        class="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline shrink-0">
                         Browse all
                         <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
                     </a>
@@ -631,6 +631,27 @@
         </section>
     </main>
 
+    <!-- PDF Preview Modal -->
+    <div id="preview-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+        <div class="relative w-full max-w-3xl h-[85vh] rounded-2xl bg-bg-light dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark overflow-hidden flex flex-col">
+            <div class="flex items-center justify-between gap-3 p-4 border-b border-border-light dark:border-border-dark">
+                <div class="min-w-0 flex-1">
+                    <h3 id="preview-title" class="text-sm font-semibold truncate"></h3>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                    <a id="preview-download" href="#" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors">
+                        <span class="material-symbols-outlined text-[16px]">download</span>
+                        Download
+                    </a>
+                    <button type="button" onclick="closePreview()" class="flex items-center justify-center w-8 h-8 rounded-lg hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary">
+                        <span class="material-symbols-outlined text-[20px]">close</span>
+                    </button>
+                </div>
+            </div>
+            <iframe id="preview-frame" class="flex-1 w-full" src="" title="PDF preview"></iframe>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer
         class="border-t border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
@@ -709,6 +730,41 @@
     <!-- Data Store (for dynamic stats) -->
     <script src="js/data.js"></script>
 
+    <!-- PDF preview modal -->
+    <script>
+        function extractDriveFileId(driveUrl) {
+            const match = driveUrl.match(/\/d\/([^/]+)/);
+            return match ? match[1] : null;
+        }
+
+        function openPreview(fileUrl, title) {
+            const fileId = extractDriveFileId(fileUrl);
+            if (!fileId) return;
+            document.getElementById('preview-title').textContent = title;
+            document.getElementById('preview-download').href = fileUrl;
+            document.getElementById('preview-frame').src = `https://drive.google.com/file/d/${fileId}/preview`;
+            document.getElementById('preview-modal').classList.remove('hidden');
+        }
+
+        function closePreview() {
+            document.getElementById('preview-modal').classList.add('hidden');
+            document.getElementById('preview-frame').src = '';
+        }
+
+        document.addEventListener('click', function (e) {
+            const btn = e.target.closest('[data-preview-file]');
+            if (btn) openPreview(btn.dataset.previewFile, btn.dataset.previewTitle);
+        });
+
+        document.getElementById('preview-modal').addEventListener('click', function (e) {
+            if (e.target === this) closePreview();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closePreview();
+        });
+    </script>
+
     <!-- Recently Added Widget -->
     <script>
         function renderRecentlyAdded() {
@@ -741,10 +797,16 @@
                         </div>
                     </div>
                     <p class="text-[11px] text-text-light-muted dark:text-text-dark-muted truncate mb-3" title="${paper.path}">${paper.path}</p>
-                    <a href="${paper.file}" class="mt-auto inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors">
-                        <span class="material-symbols-outlined text-[16px]">download</span>
-                        Download
-                    </a>
+                    <div class="mt-auto flex items-center gap-1.5">
+                        <button type="button" data-preview-file="${paper.file}" data-preview-title="${paper.name}"
+                            class="inline-flex items-center justify-center w-9 h-9 shrink-0 rounded-lg border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors" title="Preview">
+                            <span class="material-symbols-outlined text-[18px]">visibility</span>
+                        </button>
+                        <a href="${paper.file}" class="flex-1 inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors">
+                            <span class="material-symbols-outlined text-[16px]">download</span>
+                            Download
+                        </a>
+                    </div>
                 </div>
             `).join('');
             document.getElementById('recently-added-section').classList.remove('hidden');
