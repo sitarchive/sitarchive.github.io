@@ -456,7 +456,9 @@ const SIT_ARCHIVE_DATA = {
                                             subjects: [
                                                 { name: "Statistics for Data Science", code: "0707250202", file: "https://drive.google.com/file/d/1Gvk-ICL7xDjLDxWETPQ-eMl0L2qNB0Y-/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" },
                                                 { name: "Introduction to Artificial Intelligence and Python Programming", code: "0707250205", file: "https://drive.google.com/file/d/1IalTw0Da4MP_bUDp_VTxyQ6NLEy91dlK/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" },
-                                                { name: "Calculus", code: "0707250201", file: "https://drive.google.com/file/d/16oJvSShwdRMibYXrtFmvTKjlBieMIPAz/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" }
+                                                { name: "Calculus", code: "0707250201", file: "https://drive.google.com/file/d/16oJvSShwdRMibYXrtFmvTKjlBieMIPAz/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" },
+                                                { name: "Self Management I", code: "0707250208", file: "https://drive.google.com/file/d/15PZ4D_cEnAMDawbDgwQB2u4Ja0wvjOdj/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" },
+                                                { name: "Physics for Computer Engineers", code: "0707250204", file: "https://drive.google.com/file/d/1phyQOfZVs-lor1bc586iEtY5W9w48l-r/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" }
                                             ]
                                         },
                                         "Mid-Sem (Unit Tests)": {

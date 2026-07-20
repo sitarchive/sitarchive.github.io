@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Jul 20, 2026",
+                "color": "green",
+                "icon": "upload_file",
+                "badgeText": "Papers Added",
+                "title": "2 More Papers Added to CSE AIML 2025-29 Sem 2",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">CSE AIML 2025-29 Sem 2 End-Sem now has 5 papers.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\"><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>Self Management I</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>Physics for Computer Engineers</li></ul>"
+            },
+            {
+                "date": "Jul 20, 2026",
                 "color": "amber",
                 "icon": "smartphone",
                 "badgeText": "Bug Fix",
