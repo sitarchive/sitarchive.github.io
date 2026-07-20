@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Jul 20, 2026",
+                "color": "blue",
+                "icon": "visibility",
+                "badgeText": "New Feature",
+                "title": "PDF Preview, Recently Added Widget, and Whole-Semester Downloads",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">A round of quality-of-life features for actually finding and using papers.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\"><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">visibility</span>Every paper card on Browse now has a Preview button that opens the PDF in an on-page modal, so you can glance at it without leaving the site. Download still works exactly as before</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">folder_zip</span>Semesters whose papers live together in one Drive folder now show a \"Download Entire Semester\" button that opens that folder directly, so Drive's own zip-download can grab everything at once (rolling out per-semester as folders are made public)</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">new_releases</span>Homepage now has a Recently Added section showing the latest papers uploaded, pulled straight from the data</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">rule</span>Added an automated duplicate-entry check (alongside the existing link checker) that catches the same paper or Drive link accidentally listed twice before it ships</li></ul>"
+            },
+            {
+                "date": "Jul 20, 2026",
                 "color": "purple",
                 "icon": "checklist",
                 "badgeText": "Refinement",

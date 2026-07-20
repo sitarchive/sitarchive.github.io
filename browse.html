@@ -254,13 +254,16 @@
             </div>
 
             <!-- Current Folder Info -->
-            <div id="folder-info" class="mb-6 flex items-center gap-3 animate-on-scroll">
-                <span class="material-symbols-outlined text-primary text-3xl anim-float-slow">folder_open</span>
-                <div>
-                    <h2 id="current-folder-name" class="text-xl font-bold">Select an Institute</h2>
-                    <p id="current-folder-count" class="text-sm text-text-light-muted dark:text-text-dark-muted">1
-                        institute available</p>
+            <div id="folder-info" class="mb-6 flex items-center justify-between gap-3 flex-wrap animate-on-scroll">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-3xl anim-float-slow">folder_open</span>
+                    <div>
+                        <h2 id="current-folder-name" class="text-xl font-bold">Select an Institute</h2>
+                        <p id="current-folder-count" class="text-sm text-text-light-muted dark:text-text-dark-muted">1
+                            institute available</p>
+                    </div>
                 </div>
+                <div id="sem-download-wrap"></div>
             </div>
 
             <!-- Folder/File Grid -->
@@ -269,6 +272,25 @@
             </div>
         </div>
     </main>
+
+    <!-- PDF Preview Modal -->
+    <div id="preview-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+        <div class="relative w-full max-w-3xl h-[85vh] rounded-2xl bg-bg-light dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark overflow-hidden flex flex-col">
+            <div class="flex items-center justify-between gap-3 p-4 border-b border-border-light dark:border-border-dark">
+                <h3 id="preview-title" class="text-sm font-semibold truncate"></h3>
+                <div class="flex items-center gap-2 shrink-0">
+                    <a id="preview-download" href="#" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors">
+                        <span class="material-symbols-outlined text-[16px]">download</span>
+                        Download
+                    </a>
+                    <button type="button" onclick="closePreview()" class="flex items-center justify-center w-8 h-8 rounded-lg hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary">
+                        <span class="material-symbols-outlined text-[20px]">close</span>
+                    </button>
+                </div>
+            </div>
+            <iframe id="preview-frame" class="flex-1 w-full" src="" title="PDF preview"></iframe>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer
@@ -395,6 +417,7 @@
         function getCurrentData() {
             let current = data.institutes;
             let level = 'institutes';
+            let semFolderLink = null;
 
             for (let i = 0; i < currentPath.length; i++) {
                 const key = currentPath[i];
@@ -410,6 +433,7 @@
                 } else if (level === 'sems') {
                     // Check if we have types or direct subjects
                     if (current[key].types) {
+                        semFolderLink = current[key].folderLink || null;
                         current = current[key].types;
                         level = 'types';
                     } else {
@@ -422,7 +446,7 @@
                 }
             }
 
-            return { data: current, level };
+            return { data: current, level, semFolderLink };
         }
 
         // Render folder/file content
@@ -431,7 +455,18 @@
             const folderName = document.getElementById('current-folder-name');
             const folderCount = document.getElementById('current-folder-count');
 
-            const { data: currentData, level } = getCurrentData();
+            const { data: currentData, level, semFolderLink } = getCurrentData();
+
+            // Show a "Download Entire Semester" button when browsing a semester's
+            // categories (End-Sem/Mid-Sem/Backlog) and a Drive folder link is set.
+            const semDownloadWrap = document.getElementById('sem-download-wrap');
+            semDownloadWrap.innerHTML = (level === 'types' && semFolderLink) ? `
+                <a href="${semFolderLink}" target="_blank" rel="noopener"
+                    class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-primary/30 bg-primary/10 hover:bg-primary hover:text-white text-primary text-sm font-bold transition-colors btn-shimmer">
+                    <span class="material-symbols-outlined text-[18px]">folder_zip</span>
+                    Download Entire Semester
+                </a>
+            ` : '';
 
             // Update folder info
             if (currentPath.length === 0) {
@@ -521,10 +556,16 @@ Thank you!`);
                             <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type === 'Mid-Sem (Unit Tests)' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">
                                 ${paper.type}
                             </span>
-                            <a href="${paper.file}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
-                                <span class="material-symbols-outlined text-[16px]">download</span>
-                                Download
-                            </a>
+                            <div class="flex items-center gap-1.5">
+                                <button type="button" data-preview-file="${paper.file}" data-preview-title="${paper.name}"
+                                    class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors" title="Preview">
+                                    <span class="material-symbols-outlined text-[18px]">visibility</span>
+                                </button>
+                                <a href="${paper.file}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
+                                    <span class="material-symbols-outlined text-[16px]">download</span>
+                                    Download
+                                </a>
+                            </div>
                         </div>
                     </div>
                 `}).join('');
@@ -672,10 +713,16 @@ Thank you!`);
                         <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type.includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">
                             ${paper.type.split(' ')[0]}
                         </span>
-                        <a href="${paper.file}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
-                            <span class="material-symbols-outlined text-[16px]">download</span>
-                            Download
-                        </a>
+                        <div class="flex items-center gap-1.5">
+                            <button type="button" data-preview-file="${paper.file}" data-preview-title="${paper.name}"
+                                class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors" title="Preview">
+                                <span class="material-symbols-outlined text-[18px]">visibility</span>
+                            </button>
+                            <a href="${paper.file}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
+                                <span class="material-symbols-outlined text-[16px]">download</span>
+                                Download
+                            </a>
+                        </div>
                     </div>
                 </div>
             `}).join('');
@@ -745,6 +792,40 @@ Thank you!`);
         document.getElementById('mobile-menu-btn').addEventListener('click', function () {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
+        });
+
+        // PDF preview modal
+        function extractDriveFileId(driveUrl) {
+            const match = driveUrl.match(/\/d\/([^/]+)/);
+            return match ? match[1] : null;
+        }
+
+        function openPreview(fileUrl, title) {
+            const fileId = extractDriveFileId(fileUrl);
+            if (!fileId) return;
+            document.getElementById('preview-title').textContent = title;
+            document.getElementById('preview-download').href = fileUrl;
+            document.getElementById('preview-frame').src = `https://drive.google.com/file/d/${fileId}/preview`;
+            document.getElementById('preview-modal').classList.remove('hidden');
+        }
+
+        function closePreview() {
+            document.getElementById('preview-modal').classList.add('hidden');
+            document.getElementById('preview-frame').src = ''; // stop playback/loading
+        }
+
+        // Event delegation: preview buttons are re-rendered on every navigation/search
+        document.addEventListener('click', function (e) {
+            const btn = e.target.closest('[data-preview-file]');
+            if (btn) openPreview(btn.dataset.previewFile, btn.dataset.previewTitle);
+        });
+
+        document.getElementById('preview-modal').addEventListener('click', function (e) {
+            if (e.target === this) closePreview(); // click on backdrop closes
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closePreview();
         });
 
         // Sync theme icons

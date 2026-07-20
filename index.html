@@ -531,6 +531,26 @@
             </div>
         </section>
 
+        <!-- Recently Added Section -->
+        <section id="recently-added-section" class="hidden w-full py-16 lg:py-20">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between gap-3 mb-8 animate-on-scroll">
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Recently Added</h2>
+                        <p class="text-text-light-muted dark:text-text-dark-muted">The latest papers uploaded to the
+                            archive</p>
+                    </div>
+                    <a href="browse.html"
+                        class="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline shrink-0">
+                        Browse all
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    </a>
+                </div>
+                <div id="recently-added-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children">
+                </div>
+            </div>
+        </section>
+
         <!-- How It Works Section -->
         <section class="w-full py-20 lg:py-28">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -688,6 +708,50 @@
 
     <!-- Data Store (for dynamic stats) -->
     <script src="js/data.js"></script>
+
+    <!-- Recently Added Widget -->
+    <script>
+        function renderRecentlyAdded() {
+            const papers = [];
+            (function traverse(node, pathNames) {
+                if (!node || typeof node !== 'object') return;
+                if (Array.isArray(node.subjects)) {
+                    node.subjects.forEach(s => { if (s.dateAdded) papers.push({ ...s, path: pathNames.join(' › ') }); });
+                    return;
+                }
+                for (const key of Object.keys(node)) {
+                    const child = node[key];
+                    if (typeof child !== 'object' || child === null) continue;
+                    if (['branches', 'years', 'sems', 'types'].includes(key)) traverse(child, pathNames);
+                    else traverse(child, [...pathNames, child.name || key]);
+                }
+            })(SIT_ARCHIVE_DATA.institutes, []);
+
+            papers.sort((a, b) => b.dateAdded.localeCompare(a.dateAdded));
+            const recent = papers.slice(0, 6);
+            if (recent.length === 0) return; // section stays hidden
+
+            document.getElementById('recently-added-grid').innerHTML = recent.map(paper => `
+                <div class="folder-card flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm animate-on-scroll">
+                    <div class="flex items-start gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary text-2xl shrink-0">description</span>
+                        <div class="min-w-0 flex-1">
+                            <h3 class="font-semibold text-sm truncate">${paper.name}</h3>
+                            <p class="text-xs text-text-light-muted dark:text-text-dark-muted">${paper.code}</p>
+                        </div>
+                    </div>
+                    <p class="text-[11px] text-text-light-muted dark:text-text-dark-muted truncate mb-3" title="${paper.path}">${paper.path}</p>
+                    <a href="${paper.file}" class="mt-auto inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors">
+                        <span class="material-symbols-outlined text-[16px]">download</span>
+                        Download
+                    </a>
+                </div>
+            `).join('');
+            document.getElementById('recently-added-section').classList.remove('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', renderRecentlyAdded);
+    </script>
 
     <!-- Animation Controller -->
     <script src="js/animations.js"></script>

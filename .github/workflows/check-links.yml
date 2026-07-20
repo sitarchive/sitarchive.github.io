@@ -6,16 +6,31 @@ on:
     paths:
       - 'js/data.js'
       - 'scripts/check-links.js'
+      - 'scripts/check-duplicates.js'
   pull_request:
     paths:
       - 'js/data.js'
       - 'scripts/check-links.js'
+      - 'scripts/check-duplicates.js'
   schedule:
     # Every Monday 03:00 UTC
     - cron: '0 3 * * 1'
   workflow_dispatch:
 
 jobs:
+  check-duplicates:
+    if: github.event_name != 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run duplicate checker
+        run: node scripts/check-duplicates.js
+
   check-links:
     runs-on: ubuntu-latest
     steps:
