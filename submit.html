@@ -424,6 +424,12 @@
                                 class="w-4 h-4 text-primary focus:ring-primary" />
                             <span class="text-sm font-medium">Supplementary</span>
                         </label>
+                        <label
+                            class="flex items-center gap-2 px-4 py-3 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark cursor-pointer hover:border-primary/50 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+                            <input type="radio" name="exam-type" value="Backlog"
+                                class="w-4 h-4 text-primary focus:ring-primary" />
+                            <span class="text-sm font-medium">Backlog</span>
+                        </label>
                     </div>
                 </div>
 
@@ -500,6 +506,7 @@
             'SITHYD': [
                 { value: 'CSE', label: 'CSE' },
                 { value: 'CSE-AIML', label: 'CSE AIML' },
+                { value: 'AIML', label: 'AIML' },
                 { value: 'CST', label: 'CST' }
             ],
             'SITNGP': [
@@ -515,7 +522,7 @@
             if (institute === 'SITHYD') {
                 if (branch === 'CSE' || branch === 'CSE-AIML') {
                     return ['2024-28', '2025-29'];
-                } else if (branch === 'CST') {
+                } else if (branch === 'CST' || branch === 'AIML') {
                     return ['2024-28'];
                 }
             }
@@ -708,6 +715,53 @@ Best regards`);
             if (icon) icon.textContent = isDark ? 'light_mode' : 'dark_mode';
             if (iconMobile) iconMobile.textContent = isDark ? 'light_mode' : 'dark_mode';
         }
+
+        // Prefill form from query params (e.g. deep-linked from an empty
+        // category on browse.html: submit.html?institute=SITHYD&branch=CSE&batch=2025-29&semester=Sem+3&examType=Backlog)
+        (function prefillFromQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            const institute = params.get('institute');
+            const branch = params.get('branch');
+            const batch = params.get('batch');
+            const semester = params.get('semester');
+            const examType = params.get('examType');
+
+            if (!institute) return;
+
+            const instituteSelect = document.getElementById('institute');
+            instituteSelect.value = institute;
+            instituteSelect.dispatchEvent(new Event('change'));
+
+            if (branch) {
+                const branchSelect = document.getElementById('branch');
+                const branchInput = document.getElementById('branch-input');
+                if (!branchInput.classList.contains('hidden')) {
+                    branchInput.value = branch;
+                } else {
+                    branchSelect.value = branch;
+                    branchSelect.dispatchEvent(new Event('change'));
+                }
+            }
+
+            if (batch) {
+                const batchSelect = document.getElementById('batch');
+                const batchInput = document.getElementById('batch-input');
+                if (!batchInput.classList.contains('hidden')) {
+                    batchInput.value = batch;
+                } else {
+                    batchSelect.value = batch;
+                }
+            }
+
+            if (semester) {
+                document.getElementById('semester').value = semester;
+            }
+
+            if (examType) {
+                const radio = document.querySelector(`input[name="exam-type"][value="${examType}"]`);
+                if (radio) radio.checked = true;
+            }
+        })();
     </script>
 
     <!-- Animation Controller -->

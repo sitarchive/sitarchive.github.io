@@ -1,0 +1,45 @@
+name: Check paper links
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'js/data.js'
+      - 'scripts/check-links.js'
+  pull_request:
+    paths:
+      - 'js/data.js'
+      - 'scripts/check-links.js'
+  schedule:
+    # Every Monday 03:00 UTC
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run link checker
+        id: check
+        run: node scripts/check-links.js | tee link-check-report.txt
+
+      - name: Open issue on broken links
+        if: failure() && github.event_name == 'schedule'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('link-check-report.txt', 'utf8');
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Broken paper links detected',
+              body: 'The weekly link check found broken links:\n\n```\n' + report + '\n```',
+              labels: ['broken-link'],
+            });

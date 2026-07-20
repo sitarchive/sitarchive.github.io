@@ -397,6 +397,32 @@
             if (level === 'subjects') {
                 // Render files (papers)
                 const folderPath = currentPath.join(' → ');
+
+                if (currentData.length === 0) {
+                    const [instKey, branchKey, batchKey, semKey, typeKey] = currentPath;
+                    const params = new URLSearchParams();
+                    if (instKey) params.set('institute', instKey);
+                    if (branchKey) params.set('branch', branchKey);
+                    if (batchKey) params.set('batch', batchKey);
+                    if (semKey) params.set('semester', semKey);
+                    if (typeKey) params.set('examType', typeKey);
+                    grid.innerHTML = `
+                        <div class="col-span-full flex flex-col items-center justify-center py-16 text-center">
+                            <span class="material-symbols-outlined text-6xl text-text-light-muted dark:text-text-dark-muted mb-4">upload_file</span>
+                            <h3 class="text-lg font-semibold mb-2">No papers uploaded yet</h3>
+                            <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-6 max-w-md">
+                                Nobody's added papers for this category yet. Have one? Be the first to help other students.
+                            </p>
+                            <a href="submit.html?${params.toString()}"
+                                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-sm font-bold transition-colors shadow-glow-sm hover:shadow-glow btn-shimmer">
+                                <span class="material-symbols-outlined text-[18px]">add_circle</span>
+                                Submit a Paper
+                            </a>
+                        </div>
+                    `;
+                    return;
+                }
+
                 grid.innerHTML = currentData.map(paper => {
                     const reportSubject = encodeURIComponent(`SIT Archive - Report Issue: ${paper.name} (${paper.code})`);
                     const reportBody = encodeURIComponent(`Hi SIT Archive Team,
