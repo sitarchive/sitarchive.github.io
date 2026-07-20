@@ -14,6 +14,14 @@ const CHANGELOG_DATA = [
                 "color": "purple",
                 "icon": "badge",
                 "badgeText": "Contributors",
+                "title": "1 More Contributor Added",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">25070725015 &middot; CSE AIML &middot; 2025-29 - thank you!</p>"
+            },
+            {
+                "date": "Jul 20, 2026",
+                "color": "purple",
+                "icon": "badge",
+                "badgeText": "Contributors",
                 "title": "3 More Contributors Added",
                 "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Thanks to three more students for sending in papers. Contributors are listed in the order they were added, oldest first.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\"><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">badge</span>24070724005 &middot; CST &middot; 2024-28</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">badge</span>24070724019 &middot; CST &middot; 2024-28</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">badge</span>25070721055 &middot; CSE &middot; 2025-29</li></ul>"
             },
