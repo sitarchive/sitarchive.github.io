@@ -108,7 +108,11 @@ const SIT_ARCHIVE_DATA = {
                                         "End-Sem": {
                                             name: "End-Sem",
                                             icon: "description",
-                                            subjects: []
+                                            subjects: [
+                                                { name: "Operating Systems", code: "0707240405", file: "https://drive.google.com/file/d/1DK6OLFhXt_5Co2uFnYtut6dqw9wzLcBo/view?usp=drivesdk", type: "End-Sem" },
+                                                { name: "Engineering Mathematics-III", code: "0707240401", file: "https://drive.google.com/file/d/1bb-FV0xbbGLNq1gNgjkNhWg7AFMqQkIj/view?usp=drivesdk", type: "End-Sem" },
+                                                { name: "Database Management Systems", code: "0707240403", file: "https://drive.google.com/file/d/14kJLLuiUIZNvcTyg8iU7uXgouz50yRqH/view?usp=drivesdk", type: "End-Sem" }
+                                            ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
                                             name: "Mid-Sem (Unit Tests)",
@@ -233,7 +237,11 @@ const SIT_ARCHIVE_DATA = {
                                         "Backlog": {
                                             name: "Backlog",
                                             icon: "history",
-                                            subjects: []
+                                            subjects: [
+                                                { name: "Fundamentals of Quantum Physics", code: "0707210102", file: "https://drive.google.com/file/d/1t0UqXe633825WzgiLrS4ObbNRcUeT1pZ/view?usp=drivesdk", type: "Backlog" },
+                                                { name: "Digital Electronics and Logic Design", code: "0707210103", file: "https://drive.google.com/file/d/1eSxb6l_mHsuvSKN6YngCE2Mt6lRKdZtP/view?usp=drivesdk", type: "Backlog" },
+                                                { name: "Calculus", code: "0707210101", file: "https://drive.google.com/file/d/1b-bkllJochQMHVzz8N3-Y2VX4--OnjLu/view?usp=drivesdk", type: "Backlog" }
+                                            ]
                                         }
                                     }
                                 },
@@ -244,7 +252,13 @@ const SIT_ARCHIVE_DATA = {
                                         "End-Sem": {
                                             name: "End-Sem",
                                             icon: "description",
-                                            subjects: []
+                                            subjects: [
+                                                { name: "Computer Architecture and Organisation", code: "0707210205", file: "https://drive.google.com/file/d/1k5KrPDxAUHFA6stjX5X4TF0FTzZSehWB/view?usp=drivesdk", type: "End-Sem" },
+                                                { name: "Linear Algebra", code: "0707210201", file: "https://drive.google.com/file/d/1NvDaiTBiws4kl-ZU7FSlp-J1BNGoO9l-/view?usp=drivesdk", type: "End-Sem" },
+                                                { name: "Microcontrollers and Sensors", code: "0707210202", file: "https://drive.google.com/file/d/154gIBFJzzK6LfokI_zGeI18jk7QtTS6z/view?usp=drivesdk", type: "End-Sem" },
+                                                { name: "Python Programming", code: "0707210207", file: "https://drive.google.com/file/d/1j1xI40_LAEtQyxOhAJNOCrC6iy_Af8uB/view?usp=drivesdk", type: "End-Sem" },
+                                                { name: "Software Engineering", code: "0707210206", file: "https://drive.google.com/file/d/1szpNAMW70xPUtxCwmjW0nf_qEWn9FAge/view?usp=drivesdk", type: "End-Sem" }
+                                            ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
                                             name: "Mid-Sem (Unit Tests)",
@@ -417,7 +431,10 @@ const SIT_ARCHIVE_DATA = {
                                         "Backlog": {
                                             name: "Backlog",
                                             icon: "history",
-                                            subjects: []
+                                            subjects: [
+                                                { name: "Digital Electronics and Logic Design", code: "0707210103", file: "https://drive.google.com/file/d/13TVDGM3G5BwcsNutUkbREQ00eKkB6qqP/view?usp=drivesdk", type: "Backlog" },
+                                                { name: "Chemistry", code: "0707250102", file: "https://drive.google.com/file/d/1UtuxEd_L48B0w7-d_sH062UsBEUZhqci/view?usp=drivesdk", type: "Backlog" }
+                                            ]
                                         }
                                     }
                                 },
@@ -428,7 +445,11 @@ const SIT_ARCHIVE_DATA = {
                                         "End-Sem": {
                                             name: "End-Sem",
                                             icon: "description",
-                                            subjects: []
+                                            subjects: [
+                                                { name: "Statistics for Data Science", code: "0707250202", file: "https://drive.google.com/file/d/1Gvk-ICL7xDjLDxWETPQ-eMl0L2qNB0Y-/view?usp=drivesdk", type: "End-Sem" },
+                                                { name: "Introduction to Artificial Intelligence and Python Programming", code: "0707250205", file: "https://drive.google.com/file/d/1IalTw0Da4MP_bUDp_VTxyQ6NLEy91dlK/view?usp=drivesdk", type: "End-Sem" },
+                                                { name: "Calculus", code: "0707250201", file: "https://drive.google.com/file/d/16oJvSShwdRMibYXrtFmvTKjlBieMIPAz/view?usp=drivesdk", type: "End-Sem" }
+                                            ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
                                             name: "Mid-Sem (Unit Tests)",
@@ -855,7 +876,11 @@ const SIT_ARCHIVE_DATA = {
                                         "End-Sem": {
                                             name: "End-Sem",
                                             icon: "description",
-                                            subjects: []
+                                            subjects: [
+                                                { name: "Operating Systems", code: "0707240405", file: "https://drive.google.com/file/d/1lbvUrSqpI7pB2ypiFP9LGL9wOW842VSO/view?usp=drivesdk", type: "End-Sem" },
+                                                { name: "Engineering Mathematics-III", code: "0707240401", file: "https://drive.google.com/file/d/1vgjXf_H_ACQ1GjLFxjUqZ62KAruicX6K/view?usp=drivesdk", type: "End-Sem" },
+                                                { name: "Database Management Systems", code: "0707240403", file: "https://drive.google.com/file/d/1a9M6_XMyDMjbDWDj5LySycKWnPg8AmFV/view?usp=drivesdk", type: "End-Sem" }
+                                            ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
                                             name: "Mid-Sem (Unit Tests)",
