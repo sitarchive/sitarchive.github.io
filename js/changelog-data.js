@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Jul 21, 2026",
+                "color": "red",
+                "icon": "bug_report",
+                "badgeText": "Bug Fix",
+                "title": "Actual Fix: July Section Invisible on Real Mobile Chrome",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Confirmed via testing on multiple real Android/Chrome devices (not reproducible in desktop or simulated-mobile testing) that switching to \"Desktop site\" mode fixed it - pointing at a scroll-reveal animation, not a data or network issue.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\"><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">bug_report</span>Each month's whole block still faded in via scroll-reveal, gated on 10% of its own height being visible at once. July's block has grown tall enough (many entries) that 10% of it may never be visible in one screenful on a phone, especially since it's the first thing on the page with no scroll to trigger a recalculation - so it could stay stuck invisible. Shorter blocks (June, January) crossed that threshold reliably, which is why only July was ever affected</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">construction</span>Removed the scroll-reveal from month blocks entirely, and lowered the site-wide reveal threshold from 10% to \"any pixel visible\" so this can't recur for any element that grows tall over time (also applied to What's Missing's per-branch groups, which had the same pattern)</li></ul>"
+            },
+            {
+                "date": "Jul 21, 2026",
                 "color": "blue",
                 "icon": "hourglass_top",
                 "badgeText": "Bug Fix",

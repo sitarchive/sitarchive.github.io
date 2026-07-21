@@ -377,16 +377,16 @@
             }
 
             list.innerHTML = filteredGroups.map(g => `
-                <div class="animate-on-scroll">
+                <div>
                     <h2 class="text-lg font-bold mb-3 flex items-center gap-2">
                         <span class="material-symbols-outlined text-primary">folder_off</span>
                         ${g.groupLabel}
                         <span class="text-xs font-medium text-text-light-muted dark:text-text-dark-muted">(${g.items.length} missing)</span>
                     </h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 stagger-children">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                         ${g.items.map(item => `
                             <a href="${item.href}"
-                                class="gap-card flex items-center justify-between gap-3 p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm animate-on-scroll">
+                                class="gap-card flex items-center justify-between gap-3 p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm">
                                 <div class="min-w-0">
                                     <p class="text-sm font-semibold truncate">${item.batch} · ${item.semester}</p>
                                     <p class="text-xs text-text-light-muted dark:text-text-dark-muted">${item.type}</p>
