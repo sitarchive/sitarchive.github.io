@@ -10,6 +10,14 @@ const CHANGELOG_DATA = [
         "subtitle": "Latest updates",
         "entries": [
             {
+                "date": "Jul 21, 2026",
+                "color": "amber",
+                "icon": "smartphone",
+                "badgeText": "Bug Fix",
+                "title": "Fixed Changelog Entries Not Fully Showing on Mobile",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Every changelog entry had a scroll-reveal fade-in with a staggered delay based on its position in the list. With July alone now at 28 entries, that delay stacked up to several seconds for the entries furthest down - on a quick mobile scroll, later entries could still be mid-fade (or not yet triggered) and looked like they were missing entirely. Removed the per-entry animation so all entries render immediately visible regardless of list length. Applied the same fix to the Contributors page for the same reason - it grows the same way.</p>"
+            },
+            {
                 "date": "Jul 20, 2026",
                 "color": "purple",
                 "icon": "badge",

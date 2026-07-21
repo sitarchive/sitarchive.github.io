@@ -241,7 +241,7 @@
 
             <p id="contributor-count" class="text-center text-sm text-text-light-muted dark:text-text-dark-muted mb-8"></p>
 
-            <div id="contributors-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 stagger-children">
+            <div id="contributors-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             </div>
 
             <!-- CTA -->
@@ -291,7 +291,7 @@
             countEl.textContent = `${CONTRIBUTORS_DATA.length} ${CONTRIBUTORS_DATA.length === 1 ? 'student has' : 'students have'} contributed papers`;
 
             grid.innerHTML = CONTRIBUTORS_DATA.map(c => `
-                <div class="contributor-card flex flex-col items-center justify-center gap-1 p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm animate-on-scroll">
+                <div class="contributor-card flex flex-col items-center justify-center gap-1 p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm">
                     <span class="material-symbols-outlined text-primary text-[20px] mb-1">badge</span>
                     <span class="text-sm font-semibold">${c.rollNo}</span>
                     <span class="text-xs text-text-light-muted dark:text-text-dark-muted">${c.branch} &middot; ${c.batch}</span>
