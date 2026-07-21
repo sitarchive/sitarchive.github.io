@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Jul 21, 2026",
+                "color": "green",
+                "icon": "school",
+                "badgeText": "Polish",
+                "title": "Favicon Added, Scroll-Reveal Audited Site-Wide",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Small polish pass after yesterday's mobile bug hunt.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\"><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">school</span>Added a favicon (browser tab icon) - the site never had one</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">verified</span>Audited every page for the same growing-list scroll-reveal pattern that broke July's changelog section - the three spots that were actually at risk (changelog months, What's Missing branch groups, Contributors cards) were already fixed; everything else is fixed-size content, and the site-wide threshold fix from yesterday now protects all of it regardless</li></ul>"
+            },
+            {
+                "date": "Jul 21, 2026",
                 "color": "red",
                 "icon": "bug_report",
                 "badgeText": "Bug Fix",
