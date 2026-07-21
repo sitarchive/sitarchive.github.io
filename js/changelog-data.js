@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Jul 21, 2026",
+                "color": "blue",
+                "icon": "hourglass_top",
+                "badgeText": "Bug Fix",
+                "title": "Real Root Cause: Blank Content Was a Slow-Connection Loading Gap, Not a Bug",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Follow-up after the previous fix didn't actually resolve what was being seen on a real phone. Turned out the page itself was fine - on a slow connection, scrolling down before the changelog data (and its supporting CSS/JS) finished downloading meant the timeline briefly showed nothing at all, which looked like missing entries rather than a page still loading.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\"><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">progress_activity</span>Changelog, What's Missing, and Contributors now show a spinner with \"Loading...\" instead of a blank area while their data loads, so a slow connection reads as \"still loading\" instead of \"broken\"</li></ul>"
+            },
+            {
+                "date": "Jul 21, 2026",
                 "color": "amber",
                 "icon": "smartphone",
                 "badgeText": "Bug Fix",

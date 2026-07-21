@@ -260,7 +260,12 @@
         <!-- Changelog Timeline (rendered from js/changelog-data.js) -->
         <section class="w-full py-8 pb-20">
             <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-                <div id="changelog-timeline"></div>
+                <div id="changelog-timeline">
+                    <div class="flex flex-col items-center justify-center py-16 text-center">
+                        <span class="material-symbols-outlined text-4xl text-primary animate-spin mb-3" style="animation-duration: 1.2s;">progress_activity</span>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted">Loading updates&hellip;</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
