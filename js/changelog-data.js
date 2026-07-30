@@ -10,6 +10,22 @@ const CHANGELOG_DATA = [
         "subtitle": "Latest updates",
         "entries": [
             {
+                "date": "Jul 30, 2026",
+                "color": "purple",
+                "icon": "badge",
+                "badgeText": "Contributors",
+                "title": "1 More Contributor Added",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">24070722005 &middot; AIML &middot; 2024-28 - thank you!</p>"
+            },
+            {
+                "date": "Jul 30, 2026",
+                "color": "green",
+                "icon": "upload_file",
+                "badgeText": "Papers Added",
+                "title": "11 New Question Papers Uploaded",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Added new Backlog and End-Sem papers across CSE, CST, and AIML branches.\n                                </p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">history</span>\n                                        CST & CSE 2024-28 Sem 3 Backlog: Discrete Mathematics, Programming Paradigms, Data Structures, Sensors and Microcontrollers\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">history</span>\n                                        CST & CSE 2024-28 Sem 2 Backlog: Statistics and Probability\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>\n                                        AIML 2024-28 Sem 4 End-Sem: Design and Analysis of Algorithms, Unsupervised Learning\n                                    </li>\n</ul>"
+            },
+            {
                 "date": "Jul 21, 2026",
                 "color": "green",
                 "icon": "school",

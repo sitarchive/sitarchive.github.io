@@ -66,7 +66,9 @@ const SIT_ARCHIVE_DATA = {
                                         "Backlog": {
                                             name: "Backlog",
                                             icon: "history",
-                                            subjects: []
+                                            subjects: [
+                                                { name: "Statistics and Probability", code: "0707240209", file: "https://drive.google.com/file/d/1eZxn2j5Wv_lsTTKyhOQx0cZS0CfEK_8H/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" }
+                                            ]
                                         }
                                     }
                                 },
@@ -100,7 +102,12 @@ const SIT_ARCHIVE_DATA = {
                                         "Backlog": {
                                             name: "Backlog",
                                             icon: "history",
-                                            subjects: []
+                                            subjects: [
+                                                { name: "Discrete Mathematics and Graph Theory", code: "0707240301", file: "https://drive.google.com/file/d/1Rv54J1rAkifSvfh8xxl4VIlNmLz6yJzp/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" },
+                                                { name: "Programming Paradigms", code: "0707240305", file: "https://drive.google.com/file/d/17IT3Kpeubtbawr5neSNIDFwoev5_wyQU/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" },
+                                                { name: "Data Structures", code: "0707240303", file: "https://drive.google.com/file/d/14_0oTxg-duV3y0IiHX_8aXyX1ZxYpPO6/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" },
+                                                { name: "Sensors and Microcontrollers", code: "0707240307", file: "https://drive.google.com/file/d/1a5GmUhrT3CrG8I6_2hvNas6Edp9khYHF/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" }
+                                            ]
                                         }
                                     }
                                 },
@@ -689,7 +696,10 @@ const SIT_ARCHIVE_DATA = {
                                         "End-Sem": {
                                             name: "End-Sem",
                                             icon: "description",
-                                            subjects: []
+                                            subjects: [
+                                                { name: "Design and Analysis of Algorithms", code: "T7909", file: "https://drive.google.com/file/d/1UyVFr5tk2scxB3BNCQxp2idEK_PyG0Wy/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-30" },
+                                                { name: "Unsupervised Learning", code: "070722406", file: "https://drive.google.com/file/d/1-BWW6NZ7dlfe2E_L30PzCzzGR5AP5YXw/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-30" }
+                                            ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
                                             name: "Mid-Sem (Unit Tests)",
@@ -848,7 +858,9 @@ const SIT_ARCHIVE_DATA = {
                                         "Backlog": {
                                             name: "Backlog",
                                             icon: "history",
-                                            subjects: []
+                                            subjects: [
+                                                { name: "Statistics and Probability", code: "0707240209", file: "https://drive.google.com/file/d/1rsmh9NgRDHX4gay_7sUZmwyVkRRhB0Mc/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" }
+                                            ]
                                         }
                                     }
                                 },
@@ -882,7 +894,12 @@ const SIT_ARCHIVE_DATA = {
                                         "Backlog": {
                                             name: "Backlog",
                                             icon: "history",
-                                            subjects: []
+                                            subjects: [
+                                                { name: "Discrete Mathematics and Graph Theory", code: "0707240301", file: "https://drive.google.com/file/d/1cOzoUzMPATHS6JpzVAUJ2goAi0fMKPw-/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" },
+                                                { name: "Programming Paradigms", code: "0707240305", file: "https://drive.google.com/file/d/1JGfLP6giblAe8Z5wwCvbwotJ5fy4NXES/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" },
+                                                { name: "Data Structures", code: "0707240303", file: "https://drive.google.com/file/d/1Q0retGNQY9v5h076d3rgkrdL2bYz9mfA/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" },
+                                                { name: "Sensors and Microcontrollers", code: "0707240307", file: "https://drive.google.com/file/d/1YUN7WNmMIIfnde-LzN_aRpXHpc-i0LnE/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" }
+                                            ]
                                         }
                                     }
                                 },
