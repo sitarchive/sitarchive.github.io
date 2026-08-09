@@ -625,7 +625,12 @@ const SIT_ARCHIVE_DATA = {
                                         "End-Sem": {
                                             name: "End-Sem",
                                             icon: "description",
-                                            subjects: []
+                                            subjects: [
+                                                { name: "Linear Algebra", code: "0707220101", file: "https://drive.google.com/file/d/1IcK-0UENJI-qc9CsKOeKWBTj2XcIkdld/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-08-09" },
+                                                { name: "Introduction to Artificial Intelligence and Python Programming", code: "0707220106", file: "https://drive.google.com/file/d/1GkGj6TSI8Bb_Cm8c9Aa4lEFvY98m45CH/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-08-09" },
+                                                { name: "Chemistry", code: "0707220102", file: "https://drive.google.com/file/d/1DOhe5OFCjS8t1X-oWWID3yxtwDjkB0Qr/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-08-09" },
+                                                { name: "Basic Electrical and Electronics Engineering", code: "", file: "https://drive.google.com/file/d/1rvzhBji3My9MU6tNwE85MPxvtQ1Utt6x/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-08-09" }
+                                            ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
                                             name: "Mid-Sem (Unit Tests)",
@@ -698,13 +703,16 @@ const SIT_ARCHIVE_DATA = {
                                             icon: "description",
                                             subjects: [
                                                 { name: "Design and Analysis of Algorithms", code: "T7909", file: "https://drive.google.com/file/d/1UyVFr5tk2scxB3BNCQxp2idEK_PyG0Wy/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-30" },
-                                                { name: "Unsupervised Learning", code: "070722406", file: "https://drive.google.com/file/d/1-BWW6NZ7dlfe2E_L30PzCzzGR5AP5YXw/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-30" }
+                                                { name: "Unsupervised Learning", code: "070722406", file: "https://drive.google.com/file/d/1-BWW6NZ7dlfe2E_L30PzCzzGR5AP5YXw/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-30" },
+                                                { name: "Supervised Machine Learning", code: "0707220404", file: "https://drive.google.com/file/d/171IXrDJD9dhKDzI0RvWW6WZD-O8xyPDp/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-08-09" }
                                             ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
                                             name: "Mid-Sem (Unit Tests)",
                                             icon: "quiz",
-                                            subjects: []
+                                            subjects: [
+                                                { name: "Design and Analysis of Algorithms", code: "T7909", file: "https://drive.google.com/file/d/13FZr8zJhyAvi10Afmv1mE3peQmzPNLIx/view?usp=drivesdk", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-08-09" }
+                                            ]
                                         },
                                         "Backlog": {
                                             name: "Backlog",

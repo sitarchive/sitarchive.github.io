@@ -6,6 +6,20 @@
 
 const CHANGELOG_DATA = [
     {
+        "month": "August 2026",
+        "subtitle": "Latest updates",
+        "entries": [
+            {
+                "date": "Aug 09, 2026",
+                "color": "green",
+                "icon": "upload_file",
+                "badgeText": "Papers Added",
+                "title": "6 New Question Papers Uploaded",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Added new End-Sem and Mid-Sem papers for AIML 2024-28.\n                                </p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>\n                                        AIML 2024-28 Sem 1 End-Sem: Linear Algebra, Introduction to AI &amp; Python Programming, Chemistry, Basic Electrical and Electronics Engineering\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>\n                                        AIML 2024-28 Sem 4 End-Sem: Supervised Machine Learning\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">quiz</span>\n                                        AIML 2024-28 Sem 4 Mid-Sem: Design and Analysis of Algorithms\n                                    </li>\n</ul>"
+            }
+        ]
+    },
+    {
         "month": "July 2026",
         "subtitle": "Latest updates",
         "entries": [
