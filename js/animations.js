@@ -600,7 +600,7 @@ function initMaintenanceBanner() {
                 <span class="material-symbols-outlined" style="font-size: 16px;">close</span>
             </button>
         </div>
-        <p style="margin: 0; line-height: 1.5; opacity: 0.95;">The site is under a huge maintenance update and due to this, you may find issues with the site or the papers such as broken links and all.</p>
+        <p style="margin: 0; line-height: 1.5; opacity: 0.95;">We are currently undergoing a major maintenance update. You may temporarily experience issues such as broken links or missing papers. Thank you for your patience!</p>
     `;
     
     if (document.body) {
