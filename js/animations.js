@@ -78,19 +78,28 @@ function initStaggeredAnimations() {
 // ===== COUNTER ANIMATIONS =====
 function initCounterAnimations() {
     const counters = document.querySelectorAll('.counter');
-
     if (counters.length === 0) return;
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-                animateCounter(entry.target);
-                entry.target.classList.add('counted');
+    // Use requestAnimationFrame to ensure DOM is painted first
+    requestAnimationFrame(() => {
+        counters.forEach(counter => {
+            if (counter.classList.contains('counted')) return;
+            const target = parseInt(counter.getAttribute('data-target')) || 0;
+            if (target > 0) {
+                counter.classList.add('counted');
+                animateCounter(counter);
             }
         });
-    }, { threshold: 0.5 });
+    });
+}
 
-    counters.forEach(counter => observer.observe(counter));
+function maybeAnimateCounter(element) {
+    if (element.classList.contains('counted')) return;
+    const target = parseInt(element.getAttribute('data-target')) || 0;
+    if (target > 0) {
+        element.classList.add('counted');
+        animateCounter(element);
+    }
 }
 
 function animateCounter(element) {
@@ -417,7 +426,7 @@ function initAutoReveal() {
     ];
 
     targets.forEach(el => {
-        if (!el.closest('nav') && !el.closest('footer') && !el.closest('[id*="mobile"]') && !el.closest('[id*="breadcrumb"]')) {
+        if (!el.closest('nav') && !el.closest('footer') && !el.closest('[id*="mobile"]') && !el.closest('[id*="breadcrumb"]') && !el.classList.contains('stat-card')) {
             el.classList.add('animate-on-scroll');
         }
     });
@@ -575,3 +584,29 @@ window.reinitAnimations = function () {
     initAutoReveal();
     initAutoStagger();
 };
+
+// ===== MAINTENANCE BANNER =====
+function initMaintenanceBanner() {
+    const banner = document.createElement('div');
+    banner.style.cssText = 'position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #C8102E; color: white; padding: 16px 20px; border-radius: 12px; z-index: 100000; box-shadow: 0 10px 25px -5px rgba(200, 16, 46, 0.4); font-weight: 500; max-width: 90%; width: 400px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; backdrop-filter: blur(8px);';
+    
+    banner.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="material-symbols-outlined" style="font-size: 20px;">warning</span>
+                <strong style="font-size: 15px;">Maintenance Update</strong>
+            </div>
+            <button onclick="this.parentElement.parentElement.remove()" style="background: rgba(255,255,255,0.2); border: none; color: white; cursor: pointer; padding: 4px; border-radius: 6px; display: flex; align-items: center; transition: background 0.2s;">
+                <span class="material-symbols-outlined" style="font-size: 16px;">close</span>
+            </button>
+        </div>
+        <p style="margin: 0; line-height: 1.5; opacity: 0.95;">The site is under a huge maintenance update and due to this, you may find issues with the site or the papers such as broken links and all.</p>
+    `;
+    
+    if (document.body) {
+        document.body.appendChild(banner);
+    } else {
+        document.addEventListener('DOMContentLoaded', () => document.body.appendChild(banner));
+    }
+}
+initMaintenanceBanner();

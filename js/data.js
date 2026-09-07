@@ -1080,32 +1080,23 @@ function calculateStats() {
 function updateStatsDisplay() {
     const stats = calculateStats();
 
-    // Update papers count
-    const papersEl = document.getElementById('stat-papers');
-    if (papersEl) {
-        papersEl.textContent = stats.papers;
-        papersEl.setAttribute('data-target', stats.papers);
-    }
+    const statMap = {
+        'stat-papers': stats.papers,
+        'stat-branches': stats.branches,
+        'stat-years': stats.years,
+        'stat-institutes': stats.institutes
+    };
 
-    // Update branches count
-    const branchesEl = document.getElementById('stat-branches');
-    if (branchesEl) {
-        branchesEl.textContent = stats.branches;
-        branchesEl.setAttribute('data-target', stats.branches);
-    }
-
-    // Update years count
-    const yearsEl = document.getElementById('stat-years');
-    if (yearsEl) {
-        yearsEl.textContent = stats.years;
-        yearsEl.setAttribute('data-target', stats.years);
-    }
-
-    // Update institutes count
-    const institutesEl = document.getElementById('stat-institutes');
-    if (institutesEl) {
-        institutesEl.textContent = stats.institutes;
-        institutesEl.setAttribute('data-target', stats.institutes);
+    for (const [id, value] of Object.entries(statMap)) {
+        const el = document.getElementById(id);
+        if (el) {
+            el.setAttribute('data-target', value);
+            // Set textContent immediately as fallback — the counter
+            // animation in animations.js will overwrite this with a
+            // count-up if it runs. This ensures the numbers ALWAYS
+            // show even if animations.js fails to load.
+            el.textContent = value;
+        }
     }
 }
 
