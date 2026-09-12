@@ -469,9 +469,25 @@ PDFs uploaded to Google Drive with public view access.</pre>
                         </div>
                         <span class="text-lg font-bold tracking-tight">SIT Archive</span>
                     </a>
-                    <p class="text-sm text-text-light-muted dark:text-text-dark-muted leading-relaxed max-w-sm">
+                    <p class="text-sm text-text-light-muted dark:text-text-dark-muted leading-relaxed max-w-sm mb-6">
                         Your central hub for previous years' question papers. Built by students, for students.
                     </p>
+                    
+                    <!-- Footer Subscribe -->
+                    <div class="max-w-sm">
+                        <h4 class="text-sm font-bold uppercase tracking-wider mb-3">Weekly Updates</h4>
+                        <form class="flex items-center gap-2 newsletter-form" onsubmit="event.preventDefault(); handleSubscribe(this);">
+                            <input type="email" required placeholder="Enter your email" 
+                                class="flex-1 w-full bg-bg-light dark:bg-bg-dark border border-border-light dark:border-border-dark rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary transition-colors min-w-0">
+                            <button type="submit" 
+                                class="bg-primary hover:bg-primary-hover text-white rounded-lg px-4 py-2 text-sm font-bold transition-colors shrink-0">
+                                Subscribe
+                            </button>
+                        </form>
+                        <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-2 hidden success-msg">
+                            <span class="text-green-500 font-bold">✓ Subscribed!</span> See you on Sunday.
+                        </p>
+                    </div>
                 </div>
 
                 <div>

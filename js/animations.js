@@ -610,3 +610,21 @@ function initMaintenanceBanner() {
     }
 }
 initMaintenanceBanner();
+
+// ===== NEWSLETTER SUBSCRIPTION =====
+window.handleSubscribe = function(form) {
+    const input = form.querySelector('input[type="email"]');
+    const button = form.querySelector('button[type="submit"]');
+    const successMsg = form.nextElementSibling;
+    
+    // Simulate API call
+    const originalText = button.innerHTML;
+    button.innerHTML = '<span class="material-symbols-outlined animate-spin" style="font-size:18px;">progress_activity</span>';
+    button.disabled = true;
+    input.disabled = true;
+    
+    setTimeout(() => {
+        form.style.display = 'none';
+        successMsg.classList.remove('hidden');
+    }, 800);
+};

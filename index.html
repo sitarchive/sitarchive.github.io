@@ -636,6 +636,37 @@
                 </div>
             </div>
         </section>
+
+        <!-- Newsletter CTA Section -->
+        <section class="w-full py-16 bg-primary/5 border-t border-b border-primary/10">
+            <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+                <div class="flex justify-center mb-6">
+                    <span class="flex size-12 items-center justify-center rounded-full bg-primary/20 text-primary">
+                        <span class="material-symbols-outlined text-[24px]">mark_email_unread</span>
+                    </span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-4">Stay in the Loop</h2>
+                <p class="text-text-light-muted dark:text-text-dark-muted max-w-2xl mx-auto mb-8 text-lg">
+                    Get a single weekly email with all new site updates, bug fixes, and question papers. No spam, ever.
+                </p>
+                <form class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto newsletter-form" onsubmit="event.preventDefault(); handleSubscribe(this);">
+                    <input type="email" required placeholder="Enter your email address" 
+                        class="w-full sm:flex-1 bg-bg-light dark:bg-bg-dark border border-border-light dark:border-border-dark rounded-xl px-4 py-3 text-base focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all">
+                    <button type="submit" 
+                        class="w-full sm:w-auto bg-primary hover:bg-primary-hover text-white rounded-xl px-6 py-3 text-base font-bold shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 whitespace-nowrap">
+                        Subscribe Now
+                    </button>
+                </form>
+                <p class="text-sm text-green-500 font-bold mt-4 hidden success-msg">
+                    <span class="material-symbols-outlined text-[16px] align-text-bottom mr-1">check_circle</span>
+                    Subscribed successfully! See you on Sunday.
+                </p>
+                <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-4">
+                    By subscribing, you agree to our <a href="privacy.html" class="text-primary hover:underline">Privacy Policy</a>.
+                </p>
+            </div>
+        </section>
+
     </main>
 
     <!-- PDF Preview Modal -->
@@ -672,9 +703,25 @@
                         </div>
                         <span class="text-lg font-bold tracking-tight">SIT Archive</span>
                     </a>
-                    <p class="text-sm text-text-light-muted dark:text-text-dark-muted leading-relaxed max-w-sm">
+                    <p class="text-sm text-text-light-muted dark:text-text-dark-muted leading-relaxed max-w-sm mb-6">
                         Your central hub for previous years' question papers. Built by students, for students.
                     </p>
+                    
+                    <!-- Footer Subscribe -->
+                    <div class="max-w-sm">
+                        <h4 class="text-sm font-bold uppercase tracking-wider mb-3">Weekly Updates</h4>
+                        <form class="flex items-center gap-2 newsletter-form" onsubmit="event.preventDefault(); handleSubscribe(this);">
+                            <input type="email" required placeholder="Enter your email" 
+                                class="flex-1 w-full bg-bg-light dark:bg-bg-dark border border-border-light dark:border-border-dark rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary transition-colors min-w-0">
+                            <button type="submit" 
+                                class="bg-primary hover:bg-primary-hover text-white rounded-lg px-4 py-2 text-sm font-bold transition-colors shrink-0">
+                                Subscribe
+                            </button>
+                        </form>
+                        <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-2 hidden success-msg">
+                            <span class="text-green-500 font-bold">✓ Subscribed!</span> See you on Sunday.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- Quick Links -->

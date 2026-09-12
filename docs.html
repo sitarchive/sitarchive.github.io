@@ -992,6 +992,34 @@
             </section>
 
             <!-- Changelog -->
+                        <!-- Newsletter Architecture -->
+            <section id="newsletter" class="mb-16">
+                <h2 class="text-2xl font-bold tracking-tight mb-4 flex items-center gap-3">
+                    <span class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary text-sm font-bold">
+                        <span class="material-symbols-outlined text-[18px]">mark_email_unread</span>
+                    </span>
+                    Weekly Newsletter Architecture
+                </h2>
+                
+                <p class="text-text-light-muted dark:text-text-dark-muted mb-4">
+                    To keep students proactively informed about updates, SIT Archive features an automated weekly newsletter subscription system. Since the site is a static host (GitHub Pages), this feature leverages a serverless architecture:
+                </p>
+                <div class="space-y-4 mb-6">
+                    <div class="rounded-xl bg-bg-light dark:bg-bg-dark border border-border-light dark:border-border-dark p-6">
+                        <h4 class="font-bold mb-2 flex items-center gap-2"><span class="text-primary">1.</span> Frontend (Static Site)</h4>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted">Users subscribe via the footer or homepage CTA. The frontend uses a simple JS handler (in <code>js/animations.js</code>) to POST emails directly to our secure Supabase database.</p>
+                    </div>
+                    <div class="rounded-xl bg-bg-light dark:bg-bg-dark border border-border-light dark:border-border-dark p-6">
+                        <h4 class="font-bold mb-2 flex items-center gap-2"><span class="text-primary">2.</span> Database (Supabase)</h4>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted">A Supabase project securely stores subscriber emails. We enforce Row-Level Security (RLS) so the public API key can only <code>INSERT</code> new rows, completely preventing scraping or unauthenticated reading of the email list.</p>
+                    </div>
+                    <div class="rounded-xl bg-bg-light dark:bg-bg-dark border border-border-light dark:border-border-dark p-6">
+                        <h4 class="font-bold mb-2 flex items-center gap-2"><span class="text-primary">3.</span> Automation & Delivery (GitHub Actions & Resend)</h4>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted">A GitHub Action cron job runs weekly (every Sunday). It parses <code>changelog-data.js</code> for the latest updates, fetches active subscribers from Supabase using a secure service role key, and dispatches the styled HTML email using the Resend API.</p>
+                    </div>
+                </div>
+            </section>
+
             <section id="changelog" class="mb-16">
                 <h2 class="text-2xl font-bold tracking-tight mb-4 flex items-center gap-3">
                     <span class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">

@@ -10,6 +10,14 @@ const CHANGELOG_DATA = [
         "subtitle": "Latest updates",
         "entries": [
             {
+                "date": "Sep 12, 2026",
+                "color": "indigo",
+                "icon": "mark_email_unread",
+                "badgeText": "New Feature",
+                "title": "Weekly Newsletter Subscription Added",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">You can now subscribe to get a single weekly email summarizing all new site updates, bug fixes, and uploaded question papers. Subscribe directly from the homepage or the footer of any page!</p>"
+            },
+            {
                 "date": "Sep 07, 2026",
                 "color": "blue",
                 "icon": "delete",
