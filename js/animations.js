@@ -611,20 +611,99 @@ function initMaintenanceBanner() {
 }
 initMaintenanceBanner();
 
+// ===== SUPABASE CONFIG =====
+const SUPABASE_URL = 'https://etlkpjbsculcnrymhflw.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV0bGtwamJzY3VsY25yeW1oZmx3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMTk4NjgsImV4cCI6MjEwNDc5NTg2OH0.PNdvzEujn7F5AJu-GK-5GyVshkZIF9jQAOOof8AiG84';
+
 // ===== NEWSLETTER SUBSCRIPTION =====
-window.handleSubscribe = function(form) {
+window.handleSubscribe = async function(form) {
     const input = form.querySelector('input[type="email"]');
     const button = form.querySelector('button[type="submit"]');
-    const successMsg = form.nextElementSibling;
+    const successMsg = form.closest('.newsletter-form') ? form.nextElementSibling : form.parentElement.querySelector('.success-msg');
+    const email = input.value.trim();
     
-    // Simulate API call
+    if (!email) return;
+    
+    // Show loading state
     const originalText = button.innerHTML;
     button.innerHTML = '<span class="material-symbols-outlined animate-spin" style="font-size:18px;">progress_activity</span>';
     button.disabled = true;
     input.disabled = true;
     
-    setTimeout(() => {
-        form.style.display = 'none';
-        successMsg.classList.remove('hidden');
-    }, 800);
+    try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/subscribers`, {
+            method: 'POST',
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Content-Type': 'application/json',
+                'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify({ email: email })
+        });
+        
+        if (res.ok || res.status === 201) {
+            form.style.display = 'none';
+            if (successMsg) successMsg.classList.remove('hidden');
+        } else if (res.status === 409 || res.status === 400 || res.status === 405) {
+            // Duplicate email or constraint violation
+            form.style.display = 'none';
+            if (successMsg) {
+                successMsg.innerHTML = '<span class="text-primary font-bold">You\'re already subscribed!</span> See you on Sunday.';
+                successMsg.classList.remove('hidden');
+            }
+        } else {
+            throw new Error('Server error');
+        }
+    } catch (err) {
+        button.innerHTML = originalText;
+        button.disabled = false;
+        input.disabled = false;
+        input.value = '';
+        input.placeholder = 'Something went wrong. Try again.';
+        input.classList.add('border-red-500');
+        setTimeout(() => {
+            input.placeholder = 'Enter your email address';
+            input.classList.remove('border-red-500');
+        }, 3000);
+    }
 };
+
+// ===== VISITOR COUNTER (Supabase) =====
+(function initVisitorCounter() {
+    const el = document.getElementById('visitor-count');
+    if (!el) return;
+    
+    const hasVisited = localStorage.getItem('sit_visited');
+    
+    if (!hasVisited) {
+        localStorage.setItem('sit_visited', '1');
+        // Increment via RPC
+        fetch(`${SUPABASE_URL}/rest/v1/rpc/increment_visitors`, {
+            method: 'POST',
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Content-Type': 'application/json'
+            },
+            body: '{}'
+        })
+        .then(r => r.json())
+        .then(count => { if (count != null) el.textContent = Number(count).toLocaleString(); })
+        .catch(() => { el.textContent = '—'; });
+    } else {
+        // Just read the count
+        fetch(`${SUPABASE_URL}/rest/v1/rpc/get_visitors`, {
+            method: 'POST',
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Content-Type': 'application/json'
+            },
+            body: '{}'
+        })
+        .then(r => r.json())
+        .then(count => { if (count != null) el.textContent = Number(count).toLocaleString(); })
+        .catch(() => { el.textContent = '—'; });
+    }
+})();

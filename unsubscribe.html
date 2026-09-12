@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsubscribe - SIT Archive</title>
+    <meta name="description" content="Unsubscribe from SIT Archive weekly updates.">
+    <link rel="canonical" href="https://sitarchive.github.io/unsubscribe.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#C8102E',
+                        'primary-hover': '#a00d25',
+                        'bg-light': '#FFFFFF',
+                        'bg-light-secondary': '#F8F9FA',
+                        'bg-dark': '#0F1117',
+                        'bg-dark-secondary': '#1A1D27',
+                        'text-light': '#111827',
+                        'text-light-muted': '#6B7280',
+                        'text-dark': '#F9FAFB',
+                        'text-dark-muted': '#9CA3AF',
+                        'border-light': '#E5E7EB',
+                        'border-dark': '#2D3348',
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+    <script src="js/theme.js"></script>
+</head>
+
+<body class="bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <nav class="w-full border-b border-border-light dark:border-border-dark bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-md">
+        <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <a class="flex items-center gap-3 group shrink-0" href="index.html">
+                <div class="flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary shadow-sm">
+                    <span class="material-symbols-outlined text-[22px]">school</span>
+                </div>
+                <span class="text-lg font-bold tracking-tight">SIT Archive</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex items-center justify-center px-4 py-16">
+        <div class="max-w-md w-full text-center">
+            
+            <!-- Loading State -->
+            <div id="unsub-loading">
+                <div class="flex justify-center mb-6">
+                    <span class="flex size-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+                        <span class="material-symbols-outlined animate-spin text-[32px]">progress_activity</span>
+                    </span>
+                </div>
+                <h1 class="text-2xl font-bold mb-2">Processing...</h1>
+                <p class="text-text-light-muted dark:text-text-dark-muted">Please wait while we update your preferences.</p>
+            </div>
+
+            <!-- Success State -->
+            <div id="unsub-success" class="hidden">
+                <div class="flex justify-center mb-6">
+                    <span class="flex size-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30 text-green-600">
+                        <span class="material-symbols-outlined text-[32px]">check_circle</span>
+                    </span>
+                </div>
+                <h1 class="text-2xl font-bold mb-2">You've Been Unsubscribed</h1>
+                <p class="text-text-light-muted dark:text-text-dark-muted mb-8">
+                    You will no longer receive weekly updates from SIT Archive. If this was a mistake, you can always re-subscribe from the homepage.
+                </p>
+                <a href="index.html" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white rounded-xl px-6 py-3 font-bold transition-colors">
+                    <span class="material-symbols-outlined text-[18px]">home</span>
+                    Back to SIT Archive
+                </a>
+            </div>
+
+            <!-- Error State -->
+            <div id="unsub-error" class="hidden">
+                <div class="flex justify-center mb-6">
+                    <span class="flex size-16 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/30 text-red-500">
+                        <span class="material-symbols-outlined text-[32px]">error</span>
+                    </span>
+                </div>
+                <h1 class="text-2xl font-bold mb-2">Something Went Wrong</h1>
+                <p class="text-text-light-muted dark:text-text-dark-muted mb-8">
+                    We couldn't process your request. The link may have expired or already been used. If you'd like to unsubscribe, please contact us via the feedback page.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <a href="feedback.html" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white rounded-xl px-6 py-3 font-bold transition-colors">
+                        <span class="material-symbols-outlined text-[18px]">mail</span>
+                        Contact Us
+                    </a>
+                    <a href="index.html" class="inline-flex items-center gap-2 text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark rounded-xl px-6 py-3 font-medium transition-colors">
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+
+            <!-- No Token State -->
+            <div id="unsub-notoken" class="hidden">
+                <div class="flex justify-center mb-6">
+                    <span class="flex size-16 items-center justify-center rounded-full bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600">
+                        <span class="material-symbols-outlined text-[32px]">warning</span>
+                    </span>
+                </div>
+                <h1 class="text-2xl font-bold mb-2">Invalid Unsubscribe Link</h1>
+                <p class="text-text-light-muted dark:text-text-dark-muted mb-8">
+                    This link doesn't contain a valid unsubscribe token. If you received a newsletter email and want to unsubscribe, please use the link provided at the bottom of that email.
+                </p>
+                <a href="index.html" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white rounded-xl px-6 py-3 font-bold transition-colors">
+                    <span class="material-symbols-outlined text-[18px]">home</span>
+                    Back to SIT Archive
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary">school</span>
+                    <span class="font-bold">SIT Archive</span>
+                </div>
+                <p class="text-xs text-text-light-muted dark:text-text-dark-muted">© 2026 SIT Archive. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const SUPABASE_URL = 'https://etlkpjbsculcnrymhflw.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV0bGtwamJzY3VsY25yeW1oZmx3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMTk4NjgsImV4cCI6MjEwNDc5NTg2OH0.PNdvzEujn7F5AJu-GK-5GyVshkZIF9jQAOOof8AiG84';
+
+        (async function() {
+            const params = new URLSearchParams(window.location.search);
+            const token = params.get('token');
+
+            if (!token) {
+                document.getElementById('unsub-loading').classList.add('hidden');
+                document.getElementById('unsub-notoken').classList.remove('hidden');
+                return;
+            }
+
+            try {
+                const res = await fetch(
+                    `${SUPABASE_URL}/rest/v1/subscribers?unsubscribe_token=eq.${token}`,
+                    {
+                        method: 'PATCH',
+                        headers: {
+                            'apikey': SUPABASE_ANON_KEY,
+                            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                            'Content-Type': 'application/json',
+                            'Prefer': 'return=minimal'
+                        },
+                        body: JSON.stringify({ is_active: false })
+                    }
+                );
+
+                document.getElementById('unsub-loading').classList.add('hidden');
+
+                if (res.ok) {
+                    document.getElementById('unsub-success').classList.remove('hidden');
+                } else {
+                    document.getElementById('unsub-error').classList.remove('hidden');
+                }
+            } catch (err) {
+                document.getElementById('unsub-loading').classList.add('hidden');
+                document.getElementById('unsub-error').classList.remove('hidden');
+            }
+        })();
+    </script>
+</body>
+</html>
