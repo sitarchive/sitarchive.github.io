@@ -29,6 +29,9 @@ serve(async (req) => {
 
     // Insert into Supabase using service role (bypasses RLS)
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+    
+    let subscriberData = null;
+
     const { data, error } = await supabase
       .from("subscribers")
       .insert({ email })
@@ -38,15 +41,39 @@ serve(async (req) => {
     if (error) {
       // Duplicate email
       if (error.code === "23505") {
-        return new Response(JSON.stringify({ status: "already_subscribed" }), {
-          status: 200,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
+        // Check if they are currently inactive
+        const { data: existing } = await supabase
+            .from("subscribers")
+            .select("unsubscribe_token, is_active")
+            .eq("email", email)
+            .single();
+
+        if (existing && existing.is_active === false) {
+            // Reactivate them!
+            const { data: updated, error: updateError } = await supabase
+                .from("subscribers")
+                .update({ is_active: true })
+                .eq("email", email)
+                .select("unsubscribe_token")
+                .single();
+            
+            if (updateError) throw updateError;
+            subscriberData = updated;
+        } else {
+            // They are already actively subscribed
+            return new Response(JSON.stringify({ status: "already_subscribed" }), {
+            status: 200,
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
+            });
+        }
+      } else {
+          throw error;
       }
-      throw error;
+    } else {
+        subscriberData = data;
     }
 
-    const unsubscribeUrl = `${SITE_URL}/unsubscribe.html?token=${data.unsubscribe_token}`;
+    const unsubscribeUrl = `${SITE_URL}/unsubscribe.html?token=${subscriberData.unsubscribe_token}`;
 
     // Send welcome email via Brevo
     const emailRes = await fetch("https://api.brevo.com/v3/smtp/email", {
