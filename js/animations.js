@@ -631,21 +631,22 @@ window.handleSubscribe = async function(form) {
     input.disabled = true;
     
     try {
-        const res = await fetch(`${SUPABASE_URL}/rest/v1/subscribers`, {
+        const res = await fetch(`${SUPABASE_URL}/functions/v1/subscribe`, {
             method: 'POST',
             headers: {
                 'apikey': SUPABASE_ANON_KEY,
                 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-                'Content-Type': 'application/json',
-                'Prefer': 'return=minimal'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({ email: email })
         });
         
-        if (res.ok || res.status === 201) {
+        const data = await res.json().catch(() => ({}));
+
+        if (res.ok && data.status === "subscribed") {
             form.style.display = 'none';
             if (successMsg) successMsg.classList.remove('hidden');
-        } else if (res.status === 409 || res.status === 400 || res.status === 405) {
+        } else if (res.ok && data.status === "already_subscribed") {
             // Duplicate email or constraint violation
             form.style.display = 'none';
             if (successMsg) {
