@@ -127,8 +127,9 @@ function buildEmail(updates, unsubscribeToken) {
                     <!-- Header -->
                     <tr>
                         <td style="background-color: #C8102E; padding: 28px 32px; text-align: center;">
+                            <img src="https://sitarchive.github.io/apple-touch-icon.png" alt="SIT Archive Logo" width="48" height="48" style="display: block; margin: 0 auto 12px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
                             <div style="font-size: 22px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.5px;">
-                                📚 SIT Archive
+                                SIT Archive
                             </div>
                             <div style="font-size: 13px; color: rgba(255,255,255,0.8); margin-top: 4px;">
                                 Weekly Update
