@@ -9,8 +9,7 @@ const path = require('path');
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
-const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const FROM_EMAIL = 'SIT Archive <onboarding@resend.dev>';
+const BREVO_API_KEY = process.env.BREVO_API_KEY;
 const SITE_URL = 'https://sitarchive.github.io';
 
 // ── 1. Parse changelog-data.js for recent updates ──
@@ -18,8 +17,8 @@ function getRecentUpdates() {
     const filePath = path.join(__dirname, '..', 'js', 'changelog-data.js');
     let content = fs.readFileSync(filePath, 'utf8');
     
-    // Remove the `const CHANGELOG_DATA = ` prefix and trailing `;`
-    content = content.replace(/^.*?=\s*/s, '').replace(/;\s*$/, '');
+    // Extract just the array by finding 'const CHANGELOG_DATA ='
+    content = content.replace(/^.*?const CHANGELOG_DATA\s*=\s*/s, '').replace(/;\s*$/, '');
     
     let data;
     try {
@@ -169,19 +168,20 @@ function buildEmail(updates, unsubscribeToken) {
 </html>`;
 }
 
-// ── 4. Send email via Resend ──
+// ── 4. Send email via Brevo ──
 async function sendEmail(to, subject, html) {
-    const res = await fetch('https://api.resend.com/emails', {
+    const res = await fetch('https://api.brevo.com/v3/smtp/email', {
         method: 'POST',
         headers: {
-            'Authorization': `Bearer ${RESEND_API_KEY}`,
+            'api-key': BREVO_API_KEY,
+            'accept': 'application/json',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            from: FROM_EMAIL,
-            to: [to],
+            sender: { name: "SIT Archive", email: "lakshman.r3ddy@gmail.com" },
+            to: [{ email: to }],
             subject: subject,
-            html: html
+            htmlContent: html
         })
     });
     
