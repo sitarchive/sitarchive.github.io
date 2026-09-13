@@ -67,7 +67,11 @@ window.PaperStats = {
 };
 
 window.handleVote = function(btn, filePath, type) {
-    if (localStorage.getItem('voted_' + filePath)) return; // Prevent multiple votes
+    if (localStorage.getItem('voted_' + filePath)) {
+        // Prevent multiple votes, but give feedback if they try again
+        alert("You have already voted on this paper!");
+        return;
+    }
 
     // Update UI immediately
     const span = btn.querySelector('span:last-child') || btn;
