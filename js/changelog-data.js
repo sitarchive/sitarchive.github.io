@@ -10,6 +10,14 @@ const CHANGELOG_DATA = [
         "subtitle": "Latest updates",
         "entries": [
             {
+                "date": "Sep 13, 2026",
+                "color": "green",
+                "icon": "analytics",
+                "badgeText": "New Feature",
+                "title": "Paper Analytics & Anti-Spam",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Added downloads tracking and an upvote/downvote rating system to all papers. To ensure data integrity, strict IP-based rate limiting and one-vote-per-paper restrictions have been implemented via secure Edge Functions.</p>"
+            },
+            {
                 "date": "Sep 12, 2026",
                 "color": "indigo",
                 "icon": "mark_email_unread",
