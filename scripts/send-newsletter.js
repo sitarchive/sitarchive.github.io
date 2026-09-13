@@ -70,9 +70,10 @@ function buildEmail(updates, unsubscribeToken) {
     
     const updatesList = updates.map(u => `
         <tr>
-            <td style="padding: 12px 0; border-bottom: 1px solid #E5E7EB;">
-                <div style="font-size: 12px; color: #6B7280; margin-bottom: 4px;">${u.date}</div>
-                <div style="font-weight: 600; color: #111827; margin-bottom: 4px;">${u.title}</div>
+            <td style="padding: 16px 0; border-bottom: 1px solid #E5E7EB;">
+                <div style="font-size: 12px; color: #6B7280; margin-bottom: 6px; font-weight: 600;">${u.date}</div>
+                <div style="font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 8px;">${u.title}</div>
+                <div style="font-size: 14px; color: #4B5563; line-height: 1.5; margin: 0;">${u.bodyHtml.replace(/<[^>]*>?/gm, '')}</div>
             </td>
         </tr>
     `).join('');
