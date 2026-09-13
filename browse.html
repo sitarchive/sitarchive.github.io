@@ -316,7 +316,9 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
     <script src="js/data.js"></script>
+    <script src="js/paper-stats.js"></script>
     <script>
         // Use the centralized data from data.js
         const data = SIT_ARCHIVE_DATA;
@@ -550,7 +552,7 @@ Thank you!`);
                     const reportLink = `mailto:students.sit.archive@gmail.com?subject=${reportSubject}&body=${reportBody}`;
 
                     return `
-                    <div class="folder-card relative flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm cursor-pointer group">
+                    <div class="folder-card relative h-full flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm cursor-pointer group">
                         <a href="${reportLink}" class="absolute top-3 right-3 p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-red-500 dark:hover:text-red-400 transition-colors" title="Report an issue">
                             <span class="material-symbols-outlined text-[18px]">flag</span>
                         </a>
@@ -652,29 +654,87 @@ Thank you!`);
             }
         }
 
+
+        // === FUZZY SEARCH INITIALIZATION ===
+        let fuseInstance = null;
+        let flattenedPapers = [];
+
+        function buildSearchIndex() {
+            flattenedPapers = [];
+            
+            const getAcronym = (name) => {
+                const stops = ['and', 'or', 'of', 'for', 'in', '&'];
+                return name.split(/[^a-zA-Z0-9]+/)
+                    .filter(w => w && !stops.includes(w.toLowerCase()))
+                    .map(w => w[0])
+                    .join('').toUpperCase();
+            };
+
+            function traverse(node, pathNames) {
+                if (!node || typeof node !== 'object') return;
+                
+                if (node.subjects && Array.isArray(node.subjects)) {
+                    node.subjects.forEach(paper => {
+                        const acronym = getAcronym(paper.name);
+                        flattenedPapers.push({
+                            paper: paper,
+                            path: pathNames,
+                            searchTerms: `${paper.name} ${paper.code} ${acronym} ${pathNames.join(' ')}`
+                        });
+                    });
+                    return;
+                }
+                
+                for (const key of Object.keys(node)) {
+                    if (key === 'branches' || key === 'years' || key === 'sems' || key === 'types') {
+                        traverse(node[key], pathNames);
+                    } else {
+                        const child = node[key];
+                        if (typeof child === 'object') {
+                            traverse(child, [...pathNames, child.name || key]);
+                        }
+                    }
+                }
+            }
+            
+            if(data && data.institutes) {
+                traverse(data.institutes, []);
+            }
+
+            fuseInstance = new Fuse(flattenedPapers, {
+                keys: ['searchTerms', 'paper.name', 'paper.code'],
+                threshold: 0.4,
+                ignoreLocation: true,
+                minMatchCharLength: 2
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            buildSearchIndex();
+        });
+
         // Search functionality
         document.getElementById('search-input').addEventListener('input', function (e) {
-            const query = e.target.value.toLowerCase().trim();
+            const query = e.target.value.trim();
             const grid = document.getElementById('content-grid');
             const folderName = document.getElementById('current-folder-name');
             const folderCount = document.getElementById('current-folder-count');
             const breadcrumb = document.getElementById('breadcrumb');
 
             if (query === '') {
-                // Restore current view
                 renderContent();
                 breadcrumb.style.opacity = '1';
                 return;
             }
 
-            // Hide breadcrumb during search
+            if (!fuseInstance) buildSearchIndex();
+            
             breadcrumb.style.opacity = '0.5';
+            
+            const searchResults = fuseInstance.search(query);
+            const results = searchResults.map(r => r.item);
 
-            // Perform global search
-            const results = searchAll(data.institutes, query);
-
-            // Update UI
-            folderName.textContent = `Search Results for "${e.target.value}"`;
+            folderName.textContent = `Search Results for "${query}"`;
             folderCount.textContent = `${results.length} found`;
 
             if (results.length === 0) {
@@ -692,33 +752,27 @@ Thank you!`);
             grid.innerHTML = results.map(item => {
                 const paper = item.paper;
                 const pathStr = item.path.join(' › ');
-
-                // Report link generation
                 const reportSubject = encodeURIComponent(`SIT Archive - Report Issue: ${paper.name} (${paper.code})`);
                 const reportBody = encodeURIComponent(`Hi SIT Archive Team,\n\nI would like to report an issue with the following paper:\n\n📍 Location: ${pathStr}\n📄 Paper: ${paper.name}\n📝 Code: ${paper.code}\n📌 Type: ${paper.type}\n\n🔴 Issue Description:\n[Please describe the issue here]\n\nThank you!`);
                 const reportLink = `mailto:students.sit.archive@gmail.com?subject=${reportSubject}&body=${reportBody}`;
 
-                return `
-                <div class="folder-card relative flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm cursor-pointer group">
-                    <a href="${reportLink}" class="absolute top-3 right-3 p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-red-500 dark:hover:text-red-400 transition-colors" title="Report an issue">
+                return `<div class="folder-card relative h-full flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm group hover-lift">` +
+                    `<a href="${reportLink}" class="absolute top-3 right-3 p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-red-500 dark:hover:text-red-400 transition-colors" title="Report an issue">
                         <span class="material-symbols-outlined text-[18px]">flag</span>
-                    </a>
-                    <div class="flex items-start gap-3 mb-2 pr-8">
+                    </a>` +
+                    `<div class="flex items-start gap-3 mb-2 pr-8">
                         <span class="material-symbols-outlined text-primary text-2xl shrink-0">description</span>
                         <div class="min-w-0 flex-1">
                             <h3 class="font-semibold text-sm group-hover:text-primary transition-colors truncate">${paper.name}</h3>
                             <p class="text-xs text-text-light-muted dark:text-text-dark-muted">${paper.code}</p>
                         </div>
-                    </div>
-                    
-                    <!-- Path Context -->
-                    <div class="mb-3 px-2 py-1 rounded bg-bg-light-tertiary dark:bg-bg-dark-tertiary">
+                    </div>` +
+                    `<div class="mb-3 px-2 py-1 rounded bg-bg-light-tertiary dark:bg-bg-dark-tertiary">
                         <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted truncate" title="${pathStr}">
                             ${pathStr}
                         </p>
-                    </div>
-
-                    <div class="flex items-center justify-between mt-auto gap-2">
+                    </div>` +
+                    `<div class="flex items-center justify-between gap-2">
                         <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type.includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">
                             ${paper.type.split(' ')[0]}
                         </span>
@@ -727,75 +781,37 @@ Thank you!`);
                                 class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors" title="Preview">
                                 <span class="material-symbols-outlined text-[18px]">visibility</span>
                             </button>
-                            <a href="${paper.file}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
+                            <a href="${paper.file}" onclick="if(window.PaperStats) window.PaperStats.recordDownload('${paper.file}')" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
                                 <span class="material-symbols-outlined text-[16px]">download</span>
                                 Download
                             </a>
                         </div>
-                    </div>
-                </div>
-            `}).join('');
+                    </div>` +
+                    (() => {
+                        const stats = window.PaperStats ? window.PaperStats.getStats(paper.file) : {downloads:0, upvotes:0, downvotes:0};
+                        const isVoted = localStorage.getItem('voted_' + paper.file) ? 'opacity-50 cursor-not-allowed' : '';
+                        return `
+                        <div class="mt-4 pt-3 border-t border-border-light dark:border-border-dark flex items-center justify-between text-xs text-text-light-muted dark:text-text-dark-muted mt-auto">
+                            <div class="flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[14px]">download</span>
+                                <span>${stats.downloads}</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button type="button" onclick="handleVote(this, '${paper.file}', 'up'); event.stopPropagation(); event.preventDefault();" class="flex items-center gap-1 hover:text-green-500 transition-colors ${isVoted}" title="Helpful">
+                                    <span class="material-symbols-outlined text-[14px]">thumb_up</span>
+                                    <span>${stats.upvotes}</span>
+                                </button>
+                                <button type="button" onclick="handleVote(this, '${paper.file}', 'down'); event.stopPropagation(); event.preventDefault();" class="flex items-center gap-1 hover:text-red-500 transition-colors ${isVoted}" title="Not Helpful">
+                                    <span class="material-symbols-outlined text-[14px]">thumb_down</span>
+                                    <span>${stats.downvotes}</span>
+                                </button>
+                            </div>
+                        </div>
+                        `;
+                    })() +
+                `</div>`;
+            }).join('');
         });
-
-        function searchAll(root, query) {
-            const results = [];
-
-            // Recursive traversal
-            // Structure: Institutes -> Branches -> Years -> Sems -> (Types) -> Subjects
-
-            function traverse(node, pathNames) {
-                if (!node) return;
-
-                // Check for subjects array (Leaf node)
-                if (node.subjects && Array.isArray(node.subjects)) {
-                    node.subjects.forEach(subject => {
-                        const nameMatch = subject.name.toLowerCase().includes(query);
-                        const codeMatch = subject.code && subject.code.toLowerCase().includes(query);
-
-                        if (nameMatch || codeMatch) {
-                            results.push({
-                                paper: subject,
-                                path: pathNames
-                            });
-                        }
-                    });
-                    return; // Stop processing this node as it's a leaf container
-                }
-
-                // Recurse through children
-                // We handle specific hierarchy levels based on structure conventions
-                // But generic traversal is safer for catching everything provided we skip non-containers
-
-                for (const key in node) {
-                    const child = node[key];
-                    if (typeof child === 'object' && child !== null) {
-                        // Skip metadata keys that are strings/icons
-                        if (key === 'icon' || key === 'name') continue;
-
-                        // Determine readable name for path
-                        const readableName = child.name || key;
-
-                        // Recurse
-                        // Special handling to drill down: institutes->branches, branches->years, etc.
-                        // The structure in data.js uses wrapping keys: 'branches', 'years', 'sems', 'types'
-                        // We iterate INTO those wrapping keys.
-
-                        if (key === 'branches' || key === 'years' || key === 'sems' || key === 'types') {
-                            // This is a wrapper object, recurse into its values
-                            // But the wrapper itself doesn't add to path name, its CHILDREN do
-                            traverse(child, pathNames);
-                        } else {
-                            // This is an actual entity (SITHYD, CSE, 2024-28, etc)
-                            // So we add it to path
-                            traverse(child, [...pathNames, readableName]);
-                        }
-                    }
-                }
-            }
-
-            traverse(root, []);
-            return results;
-        }
 
         // Mobile menu toggle
         document.getElementById('mobile-menu-btn').addEventListener('click', function () {

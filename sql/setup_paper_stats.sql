@@ -1,0 +1,59 @@
+-- Create paper_stats table
+CREATE TABLE IF NOT EXISTS public.paper_stats (
+    file_path TEXT PRIMARY KEY,
+    downloads INTEGER DEFAULT 0,
+    upvotes INTEGER DEFAULT 0,
+    downvotes INTEGER DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Enable RLS
+ALTER TABLE public.paper_stats ENABLE ROW LEVEL SECURITY;
+
+-- Allow public read access
+CREATE POLICY "Allow public read access" ON public.paper_stats
+    FOR SELECT TO public USING (true);
+
+-- Create table for tracking user actions (Anti-Spam)
+CREATE TABLE IF NOT EXISTS public.action_logs (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    ip_address TEXT NOT NULL,
+    action_type TEXT NOT NULL, -- 'download', 'upvote', 'downvote'
+    file_path TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Enable RLS on action_logs
+ALTER TABLE public.action_logs ENABLE ROW LEVEL SECURITY;
+-- No public access policies. Only service role (Edge Function) can read/write.
+
+-- Create an index to quickly count recent actions by IP
+CREATE INDEX idx_action_logs_ip_created ON public.action_logs(ip_address, action_type, created_at);
+CREATE INDEX idx_action_logs_ip_file ON public.action_logs(ip_address, action_type, file_path);
+
+-- Create an RPC to atomically increment stats
+CREATE OR REPLACE FUNCTION increment_paper_stat(p_file_path TEXT, p_stat_column TEXT)
+RETURNS void
+LANGUAGE plpgsql
+SECURITY DEFINER -- Runs as database owner, allowing it to bypass RLS for the insert/update
+AS $$
+BEGIN
+    IF p_stat_column = 'downloads' THEN
+        INSERT INTO public.paper_stats (file_path, downloads)
+        VALUES (p_file_path, 1)
+        ON CONFLICT (file_path) DO UPDATE
+        SET downloads = public.paper_stats.downloads + 1, updated_at = NOW();
+    ELSIF p_stat_column = 'upvotes' THEN
+        INSERT INTO public.paper_stats (file_path, upvotes)
+        VALUES (p_file_path, 1)
+        ON CONFLICT (file_path) DO UPDATE
+        SET upvotes = public.paper_stats.upvotes + 1, updated_at = NOW();
+    ELSIF p_stat_column = 'downvotes' THEN
+        INSERT INTO public.paper_stats (file_path, downvotes)
+        VALUES (p_file_path, 1)
+        ON CONFLICT (file_path) DO UPDATE
+        SET downvotes = public.paper_stats.downvotes + 1, updated_at = NOW();
+    END IF;
+END;
+$$;
