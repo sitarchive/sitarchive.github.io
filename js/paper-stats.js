@@ -28,13 +28,11 @@ window.PaperStats = {
     },
 
     async recordDownload(filePath) {
-        // Increment locally for immediate UI update
         if (!this.statsMap[filePath]) {
             this.statsMap[filePath] = { downloads: 0, upvotes: 0, downvotes: 0 };
         }
         this.statsMap[filePath].downloads++;
 
-        // Send to Edge Function
         fetch(`${STATS_SUPABASE_URL}/functions/v1/track-interaction`, {
             method: 'POST',
             headers: { 
@@ -45,49 +43,93 @@ window.PaperStats = {
         }).catch(() => {});
     },
 
-    async votePaper(filePath, voteType) { // voteType is 'upvote' or 'downvote'
-        // Increment locally for immediate UI update
+    async votePaper(filePath, action) {
         if (!this.statsMap[filePath]) {
             this.statsMap[filePath] = { downloads: 0, upvotes: 0, downvotes: 0 };
         }
         
-        if (voteType === 'upvote') this.statsMap[filePath].upvotes++;
-        else if (voteType === 'downvote') this.statsMap[filePath].downvotes++;
+        let apiAction = action;
+        if (action === 'up') {
+            this.statsMap[filePath].upvotes++;
+            apiAction = 'upvote';
+        } else if (action === 'down') {
+            this.statsMap[filePath].downvotes++;
+            apiAction = 'downvote';
+        } else if (action === 'undo_up') {
+            this.statsMap[filePath].upvotes = Math.max(0, this.statsMap[filePath].upvotes - 1);
+            apiAction = 'undo_upvote';
+        } else if (action === 'undo_down') {
+            this.statsMap[filePath].downvotes = Math.max(0, this.statsMap[filePath].downvotes - 1);
+            apiAction = 'undo_downvote';
+        }
 
-        // Send to Edge Function
         fetch(`${STATS_SUPABASE_URL}/functions/v1/track-interaction`, {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${STATS_SUPABASE_ANON_KEY}`
             },
-            body: JSON.stringify({ file_path: filePath, action: voteType })
+            body: JSON.stringify({ file_path: filePath, action: apiAction })
         }).catch(() => {});
     }
 };
 
 window.handleVote = function(btn, filePath, type) {
-    if (localStorage.getItem('voted_' + filePath)) {
-        // Prevent multiple votes, but give feedback if they try again
-        alert("You have already voted on this paper!");
-        return;
+    let existingVote = localStorage.getItem('voted_' + filePath);
+    
+    // Handle legacy votes which were just stored as 'true'
+    if (existingVote === 'true') {
+        existingVote = type; // Assume they clicked what they previously voted for to let them undo it
+    }
+    
+    const container = btn.closest('.flex.items-center.gap-2');
+    const upBtn = container.querySelector('button[title="Helpful"]');
+    const downBtn = container.querySelector('button[title="Not Helpful"]');
+    
+    if (existingVote) {
+        if (existingVote === type) {
+            // UNDO VOTE
+            localStorage.removeItem('voted_' + filePath);
+            
+            // Decrement UI
+            const span = btn.querySelector('.vote-count');
+            const currentVal = parseInt(span.textContent) || 0;
+            span.textContent = Math.max(0, currentVal - 1);
+            
+            // Reset button classes
+            upBtn.className = "flex items-center gap-1 transition-colors hover:text-green-500";
+            downBtn.className = "flex items-center gap-1 transition-colors hover:text-red-500";
+            
+            if (window.PaperStats) {
+                window.PaperStats.votePaper(filePath, 'undo_' + type);
+            }
+            return;
+        } else {
+            // Tried to vote differently
+            alert("Please undo your previous vote first by clicking it again.");
+            return;
+        }
     }
 
-    // Update UI immediately
-    const span = btn.querySelector('span:last-child') || btn;
-    const currentVal = parseInt(span.textContent.replace(/[^0-9]/g, '')) || 0;
-    span.innerHTML = span.innerHTML.replace(/[0-9]+/, currentVal + 1);
+    // NEW VOTE
+    const span = btn.querySelector('.vote-count');
+    const currentVal = parseInt(span.textContent) || 0;
+    span.textContent = currentVal + 1;
+    
+    // Mark as voted in UI
+    if (type === 'up') {
+        upBtn.className = "flex items-center gap-1 transition-colors text-green-500 font-bold";
+        downBtn.className = "flex items-center gap-1 transition-colors opacity-50";
+    } else {
+        downBtn.className = "flex items-center gap-1 transition-colors text-red-500 font-bold";
+        upBtn.className = "flex items-center gap-1 transition-colors opacity-50";
+    }
 
-    // Disable both buttons in the group
-    const group = btn.parentElement;
-    group.querySelectorAll('button').forEach(b => {
-        b.classList.add('opacity-50', 'cursor-not-allowed');
-    });
+    // Store in localStorage
+    localStorage.setItem('voted_' + filePath, type);
 
-    localStorage.setItem('voted_' + filePath, 'true');
-
+    // Send to backend
     if (window.PaperStats) {
-        const actionType = type === 'up' ? 'upvote' : 'downvote';
-        window.PaperStats.votePaper(filePath, actionType);
+        window.PaperStats.votePaper(filePath, type);
     }
 };
