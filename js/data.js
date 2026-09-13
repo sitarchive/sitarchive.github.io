@@ -734,7 +734,6 @@ const SIT_ARCHIVE_DATA = {
                                             name: "End-Sem",
                                             icon: "description",
                                             subjects: [
-                                                { name: "Design and Analysis of Algorithms", code: "T7909", file: "https://drive.google.com/file/d/1UyVFr5tk2scxB3BNCQxp2idEK_PyG0Wy/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-30" },
                                                 { name: "Unsupervised Learning", code: "0707220406", file: "https://drive.google.com/file/d/1UJRzJqOIZMjfSA_IOjkTaXjHpiJfW6EN/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
                                                 { name: "Supervised Machine Learning", code: "0707220404", file: "https://drive.google.com/file/d/1fd34CBQ4PUjTtbv3R_nrwCws-8R8DCNr/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
                                                 { name: "Discrete Mathematics", code: "0707220409", file: "https://drive.google.com/file/d/1otIzQy7LIv6t5T6taquhqh5gaJkm0AZL/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }

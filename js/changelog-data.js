@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Sep 14, 2026",
+                "color": "red",
+                "icon": "delete",
+                "badgeText": "Content Removed",
+                "title": "Removed Invalid Paper",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Completely removed the <strong>Design and Analysis of Algorithms (T7909)</strong> paper from the AIML 2024-28 Sem 4 End-Sem section as requested.</p>"
+            },
+            {
+                "date": "Sep 14, 2026",
                 "color": "green",
                 "icon": "library_books",
                 "badgeText": "Massive Update",
