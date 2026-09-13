@@ -6,7 +6,7 @@ window.PaperStats = {
 
     async init() {
         try {
-            const response = await fetch(`${STATS_SUPABASE_URL}/rest/v1/paper_stats?select=file_path,downloads,upvotes,downvotes`, {
+            const response = await fetch(`${STATS_SUPABASE_URL}/rest/v1/paper_stats?select=file_path,downloads,upvotes,downvotes&_=${Date.now()}`, {
                 headers: {
                     'apikey': STATS_SUPABASE_ANON_KEY,
                     'Authorization': `Bearer ${STATS_SUPABASE_ANON_KEY}`
