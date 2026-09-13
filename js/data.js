@@ -708,7 +708,7 @@ const SIT_ARCHIVE_DATA = {
                                             subjects: [
                                                 { name: "Probability and Random Processes", code: "0707220301", file: "https://drive.google.com/file/d/1sdK08XTex4lrJSpl6GEb_WWRNgA4J9_Q/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-13" },
                                                 { name: "Database Concepts for Data Science", code: "0707220305", file: "https://drive.google.com/file/d/1lK_z2Nq9ZzNIVsVQw1maad3mApEyvvPE/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-13" },
-                                                { name: "Data Structures and Algorithms", code: "0707220302", file: "https://drive.google.com/file/d/1lK_z2Nq9ZzNIVsVQw1maad3mApEyvvPE/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-13" }
+                                                { name: "Data Structures and Algorithms", code: "0707220302", file: "https://drive.google.com/file/d/1M6WgRiQZ1GDHVm13ailn8dpzH2GrBatN/view?usp=drive_link", type: "Backlog", dateAdded: "2026-09-13" }
                                             ]
                                         }
                                     }

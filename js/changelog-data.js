@@ -10,6 +10,14 @@ const CHANGELOG_DATA = [
         "subtitle": "Latest updates",
         "entries": [
             {
+                "date": "Sep 14, 2026",
+                "color": "green",
+                "icon": "link",
+                "badgeText": "Content Update",
+                "title": "Updated Paper Links",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Corrected the file link for the AIML Sem 3 Backlog paper: <strong>Data Structures and Algorithms</strong> to its proper, high-quality version.</p>"
+            },
+            {
                 "date": "Sep 13, 2026",
                 "color": "blue",
                 "icon": "rule",
