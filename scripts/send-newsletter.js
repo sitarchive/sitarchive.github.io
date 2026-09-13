@@ -205,7 +205,7 @@ async function main() {
     console.log(`📋 Found ${updates.length} update(s) from the past 7 days`);
     
     const subject = updates.length > 0
-        ? `SIT Archive Weekly Update 🚀`
+        ? `SIT Archive Weekly Update`
         : `SIT Archive Weekly Check-in`;
     
     // Get subscribers
