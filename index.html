@@ -933,11 +933,20 @@
             if (!window.PaperStats) return;
             const papersWithStats = allPapers.map(p => {
                 const stats = window.PaperStats.getStats(p.file);
-                return { ...p, downloads: stats.downloads || 0 };
-            }).filter(p => p.downloads > 0);
+                // Calculate a trending score: 1 point per download, 3 points per upvote, -1 per downvote
+                const score = (stats.downloads || 0) + ((stats.upvotes || 0) * 3) - (stats.downvotes || 0);
+                return { ...p, score: score, downloads: stats.downloads, upvotes: stats.upvotes };
+            });
             
-            papersWithStats.sort((a, b) => b.downloads - a.downloads);
+            // Sort by highest score first, fallback to alphabetical or date added
+            papersWithStats.sort((a, b) => {
+                if (b.score !== a.score) return b.score - a.score;
+                return (b.dateAdded || '').localeCompare(a.dateAdded || '');
+            });
+            
             const trending = papersWithStats.slice(0, 6);
+            
+            // If no papers have any engagement yet, we don't render the section.
             if (trending.length === 0) return;
 
             document.getElementById('trending-grid').innerHTML = trending.map(paper => `
