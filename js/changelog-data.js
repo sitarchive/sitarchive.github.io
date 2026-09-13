@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Sep 13, 2026",
+                "color": "blue",
+                "icon": "rule",
+                "badgeText": "CI Pipeline",
+                "title": "Improved Duplicate Detection Workflow",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Upgraded the GitHub Actions CI script to intelligently handle duplicate papers. It now allows multiple Backlog attempts (e.g., Nov 2025 vs May 2025) while strictly enforcing replacement for exact-name duplicates to maintain repository quality. Duplicate Drive links are now gracefully handled as warnings.</p>"
+            },
+            {
+                "date": "Sep 13, 2026",
                 "color": "green",
                 "icon": "sync",
                 "badgeText": "Bug Fix",
