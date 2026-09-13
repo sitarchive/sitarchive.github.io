@@ -563,7 +563,7 @@ Thank you!`);
                                 <p class="text-xs text-text-light-muted dark:text-text-dark-muted">${paper.code}</p>
                             </div>
                         </div>
-                        <div class="flex items-center justify-between mt-auto gap-2">
+                        <div class="flex items-center justify-between gap-2">
                             <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type === 'Mid-Sem (Unit Tests)' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">
                                 ${paper.type}
                             </span>
@@ -572,12 +572,34 @@ Thank you!`);
                                     class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors" title="Preview">
                                     <span class="material-symbols-outlined text-[18px]">visibility</span>
                                 </button>
-                                <a href="${paper.file}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
+                                <a href="${paper.file}" onclick="if(window.PaperStats) window.PaperStats.recordDownload('${paper.file}')" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
                                     <span class="material-symbols-outlined text-[16px]">download</span>
                                     Download
                                 </a>
                             </div>
                         </div>
+                        ${(() => {
+                            const stats = window.PaperStats ? window.PaperStats.getStats(paper.file) : {downloads:0, upvotes:0, downvotes:0};
+                            const isVoted = localStorage.getItem('voted_' + paper.file) ? 'opacity-50 cursor-not-allowed' : '';
+                            return `
+                            <div class="mt-4 pt-3 border-t border-border-light dark:border-border-dark flex items-center justify-between text-xs text-text-light-muted dark:text-text-dark-muted mt-auto">
+                                <div class="flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-[14px]">download</span>
+                                    <span>${stats.downloads}</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <button type="button" onclick="handleVote(this, '${paper.file}', 'up'); event.stopPropagation(); event.preventDefault();" class="flex items-center gap-1 hover:text-green-500 transition-colors ${isVoted}" title="Helpful">
+                                        <span class="material-symbols-outlined text-[14px]">thumb_up</span>
+                                        <span>${stats.upvotes}</span>
+                                    </button>
+                                    <button type="button" onclick="handleVote(this, '${paper.file}', 'down'); event.stopPropagation(); event.preventDefault();" class="flex items-center gap-1 hover:text-red-500 transition-colors ${isVoted}" title="Not Helpful">
+                                        <span class="material-symbols-outlined text-[14px]">thumb_down</span>
+                                        <span>${stats.downvotes}</span>
+                                    </button>
+                                </div>
+                            </div>
+                            `;
+                        })()}
                     </div>
                 `}).join('');
             } else {
@@ -879,7 +901,10 @@ Thank you!`);
         }
 
         // Initial render — restore folder from the URL hash if present (deep link / refresh)
-        (function initialRender() {
+        (async function initialRender() {
+            if (window.PaperStats) {
+                await window.PaperStats.init();
+            }
             const path = hashToPath();
             if (path.length && isValidPath(path)) {
                 applyPath(path);
