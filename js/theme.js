@@ -52,7 +52,7 @@ const SUPABASE_URL = 'https://etlkpjbsculcnrymhflw.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV0bGtwamJzY3VsY25yeW1oZmx3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMTk4NjgsImV4cCI6MjEwNDc5NTg2OH0.PNdvzEujn7F5AJu-GK-5GyVshkZIF9jQAOOof8AiG84';
 
 // ===== VISITOR COUNTER =====
-(function initVisitorCounter() {
+function initVisitorCounter() {
     const el = document.getElementById('visitor-count');
     if (!el) return;
     
@@ -88,4 +88,5 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
         .then(count => { if (count != null) el.textContent = Number(count).toLocaleString(); })
         .catch(() => { el.textContent = '—'; });
     }
-})();
+}
+document.addEventListener('DOMContentLoaded', initVisitorCounter);
