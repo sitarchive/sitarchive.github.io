@@ -15,7 +15,7 @@ const CHANGELOG_DATA = [
                 "icon": "sync",
                 "badgeText": "Bug Fix",
                 "title": "Fixed Stale Download Counts on Homepage",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Resolved an issue where the \"Recently Added\" and \"Trending\" sections on the homepage were displaying stale or 0 download counts due to aggressive browser caching. The stats now sync instantly with the live database.</p>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Resolved an issue where the \"Recently Added\" and \"Trending\" sections on the homepage were displaying stale or 0 download counts due to aggressive browser caching, and fixed a subsequent API bug that caused all counts to temporarily disappear. The stats now sync flawlessly with the live database.</p>"
             },
             {
                 "date": "Sep 13, 2026",
