@@ -1,20 +1,3 @@
--- Create paper_stats table
-CREATE TABLE IF NOT EXISTS public.paper_stats (
-    file_path TEXT PRIMARY KEY,
-    downloads INTEGER DEFAULT 0,
-    upvotes INTEGER DEFAULT 0,
-    downvotes INTEGER DEFAULT 0,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-
--- Enable RLS
-ALTER TABLE public.paper_stats ENABLE ROW LEVEL SECURITY;
-
--- Allow public read access
-CREATE POLICY "Allow public read access" ON public.paper_stats
-    FOR SELECT TO public USING (true);
-
 -- Create table for tracking user actions (Anti-Spam)
 CREATE TABLE IF NOT EXISTS public.action_logs (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -29,8 +12,8 @@ ALTER TABLE public.action_logs ENABLE ROW LEVEL SECURITY;
 -- No public access policies. Only service role (Edge Function) can read/write.
 
 -- Create an index to quickly count recent actions by IP
-CREATE INDEX idx_action_logs_ip_created ON public.action_logs(ip_address, action_type, created_at);
-CREATE INDEX idx_action_logs_ip_file ON public.action_logs(ip_address, action_type, file_path);
+CREATE INDEX IF NOT EXISTS idx_action_logs_ip_created ON public.action_logs(ip_address, action_type, created_at);
+CREATE INDEX IF NOT EXISTS idx_action_logs_ip_file ON public.action_logs(ip_address, action_type, file_path);
 
 -- Create an RPC to atomically increment stats
 CREATE OR REPLACE FUNCTION increment_paper_stat(p_file_path TEXT, p_stat_column TEXT)
