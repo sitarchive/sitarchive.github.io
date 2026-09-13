@@ -865,9 +865,7 @@
                         <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted truncate" title="${paper.path}">${paper.path}</p>
                     </div>
                     <div class="flex items-center justify-between gap-2">
-                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${(paper.type||'').includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : ((paper.type||'') === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">
-                            ${(paper.type||'').split(' ')[0]}
-                        </span>
+                        ${paper.type ? `<span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type.includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">${paper.type.split(' ')[0]}</span>` : '<div></div>'}
                         <div class="flex items-center gap-1.5">
                             <button type="button" data-preview-file="${paper.file}" data-preview-title="${paper.name}"
                                 class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors" title="Preview">
@@ -960,9 +958,7 @@
                         <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted truncate" title="${paper.path}">${paper.path}</p>
                     </div>
                     <div class="flex items-center justify-between gap-2">
-                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${(paper.type||'').includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : ((paper.type||'') === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">
-                            ${(paper.type||'').split(' ')[0]}
-                        </span>
+                        ${paper.type ? `<span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type.includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">${paper.type.split(' ')[0]}</span>` : '<div></div>'}
                         <div class="flex items-center gap-1.5">
                             <button type="button" data-preview-file="${paper.file}" data-preview-title="${paper.name}"
                                 class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors" title="Preview">
