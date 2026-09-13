@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Sep 13, 2026",
+                "color": "blue",
+                "icon": "security",
+                "badgeText": "Security & Analytics",
+                "title": "Smart Trending, Visitor Counter, and Legal Updates",
+                "bodyHtml": "<ul class=\"list-disc list-inside text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\"><li><strong>Smart Trending Algorithm:</strong> The Trending Papers section now dynamically sorts the top 6 papers site-wide using a combined score of upvotes, downvotes, and downloads.</li><li><strong>Visitor Counter Restored:</strong> Fully migrated the site-wide visitor counter away from a deprecated public API to our secure Supabase backend.</li><li><strong>TOS & Privacy Policy:</strong> Updated legal documents to explicitly outline our fair use policy and explain our secure IP-based rate-limiting data collection.</li></ul>"
+            },
+            {
+                "date": "Sep 13, 2026",
                 "color": "purple",
                 "icon": "dashboard_customize",
                 "badgeText": "UI Update",
