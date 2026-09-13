@@ -12,6 +12,14 @@ const CHANGELOG_DATA = [
             {
                 "date": "Sep 13, 2026",
                 "color": "amber",
+                "icon": "brush",
+                "badgeText": "UI Update",
+                "title": "Card Layout & Voting Fixes",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Fixed an issue where older browsers aggressively cached the voting script, causing a false \"already voted\" alert when trying to undo a rating. Additionally, we cleaned up the paper cards by removing the faint separator line above the download statistics for a sleeker look.</p>"
+            },
+            {
+                "date": "Sep 13, 2026",
+                "color": "amber",
                 "icon": "build",
                 "badgeText": "Bug Fixes",
                 "title": "Visitor Counter & Newsletter Fixes",
