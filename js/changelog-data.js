@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Sep 13, 2026",
+                "color": "purple",
+                "icon": "format_textdirection_l_to_r",
+                "badgeText": "UI Update",
+                "title": "Improved Text Wrapping on Paper Cards",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Fixed an issue where extremely long paper names (like Introduction to Artificial Intelligence and Python Programming) were getting cut off. The text on all paper and folder cards across the entire site now properly wraps to multiple lines so you can read the full title.</p>"
+            },
+            {
+                "date": "Sep 13, 2026",
                 "color": "blue",
                 "icon": "upload_file",
                 "badgeText": "Papers Added",
