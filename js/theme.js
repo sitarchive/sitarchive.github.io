@@ -56,10 +56,26 @@ function initVisitorCounter() {
     const el = document.getElementById('visitor-count');
     if (!el) return;
     
-    const hasVisited = localStorage.getItem('sit_visited');
+    const visitDataStr = localStorage.getItem('sit_visited');
+    let shouldCount = false;
+    const now = Date.now();
+
+    if (visitDataStr) {
+        try {
+            const visitData = JSON.parse(visitDataStr);
+            if (now - visitData.timestamp > 24 * 60 * 60 * 1000) {
+                shouldCount = true; // 24 hours have passed!
+            }
+        } catch (e) {
+            // Legacy value like '1', count them again and overwrite with JSON
+            shouldCount = true;
+        }
+    } else {
+        shouldCount = true;
+    }
     
-    if (!hasVisited) {
-        localStorage.setItem('sit_visited', '1');
+    if (shouldCount) {
+        localStorage.setItem('sit_visited', JSON.stringify({ timestamp: now }));
         // Increment via RPC
         fetch(`${SUPABASE_URL}/rest/v1/rpc/increment_visitors`, {
             method: 'POST',

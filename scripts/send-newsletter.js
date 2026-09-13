@@ -7,7 +7,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://etlkpjbsculcnrymhflw.supabase.co';
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 const BREVO_API_KEY = process.env.BREVO_API_KEY;
 const SITE_URL = 'https://sitarchive.github.io';
