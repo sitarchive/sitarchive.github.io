@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Sep 13, 2026",
+                "color": "amber",
+                "icon": "build",
+                "badgeText": "Bug Fixes",
+                "title": "Visitor Counter & Newsletter Fixes",
+                "bodyHtml": "<ul class=\"list-disc list-inside text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\"><li><strong>24-Hour Visitor Expiry:</strong> Fixed an issue where repeat visits were permanently ignored. The site-wide visitor counter now resets its memory every 24 hours, meaning returning students will be correctly counted once per day.</li><li><strong>Newsletter Improvements:</strong> Fixed a bug in the automated newsletter that prevented the full update details from being included in the email body.</li></ul>"
+            },
+            {
+                "date": "Sep 13, 2026",
                 "color": "pink",
                 "icon": "undo",
                 "badgeText": "New Feature",
