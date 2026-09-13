@@ -126,12 +126,12 @@ function buildEmail(updates, unsubscribeToken) {
                     
                     <!-- Header -->
                     <tr>
-                        <td style="background-color: #C8102E; padding: 28px 32px; text-align: center;">
-                            <img src="https://sitarchive.github.io/logo-archive-newsletter.png" alt="SIT Archive Logo" width="48" height="48" style="display: block; margin: 0 auto 12px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                            <div style="font-size: 22px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.5px;">
+                        <td style="background-color: #FFFFFF; padding: 32px 32px 24px; text-align: center; border-bottom: 1px solid #F3F4F6;">
+                            <img src="https://sitarchive.github.io/logo-archive-newsletter.png" alt="SIT Archive Logo" width="56" height="56" style="display: block; margin: 0 auto 16px; border-radius: 14px; box-shadow: 0 4px 12px rgba(200,16,46,0.2);">
+                            <div style="font-size: 24px; font-weight: 800; color: #C8102E; letter-spacing: -0.5px;">
                                 SIT Archive
                             </div>
-                            <div style="font-size: 13px; color: rgba(255,255,255,0.8); margin-top: 4px;">
+                            <div style="font-size: 13px; font-weight: 600; color: #6B7280; margin-top: 6px; text-transform: uppercase; letter-spacing: 1px;">
                                 Weekly Update
                             </div>
                         </td>
