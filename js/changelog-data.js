@@ -12,6 +12,14 @@ const CHANGELOG_DATA = [
             {
                 "date": "Sep 14, 2026",
                 "color": "green",
+                "icon": "library_books",
+                "badgeText": "Massive Update",
+                "title": "AIML 2024-28 End-Sem Papers Added",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Added 15 new high-quality End-Sem question papers for the SIT Hyderabad AIML 2024-28 batch, spanning across Semesters 1, 2, 3, and 4! Several older papers were also upgraded to these higher quality versions.</p>"
+            },
+            {
+                "date": "Sep 14, 2026",
+                "color": "green",
                 "icon": "link",
                 "badgeText": "Content Update",
                 "title": "Updated Paper Links",

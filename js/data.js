@@ -292,7 +292,11 @@ const SIT_ARCHIVE_DATA = {
                                         "End-Sem": {
                                             name: "End-Sem",
                                             icon: "description",
-                                            subjects: []
+                                            subjects: [
+                                                { name: "Probability for Data Science", code: "0707220301", file: "https://drive.google.com/file/d/1wDYiRcKfGzexdfZZcEGGMMabVAv6Qwli/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Database Concepts for Data Science", code: "0707220305", file: "https://drive.google.com/file/d/1RYs8HpLD92kYjcgp-HNBNpwCoxv8uGR4/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Data Structures and Algorithms", code: "0707220302", file: "https://drive.google.com/file/d/1uYFwejRgmyR25HZzvt2dINKUtVdEB9M9/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
+                                            ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
                                             name: "Mid-Sem (Unit Tests)",
@@ -626,10 +630,10 @@ const SIT_ARCHIVE_DATA = {
                                             name: "End-Sem",
                                             icon: "description",
                                             subjects: [
-                                                { name: "Linear Algebra", code: "0707220101", file: "https://drive.google.com/file/d/1IcK-0UENJI-qc9CsKOeKWBTj2XcIkdld/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-08-09" },
-                                                { name: "Introduction to Artificial Intelligence and Python Programming", code: "0707220106", file: "https://drive.google.com/file/d/1GkGj6TSI8Bb_Cm8c9Aa4lEFvY98m45CH/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-08-09" },
-                                                { name: "Chemistry", code: "0707220102", file: "https://drive.google.com/file/d/1DOhe5OFCjS8t1X-oWWID3yxtwDjkB0Qr/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-08-09" },
-                                                { name: "Basic Electrical and Electronics Engineering", code: "", file: "https://drive.google.com/file/d/1rvzhBji3My9MU6tNwE85MPxvtQ1Utt6x/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-08-09" }
+                                                { name: "Linear Algebra", code: "0707220101", file: "https://drive.google.com/file/d/1UMrF-dwRwoPiRApQFRprE6dSzYef8_bl/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Introduction to Artificial Intelligence and Python Programming", code: "0707220106", file: "https://drive.google.com/file/d/1AKEZpLignBnYJX4Ev8rq40CNsCJegBXc/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Chemistry", code: "0707220102", file: "https://drive.google.com/file/d/1IIuXRSnU8UBzxZx-NfaOGh4xyl6EOp-n/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Basic Electrical and Electronics Engineering", code: "0707220104", file: "https://drive.google.com/file/d/1H5cqGyipRBavmHH1087N0U26cHwU8k_8/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
                                             ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
@@ -665,7 +669,11 @@ const SIT_ARCHIVE_DATA = {
                                             name: "End-Sem",
                                             icon: "description",
                                             subjects: [
-                                                { name: "Programming in C", code: "0707210206", file: "https://drive.google.com/file/d/1UhyRAdGq5xkznNS97YW45NmMbZbq-tDc/view?usp=share_link", type: "End-Sem" }
+                                                { name: "Programming in C", code: "0707210206", file: "https://drive.google.com/file/d/12L-fYuTYsCrhyz4CvxE75nPpnnfsasqH/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Statistics for Data Science", code: "0707220209", file: "https://drive.google.com/file/d/1VcuGyFfegfY7zwndVwr-OIpBTRhc0eVE/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Physics", code: "0707220202", file: "https://drive.google.com/file/d/1xyvBZdF-zGGxEswHqVrl705jbdOugRRm/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Communication Skills", code: "0707210204", file: "https://drive.google.com/file/d/1u_BHsLmpKpKcyaKqVcSbp9BoJ-7yls_b/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Calculus", code: "0707220201", file: "https://drive.google.com/file/d/1lrpvjyM_42jtLRZHTrUkex2Lp4DD7Ias/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
                                             ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
@@ -695,7 +703,11 @@ const SIT_ARCHIVE_DATA = {
                                         "End-Sem": {
                                             name: "End-Sem",
                                             icon: "description",
-                                            subjects: []
+                                            subjects: [
+                                                { name: "Probability for Data Science", code: "0707220301", file: "https://drive.google.com/file/d/1wDYiRcKfGzexdfZZcEGGMMabVAv6Qwli/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Database Concepts for Data Science", code: "0707220305", file: "https://drive.google.com/file/d/1RYs8HpLD92kYjcgp-HNBNpwCoxv8uGR4/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Data Structures and Algorithms", code: "0707220302", file: "https://drive.google.com/file/d/1uYFwejRgmyR25HZzvt2dINKUtVdEB9M9/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
+                                            ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
                                             name: "Mid-Sem (Unit Tests)",
@@ -723,8 +735,9 @@ const SIT_ARCHIVE_DATA = {
                                             icon: "description",
                                             subjects: [
                                                 { name: "Design and Analysis of Algorithms", code: "T7909", file: "https://drive.google.com/file/d/1UyVFr5tk2scxB3BNCQxp2idEK_PyG0Wy/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-30" },
-                                                { name: "Unsupervised Learning", code: "070722406", file: "https://drive.google.com/file/d/1-BWW6NZ7dlfe2E_L30PzCzzGR5AP5YXw/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-30" },
-                                                { name: "Supervised Machine Learning", code: "0707220404", file: "https://drive.google.com/file/d/171IXrDJD9dhKDzI0RvWW6WZD-O8xyPDp/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-08-09" }
+                                                { name: "Unsupervised Learning", code: "0707220406", file: "https://drive.google.com/file/d/1UJRzJqOIZMjfSA_IOjkTaXjHpiJfW6EN/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Supervised Machine Learning", code: "0707220404", file: "https://drive.google.com/file/d/1fd34CBQ4PUjTtbv3R_nrwCws-8R8DCNr/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Discrete Mathematics", code: "0707220409", file: "https://drive.google.com/file/d/1otIzQy7LIv6t5T6taquhqh5gaJkm0AZL/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
                                             ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
