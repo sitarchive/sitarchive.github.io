@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Sep 13, 2026",
+                "color": "blue",
+                "icon": "upload_file",
+                "badgeText": "Papers Added",
+                "title": "Massive Backlog Upload (AIML)",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Uploaded a huge batch of Backlog exam papers for the AIML 2024-28 batch across Semesters 1, 2, and 3. All attempts have been clearly labelled for easy studying.</p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\"><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 Backlogs</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Linear Algebra (Nov '25, May '25, Nov '26)</li><li>• Intro to AI &amp; Python (Nov '25, May '25, June '26)</li><li>• Chemistry</li><li>• Basic Electrical Engineering</li></ul></div><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 2 &amp; 3 Backlogs</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Statistics for Data Science (Nov '25, June '26)</li><li>• Calculus (Nov '25, June '26)</li><li>• Physics</li><li>• Programming in C</li><li>• Sem 3: Probability, DBMS, DSA</li></ul></div></div>"
+            },
+            {
+                "date": "Sep 13, 2026",
                 "color": "amber",
                 "icon": "brush",
                 "badgeText": "UI Update",
