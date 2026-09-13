@@ -833,7 +833,7 @@
             (function traverse(node, pathNames) {
                 if (!node || typeof node !== 'object') return;
                 if (Array.isArray(node.subjects)) {
-                    node.subjects.forEach(s => { if (s.dateAdded) papers.push({ ...s, path: pathNames.join(' › ') }); });
+                    node.subjects.forEach(s => { if (s.dateAdded) papers.push({ ...s, path: pathNames.join(' › '), type: pathNames[pathNames.length-1] }); });
                     return;
                 }
                 for (const key of Object.keys(node)) {
@@ -849,25 +849,58 @@
             if (recent.length === 0) return; // section stays hidden
 
             document.getElementById('recently-added-grid').innerHTML = recent.map(paper => `
-                <div class="folder-card h-full flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm animate-on-scroll">
-                    <div class="flex items-start gap-3 mb-2">
+
+                <div class="folder-card h-full flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm animate-on-scroll relative group">
+                    <a href="mailto:sitarchive.contact@gmail.com?subject=Issue with ${paper.name}&body=File: ${paper.file}" class="absolute top-3 right-3 p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-red-500 dark:hover:text-red-400 transition-colors" title="Report an issue">
+                        <span class="material-symbols-outlined text-[18px]">flag</span>
+                    </a>
+                    <div class="flex items-start gap-3 mb-2 pr-8">
                         <span class="material-symbols-outlined text-primary text-2xl shrink-0">description</span>
                         <div class="min-w-0 flex-1">
-                            <h3 class="font-semibold text-sm truncate">${paper.name}</h3>
+                            <h3 class="font-semibold text-sm group-hover:text-primary transition-colors truncate">${paper.name}</h3>
                             <p class="text-xs text-text-light-muted dark:text-text-dark-muted">${paper.code}</p>
                         </div>
                     </div>
-                    <p class="text-[11px] text-text-light-muted dark:text-text-dark-muted truncate mb-3" title="${paper.path}">${paper.path}</p>
-                    <div class="mt-auto flex items-center gap-1.5">
-                        <button type="button" data-preview-file="${paper.file}" data-preview-title="${paper.name}"
-                            class="inline-flex items-center justify-center w-9 h-9 shrink-0 rounded-lg border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors" title="Preview">
-                            <span class="material-symbols-outlined text-[18px]">visibility</span>
-                        </button>
-                        <a href="${paper.file}" onclick="if(window.PaperStats) window.PaperStats.recordDownload('${paper.file}')" class="flex-1 inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors">
-                            <span class="material-symbols-outlined text-[16px]">download</span>
-                            Download
-                        </a>
+                    <div class="mb-3 px-2 py-1 rounded bg-bg-light-tertiary dark:bg-bg-dark-tertiary">
+                        <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted truncate" title="${paper.path}">${paper.path}</p>
                     </div>
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${(paper.type||'').includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : ((paper.type||'') === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">
+                            ${(paper.type||'').split(' ')[0]}
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <button type="button" data-preview-file="${paper.file}" data-preview-title="${paper.name}"
+                                class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors" title="Preview">
+                                <span class="material-symbols-outlined text-[18px]">visibility</span>
+                            </button>
+                            <a href="${paper.file}" onclick="if(window.PaperStats) window.PaperStats.recordDownload('${paper.file}')" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
+                                <span class="material-symbols-outlined text-[16px]">download</span>
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                    ${(() => {
+                        const stats = window.PaperStats ? window.PaperStats.getStats(paper.file) : {downloads:0, upvotes:0, downvotes:0};
+                        const isVoted = localStorage.getItem('voted_' + paper.file) ? 'opacity-50 cursor-not-allowed' : '';
+                        return `
+                        <div class="mt-4 pt-3 border-t border-border-light dark:border-border-dark flex items-center justify-between text-xs text-text-light-muted dark:text-text-dark-muted mt-auto">
+                            <div class="flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[14px]">download</span>
+                                <span>${stats.downloads}</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button type="button" onclick="handleVote(this, '${paper.file}', 'up'); event.stopPropagation(); event.preventDefault();" class="flex items-center gap-1 hover:text-green-500 transition-colors ${isVoted}" title="Helpful">
+                                    <span class="material-symbols-outlined text-[14px]">thumb_up</span>
+                                    <span>${stats.upvotes}</span>
+                                </button>
+                                <button type="button" onclick="handleVote(this, '${paper.file}', 'down'); event.stopPropagation(); event.preventDefault();" class="flex items-center gap-1 hover:text-red-500 transition-colors ${isVoted}" title="Not Helpful">
+                                    <span class="material-symbols-outlined text-[14px]">thumb_down</span>
+                                    <span>${stats.downvotes}</span>
+                                </button>
+                            </div>
+                        </div>
+                        `;
+                    })()}
                 </div>
             `).join('');
             document.getElementById('recently-added-section').classList.remove('hidden');
@@ -887,7 +920,7 @@
             (function traverse(node, pathNames) {
                 if (!node || typeof node !== 'object') return;
                 if (Array.isArray(node.subjects)) {
-                    node.subjects.forEach(s => { allPapers.push({ ...s, path: pathNames.join(' › ') }); });
+                    node.subjects.forEach(s => { allPapers.push({ ...s, path: pathNames.join(' › '), type: pathNames[pathNames.length-1] }); });
                     return;
                 }
                 for (const key of Object.keys(node)) {
@@ -910,24 +943,36 @@
             if (trending.length === 0) return;
 
             document.getElementById('trending-grid').innerHTML = trending.map(paper => `
-                <div class="folder-card h-full flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm animate-on-scroll">
-                    <div class="flex items-start gap-3 mb-2">
+ 
+
+                <div class="folder-card h-full flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm animate-on-scroll relative group">
+                    <a href="mailto:sitarchive.contact@gmail.com?subject=Issue with ${paper.name}&body=File: ${paper.file}" class="absolute top-3 right-3 p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-red-500 dark:hover:text-red-400 transition-colors" title="Report an issue">
+                        <span class="material-symbols-outlined text-[18px]">flag</span>
+                    </a>
+                    <div class="flex items-start gap-3 mb-2 pr-8">
                         <span class="material-symbols-outlined text-primary text-2xl shrink-0">local_fire_department</span>
                         <div class="min-w-0 flex-1">
-                            <h3 class="font-semibold text-sm truncate">${paper.name}</h3>
+                            <h3 class="font-semibold text-sm group-hover:text-primary transition-colors truncate">${paper.name}</h3>
                             <p class="text-xs text-text-light-muted dark:text-text-dark-muted">${paper.code}</p>
                         </div>
                     </div>
-                    <p class="text-[11px] text-text-light-muted dark:text-text-dark-muted truncate mb-3" title="${paper.path}">${paper.path}</p>
-                    <div class="mt-auto flex items-center gap-1.5">
-                        <button type="button" data-preview-file="${paper.file}" data-preview-title="${paper.name}"
-                            class="inline-flex items-center justify-center w-9 h-9 shrink-0 rounded-lg border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors" title="Preview">
-                            <span class="material-symbols-outlined text-[18px]">visibility</span>
-                        </button>
-                        <a href="${paper.file}" onclick="if(window.PaperStats) window.PaperStats.recordDownload('${paper.file}')" class="flex-1 inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors">
-                            <span class="material-symbols-outlined text-[16px]">download</span>
-                            Download
-                        </a>
+                    <div class="mb-3 px-2 py-1 rounded bg-bg-light-tertiary dark:bg-bg-dark-tertiary">
+                        <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted truncate" title="${paper.path}">${paper.path}</p>
+                    </div>
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${(paper.type||'').includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : ((paper.type||'') === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">
+                            ${(paper.type||'').split(' ')[0]}
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <button type="button" data-preview-file="${paper.file}" data-preview-title="${paper.name}"
+                                class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors" title="Preview">
+                                <span class="material-symbols-outlined text-[18px]">visibility</span>
+                            </button>
+                            <a href="${paper.file}" onclick="if(window.PaperStats) window.PaperStats.recordDownload('${paper.file}')" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
+                                <span class="material-symbols-outlined text-[16px]">download</span>
+                                Download
+                            </a>
+                        </div>
                     </div>
                     ${(() => {
                         const stats = window.PaperStats ? window.PaperStats.getStats(paper.file) : {downloads:0, upvotes:0, downvotes:0};
