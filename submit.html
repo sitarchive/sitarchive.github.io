@@ -146,25 +146,7 @@
             <span>Total Visitors: <span id="visitor-count" class="font-semibold text-primary">—</span></span>
         </div>
     </div>
-    <!-- Visitor counter -->
-    <script>
-    (function() {
-        var el = document.getElementById('visitor-count');
-        var api = 'https://api.counterapi.dev/v1/sitarchive/visits';
-        if (!localStorage.getItem('vc_visited')) {
-            localStorage.setItem('vc_visited', '1');
-            fetch(api + '/up')
-                .then(function(r) { return r.json(); })
-                .then(function(d) { if (el && d.count != null) el.textContent = Number(d.count).toLocaleString(); })
-                .catch(function() {});
-        } else {
-            fetch(api + '/')
-                .then(function(r) { return r.json(); })
-                .then(function(d) { if (el && d.count != null) el.textContent = Number(d.count).toLocaleString(); })
-                .catch(function() {});
-        }
-    })();
-    </script>
+    
 
     <!-- Navigation -->
     <nav

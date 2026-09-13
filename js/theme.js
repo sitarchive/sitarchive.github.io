@@ -45,3 +45,47 @@ document.addEventListener('DOMContentLoaded', initTheme);
 if (document.readyState !== 'loading') {
     initTheme();
 }
+
+
+// ===== SUPABASE CONFIG =====
+const SUPABASE_URL = 'https://etlkpjbsculcnrymhflw.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV0bGtwamJzY3VsY25yeW1oZmx3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMTk4NjgsImV4cCI6MjEwNDc5NTg2OH0.PNdvzEujn7F5AJu-GK-5GyVshkZIF9jQAOOof8AiG84';
+
+// ===== VISITOR COUNTER =====
+(function initVisitorCounter() {
+    const el = document.getElementById('visitor-count');
+    if (!el) return;
+    
+    const hasVisited = localStorage.getItem('sit_visited');
+    
+    if (!hasVisited) {
+        localStorage.setItem('sit_visited', '1');
+        // Increment via RPC
+        fetch(`${SUPABASE_URL}/rest/v1/rpc/increment_visitors`, {
+            method: 'POST',
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Content-Type': 'application/json'
+            },
+            body: '{}'
+        })
+        .then(r => r.json())
+        .then(count => { if (count != null) el.textContent = Number(count).toLocaleString(); })
+        .catch(() => { el.textContent = '—'; });
+    } else {
+        // Just read the count
+        fetch(`${SUPABASE_URL}/rest/v1/rpc/get_visitors`, {
+            method: 'POST',
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Content-Type': 'application/json'
+            },
+            body: '{}'
+        })
+        .then(r => r.json())
+        .then(count => { if (count != null) el.textContent = Number(count).toLocaleString(); })
+        .catch(() => { el.textContent = '—'; });
+    }
+})();

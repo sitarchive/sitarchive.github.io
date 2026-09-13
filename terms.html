@@ -120,25 +120,7 @@
             <span>Total Visitors: <span id="visitor-count" class="font-semibold text-primary">—</span></span>
         </div>
     </div>
-    <!-- Visitor counter -->
-    <script>
-    (function() {
-        var el = document.getElementById('visitor-count');
-        var api = 'https://api.counterapi.dev/v1/sitarchive/visits';
-        if (!localStorage.getItem('vc_visited')) {
-            localStorage.setItem('vc_visited', '1');
-            fetch(api + '/up')
-                .then(function(r) { return r.json(); })
-                .then(function(d) { if (el && d.count != null) el.textContent = Number(d.count).toLocaleString(); })
-                .catch(function() {});
-        } else {
-            fetch(api + '/')
-                .then(function(r) { return r.json(); })
-                .then(function(d) { if (el && d.count != null) el.textContent = Number(d.count).toLocaleString(); })
-                .catch(function() {});
-        }
-    })();
-    </script>
+    
 
     <!-- Navigation -->
     <nav
@@ -218,7 +200,7 @@
             <!-- Page Heading -->
             <div class="mb-12">
                 <h1 class="text-4xl font-extrabold tracking-tight mb-4">Terms of Service</h1>
-                <p class="text-text-light-muted dark:text-text-dark-muted">Last updated: January 22, 2026</p>
+                <p class="text-text-light-muted dark:text-text-dark-muted">Last updated: September 13, 2026</p>
             </div>
 
             <!-- Content -->
@@ -245,6 +227,13 @@
                     <h2 class="text-2xl font-bold mb-4">2.5 Email Newsletter</h2>
                     <div class="prose prose-sm dark:prose-invert text-text-light-muted dark:text-text-dark-muted max-w-none">
                         <p>We offer a free, optional email subscription service to notify users of site updates and new question papers. By subscribing, you agree to receive automated weekly emails from us. We reserve the right to modify, suspend, or terminate this newsletter service at any time without prior notice. You may opt out at any time using the provided unsubscribe links.</p>
+                    </div>
+                </section>
+
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold mb-4">2.6 Fair Use & Anti-Spam</h2>
+                    <div class="prose prose-sm dark:prose-invert text-text-light-muted dark:text-text-dark-muted max-w-none">
+                        <p>To maintain the integrity of our platform's analytics (such as paper downloads and ratings), we employ automated rate-limiting and anti-spam measures. By interacting with these features, you agree not to use automated scripts, bots, or malicious techniques to artificially inflate or manipulate statistics.</p>
                     </div>
                 </section>
 

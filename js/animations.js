@@ -670,41 +670,4 @@ window.handleSubscribe = async function(form) {
     }
 };
 
-// ===== VISITOR COUNTER (Supabase) =====
-(function initVisitorCounter() {
-    const el = document.getElementById('visitor-count');
-    if (!el) return;
-    
-    const hasVisited = localStorage.getItem('sit_visited');
-    
-    if (!hasVisited) {
-        localStorage.setItem('sit_visited', '1');
-        // Increment via RPC
-        fetch(`${SUPABASE_URL}/rest/v1/rpc/increment_visitors`, {
-            method: 'POST',
-            headers: {
-                'apikey': SUPABASE_ANON_KEY,
-                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-                'Content-Type': 'application/json'
-            },
-            body: '{}'
-        })
-        .then(r => r.json())
-        .then(count => { if (count != null) el.textContent = Number(count).toLocaleString(); })
-        .catch(() => { el.textContent = '—'; });
-    } else {
-        // Just read the count
-        fetch(`${SUPABASE_URL}/rest/v1/rpc/get_visitors`, {
-            method: 'POST',
-            headers: {
-                'apikey': SUPABASE_ANON_KEY,
-                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-                'Content-Type': 'application/json'
-            },
-            body: '{}'
-        })
-        .then(r => r.json())
-        .then(count => { if (count != null) el.textContent = Number(count).toLocaleString(); })
-        .catch(() => { el.textContent = '—'; });
-    }
-})();
+
