@@ -1,15 +1,15 @@
-const SUPABASE_URL = 'https://etlkpjbsculcnrymhflw.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV0bGtwamJzY3VsY25yeW1oZmx3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMTk4NjgsImV4cCI6MjEwNDc5NTg2OH0.PNdvzEujn7F5AJu-GK-5GyVshkZIF9jQAOOof8AiG84';
+const STATS_SUPABASE_URL = 'https://etlkpjbsculcnrymhflw.supabase.co';
+const STATS_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV0bGtwamJzY3VsY25yeW1oZmx3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMTk4NjgsImV4cCI6MjEwNDc5NTg2OH0.PNdvzEujn7F5AJu-GK-5GyVshkZIF9jQAOOof8AiG84';
 
 window.PaperStats = {
     statsMap: {},
 
     async init() {
         try {
-            const response = await fetch(`${SUPABASE_URL}/rest/v1/paper_stats?select=file_path,downloads,upvotes,downvotes`, {
+            const response = await fetch(`${STATS_SUPABASE_URL}/rest/v1/paper_stats?select=file_path,downloads,upvotes,downvotes`, {
                 headers: {
-                    'apikey': SUPABASE_ANON_KEY,
-                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                    'apikey': STATS_SUPABASE_ANON_KEY,
+                    'Authorization': `Bearer ${STATS_SUPABASE_ANON_KEY}`
                 }
             });
             if (response.ok) {
@@ -35,7 +35,7 @@ window.PaperStats = {
         this.statsMap[filePath].downloads++;
 
         // Send to Edge Function
-        fetch(`${SUPABASE_URL}/functions/v1/track-interaction`, {
+        fetch(`${STATS_SUPABASE_URL}/functions/v1/track-interaction`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ file_path: filePath, action: 'download' })
@@ -52,7 +52,7 @@ window.PaperStats = {
         else if (voteType === 'downvote') this.statsMap[filePath].downvotes++;
 
         // Send to Edge Function
-        fetch(`${SUPABASE_URL}/functions/v1/track-interaction`, {
+        fetch(`${STATS_SUPABASE_URL}/functions/v1/track-interaction`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ file_path: filePath, action: voteType })
