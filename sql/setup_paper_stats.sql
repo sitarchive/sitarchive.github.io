@@ -39,3 +39,22 @@ BEGIN
     END IF;
 END;
 $$;
+
+-- Create an RPC to atomically decrement stats (for Undo Vote feature)
+CREATE OR REPLACE FUNCTION decrement_paper_stat(p_file_path TEXT, p_stat_column TEXT)
+RETURNS void
+LANGUAGE plpgsql
+SECURITY DEFINER 
+AS $$
+BEGIN
+    IF p_stat_column = 'upvotes' THEN
+        UPDATE public.paper_stats
+        SET upvotes = GREATEST(0, public.paper_stats.upvotes - 1)
+        WHERE file_path = p_file_path;
+    ELSIF p_stat_column = 'downvotes' THEN
+        UPDATE public.paper_stats
+        SET downvotes = GREATEST(0, public.paper_stats.downvotes - 1)
+        WHERE file_path = p_file_path;
+    END IF;
+END;
+$$;

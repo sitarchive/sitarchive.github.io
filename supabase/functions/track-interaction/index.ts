@@ -20,7 +20,7 @@ serve(async (req) => {
 
         const { file_path, action } = await req.json();
 
-        if (!file_path || !['download', 'upvote', 'downvote'].includes(action)) {
+        if (!file_path || !['download', 'upvote', 'downvote', 'undo_upvote', 'undo_downvote'].includes(action)) {
             return new Response(JSON.stringify({ error: 'Invalid parameters' }), {
                 status: 400,
                 headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -47,6 +47,34 @@ serve(async (req) => {
                     headers: { ...corsHeaders, 'Content-Type': 'application/json' },
                 });
             }
+        } else if (action === 'undo_upvote' || action === 'undo_downvote') {
+            const targetAction = action === 'undo_upvote' ? 'upvote' : 'downvote';
+            
+            // Delete the previous vote from action_logs
+            const { data: deleted, error: deleteError } = await supabaseClient
+                .from('action_logs')
+                .delete()
+                .eq('ip_address', ip)
+                .eq('action_type', targetAction)
+                .eq('file_path', file_path)
+                .select();
+                
+            if (deleteError) throw deleteError;
+            
+            if (deleted && deleted.length > 0) {
+                // Decrement stat
+                const { error } = await supabaseClient.rpc('decrement_paper_stat', {
+                    p_file_path: file_path,
+                    p_stat_column: targetAction === 'upvote' ? 'upvotes' : 'downvotes'
+                });
+                if (error) throw error;
+            }
+            
+            return new Response(JSON.stringify({ success: true, undo: true }), {
+                headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+                status: 200,
+            });
+            
         } else {
             // Check if IP has already voted on THIS paper
             const { data: existingVotes } = await supabaseClient
@@ -73,10 +101,6 @@ serve(async (req) => {
         });
 
         // --- UPSERT STATS ---
-        // We use an RPC function to safely increment the counters atomically to prevent race conditions.
-        // Let's create an RPC for this. Wait, Deno can just do a select and update if traffic isn't massive, 
-        // but an RPC is safer. I'll include the RPC in the SQL.
-        
         const { error } = await supabaseClient.rpc('increment_paper_stat', {
             p_file_path: file_path,
             p_stat_column: action === 'download' ? 'downloads' : (action === 'upvote' ? 'upvotes' : 'downvotes')
