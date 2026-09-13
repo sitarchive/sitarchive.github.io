@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Sep 13, 2026",
+                "color": "pink",
+                "icon": "undo",
+                "badgeText": "New Feature",
+                "title": "Interactive Rating System with Undo",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">You can now click your upvote or downvote again to <strong>undo</strong> it! This securely removes your vote from the server while still fundamentally blocking any spam or duplicate voting attempts. The UI now also properly highlights your active vote in green or red.</p>"
+            },
+            {
+                "date": "Sep 13, 2026",
                 "color": "blue",
                 "icon": "security",
                 "badgeText": "Security & Analytics",
