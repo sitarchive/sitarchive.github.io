@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Sep 13, 2026",
+                "color": "purple",
+                "icon": "dashboard_customize",
+                "badgeText": "UI Update",
+                "title": "Homepage UI Overhaul",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">The 'Trending Papers' and 'Recently Added' sections on the homepage now use the rich paper card layout. They feature colored category badges, report flags, responsive mobile-first grid styling, and real-time community statistics.</p>"
+            },
+            {
+                "date": "Sep 13, 2026",
                 "color": "green",
                 "icon": "analytics",
                 "badgeText": "New Feature",
