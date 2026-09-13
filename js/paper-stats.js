@@ -37,7 +37,10 @@ window.PaperStats = {
         // Send to Edge Function
         fetch(`${STATS_SUPABASE_URL}/functions/v1/track-interaction`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${STATS_SUPABASE_ANON_KEY}`
+            },
             body: JSON.stringify({ file_path: filePath, action: 'download' })
         }).catch(() => {});
     },
@@ -54,7 +57,10 @@ window.PaperStats = {
         // Send to Edge Function
         fetch(`${STATS_SUPABASE_URL}/functions/v1/track-interaction`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${STATS_SUPABASE_ANON_KEY}`
+            },
             body: JSON.stringify({ file_path: filePath, action: voteType })
         }).catch(() => {});
     }
