@@ -63,7 +63,7 @@ const CHANGELOG_DATA = [
                 "icon": "library_books",
                 "badgeText": "Massive Update",
                 "title": "AIML 2024-28 End-Sem Papers Added",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Added 15 new high-quality End-Sem question papers for the SIT Hyderabad AIML 2024-28 batch, spanning across Semesters 1, 2, 3, and 4! Several older papers were also upgraded to these higher quality versions.</p>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Added 15 new high-quality End-Sem question papers for AIML 2024-28, spanning across Semesters 1, 2, 3, and 4. Several older papers were also upgraded.</p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\"><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 & 2</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Linear Algebra</li><li>• Intro to AI & Python</li><li>• Chemistry</li><li>• Basic Electrical Engineering</li><li>• Programming in C</li><li>• Statistics for Data Science</li><li>• Physics</li><li>• Communication Skills</li><li>• Calculus</li></ul></div><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 3 & 4</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Probability for Data Science</li><li>• Database Concepts</li><li>• Data Structures and Algorithms</li><li>• Unsupervised Learning</li><li>• Supervised Machine Learning</li><li>• Discrete Mathematics</li></ul></div></div>"
             },
             {
                 "date": "Sep 14, 2026",
