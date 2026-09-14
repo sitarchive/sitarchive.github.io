@@ -42,7 +42,15 @@ const SIT_ARCHIVE_DATA = {
                                         "Backlog": {
                                             name: "Backlog",
                                             icon: "history",
-                                            subjects: []
+                                            subjects: [
+                                                { name: "Mathematics - I (Nov 2025 - Set 1)", code: "0707210101", file: "https://drive.google.com/file/d/1FgalVYx69LpQXTIcnCFsQPWHYI_GO8wC/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics - I (Nov 2025 - Set 2)", code: "0707210101", file: "https://drive.google.com/file/d/1p1ZYgnv0okcCxRMt_uSej8qqaR7-Dcde/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics - I (June 2026)", code: "0707210101", file: "https://drive.google.com/file/d/1L8zKGdG0Je7aKn3WaefHc1Ld2GAvj_kr/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Chemistry", code: "0707210102", file: "https://drive.google.com/file/d/1AnnSs6vIA4esUJYzEAbPZRPQuUr_Ui2w/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Basic Electrical and Electronics Engineering (Nov 2025)", code: "0707210104", file: "https://drive.google.com/file/d/1yGkBXOczGgqN4exnHK59BX8pDtfhFCLb/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Basic Electrical and Electronics Engineering (May 2025)", code: "0707210104", file: "https://drive.google.com/file/d/16ZPzYJIW1M7iApwXcX5Byw6t5yZNQJku/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Basic Electrical and Electronics Engineering (June 2026)", code: "0707210104", file: "https://drive.google.com/file/d/1eDBOUWDjh7iy6zmkpUSXHG1LEQQcm3dK/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" }
+                                            ]
                                         }
                                     }
                                 },
@@ -67,7 +75,13 @@ const SIT_ARCHIVE_DATA = {
                                             name: "Backlog",
                                             icon: "history",
                                             subjects: [
-                                                { name: "Statistics and Probability", code: "0707240209", file: "https://drive.google.com/file/d/1eZxn2j5Wv_lsTTKyhOQx0cZS0CfEK_8H/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" }
+                                                { name: "Statistics and Probability", code: "0707210209", file: "https://drive.google.com/file/d/1mU9QFUPWjTkSbyPfBcVDXAgjPatj-STp/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Programming in C (Nov 2025)", code: "0707210206", file: "https://drive.google.com/file/d/1D_oqQT1iEF-sifqI8OWt4hCjxykjwD0f/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Programming in C (June 2026)", code: "0707210206", file: "https://drive.google.com/file/d/1vC4_8l9QYkCZGd_O20JGaqQ0ZWM70KZ-/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Physics for Computer Engineers (Nov 2025)", code: "0707210202", file: "https://drive.google.com/file/d/16p3uqeplUl42ukX0iPpqEC8NU0jxh8T5/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Physics for Computer Engineers (June 2026)", code: "0707210202", file: "https://drive.google.com/file/d/1zkW00o8lz5j_1XXR1rIr9k5t1MKJUeeW/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics - II (Nov 2025)", code: "0707210201", file: "https://drive.google.com/file/d/1-SoekMXAuZSo0G0aPPMYiywWVnk5wVEY/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics - II (June 2026)", code: "0707210201", file: "https://drive.google.com/file/d/1-KlJd_32yeGbBvTtNFpyhOdb0VyOvs3_/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" }
                                             ]
                                         }
                                     }
@@ -103,10 +117,11 @@ const SIT_ARCHIVE_DATA = {
                                             name: "Backlog",
                                             icon: "history",
                                             subjects: [
-                                                { name: "Discrete Mathematics and Graph Theory", code: "0707240301", file: "https://drive.google.com/file/d/1Rv54J1rAkifSvfh8xxl4VIlNmLz6yJzp/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" },
-                                                { name: "Programming Paradigms", code: "0707240305", file: "https://drive.google.com/file/d/17IT3Kpeubtbawr5neSNIDFwoev5_wyQU/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" },
-                                                { name: "Data Structures", code: "0707240303", file: "https://drive.google.com/file/d/14_0oTxg-duV3y0IiHX_8aXyX1ZxYpPO6/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" },
-                                                { name: "Sensors and Microcontrollers", code: "0707240307", file: "https://drive.google.com/file/d/1a5GmUhrT3CrG8I6_2hvNas6Edp9khYHF/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" }
+                                                { name: "Sensors and Microcontrollers", code: "0707210307", file: "https://drive.google.com/file/d/1f71UsMnH31Gwm1OY0gbuIeXAlNNRA40p/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Programming Paradigms", code: "0707210305", file: "https://drive.google.com/file/d/1YJxoUbP0jAuGWPB8ewIsA4ZXlMdRVQeD/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Discrete Mathematics and Graph Theory", code: "0707210301", file: "https://drive.google.com/file/d/1frt_us4ahO37xfZuIEfSZuFEQLEOlFAG/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Data Structures", code: "0707210303", file: "https://drive.google.com/file/d/1cVRTeDXT2rFdKVjQ5HgswrZ9Xcn0gAMU/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Computer Organisation", code: "0707210302", file: "https://drive.google.com/file/d/12dDxIymcOtVFWmn1Q2Xk9alxMJhMhDcO/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" }
                                             ]
                                         }
                                     }

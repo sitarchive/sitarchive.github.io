@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Sep 14, 2026",
+                "color": "indigo",
+                "icon": "history",
+                "badgeText": "CSE Update",
+                "title": "CSE 2024-28 Backlog Papers Added",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Added a massive collection of 19 high-quality Backlog question papers for the SIT Hyderabad CSE 2024-28 batch, spanning across Semesters 1, 2, and 3. Existing lower-quality files have been replaced to ensure the best studying experience!</p>"
+            },
+            {
+                "date": "Sep 14, 2026",
                 "color": "red",
                 "icon": "delete",
                 "badgeText": "Content Removed",
