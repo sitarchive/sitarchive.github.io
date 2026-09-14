@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Sep 14, 2026",
+                "color": "blue",
+                "icon": "computer",
+                "badgeText": "CST Update",
+                "title": "CST 2024-28 Backlog Papers Added",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Added an incredible 24 new Backlog question papers across Semesters 1, 2, and 3 for the SIT Hyderabad CST 2024-28 batch! Existing lower-quality papers were also fully upgraded.</p>"
+            },
+            {
+                "date": "Sep 14, 2026",
                 "color": "pink",
                 "icon": "psychology",
                 "badgeText": "CSE-AIML Update",

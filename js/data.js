@@ -890,7 +890,17 @@ const SIT_ARCHIVE_DATA = {
                                         "Backlog": {
                                             name: "Backlog",
                                             icon: "history",
-                                            subjects: []
+                                            subjects: [
+                                                { name: "Programming and Problem Solving", code: "0707240106", file: "https://drive.google.com/file/d/12o5xKX10Ye_q8aKyBJouXjIkltGVj-gJ/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Physics for Computer Engineers (Nov 2025)", code: "0707240102", file: "https://drive.google.com/file/d/1coRGoWmAn1TzspQiDMPEsrCSvQgaCnYy/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Physics for Computer Engineers (June 2026)", code: "0707240102", file: "https://drive.google.com/file/d/1THDdxrv6OwYSeehFffSRgpcf75I0Fq8b/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics - I (Nov 2025)", code: "0707240101", file: "https://drive.google.com/file/d/1Sm2-s2ABlgEo_tqafLN5I9ZfsbtTUP6f/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics - I (May 2025)", code: "0707240101", file: "https://drive.google.com/file/d/1z1t_4JQmKYqmb96aRgNaXTaQGPrP3CCw/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics - I (June 2026)", code: "0707240101", file: "https://drive.google.com/file/d/1FQYMWljb14WujBTuIrE1M4rjau4h5gew/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Communication Skills (May 2025)", code: "0707240104", file: "https://drive.google.com/file/d/1i9tyM4KhkB9NgWlKYnU_yffypNt_jNB6/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Communication Skills (June 2026)", code: "0707240104", file: "https://drive.google.com/file/d/1yYswsWRRebWHTJX4DhoRDj-P2MUE5vLq/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Communication Skills (Dec 2025)", code: "0707240104", file: "https://drive.google.com/file/d/1LC_85EgjGhLg8AbkQPTp6OnflaptNHwx/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" }
+                                            ]
                                         }
                                     }
                                 },
@@ -917,7 +927,16 @@ const SIT_ARCHIVE_DATA = {
                                             name: "Backlog",
                                             icon: "history",
                                             subjects: [
-                                                { name: "Statistics and Probability", code: "0707240209", file: "https://drive.google.com/file/d/1rsmh9NgRDHX4gay_7sUZmwyVkRRhB0Mc/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" }
+                                                { name: "Statistics and Probability (Nov 2025)", code: "0707240209", file: "https://drive.google.com/file/d/1Km1Rq648tMyXAml3QqjN9wUfYWJlw8sX/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Statistics and Probability (June 2026)", code: "0707240209", file: "https://drive.google.com/file/d/1wjsriDezlfs15m21lPVtmjRvjBXi7Y75/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Programming in C (Nov 2025)", code: "0707240206", file: "https://drive.google.com/file/d/1q_jUAsyXjqg3qNZgEOwrn3l6okWuabFD/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Programming in C (June 2026)", code: "0707240206", file: "https://drive.google.com/file/d/18o6xzLhNTDV4Au95mFCzzz-NARLk3viU/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics - II (Nov 2025)", code: "0707240201", file: "https://drive.google.com/file/d/1LB4G9vcMvbZXcFXBDKRMuGlhW97kV2il/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics - II (June 2026)", code: "0707240201", file: "https://drive.google.com/file/d/1dkngdQ3bJywGThRD8r9ZokE2qCk0esn-/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Chemistry (Nov 2025)", code: "0707240202", file: "https://drive.google.com/file/d/1_5Tk4lVvhwhWxfYNaIoCaTZEFFTE46Ml/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Chemistry (June 2026)", code: "0707240202", file: "https://drive.google.com/file/d/1R6DPvEiAcUH_kj0yW4W86ZrvcmqTWVyK/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Basic Electrical and Electronics Engineering (Nov 2025)", code: "0707240204", file: "https://drive.google.com/file/d/1jF8ALtKHvkJhpz-pUPEXBT49GR2WA2Br/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Basic Electrical and Electronics Engineering (June 2026)", code: "0707240204", file: "https://drive.google.com/file/d/1DBWAKHskra7ZqmAd0abnJz1i_VIapwRL/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" }
                                             ]
                                         }
                                     }
@@ -953,10 +972,11 @@ const SIT_ARCHIVE_DATA = {
                                             name: "Backlog",
                                             icon: "history",
                                             subjects: [
-                                                { name: "Discrete Mathematics and Graph Theory", code: "0707240301", file: "https://drive.google.com/file/d/1cOzoUzMPATHS6JpzVAUJ2goAi0fMKPw-/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" },
-                                                { name: "Programming Paradigms", code: "0707240305", file: "https://drive.google.com/file/d/1JGfLP6giblAe8Z5wwCvbwotJ5fy4NXES/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" },
-                                                { name: "Data Structures", code: "0707240303", file: "https://drive.google.com/file/d/1Q0retGNQY9v5h076d3rgkrdL2bYz9mfA/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" },
-                                                { name: "Sensors and Microcontrollers", code: "0707240307", file: "https://drive.google.com/file/d/1YUN7WNmMIIfnde-LzN_aRpXHpc-i0LnE/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-30" }
+                                                { name: "Sensors and Microcontrollers", code: "0707240307", file: "https://drive.google.com/file/d/1hOytOkoL-rIGzy6hHx7FqfXUUGhRSGEQ/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Programming Paradigms", code: "0707240305", file: "https://drive.google.com/file/d/1QXcrRMrft-PZANgF2z_ghA2Wg2ZUgmL6/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Discrete Mathematics and Graph Theory", code: "0707240301", file: "https://drive.google.com/file/d/1YxFEWkl9UfXptwTKkmfgqPa_teWDpWkf/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Data Structures", code: "0707240303", file: "https://drive.google.com/file/d/1p0dJg1ofJlY6ZDfWnZQxnQ2BN1zOu59f/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Computer Organisation", code: "0707240302", file: "https://drive.google.com/file/d/1VGBfIl_cN9TgYvHz9ukQRlWIKz-M_ncf/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" }
                                             ]
                                         }
                                     }
