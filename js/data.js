@@ -45,8 +45,8 @@ const SIT_ARCHIVE_DATA = {
                                             name: "Backlog",
                                             icon: "history",
                                             subjects: [
-                                                { name: "Mathematics - I (Nov 2025 - Set 1)", code: "0707210101", file: "https://drive.google.com/file/d/1FgalVYx69LpQXTIcnCFsQPWHYI_GO8wC/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
-                                                { name: "Mathematics - I (Nov 2025 - Set 2)", code: "0707210101", file: "https://drive.google.com/file/d/1p1ZYgnv0okcCxRMt_uSej8qqaR7-Dcde/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics - I (Nov 2025)", code: "0707210101", file: "https://drive.google.com/file/d/1FgalVYx69LpQXTIcnCFsQPWHYI_GO8wC/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics - I (May 2025)", code: "0707210101", file: "https://drive.google.com/file/d/1p1ZYgnv0okcCxRMt_uSej8qqaR7-Dcde/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Mathematics - I (June 2026)", code: "0707210101", file: "https://drive.google.com/file/d/1L8zKGdG0Je7aKn3WaefHc1Ld2GAvj_kr/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Chemistry", code: "0707210102", file: "https://drive.google.com/file/d/1AnnSs6vIA4esUJYzEAbPZRPQuUr_Ui2w/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Basic Electrical and Electronics Engineering (Nov 2025)", code: "0707210104", file: "https://drive.google.com/file/d/1yGkBXOczGgqN4exnHK59BX8pDtfhFCLb/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
@@ -674,7 +674,7 @@ const SIT_ARCHIVE_DATA = {
                                             subjects: [
                                                 { name: "Linear Algebra (Nov 2025)", code: "0707220101", file: "https://drive.google.com/file/d/1zbK6oFMUnSWgntIl8zUm0P4EFbh4nHIA/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-13" },
                                                 { name: "Linear Algebra (May 2025)", code: "0707220101", file: "https://drive.google.com/file/d/1cvLsBYtDGAp_aQei-XpzlrKsUN30FuVr/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-13" },
-                                                { name: "Linear Algebra (Nov 2026)", code: "0707220101", file: "https://drive.google.com/file/d/1LGLMxvl_wn4WDjKAlS-y2U1tJ-iZfIE6/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-13" },
+                                                { name: "Linear Algebra (June 2026)", code: "0707220101", file: "https://drive.google.com/file/d/1LGLMxvl_wn4WDjKAlS-y2U1tJ-iZfIE6/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-13" },
                                                 { name: "Introduction to Artificial Intelligence and Python Programming (Nov 2025)", code: "0707220106", file: "https://drive.google.com/file/d/1Hz9zb6lLCh5esWi8tHQ5QA5ZmGx5LabY/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-13" },
                                                 { name: "Introduction to Artificial Intelligence and Python Programming (May 2025)", code: "0707220106", file: "https://drive.google.com/file/d/1nuCJOZ5WEj505v8iy9aKt91jJu-qM9I3/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-13" },
                                                 { name: "Introduction to Artificial Intelligence and Python Programming (June 2026)", code: "0707220106", file: "https://drive.google.com/file/d/1qko9SxLlWOaqCSuUrwtNEqA-YriwPjtA/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-13" },
@@ -728,7 +728,7 @@ const SIT_ARCHIVE_DATA = {
                                             name: "End-Sem",
                                             icon: "description",
                                             subjects: [
-                                                { name: "Probability for Data Science", code: "0707220301", file: "https://drive.google.com/file/d/1wDYiRcKfGzexdfZZcEGGMMabVAv6Qwli/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Probability and Random Processes", code: "0707220301", file: "https://drive.google.com/file/d/1wDYiRcKfGzexdfZZcEGGMMabVAv6Qwli/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
                                                 { name: "Database Concepts for Data Science", code: "0707220305", file: "https://drive.google.com/file/d/1RYs8HpLD92kYjcgp-HNBNpwCoxv8uGR4/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
                                                 { name: "Data Structures and Algorithms", code: "0707220302", file: "https://drive.google.com/file/d/1uYFwejRgmyR25HZzvt2dINKUtVdEB9M9/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
                                             ]

@@ -12,6 +12,22 @@ const CHANGELOG_DATA = [
             {
                 "date": "Sep 14, 2026",
                 "color": "blue",
+                "icon": "celebration",
+                "badgeText": "Maintenance Complete",
+                "title": "Major Fall Maintenance Concluded",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Between <strong>September 7th and September 14th</strong>, SIT Archive underwent a massive, scheduled maintenance operation. During this week-long period, we focused on stabilizing the core architecture and overhauling existing content.</p><div class=\"bg-background-light-alt dark:bg-background-dark-alt rounded-lg p-3 border border-border-light dark:border-border-dark\"><h4 class=\"text-xs font-bold text-primary mb-2 uppercase tracking-wider\">Maintenance Highlights</h4><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Global Link Audits:</strong> Verified and replaced dozens of stale or low-quality Google Drive links with high-definition, officially scanned versions.</li><li><strong>Structural Scaling:</strong> Completely restructured the database to effortlessly handle the influx of newly created Backlog categories and dual-attempt exam sets.</li><li><strong>Banner Removal:</strong> The persistent site-wide maintenance warning banner has now been formally lifted.</li></ul><p class=\"text-xs text-text-light-muted dark:text-text-dark-muted mt-3 italic\">Thank you for your patience while we fortified the archive for the upcoming academic year!</p></div>"
+            },
+            {
+                "date": "Sep 14, 2026",
+                "color": "amber",
+                "icon": "build",
+                "badgeText": "Bug Fixes",
+                "title": "Minor Nomenclature & Date Corrections",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Corrected several incorrectly labelled exam papers across the archive for better accuracy:</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\"><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">edit</span><strong>CSE 2024-28 (Sem 1):</strong> Renamed Mathematics I \"Set 1\" and \"Set 2\" to their proper exam months (Nov 2025 and May 2025 respectively).</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">edit</span><strong>AIML 2024-28 (Sem 1):</strong> Corrected the Linear Algebra backlog paper's exam month from Nov 2026 to June 2026.</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">edit</span><strong>AIML 2024-28 (Sem 3):</strong> Updated the subject name \"Probability for Data Science\" to the officially correct \"Probability and Random Processes\".</li></ul>"
+            },
+            {
+                "date": "Sep 14, 2026",
+                "color": "blue",
                 "icon": "computer",
                 "badgeText": "CST Update",
                 "title": "CST 2024-28 End-Sem Upgrades",

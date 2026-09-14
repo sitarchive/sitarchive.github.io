@@ -585,31 +585,6 @@ window.reinitAnimations = function () {
     initAutoStagger();
 };
 
-// ===== MAINTENANCE BANNER =====
-function initMaintenanceBanner() {
-    const banner = document.createElement('div');
-    banner.style.cssText = 'position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #C8102E; color: white; padding: 16px 20px; border-radius: 12px; z-index: 100000; box-shadow: 0 10px 25px -5px rgba(200, 16, 46, 0.4); font-weight: 500; max-width: 90%; width: 400px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; backdrop-filter: blur(8px);';
-    
-    banner.innerHTML = `
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <div style="display: flex; align-items: center; gap: 8px;">
-                <span class="material-symbols-outlined" style="font-size: 20px;">warning</span>
-                <strong style="font-size: 15px;">Maintenance Update</strong>
-            </div>
-            <button onclick="this.parentElement.parentElement.remove()" style="background: rgba(255,255,255,0.2); border: none; color: white; cursor: pointer; padding: 4px; border-radius: 6px; display: flex; align-items: center; transition: background 0.2s;">
-                <span class="material-symbols-outlined" style="font-size: 16px;">close</span>
-            </button>
-        </div>
-        <p style="margin: 0; line-height: 1.5; opacity: 0.95;">We are currently undergoing a major maintenance update. You may temporarily experience issues such as broken links or missing papers. Thank you for your patience!</p>
-    `;
-    
-    if (document.body) {
-        document.body.appendChild(banner);
-    } else {
-        document.addEventListener('DOMContentLoaded', () => document.body.appendChild(banner));
-    }
-}
-initMaintenanceBanner();
 
 // ===== SUPABASE CONFIG =====
 const SUPABASE_URL = 'https://etlkpjbsculcnrymhflw.supabase.co';
