@@ -466,8 +466,10 @@ const SIT_ARCHIVE_DATA = {
                                             name: "Backlog",
                                             icon: "history",
                                             subjects: [
-                                                { name: "Digital Electronics and Logic Design", code: "0707210103", file: "https://drive.google.com/file/d/13TVDGM3G5BwcsNutUkbREQ00eKkB6qqP/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-20" },
-                                                { name: "Chemistry", code: "0707250102", file: "https://drive.google.com/file/d/1UtuxEd_L48B0w7-d_sH062UsBEUZhqci/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-20" }
+                                                { name: "Programming in C", code: "0707250105", file: "https://drive.google.com/file/d/1-lgigPgBY7A4-2Yu-qxYCnOAtQTA4CNQ/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Linear Algebra", code: "0707250101", file: "https://drive.google.com/file/d/1otoY7ydMbZfHd2Fn79Io9KuWBs916dPk/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Digital Electronics and Logic Design", code: "0707250104", file: "https://drive.google.com/file/d/1VYMa_6aEIvRPy-ERck1vy_xz6vimKPhY/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Chemistry", code: "0707250102", file: "https://drive.google.com/file/d/1S1-Mplih-dKXu3cK-QASIxR-8iF7-5xX/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" }
                                             ]
                                         }
                                     }

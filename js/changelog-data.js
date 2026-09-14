@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Sep 14, 2026",
+                "color": "pink",
+                "icon": "psychology",
+                "badgeText": "CSE-AIML Update",
+                "title": "CSE-AIML 2025-29 Backlog Papers Added",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Added two new papers (Programming in C and Linear Algebra) and fully upgraded the Chemistry and Digital Electronics papers to high-quality versions for the SIT Hyderabad CSE-AIML 2025-29 batch (Semester 1).</p>"
+            },
+            {
+                "date": "Sep 14, 2026",
                 "color": "indigo",
                 "icon": "history",
                 "badgeText": "CSE Update",
