@@ -265,9 +265,10 @@ const SIT_ARCHIVE_DATA = {
                                             name: "Backlog",
                                             icon: "history",
                                             subjects: [
-                                                { name: "Fundamentals of Quantum Physics", code: "0707210102", file: "https://drive.google.com/file/d/1t0UqXe633825WzgiLrS4ObbNRcUeT1pZ/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-20" },
-                                                { name: "Digital Electronics and Logic Design", code: "0707210103", file: "https://drive.google.com/file/d/1eSxb6l_mHsuvSKN6YngCE2Mt6lRKdZtP/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-20" },
-                                                { name: "Calculus", code: "0707210101", file: "https://drive.google.com/file/d/1b-bkllJochQMHVzz8N3-Y2VX4--OnjLu/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-07-20" }
+                                                { name: "Programming Paradigm and Problem Solving", code: "0707210104", file: "https://drive.google.com/file/d/1JQnlSTgnVA3xfEt1d6KetX7ElvhdFp7J/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Fundamentals of Quantum Physics", code: "0707210102", file: "https://drive.google.com/file/d/1eaaDYSjh9KmRU8Hs1Ar6A09kJiHphdbX/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Digital Electronics and Logic Design", code: "0707210103", file: "https://drive.google.com/file/d/18m-cpavrGUIlyRBW1AutXq7_bUjAEz26/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Calculus", code: "0707210101", file: "https://drive.google.com/file/d/1YXFKdadqoGPDuTQidmvoqh6d_XlQL6kE/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" }
                                             ]
                                         }
                                     }
