@@ -250,10 +250,10 @@ const SIT_ARCHIVE_DATA = {
                                             name: "End-Sem",
                                             icon: "description",
                                             subjects: [
-                                                { name: "Calculus", code: "0707210101", file: "https://drive.google.com/file/d/1KTCr6FiEb9dRS1TXTABQ2ZPsaKW7ruWG/view?usp=drivesdk", type: "End-Sem" },
-                                                { name: "Fundamentals of Quantum Physics", code: "0707210102", file: "https://drive.google.com/file/d/1wDyinerXX9Gde1wCEDMzbmzECV9mGI5z/view?usp=drivesdk", type: "End-Sem" },
-                                                { name: "Digital Electronics and Logic Design", code: "0707210103", file: "https://drive.google.com/file/d/1zvP_9geylagngKPFlXuq-mVoBTzrxwb3/view?usp=drivesdk", type: "End-Sem" },
-                                                { name: "Programming Paradigm and Problem Solving", code: "0707210104", file: "https://drive.google.com/file/d/1zT8592X_5asszEfS9DSidk0hqKMnEqNu/view?usp=drivesdk", type: "End-Sem" }
+                                                { name: "Fundamentals of Quantum Physics", code: "0707210102", file: "https://drive.google.com/file/d/1F1oZaoq0jEOHI6ViYufMQ1Hn5EjW_vAD/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Digital Electronics and Logic Design", code: "0707210103", file: "https://drive.google.com/file/d/1kM886xbdQkuM9xJZ-KRXBmEyTByzP_55/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Calculus", code: "0707210101", file: "https://drive.google.com/file/d/1lCnD1E6GzAYdKxQH6gL6OPfR-lZCkY65/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Programming Paradigm and Problem Solving", code: "0707210104", file: "https://drive.google.com/file/d/1aVgkFGKtaFknF8gyauo0TlNmiYoJoaex/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
                                             ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
@@ -282,11 +282,11 @@ const SIT_ARCHIVE_DATA = {
                                             name: "End-Sem",
                                             icon: "description",
                                             subjects: [
-                                                { name: "Computer Architecture and Organisation", code: "0707210205", file: "https://drive.google.com/file/d/1k5KrPDxAUHFA6stjX5X4TF0FTzZSehWB/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" },
-                                                { name: "Linear Algebra", code: "0707210201", file: "https://drive.google.com/file/d/1NvDaiTBiws4kl-ZU7FSlp-J1BNGoO9l-/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" },
-                                                { name: "Microcontrollers and Sensors", code: "0707210202", file: "https://drive.google.com/file/d/154gIBFJzzK6LfokI_zGeI18jk7QtTS6z/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" },
-                                                { name: "Python Programming", code: "0707210207", file: "https://drive.google.com/file/d/1j1xI40_LAEtQyxOhAJNOCrC6iy_Af8uB/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" },
-                                                { name: "Software Engineering", code: "0707210206", file: "https://drive.google.com/file/d/1szpNAMW70xPUtxCwmjW0nf_qEWn9FAge/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" }
+                                                { name: "Software Engineering", code: "0707210206", file: "https://drive.google.com/file/d/1_IGNv1OkDknf51Ez9iiUpJ_r_0eKWBji/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Python Programming", code: "0707210207", file: "https://drive.google.com/file/d/15Ler09WcIbysrsu3AHvlFc2q5fdnVjFL/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Microcontrollers and Sensors", code: "0707210202", file: "https://drive.google.com/file/d/1hSCHwnQojw_weTzxa9s9GHLUqKEnmsaI/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Linear Algebra", code: "0707210201", file: "https://drive.google.com/file/d/14MQK7_2z_V8-nGzdqOK0ssm97ZcSj6El/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Computer Architecture and Organisation", code: "0707210205", file: "https://drive.google.com/file/d/1PAS7rrmyHQZaCINP4TVvAqZfovsdcGY5/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
                                             ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
@@ -451,10 +451,10 @@ const SIT_ARCHIVE_DATA = {
                                             name: "End-Sem",
                                             icon: "description",
                                             subjects: [
-                                                { name: "Linear Algebra", code: "0707250101", file: "https://drive.google.com/file/d/14Xlj25fZOpzIssRnW4Q1JdP_a5UQPE2n/view?usp=drivesdk", type: "End-Sem" },
-                                                { name: "Chemistry", code: "0707250102", file: "https://drive.google.com/file/d/1MQa-oLlpZQ0Arq0SwLvAYRkb-msvrGFD/view?usp=drivesdk", type: "End-Sem" },
-                                                { name: "Digital Electronics and Logic Design", code: "0707250104", file: "https://drive.google.com/file/d/1btqFGBYKVWPxwMVJbO3GHQXC8GD3QZFj/view?usp=drivesdk", type: "End-Sem" },
-                                                { name: "Programming in C", code: "0707250105", file: "https://drive.google.com/file/d/1S_E3Ka6OThSFdz7n7_9S75LhyTeaJ7Xc/view?usp=drivesdk", type: "End-Sem" }
+                                                { name: "Programming in C", code: "0707250105", file: "https://drive.google.com/file/d/1yRE5n1PR2DrHcTQICuL_aF00POVUKFUG/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Linear Algebra", code: "0707250101", file: "https://drive.google.com/file/d/1PknWDN91T8wJ2Sv9tox3yNq5NEr8GwAV/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Digital Electronics and Logic Design", code: "0707250104", file: "https://drive.google.com/file/d/15ahsteTYWLpN48yaI0zLqeSDx_1JWxqB/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Chemistry", code: "0707250102", file: "https://drive.google.com/file/d/1UVdkzT7BDi6Uzckv78vaVeQ0r0WmgZhv/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
                                             ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
@@ -483,11 +483,11 @@ const SIT_ARCHIVE_DATA = {
                                             name: "End-Sem",
                                             icon: "description",
                                             subjects: [
-                                                { name: "Statistics for Data Science", code: "0707250202", file: "https://drive.google.com/file/d/1Gvk-ICL7xDjLDxWETPQ-eMl0L2qNB0Y-/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" },
-                                                { name: "Introduction to Artificial Intelligence and Python Programming", code: "0707250205", file: "https://drive.google.com/file/d/1IalTw0Da4MP_bUDp_VTxyQ6NLEy91dlK/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" },
-                                                { name: "Calculus", code: "0707250201", file: "https://drive.google.com/file/d/16oJvSShwdRMibYXrtFmvTKjlBieMIPAz/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" },
-                                                { name: "Self Management I", code: "0707250208", file: "https://drive.google.com/file/d/15PZ4D_cEnAMDawbDgwQB2u4Ja0wvjOdj/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" },
-                                                { name: "Physics for Computer Engineers", code: "0707250204", file: "https://drive.google.com/file/d/1phyQOfZVs-lor1bc586iEtY5W9w48l-r/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" }
+                                                { name: "Statistics for Data Science", code: "0707250202", file: "https://drive.google.com/file/d/1AIkeeohOhAm48IJS0jHbIllKUHzljWXq/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Self Management I", code: "0707250208", file: "https://drive.google.com/file/d/1zU0-wiVN-7J4C28qWkEEvcmB0JaL_4Fh/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Physics for Computer Engineers", code: "0707250204", file: "https://drive.google.com/file/d/1HbhKN4MonSLKBnrLHBhhzWcInmA8KzxA/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Introduction to Artificial Intelligence and Python Programming", code: "0707250205", file: "https://drive.google.com/file/d/1flAR37cOV5U1Rggfl_XmbkX6sgDS4MHp/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Calculus", code: "0707250201", file: "https://drive.google.com/file/d/1BWlD8x7VP_xXmKgRsRpezD52VVTsTND1/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
                                             ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
