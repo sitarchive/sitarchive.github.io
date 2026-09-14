@@ -25,10 +25,8 @@ const SIT_ARCHIVE_DATA = {
                                             name: "End-Sem",
                                             icon: "description",
                                             subjects: [
-                                                { name: "Programming and Problem Solving", code: "0707210106", file: "https://drive.google.com/file/d/1-1lPc1h3cTT2UgEc_GY1No0RAOvVuUcg/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
-                                                { name: "Mathematics I", code: "070710101", file: "https://drive.google.com/file/d/17-UrtKNjsbr2MFytIDamZb0LO3Ab3-vF/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
-                                                { name: "Chemistry", code: "0707220102", file: "https://drive.google.com/file/d/1kX1rP2dIhesOGC7fEDTDAp9_85hQbdSm/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
-                                                { name: "Basic Electrical and Electronics Engineering", code: "0707210104", file: "https://drive.google.com/file/d/1zXLFNL9DO8iBKmW66isz2d5gFDWM_lBM/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
+                                                { name: "Basic Electrical and Electronics Engineering", code: "0707210104", file: "https://drive.google.com/file/d/1lxjKlep_3pB-A5_QCkyma2EJy_qEfPzI/view?usp=share_link", type: "End-Sem" },
+                                                { name: "Programming and Problem Solving", code: "0707240106", file: "https://drive.google.com/file/d/1DggNdn3kwTYQO9Wbl9APVQBiSZxAWO97/view?usp=share_link", type: "End-Sem" }
                                             ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
@@ -65,11 +63,7 @@ const SIT_ARCHIVE_DATA = {
                                             name: "End-Sem",
                                             icon: "description",
                                             subjects: [
-                                                { name: "Statistics and Probability", code: "0707210209", file: "https://drive.google.com/file/d/1jYy73D6tSudi6FqCpPYR-1xVasRyVWhb/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
-                                                { name: "Programming in C", code: "0707220204", file: "https://drive.google.com/file/d/1gmWBDg97ItcITBSHriMq7OSdYBuU1xE0/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
-                                                { name: "Physics for Computer Engineers", code: "0707210202", file: "https://drive.google.com/file/d/1HljrmyB5Lmn5my9k9cVnGFidIZjy24Tx/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
-                                                { name: "Mathematics II", code: "0707210201", file: "https://drive.google.com/file/d/1_6yG8AlTP3vrQtCxc4GbLK-2gpDuBBkw/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
-                                                { name: "Communication Skills", code: "0707220206", file: "https://drive.google.com/file/d/1QfwdX_W1f7EYpkFVyBaNyHeveFcWwf13/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
+                                                { name: "Programming in C", code: "0707220204", file: "https://drive.google.com/file/d/1A--GGnGsy7NzqAvmJYAL7O0pdtsjFQhz/view?usp=share_link", type: "End-Sem" }
                                             ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
@@ -123,11 +117,11 @@ const SIT_ARCHIVE_DATA = {
                                             name: "Backlog",
                                             icon: "history",
                                             subjects: [
-                                                { name: "Sensors and Microcontrollers", code: "0707210307", file: "https://drive.google.com/file/d/1sMy0N_itkIHGFiXYvsr5hbm6uv7UmTyL/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
-                                                { name: "Programming Paradigms", code: "0707210305", file: "https://drive.google.com/file/d/1ce51TmTHuCsYbx3afEiwVGiijMC7MZQP/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
-                                                { name: "Discrete Mathematics and Graph Theory", code: "0707210301", file: "https://drive.google.com/file/d/1ofnFThdbclis59ePtns2CRJIrRtfiLCi/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
-                                                { name: "Data Structures", code: "0707210303", file: "https://drive.google.com/file/d/1-80h4FeaH97apNU7jHVU9_urjai3Nyuc/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
-                                                { name: "Computer Organisation", code: "0707210302", file: "https://drive.google.com/file/d/1qM7myQduSoANcSkoz8zquS4PTKHYLlYL/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" }
+                                                { name: "Sensors and Microcontrollers", code: "0707210307", file: "https://drive.google.com/file/d/1f71UsMnH31Gwm1OY0gbuIeXAlNNRA40p/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Programming Paradigms", code: "0707210305", file: "https://drive.google.com/file/d/1YJxoUbP0jAuGWPB8ewIsA4ZXlMdRVQeD/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Discrete Mathematics and Graph Theory", code: "0707210301", file: "https://drive.google.com/file/d/1frt_us4ahO37xfZuIEfSZuFEQLEOlFAG/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Data Structures", code: "0707210303", file: "https://drive.google.com/file/d/1cVRTeDXT2rFdKVjQ5HgswrZ9Xcn0gAMU/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Computer Organisation", code: "0707210302", file: "https://drive.google.com/file/d/12dDxIymcOtVFWmn1Q2Xk9alxMJhMhDcO/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" }
                                             ]
                                         }
                                     }
@@ -141,9 +135,9 @@ const SIT_ARCHIVE_DATA = {
                                             name: "End-Sem",
                                             icon: "description",
                                             subjects: [
-                                                { name: "Operating Systems", code: "0707210405", file: "https://drive.google.com/file/d/1mU6dDxOtGSpmt9UO9POBcMY2OVifS1Hn/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
-                                                { name: "Engineering Mathematics III", code: "0707210401", file: "https://drive.google.com/file/d/13yGQCJ0sWEARVxNWCtWUDMJsqemxCD_h/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
-                                                { name: "Database Management Systems", code: "0707210403", file: "https://drive.google.com/file/d/1hBarHGBix8_jmefEzm0JjGynRSojmCQ0/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
+                                                { name: "Operating Systems", code: "0707240405", file: "https://drive.google.com/file/d/1DK6OLFhXt_5Co2uFnYtut6dqw9wzLcBo/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" },
+                                                { name: "Engineering Mathematics-III", code: "0707240401", file: "https://drive.google.com/file/d/1bb-FV0xbbGLNq1gNgjkNhWg7AFMqQkIj/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" },
+                                                { name: "Database Management Systems", code: "0707240403", file: "https://drive.google.com/file/d/14kJLLuiUIZNvcTyg8iU7uXgouz50yRqH/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-07-20" }
                                             ]
                                         },
                                         "Mid-Sem (Unit Tests)": {

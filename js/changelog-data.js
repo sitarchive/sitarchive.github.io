@@ -11,14 +11,6 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Sep 14, 2026",
-                "color": "indigo",
-                "icon": "computer",
-                "badgeText": "CSE Update",
-                "title": "CSE 2024-28 End-Sem & Backlog Updates",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Added and fully upgraded 17 papers for the SIT Hyderabad CSE 2024-28 batch across Semesters 1, 2, 3, and 4.</p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\"><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 & 2 End-Sem</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Programming and Problem Solving</li><li>• Mathematics I</li><li>• Chemistry</li><li>• Basic Electrical Engineering</li><li>• Statistics and Probability</li><li>• Programming in C</li><li>• Physics for Computer Engineers</li><li>• Mathematics II</li><li>• Communication Skills</li></ul></div><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 3 & 4</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Sem 3 Backlog: Sensors and Microcontrollers</li><li>• Sem 3 Backlog: Programming Paradigms</li><li>• Sem 3 Backlog: Discrete Mathematics</li><li>• Sem 3 Backlog: Data Structures</li><li>• Sem 3 Backlog: Computer Organisation</li><li>• Sem 4 End-Sem: Operating Systems</li><li>• Sem 4 End-Sem: Engineering Mathematics III</li><li>• Sem 4 End-Sem: Database Management Systems</li></ul></div></div>"
-            },
-            {
-                "date": "Sep 14, 2026",
                 "color": "teal",
                 "icon": "auto_awesome",
                 "badgeText": "End-Sem Update",
