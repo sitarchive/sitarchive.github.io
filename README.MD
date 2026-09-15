@@ -75,4 +75,6 @@ Students and developers are encouraged to contribute to the repository. The proj
 
 ## License
 
-This project is maintained exclusively by and for the students of SIT Hyderabad for educational, non-commercial utilization. All documents remain the property of their respective academic authorities.
+The source code of this project is licensed under the [MIT License](LICENSE).
+
+Examination papers hosted and referenced by this platform remain the intellectual property of Symbiosis Institute of Technology, Hyderabad and their respective academic authorities. They are distributed here solely for educational, non-commercial purposes under fair use principles.
