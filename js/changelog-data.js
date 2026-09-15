@@ -10,6 +10,14 @@ const CHANGELOG_DATA = [
         "subtitle": "Latest updates",
         "entries": [
             {
+                "date": "Sep 15, 2026",
+                "color": "indigo",
+                "icon": "rocket_launch",
+                "badgeText": "Features & Fixes",
+                "title": "Post-Maintenance Refinements & PWA Support",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Following our recent major maintenance window, we identified a few lingering structural issues. We've rolled out a comprehensive patch to resolve these while simultaneously introducing highly requested features.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Progressive Web App (PWA):</strong> The archive can now be installed directly to your device home screen for offline caching and a native app experience.</li><li><strong>Frictionless Sharing:</strong> Added dedicated WhatsApp and Telegram share buttons to all paper cards for quick distribution in study groups.</li><li><strong>Empty Category Indicators:</strong> Semesters currently without uploaded papers now cleanly display a \"Coming Soon\" badge instead of leading to empty pages.</li><li><strong>Data Standardisation:</strong> Corrected residual typos in subject codes, standardised naming conventions for Mathematics papers, and repaired missing metadata on Mid-Sem exams.</li><li><strong>SEO Optimisation:</strong> Fixed malformed sitemap configurations to ensure better discoverability on search engines.</li></ul>"
+            },
+            {
                 "date": "Sep 14, 2026",
                 "color": "blue",
                 "icon": "celebration",

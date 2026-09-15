@@ -1,78 +1,78 @@
 # SIT Archive
 
-SIT Archive is a free, student-run question paper repository for SIT Hyderabad. It collects End-Sem, Mid-Sem (Unit Test), and Backlog papers across institutes, branches, and batches, and makes them searchable and downloadable from one place.
+SIT Archive is a centralized, student-maintained repository of examination resources for Symbiosis Institute of Technology (SIT) Hyderabad. The platform aggregates End-Semester, Mid-Semester (Unit Test), and Backlog question papers across various disciplines and academic years into a highly accessible, searchable digital library.
 
 Live site: https://sitarchive.github.io
 
-## What it does
+## Core Capabilities
 
-- Browse question papers by institute, branch, batch year, and semester.
-- Download a single paper or an entire semester's papers at once (via linked Google Drive folders).
-- Track a "Missing Papers" list showing which categories still need papers, with a form to request or submit them.
-- View a changelog of what has been added or fixed on the site.
-- Accept paper submissions from students through a form, with contributors credited on a dedicated page.
+- **Hierarchical Browsing:** Navigate seamlessly through a structured hierarchy of Institute > Branch > Academic Year > Semester > Exam Type.
+- **Global Search:** Find specific papers instantly via course codes or subject names using a client-side fuzzy search engine.
+- **Offline Accessibility (PWA):** The platform operates as a Progressive Web App (PWA). It can be installed natively on mobile and desktop devices, caching resources for offline access and rapid loading.
+- **Frictionless Sharing:** Direct integration with WhatsApp and Telegram allows for one-tap sharing of specific paper links to study groups.
+- **Batch Downloads:** Download individual papers or fetch entire semesters simultaneously via integrated Google Drive folder links.
+- **Community Contributions:** A streamlined submission pipeline allows students to submit missing papers, with a dedicated dashboard recognizing top contributors.
+- **Real-Time Analytics:** Tracks paper downloads, helpfulness votes, and site visitor metrics using a lightweight Supabase backend.
 
-## How it works
+## Architecture & Technical Implementation
 
-The site is a static frontend hosted on GitHub Pages. There is no backend or database — all paper metadata lives in plain JavaScript data files, and the actual paper files are hosted on Google Drive.
+The platform is designed for high availability, zero hosting costs, and minimal maintenance overhead. It utilizes a static architecture served via GitHub Pages, paired with serverless edge functions for analytics.
 
-```
+```text
 sitarchive.github.io/
-├── index.html            Homepage
-├── browse.html           Browse/search papers by institute -> branch -> batch -> semester
-├── missing.html          List of papers still needed
-├── submit.html           Submission form for new papers
-├── changelog.html        What's new on the site
-├── contributors.html     Students who submitted papers
-├── about.html, faq.html, docs.html, collaborate.html, feedback.html, privacy.html, terms.html
+├── index.html            Homepage & Search Entrypoint
+├── browse.html           Hierarchical Paper Navigation
+├── missing.html          Dynamic list of required resources
+├── submit.html           Resource submission interface
+├── changelog.html        Platform release notes
+├── contributors.html     Community recognition dashboard
+├── manifest.json         PWA Configuration
+├── sw.js                 Service Worker for caching & offline support
 ├── js/
-│   ├── data.js               Paper catalogue (all institutes/branches/batches/semesters/subjects)
-│   ├── changelog-data.js     Changelog entries
-│   ├── missing-data.js       Hand-curated list of missing paper categories
-│   ├── contributors-data.js  Contributor roll numbers, branch, batch
-│   ├── theme.js               Light/dark theme handling
-│   └── animations.js          Scroll and UI animations
+│   ├── data.js               Primary dataset (JSON-like structure of all papers)
+│   ├── paper-stats.js        Supabase integration for tracking downloads & votes
+│   ├── theme.js              Light/Dark mode & visitor analytics
+│   └── global-search.js      Fuzzy search implementation
 ├── css/
-│   └── animations.css
-├── scripts/
-│   ├── check-duplicates.js   Detects duplicate paper entries in data.js
-│   └── check-links.js        Verifies every paper's Drive link resolves
-└── .github/workflows/
-    └── check-links.yml       CI: runs the two scripts above
+│   ├── tailwind.css          Utility-first styling
+│   └── animations.css        UI transition definitions
+└── scripts/
+    ├── check-duplicates.js   Node script to ensure data integrity
+    └── check-links.js        Node script to validate HTTP status of Drive links
 ```
 
-### Data model
+### Data Schema
 
-Papers are organized in `js/data.js` as a nested structure:
+All metadata is stored statically in `js/data.js`, allowing for instantaneous querying without database latency. 
 
-```
-Institute -> Branch -> Batch (year) -> Semester -> Exam Type -> Subjects
-```
+The schema follows a strict nested structure:
+`Institutes -> Branches -> Batches (Years) -> Semesters -> Exam Types -> Subjects`
 
-Each subject entry has a name, code, exam type, a link to the file on Google Drive, and (for recently added papers) a date so the homepage can show a "Recently Added" widget.
+### Storage Integration
 
-### Google Drive integration
+To avoid bandwidth costs and leverage robust infrastructure, raw PDF files are stored in a meticulously organized Google Drive environment. The frontend interfaces directly with these public Drive URLs, allowing the site to utilize Google's native document preview and ZIP-compression capabilities.
 
-Papers themselves are stored in a Google Drive folder tree that mirrors the site's structure (institute > branch > batch > semester > exam type). Each semester folder is linked from `data.js`, and the "Download Entire Semester" button on the browse page links straight to that Drive folder so visitors can use Drive's own zip download — no custom file hosting or zip generation on the site itself.
+### Automated Infrastructure (CI/CD)
 
-### Continuous integration
+A robust GitHub Actions workflow pipeline is implemented to maintain data integrity over time. Upon any modification to the main branch, the CI pipeline triggers automated testing scripts:
 
-A GitHub Actions workflow (`.github/workflows/check-links.yml`) runs on every push or pull request that touches `js/data.js` or the scripts folder:
+1. **Duplicate Detection:** Scans the entire JSON object to prevent redundant entries.
+2. **Link Validation:** Automatically verifies the HTTP resolution of every external Google Drive link to ensure 100% file availability.
 
-- **check-duplicates** — flags duplicate paper entries before they're merged.
-- **check-links** — verifies every paper's Drive link is still reachable. This also runs weekly on a schedule and automatically opens a GitHub issue if any links are broken.
+The link validation script also executes on a weekly CRON schedule, automatically generating GitHub Issues if any external file is restricted or deleted.
 
-## Contributing papers
+## Development & Contribution
 
-Students can submit papers directly through the [submission form](https://sitarchive.github.io/submit.html) on the site. Submitted papers are reviewed and added to `js/data.js`, and the contributor is credited on the [contributors page](https://sitarchive.github.io/contributors.html).
+Students and developers are encouraged to contribute to the repository. The project enforces strict adherence to its data schema and requires all new papers to be high-definition, officially scanned documents. 
 
-## Tech stack
+## Tech Stack Summary
 
-- Plain HTML, CSS, and JavaScript — no framework, no build step.
-- Google Drive for file storage.
-- GitHub Pages for hosting.
-- GitHub Actions for automated link and duplicate checks.
+- **Frontend:** HTML5, CSS3 (Tailwind CSS patterns), Vanilla JavaScript (ES6+)
+- **Storage:** Google Drive API
+- **Analytics:** Supabase (PostgreSQL / Edge API)
+- **Deployment & Hosting:** GitHub Pages
+- **Automation:** GitHub Actions, Node.js Scripts
 
 ## License
 
-This project is maintained by and for SIT Hyderabad students, for educational, non-commercial use.
+This project is maintained exclusively by and for the students of SIT Hyderabad for educational, non-commercial utilization. All documents remain the property of their respective academic authorities.
