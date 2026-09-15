@@ -26,7 +26,7 @@ const SIT_ARCHIVE_DATA = {
                                             icon: "description",
                                             subjects: [
                                                 { name: "Programming and Problem Solving", code: "0707210106", file: "https://drive.google.com/file/d/1-1lPc1h3cTT2UgEc_GY1No0RAOvVuUcg/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
-                                                { name: "Mathematics I", code: "070710101", file: "https://drive.google.com/file/d/17-UrtKNjsbr2MFytIDamZb0LO3Ab3-vF/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics I", code: "0707210101", file: "https://drive.google.com/file/d/17-UrtKNjsbr2MFytIDamZb0LO3Ab3-vF/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
                                                 { name: "Chemistry", code: "0707220102", file: "https://drive.google.com/file/d/1kX1rP2dIhesOGC7fEDTDAp9_85hQbdSm/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
                                                 { name: "Basic Electrical and Electronics Engineering", code: "0707210104", file: "https://drive.google.com/file/d/1zXLFNL9DO8iBKmW66isz2d5gFDWM_lBM/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
                                             ]
@@ -35,19 +35,19 @@ const SIT_ARCHIVE_DATA = {
                                             name: "Mid-Sem (Unit Tests)",
                                             icon: "quiz",
                                             subjects: [
-                                                { name: "Mathematics-I", code: "ET7680", file: "https://drive.google.com/file/d/1cnIq81yGl7QOgLL8YdkhU1Vn_WHW64_8/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
-                                                { name: "Programming and Problem Solving", code: "TE7286", file: "https://drive.google.com/file/d/1SrcfUadFuNcRKut0CcXhKk0rVB2HDmim/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
-                                                { name: "Critical Thinking", code: "T6732", file: "https://drive.google.com/file/d/1SQgLtBR1c7sHZZnMeUyMHPhtpenQkL8j/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
-                                                { name: "Basic Electrical and Electronics Engineering", code: "T7540", file: "https://drive.google.com/file/d/1IW9KItlvEAWYT6n0FKHwOibwBDZZggBD/view?usp=share_link", type: "Mid-Sem (Unit Tests)" }
+                                                { name: "Mathematics I", code: "ET7680", file: "https://drive.google.com/file/d/1cnIq81yGl7QOgLL8YdkhU1Vn_WHW64_8/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" },
+                                                { name: "Programming and Problem Solving", code: "TE7286", file: "https://drive.google.com/file/d/1SrcfUadFuNcRKut0CcXhKk0rVB2HDmim/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" },
+                                                { name: "Critical Thinking", code: "T6732", file: "https://drive.google.com/file/d/1SQgLtBR1c7sHZZnMeUyMHPhtpenQkL8j/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" },
+                                                { name: "Basic Electrical and Electronics Engineering", code: "T7540", file: "https://drive.google.com/file/d/1IW9KItlvEAWYT6n0FKHwOibwBDZZggBD/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" }
                                             ]
                                         },
                                         "Backlog": {
                                             name: "Backlog",
                                             icon: "history",
                                             subjects: [
-                                                { name: "Mathematics - I (Nov 2025)", code: "0707210101", file: "https://drive.google.com/file/d/1FgalVYx69LpQXTIcnCFsQPWHYI_GO8wC/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
-                                                { name: "Mathematics - I (May 2025)", code: "0707210101", file: "https://drive.google.com/file/d/1p1ZYgnv0okcCxRMt_uSej8qqaR7-Dcde/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
-                                                { name: "Mathematics - I (June 2026)", code: "0707210101", file: "https://drive.google.com/file/d/1L8zKGdG0Je7aKn3WaefHc1Ld2GAvj_kr/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics I (Nov 2025)", code: "0707210101", file: "https://drive.google.com/file/d/1FgalVYx69LpQXTIcnCFsQPWHYI_GO8wC/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics I (May 2025)", code: "0707210101", file: "https://drive.google.com/file/d/1p1ZYgnv0okcCxRMt_uSej8qqaR7-Dcde/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics I (June 2026)", code: "0707210101", file: "https://drive.google.com/file/d/1L8zKGdG0Je7aKn3WaefHc1Ld2GAvj_kr/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Chemistry", code: "0707210102", file: "https://drive.google.com/file/d/1AnnSs6vIA4esUJYzEAbPZRPQuUr_Ui2w/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Basic Electrical and Electronics Engineering (Nov 2025)", code: "0707210104", file: "https://drive.google.com/file/d/1yGkBXOczGgqN4exnHK59BX8pDtfhFCLb/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Basic Electrical and Electronics Engineering (May 2025)", code: "0707210104", file: "https://drive.google.com/file/d/16ZPzYJIW1M7iApwXcX5Byw6t5yZNQJku/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
@@ -86,8 +86,8 @@ const SIT_ARCHIVE_DATA = {
                                                 { name: "Programming in C (June 2026)", code: "0707210206", file: "https://drive.google.com/file/d/1vC4_8l9QYkCZGd_O20JGaqQ0ZWM70KZ-/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Physics for Computer Engineers (Nov 2025)", code: "0707210202", file: "https://drive.google.com/file/d/16p3uqeplUl42ukX0iPpqEC8NU0jxh8T5/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Physics for Computer Engineers (June 2026)", code: "0707210202", file: "https://drive.google.com/file/d/1zkW00o8lz5j_1XXR1rIr9k5t1MKJUeeW/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
-                                                { name: "Mathematics - II (Nov 2025)", code: "0707210201", file: "https://drive.google.com/file/d/1-SoekMXAuZSo0G0aPPMYiywWVnk5wVEY/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
-                                                { name: "Mathematics - II (June 2026)", code: "0707210201", file: "https://drive.google.com/file/d/1-KlJd_32yeGbBvTtNFpyhOdb0VyOvs3_/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" }
+                                                { name: "Mathematics II (Nov 2025)", code: "0707210201", file: "https://drive.google.com/file/d/1-SoekMXAuZSo0G0aPPMYiywWVnk5wVEY/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics II (June 2026)", code: "0707210201", file: "https://drive.google.com/file/d/1-KlJd_32yeGbBvTtNFpyhOdb0VyOvs3_/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" }
                                             ]
                                         }
                                     }
@@ -112,11 +112,11 @@ const SIT_ARCHIVE_DATA = {
                                             name: "Mid-Sem (Unit Tests)",
                                             icon: "quiz",
                                             subjects: [
-                                                { name: "Sensors and Microcontrollers", code: "TE7745", file: "https://drive.google.com/file/d/1wxKEY6eLarg54A5SYnjVP5t_1PDaU5w5/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
-                                                { name: "Programming Paradigms", code: "T7512", file: "https://drive.google.com/file/d/1LUE4gNr2W_n96N1J-ClMXaYnCtRevqp-/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
-                                                { name: "Data Structures", code: "TE7960", file: "https://drive.google.com/file/d/1MmC4Hpal7u4riT70bGDNxmFp7ZwRtR8o/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
-                                                { name: "Java", code: "T7499", file: "https://drive.google.com/file/d/10yBqDmCJTzzOhU1Cg_weOJELGRibiOqg/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
-                                                { name: "Computer Organization", code: "0707210302", file: "https://drive.google.com/file/d/1I_WQQeBi4LcVbsDs7Fd4vcOHmTSYOUMT/view?usp=share_link", type: "Mid-Sem (Unit Tests)" }
+                                                { name: "Sensors and Microcontrollers", code: "TE7745", file: "https://drive.google.com/file/d/1wxKEY6eLarg54A5SYnjVP5t_1PDaU5w5/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" },
+                                                { name: "Programming Paradigms", code: "T7512", file: "https://drive.google.com/file/d/1LUE4gNr2W_n96N1J-ClMXaYnCtRevqp-/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" },
+                                                { name: "Data Structures", code: "TE7960", file: "https://drive.google.com/file/d/1MmC4Hpal7u4riT70bGDNxmFp7ZwRtR8o/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" },
+                                                { name: "Java", code: "T7499", file: "https://drive.google.com/file/d/10yBqDmCJTzzOhU1Cg_weOJELGRibiOqg/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" },
+                                                { name: "Computer Organization", code: "0707210302", file: "https://drive.google.com/file/d/1I_WQQeBi4LcVbsDs7Fd4vcOHmTSYOUMT/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" }
                                             ]
                                         },
                                         "Backlog": {
@@ -664,8 +664,8 @@ const SIT_ARCHIVE_DATA = {
                                             name: "Mid-Sem (Unit Tests)",
                                             icon: "quiz",
                                             subjects: [
-                                                { name: "Critical Thinking", code: "T6732", file: "https://drive.google.com/file/d/1Th09FNg5qMEkviCztZffgRMvY1qfRQXv/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
-                                                { name: "Basic Electrical and Electronics Engineering", code: "T7540", file: "https://drive.google.com/file/d/1BmVPpkm_jejYDJuSb1FFs9q95-JDI58K/view?usp=share_link", type: "Mid-Sem (Unit Tests)" }
+                                                { name: "Critical Thinking", code: "T6732", file: "https://drive.google.com/file/d/1Th09FNg5qMEkviCztZffgRMvY1qfRQXv/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" },
+                                                { name: "Basic Electrical and Electronics Engineering", code: "T7540", file: "https://drive.google.com/file/d/1BmVPpkm_jejYDJuSb1FFs9q95-JDI58K/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" }
                                             ]
                                         },
                                         "Backlog": {
@@ -891,9 +891,9 @@ const SIT_ARCHIVE_DATA = {
                                             name: "Mid-Sem (Unit Tests)",
                                             icon: "quiz",
                                             subjects: [
-                                                { name: "Critical Thinking", code: "T6732", file: "https://drive.google.com/file/d/1VL6_fFt6mR-yPTU0mmtGsEpQwObgO5Du/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
-                                                { name: "Programming and Problem Solving", code: "TE7286", file: "https://drive.google.com/file/d/1OWdBUHqmQZ21hHRdQnHve6vTzrYQqK7F/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
-                                                { name: "Mathematics-I", code: "ET7680", file: "https://drive.google.com/file/d/1n_YcGbSWFEvy_6ocP6lHFX36u4DVdbaT/view?usp=share_link", type: "Mid-Sem (Unit Tests)" }
+                                                { name: "Critical Thinking", code: "T6732", file: "https://drive.google.com/file/d/1VL6_fFt6mR-yPTU0mmtGsEpQwObgO5Du/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" },
+                                                { name: "Programming and Problem Solving", code: "TE7286", file: "https://drive.google.com/file/d/1OWdBUHqmQZ21hHRdQnHve6vTzrYQqK7F/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" },
+                                                { name: "Mathematics I", code: "ET7680", file: "https://drive.google.com/file/d/1n_YcGbSWFEvy_6ocP6lHFX36u4DVdbaT/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" }
                                             ]
                                         },
                                         "Backlog": {
@@ -903,9 +903,9 @@ const SIT_ARCHIVE_DATA = {
                                                 { name: "Programming and Problem Solving", code: "0707240106", file: "https://drive.google.com/file/d/12o5xKX10Ye_q8aKyBJouXjIkltGVj-gJ/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Physics for Computer Engineers (Nov 2025)", code: "0707240102", file: "https://drive.google.com/file/d/1coRGoWmAn1TzspQiDMPEsrCSvQgaCnYy/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Physics for Computer Engineers (June 2026)", code: "0707240102", file: "https://drive.google.com/file/d/1THDdxrv6OwYSeehFffSRgpcf75I0Fq8b/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
-                                                { name: "Mathematics - I (Nov 2025)", code: "0707240101", file: "https://drive.google.com/file/d/1Sm2-s2ABlgEo_tqafLN5I9ZfsbtTUP6f/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
-                                                { name: "Mathematics - I (May 2025)", code: "0707240101", file: "https://drive.google.com/file/d/1z1t_4JQmKYqmb96aRgNaXTaQGPrP3CCw/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
-                                                { name: "Mathematics - I (June 2026)", code: "0707240101", file: "https://drive.google.com/file/d/1FQYMWljb14WujBTuIrE1M4rjau4h5gew/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics I (Nov 2025)", code: "0707240101", file: "https://drive.google.com/file/d/1Sm2-s2ABlgEo_tqafLN5I9ZfsbtTUP6f/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics I (May 2025)", code: "0707240101", file: "https://drive.google.com/file/d/1z1t_4JQmKYqmb96aRgNaXTaQGPrP3CCw/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics I (June 2026)", code: "0707240101", file: "https://drive.google.com/file/d/1FQYMWljb14WujBTuIrE1M4rjau4h5gew/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Communication Skills (May 2025)", code: "0707240104", file: "https://drive.google.com/file/d/1i9tyM4KhkB9NgWlKYnU_yffypNt_jNB6/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Communication Skills (June 2026)", code: "0707240104", file: "https://drive.google.com/file/d/1yYswsWRRebWHTJX4DhoRDj-P2MUE5vLq/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Communication Skills (Dec 2025)", code: "0707240104", file: "https://drive.google.com/file/d/1LC_85EgjGhLg8AbkQPTp6OnflaptNHwx/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" }
@@ -933,7 +933,7 @@ const SIT_ARCHIVE_DATA = {
                                             name: "Mid-Sem (Unit Tests)",
                                             icon: "quiz",
                                             subjects: [
-                                                { name: "Basic Electrical and Electronics Engineering", code: "0707240204", file: "https://drive.google.com/file/d/1BNgN2E9bQw8T4ySeGHXEh64ewhLHDU5M/view?usp=share_link", type: "Mid-Sem (Unit Tests)" }
+                                                { name: "Basic Electrical and Electronics Engineering", code: "0707240204", file: "https://drive.google.com/file/d/1BNgN2E9bQw8T4ySeGHXEh64ewhLHDU5M/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" }
                                             ]
                                         },
                                         "Backlog": {
@@ -944,8 +944,8 @@ const SIT_ARCHIVE_DATA = {
                                                 { name: "Statistics and Probability (June 2026)", code: "0707240209", file: "https://drive.google.com/file/d/1wjsriDezlfs15m21lPVtmjRvjBXi7Y75/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Programming in C (Nov 2025)", code: "0707240206", file: "https://drive.google.com/file/d/1q_jUAsyXjqg3qNZgEOwrn3l6okWuabFD/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Programming in C (June 2026)", code: "0707240206", file: "https://drive.google.com/file/d/18o6xzLhNTDV4Au95mFCzzz-NARLk3viU/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
-                                                { name: "Mathematics - II (Nov 2025)", code: "0707240201", file: "https://drive.google.com/file/d/1LB4G9vcMvbZXcFXBDKRMuGlhW97kV2il/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
-                                                { name: "Mathematics - II (June 2026)", code: "0707240201", file: "https://drive.google.com/file/d/1dkngdQ3bJywGThRD8r9ZokE2qCk0esn-/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics II (Nov 2025)", code: "0707240201", file: "https://drive.google.com/file/d/1LB4G9vcMvbZXcFXBDKRMuGlhW97kV2il/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
+                                                { name: "Mathematics II (June 2026)", code: "0707240201", file: "https://drive.google.com/file/d/1dkngdQ3bJywGThRD8r9ZokE2qCk0esn-/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Chemistry (Nov 2025)", code: "0707240202", file: "https://drive.google.com/file/d/1_5Tk4lVvhwhWxfYNaIoCaTZEFFTE46Ml/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Chemistry (June 2026)", code: "0707240202", file: "https://drive.google.com/file/d/1R6DPvEiAcUH_kj0yW4W86ZrvcmqTWVyK/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Basic Electrical and Electronics Engineering (Nov 2025)", code: "0707240204", file: "https://drive.google.com/file/d/1jF8ALtKHvkJhpz-pUPEXBT49GR2WA2Br/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
@@ -974,11 +974,11 @@ const SIT_ARCHIVE_DATA = {
                                             name: "Mid-Sem (Unit Tests)",
                                             icon: "quiz",
                                             subjects: [
-                                                { name: "Sensors and Microcontrollers", code: "TE7745", file: "https://drive.google.com/file/d/1VktdgxsBNLNvTFuThGHQw63ZO_LeXiv0/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
-                                                { name: "Programming Paradigms", code: "T7512", file: "https://drive.google.com/file/d/1a1wx06JIV2jcVswXP1hPfqPqN8fVBTfA/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
-                                                { name: "Data Structures", code: "TE7960", file: "https://drive.google.com/file/d/1ont46SH2yAuSlXlKhGqQmpIGKr0OsKho/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
-                                                { name: "Java", code: "T7499", file: "https://drive.google.com/file/d/1xI--wSFS6YIfJW4OjrNVfz_qq50P85jd/view?usp=share_link", type: "Mid-Sem (Unit Tests)" },
-                                                { name: "Computer Organization", code: "0707210302", file: "https://drive.google.com/file/d/1X3hNj7sa8Sb7FQo6cq7dnS18g5f7Q5So/view?usp=share_link", type: "Mid-Sem (Unit Tests)" }
+                                                { name: "Sensors and Microcontrollers", code: "TE7745", file: "https://drive.google.com/file/d/1VktdgxsBNLNvTFuThGHQw63ZO_LeXiv0/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" },
+                                                { name: "Programming Paradigms", code: "T7512", file: "https://drive.google.com/file/d/1a1wx06JIV2jcVswXP1hPfqPqN8fVBTfA/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" },
+                                                { name: "Data Structures", code: "TE7960", file: "https://drive.google.com/file/d/1ont46SH2yAuSlXlKhGqQmpIGKr0OsKho/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" },
+                                                { name: "Java", code: "T7499", file: "https://drive.google.com/file/d/1xI--wSFS6YIfJW4OjrNVfz_qq50P85jd/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" },
+                                                { name: "Computer Organization", code: "0707210302", file: "https://drive.google.com/file/d/1X3hNj7sa8Sb7FQo6cq7dnS18g5f7Q5So/view?usp=share_link", type: "Mid-Sem (Unit Tests)", dateAdded: "2026-09-01" }
                                             ]
                                         },
                                         "Backlog": {

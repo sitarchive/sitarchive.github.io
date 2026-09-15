@@ -124,6 +124,7 @@
             display: none;
         }
     </style>
+    <link rel="manifest" href="manifest.json">
 </head>
 
 <body
@@ -473,6 +474,13 @@
 
     <!-- Animation Controller -->
     <script src="js/animations.js?v=2"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("/sw.js").catch(err => console.log("SW registration failed", err));
+            });
+        }
+    </script>
 </body>
 
 </html>

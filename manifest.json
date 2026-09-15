@@ -1,0 +1,16 @@
+{
+  "name": "SIT Archive",
+  "short_name": "SIT Archive",
+  "description": "The official student-run archive for SIT Hyderabad exam papers and resources.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#C8102E",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}

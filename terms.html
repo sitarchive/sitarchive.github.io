@@ -108,6 +108,7 @@
             transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
         }
     </style>
+    <link rel="manifest" href="manifest.json">
 </head>
 
 <body
@@ -352,6 +353,13 @@
             const iconMobile = document.getElementById('theme-icon-mobile');
             if (icon) icon.textContent = isDark ? 'light_mode' : 'dark_mode';
             if (iconMobile) iconMobile.textContent = isDark ? 'light_mode' : 'dark_mode';
+        }
+    </script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("/sw.js").catch(err => console.log("SW registration failed", err));
+            });
         }
     </script>
 </body>
