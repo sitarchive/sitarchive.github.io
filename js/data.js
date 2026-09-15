@@ -314,11 +314,7 @@ const SIT_ARCHIVE_DATA = {
                                         "End-Sem": {
                                             name: "End-Sem",
                                             icon: "description",
-                                            subjects: [
-                                                { name: "Probability for Data Science", code: "0707220301", file: "https://drive.google.com/file/d/1wDYiRcKfGzexdfZZcEGGMMabVAv6Qwli/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
-                                                { name: "Database Concepts for Data Science", code: "0707220305", file: "https://drive.google.com/file/d/1RYs8HpLD92kYjcgp-HNBNpwCoxv8uGR4/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
-                                                { name: "Data Structures and Algorithms", code: "0707220302", file: "https://drive.google.com/file/d/1uYFwejRgmyR25HZzvt2dINKUtVdEB9M9/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
-                                            ]
+                                            subjects: []
                                         },
                                         "Mid-Sem (Unit Tests)": {
                                             name: "Mid-Sem (Unit Tests)",
