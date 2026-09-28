@@ -130,7 +130,7 @@
 </head>
 
 <body
-    class="bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark font-display antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white">
+    class="bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark font-display antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white overflow-x-hidden">
 
     <!-- Visitor Counter Bar -->
     <div id="visitor-bar" class="w-full bg-bg-light-secondary dark:bg-bg-dark-secondary border-b border-border-light dark:border-border-dark py-1.5">
@@ -154,7 +154,7 @@
                 <span class="text-xl font-bold tracking-tight">SIT Archive</span>
             </a>
             <div class="hidden md:flex items-center gap-8">
-                <div class="flex items-center gap-6">
+                <div class="flex items-center gap-4 sm:p-6 overflow-hidden break-words">
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="index.html">Home</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="browse.html">Browse Papers</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="submit.html">Submit Papers</a>
@@ -245,7 +245,7 @@
         <!-- Changelog Timeline (rendered from js/changelog-data.js) -->
         <section class="w-full py-8 pb-20">
             <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-                <div id="changelog-timeline">
+                <div id="changelog-timeline" class="max-w-full overflow-hidden">
                     <div class="flex flex-col items-center justify-center py-16 text-center">
                         <span class="material-symbols-outlined text-4xl text-primary animate-spin mb-3" style="animation-duration: 1.2s;">progress_activity</span>
                         <p class="text-sm text-text-light-muted dark:text-text-dark-muted">Loading updates&hellip;</p>
@@ -346,7 +346,7 @@
     </script>
 
     <!-- Changelog Data -->
-    <script src="js/changelog-data.js?v=5"></script>
+    <script src="js/changelog-data.js?v=8"></script>
 
     <!-- Changelog Renderer -->
     <script>
@@ -373,7 +373,7 @@
                             <div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-${entry.color}-100 dark:bg-${entry.color}-900/30 flex items-center justify-center">
                                 <span class="material-symbols-outlined text-[16px] text-${entry.color}-600 dark:text-${entry.color}-400">${entry.icon}</span>
                             </div>
-                            <div class="rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary p-6">
+                            <div class="rounded-xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary p-4 sm:p-6 overflow-hidden break-words">
                                 <div class="flex items-center gap-2 mb-2">
                                     <span class="text-xs font-medium text-text-light-muted dark:text-text-dark-muted">${entry.date}</span>
                                     <span class="px-2 py-0.5 rounded-full bg-${entry.color}-100 dark:bg-${entry.color}-900/30 text-${entry.color}-700 dark:text-${entry.color}-400 text-xs font-medium">${entry.badgeText}</span>

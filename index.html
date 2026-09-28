@@ -282,7 +282,7 @@
 </head>
 
 <body
-    class="bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark font-display antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white">
+    class="bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark font-display antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white overflow-x-hidden">
 
     <!-- Visitor Counter Bar -->
     <div id="visitor-bar" class="w-full bg-bg-light-secondary dark:bg-bg-dark-secondary border-b border-border-light dark:border-border-dark py-1.5">
@@ -830,6 +830,47 @@
 
     <!-- Recently Added Widget -->
     <script>
+        function getBookmarks() {
+            return JSON.parse(localStorage.getItem('sit_archive_bookmarks') || '[]');
+        }
+        function saveBookmarks(bookmarks) {
+            localStorage.setItem('sit_archive_bookmarks', JSON.stringify(bookmarks));
+        }
+        function isBookmarked(code) {
+            return getBookmarks().some(b => b.code === code);
+        }
+        function toggleBookmark(paperDataStr) {
+            const paper = JSON.parse(decodeURIComponent(paperDataStr));
+            let bookmarks = getBookmarks();
+            if (isBookmarked(paper.code)) {
+                bookmarks = bookmarks.filter(b => b.code !== paper.code);
+            } else {
+                bookmarks.push({
+                    name: paper.name,
+                    code: paper.code,
+                    file: paper.file,
+                    type: paper.type,
+                    path: paper.path
+                });
+            }
+            saveBookmarks(bookmarks);
+            updateBookmarkIcons(paper.code);
+        }
+        function updateBookmarkIcons(code) {
+            const icons = document.querySelectorAll(`[data-bookmark-icon="${code}"]`);
+            const filled = isBookmarked(code);
+            icons.forEach(icon => {
+                icon.textContent = 'bookmark';
+                if (filled) {
+                    icon.classList.add('text-primary');
+                    icon.style.fontVariationSettings = "'FILL' 1";
+                } else {
+                    icon.classList.remove('text-primary');
+                    icon.style.fontVariationSettings = "'FILL' 0";
+                }
+            });
+        }
+
         function renderRecentlyAdded() {
             const papers = [];
             (function traverse(node, pathNames) {
@@ -853,18 +894,26 @@
             document.getElementById('recently-added-grid').innerHTML = recent.map(paper => `
 
                 <div class="folder-card h-full flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm animate-on-scroll relative group">
-                    <a href="mailto:sitarchive.contact@gmail.com?subject=Issue with ${paper.name}&body=File: ${paper.file}" class="absolute top-3 right-3 p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-red-500 dark:hover:text-red-400 transition-colors" title="Report an issue">
-                        <span class="material-symbols-outlined text-[18px]">flag</span>
-                    </a>
-                    <div class="flex items-start gap-3 mb-2 pr-8">
+                    <div class="absolute top-3 right-3 flex gap-1">
+                        <button type="button" onclick="toggleBookmark('${encodeURIComponent(JSON.stringify(paper))}'); event.stopPropagation(); event.preventDefault();" class="p-1.5 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 text-text-light-muted dark:text-text-dark-muted hover:text-primary dark:hover:text-primary transition-colors" title="Bookmark Paper">
+                            <span class="material-symbols-outlined text-[18px] ${isBookmarked(paper.code) ? 'text-primary' : ''}" style="font-variation-settings: 'FILL' ${isBookmarked(paper.code) ? 1 : 0}" data-bookmark-icon="${paper.code}">bookmark</span>
+                        </button>
+                        <button type="button" onclick="if(navigator.share){navigator.share({title: '${paper.name}', text: 'Check out this paper: ${paper.name}', url: '${paper.file}'}).catch(console.error);}else{navigator.clipboard.writeText('${paper.file}');alert('Link copied to clipboard!');}; event.stopPropagation(); event.preventDefault();" class="p-1.5 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-blue-500 dark:hover:text-blue-400 transition-colors" title="Share Paper">
+                            <span class="material-symbols-outlined text-[18px]">share</span>
+                        </button>
+                        <a href="mailto:sitarchive.contact@gmail.com?subject=Issue with ${paper.name}&body=File: ${paper.file}" class="p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-red-500 dark:hover:text-red-400 transition-colors" title="Report an issue">
+                            <span class="material-symbols-outlined text-[18px]">flag</span>
+                        </a>
+                    </div>
+                    <div class="flex items-start gap-3 mb-2 pr-24">
                         <span class="material-symbols-outlined text-primary text-2xl shrink-0">description</span>
                         <div class="min-w-0 flex-1">
-                            <h3 class="font-semibold text-sm group-hover:text-primary transition-colors text-wrap">${paper.name}</h3>
+                            <h3 class="font-semibold text-sm group-hover:text-primary transition-colors text-wrap break-words">${paper.name}</h3>
                             <p class="text-xs text-text-light-muted dark:text-text-dark-muted">${paper.code}</p>
                         </div>
                     </div>
                     <div class="mb-3 px-2 py-1 rounded bg-bg-light-tertiary dark:bg-bg-dark-tertiary">
-                        <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted truncate" title="${paper.path}">${paper.path}</p>
+                        <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted text-wrap break-words" title="${paper.path}">${paper.path}</p>
                     </div>
                     <div class="flex items-center justify-between gap-2">
                         ${paper.type ? `<span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type.includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">${paper.type.split(' ')[0]}</span>` : '<div></div>'}
@@ -875,7 +924,7 @@
                             </button>
                             <a href="${paper.file}" target="_blank" onclick="if(window.PaperStats) window.PaperStats.recordDownload('${paper.file}')" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
                                 <span class="material-symbols-outlined text-[16px]">download</span>
-                                Download
+                                <span class="hidden sm:inline">Download</span>
                             </a>
                         </div>
                     </div>
@@ -957,18 +1006,26 @@
  
 
                 <div class="folder-card h-full flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm animate-on-scroll relative group">
-                    <a href="mailto:sitarchive.contact@gmail.com?subject=Issue with ${paper.name}&body=File: ${paper.file}" class="absolute top-3 right-3 p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-red-500 dark:hover:text-red-400 transition-colors" title="Report an issue">
-                        <span class="material-symbols-outlined text-[18px]">flag</span>
-                    </a>
-                    <div class="flex items-start gap-3 mb-2 pr-8">
+                    <div class="absolute top-3 right-3 flex gap-1">
+                        <button type="button" onclick="toggleBookmark('${encodeURIComponent(JSON.stringify(paper))}'); event.stopPropagation(); event.preventDefault();" class="p-1.5 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 text-text-light-muted dark:text-text-dark-muted hover:text-primary dark:hover:text-primary transition-colors" title="Bookmark Paper">
+                            <span class="material-symbols-outlined text-[18px] ${isBookmarked(paper.code) ? 'text-primary' : ''}" style="font-variation-settings: 'FILL' ${isBookmarked(paper.code) ? 1 : 0}" data-bookmark-icon="${paper.code}">bookmark</span>
+                        </button>
+                        <button type="button" onclick="if(navigator.share){navigator.share({title: '${paper.name}', text: 'Check out this paper: ${paper.name}', url: '${paper.file}'}).catch(console.error);}else{navigator.clipboard.writeText('${paper.file}');alert('Link copied to clipboard!');}; event.stopPropagation(); event.preventDefault();" class="p-1.5 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-blue-500 dark:hover:text-blue-400 transition-colors" title="Share Paper">
+                            <span class="material-symbols-outlined text-[18px]">share</span>
+                        </button>
+                        <a href="mailto:sitarchive.contact@gmail.com?subject=Issue with ${paper.name}&body=File: ${paper.file}" class="p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-red-500 dark:hover:text-red-400 transition-colors" title="Report an issue">
+                            <span class="material-symbols-outlined text-[18px]">flag</span>
+                        </a>
+                    </div>
+                    <div class="flex items-start gap-3 mb-2 pr-24">
                         <span class="material-symbols-outlined text-primary text-2xl shrink-0">description</span>
                         <div class="min-w-0 flex-1">
-                            <h3 class="font-semibold text-sm group-hover:text-primary transition-colors text-wrap">${paper.name}</h3>
+                            <h3 class="font-semibold text-sm group-hover:text-primary transition-colors text-wrap break-words">${paper.name}</h3>
                             <p class="text-xs text-text-light-muted dark:text-text-dark-muted">${paper.code}</p>
                         </div>
                     </div>
                     <div class="mb-3 px-2 py-1 rounded bg-bg-light-tertiary dark:bg-bg-dark-tertiary">
-                        <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted truncate" title="${paper.path}">${paper.path}</p>
+                        <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted text-wrap break-words" title="${paper.path}">${paper.path}</p>
                     </div>
                     <div class="flex items-center justify-between gap-2">
                         ${paper.type ? `<span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type.includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">${paper.type.split(' ')[0]}</span>` : '<div></div>'}
@@ -979,7 +1036,7 @@
                             </button>
                             <a href="${paper.file}" target="_blank" onclick="if(window.PaperStats) window.PaperStats.recordDownload('${paper.file}')" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
                                 <span class="material-symbols-outlined text-[16px]">download</span>
-                                Download
+                                <span class="hidden sm:inline">Download</span>
                             </a>
                         </div>
                     </div>

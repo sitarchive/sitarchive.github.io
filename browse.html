@@ -129,7 +129,7 @@
 </head>
 
 <body
-    class="bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark font-display antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white">
+    class="bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark font-display antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white overflow-x-hidden">
 
     <!-- Visitor Counter Bar -->
     <div id="visitor-bar" class="w-full bg-bg-light-secondary dark:bg-bg-dark-secondary border-b border-border-light dark:border-border-dark py-1.5">
@@ -232,16 +232,19 @@
                 <!-- Breadcrumb items will be added dynamically -->
             </nav>
 
-            <!-- Search within current folder -->
-            <div class="mb-8 animate-on-scroll">
-                <div class="relative max-w-md">
-                    <div
-                        class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-text-light-muted dark:text-text-dark-muted">
+            <!-- Search and Bookmarks within current folder -->
+            <div class="mb-8 flex flex-col sm:flex-row gap-4 items-start sm:items-center animate-on-scroll">
+                <div class="relative max-w-md w-full">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-text-light-muted dark:text-text-dark-muted">
                         <span class="material-symbols-outlined text-[20px]">search</span>
                     </div>
                     <input id="search-input" type="text" placeholder="Search all papers..."
                         class="w-full h-12 pl-12 pr-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary text-text-light dark:text-text-dark placeholder-text-light-muted dark:placeholder-text-dark-muted focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors" />
                 </div>
+                <button id="bookmark-filter-btn" onclick="toggleBookmarkView()" class="flex items-center justify-center gap-2 h-12 px-3 sm:px-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary text-text-light dark:text-text-dark hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary hover:border-primary/50 hover:text-primary transition-colors shadow-sm whitespace-nowrap">
+                    <span class="material-symbols-outlined text-[20px]" id="bookmark-filter-icon">bookmark_border</span>
+                    <span class="font-medium text-sm hidden sm:inline">Bookmarks</span><span class="font-medium text-sm">(<span id="bookmark-count">0</span>)</span>
+                </button>
             </div>
 
             <!-- Current Folder Info -->
@@ -257,19 +260,32 @@
                 <div id="sem-download-wrap"></div>
             </div>
 
+
             <!-- Folder/File Grid -->
             <div id="content-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 <!-- Content will be populated by JavaScript -->
             </div>
+            
+            <!-- Recently Viewed Section -->
+            <div id="recent-viewed-section" class="mt-8 pt-8 border-t border-border-light dark:border-border-dark hidden animate-on-scroll">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="material-symbols-outlined text-primary text-xl">history</span>
+                    <h3 class="text-lg font-bold">Recently Viewed</h3>
+                </div>
+                <div class="flex overflow-x-auto gap-4 pb-4 snap-x hide-scrollbar" id="recent-viewed-container">
+                    <!-- JS fills this -->
+                </div>
+            </div>
         </div>
     </main>
+
 
     <!-- PDF Preview Modal -->
     <div id="preview-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
         <div class="relative w-full max-w-3xl h-[85vh] rounded-2xl bg-bg-light dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark overflow-hidden flex flex-col">
             <div class="flex items-center justify-between gap-3 p-4 border-b border-border-light dark:border-border-dark">
                 <div class="min-w-0 flex-1">
-                    <h3 id="preview-title" class="text-sm font-semibold truncate"></h3>
+                    <h3 id="preview-title" class="text-sm font-semibold text-wrap break-words"></h3>
                 </div>
                 <div class="flex items-center gap-2 shrink-0">
                     <a id="preview-download" href="#" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors">
@@ -310,6 +326,213 @@
         // Current path state
         let currentPath = [];
 
+        // --- Bookmarks & Recently Viewed State ---
+        function getBookmarks() {
+            return JSON.parse(localStorage.getItem('sit_archive_bookmarks') || '[]');
+        }
+        function saveBookmarks(bookmarks) {
+            localStorage.setItem('sit_archive_bookmarks', JSON.stringify(bookmarks));
+        }
+        function isBookmarked(code) {
+            return getBookmarks().some(b => b.code === code);
+        }
+        function toggleBookmark(paperDataStr) {
+            const paper = JSON.parse(decodeURIComponent(paperDataStr));
+            let bookmarks = getBookmarks();
+            if (isBookmarked(paper.code)) {
+                bookmarks = bookmarks.filter(b => b.code !== paper.code);
+            } else {
+                bookmarks.push({
+                    name: paper.name,
+                    code: paper.code,
+                    file: paper.file,
+                    type: paper.type,
+                    path: paper.path
+                });
+            }
+            saveBookmarks(bookmarks);
+            updateBookmarkIcons(paper.code);
+
+            updateBookmarkCount();
+            if (isBookmarkView) {
+                renderBookmarksView();
+            }
+        }
+        function updateBookmarkIcons(code) {
+            const icons = document.querySelectorAll(`[data-bookmark-icon="${code}"]`);
+            const filled = isBookmarked(code);
+            icons.forEach(icon => {
+                icon.textContent = 'bookmark';
+                if (filled) {
+                    icon.classList.add('text-primary');
+                    icon.style.fontVariationSettings = "'FILL' 1";
+                } else {
+                    icon.classList.remove('text-primary');
+                    icon.style.fontVariationSettings = "'FILL' 0";
+                }
+            });
+        }
+
+        function updateBookmarkCount() {
+            const countSpan = document.getElementById('bookmark-count');
+            if(countSpan) countSpan.textContent = getBookmarks().length;
+        }
+
+        let isBookmarkView = false;
+        function toggleBookmarkView() {
+            isBookmarkView = !isBookmarkView;
+            const btn = document.getElementById('bookmark-filter-btn');
+            if (isBookmarkView) {
+                btn.classList.add('border-primary', 'text-primary', 'bg-primary/5', 'dark:bg-primary/10');
+                renderBookmarksView();
+            } else {
+                btn.classList.remove('border-primary', 'text-primary', 'bg-primary/5', 'dark:bg-primary/10');
+                document.getElementById('breadcrumb').style.opacity = '1';
+                renderContent();
+            }
+        }
+
+        function renderBookmarksView() {
+            const grid = document.getElementById('content-grid');
+            const folderName = document.getElementById('current-folder-name');
+            const folderCount = document.getElementById('current-folder-count');
+            const breadcrumb = document.getElementById('breadcrumb');
+            const semDownloadWrap = document.getElementById('sem-download-wrap');
+            const bookmarks = getBookmarks();
+
+semDownloadWrap.innerHTML = '';
+            breadcrumb.style.opacity = '0.5';
+            
+            folderName.textContent = 'Bookmarked Papers';
+            folderCount.textContent = `${bookmarks.length} papers`;
+            document.getElementById('recent-viewed-section').classList.add('hidden');
+
+            if (bookmarks.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full flex flex-col items-center justify-center py-16 text-center">
+                        <span class="material-symbols-outlined text-6xl text-text-light-muted dark:text-text-dark-muted mb-4">bookmark_border</span>
+                        <h3 class="text-lg font-semibold mb-2">No bookmarks yet</h3>
+                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted">Papers you bookmark will appear here.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = bookmarks.map(paper => {
+                const pathStr = Array.isArray(paper.path) ? paper.path.join(' › ') : paper.path;
+                const reportSubject = encodeURIComponent(`SIT Archive - Report Issue: ${paper.name} (${paper.code})`);
+                const reportBody = encodeURIComponent(`Hi SIT Archive Team,\n\nI would like to report an issue with the following paper:\n\n📍 Location: ${pathStr}\n📄 Paper: ${paper.name}\n📝 Code: ${paper.code}\n📌 Type: ${paper.type}\n\n🔴 Issue Description:\n[Please describe the issue here]\n\nThank you!`);
+                const reportLink = `mailto:students.sit.archive@gmail.com?subject=${reportSubject}&body=${reportBody}`;
+
+                return `<div class="folder-card relative h-full flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm group hover-lift">` +
+                    `<div class="absolute top-3 right-3 flex gap-1">
+                            <button type="button" onclick="toggleBookmark('${encodeURIComponent(JSON.stringify(paper))}'); event.stopPropagation(); event.preventDefault();" class="p-1.5 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 text-text-light-muted dark:text-text-dark-muted hover:text-primary dark:hover:text-primary transition-colors" title="Bookmark Paper">
+                                <span class="material-symbols-outlined text-[18px] ${isBookmarked(paper.code) ? 'text-primary' : ''}" style="font-variation-settings: 'FILL' ${isBookmarked(paper.code) ? 1 : 0}" data-bookmark-icon="${paper.code}">bookmark</span>
+                            </button>
+                            <button type="button" onclick="if(navigator.share){navigator.share({title: '${paper.name}', text: 'Check out this paper: ${paper.name}', url: '${paper.file}'}).catch(console.error);}else{navigator.clipboard.writeText('${paper.file}');alert('Link copied to clipboard!');}; event.stopPropagation(); event.preventDefault();" class="p-1.5 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-blue-500 dark:hover:text-blue-400 transition-colors" title="Share Paper">
+                                <span class="material-symbols-outlined text-[18px]">share</span>
+                            </button>
+                            <a href="${reportLink}" class="p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-red-500 dark:hover:text-red-400 transition-colors" title="Report an issue">
+                                <span class="material-symbols-outlined text-[18px]">flag</span>
+                            </a>
+                        </div>` +
+                    `<div class="flex items-start gap-3 mb-2 pr-24 flex-1">
+                        <span class="material-symbols-outlined text-primary text-2xl shrink-0">description</span>
+                        <div class="min-w-0 flex-1">
+                            <h3 class="font-semibold text-sm group-hover:text-primary transition-colors text-wrap">${paper.name}</h3>
+                            <p class="text-xs text-text-light-muted dark:text-text-dark-muted">${paper.code}</p>
+                        </div>
+                    </div>` +
+                    `<div class="mb-3 px-2 py-1 rounded bg-bg-light-tertiary dark:bg-bg-dark-tertiary">
+                        <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted text-wrap break-words" title="${pathStr}">
+                            ${pathStr}
+                        </p>
+                    </div>` +
+                    `<div class="flex items-center justify-between gap-2 flex-wrap mt-auto">
+                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type.includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">
+                            ${paper.type.split(' ')[0]}
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <button type="button" data-preview-file="${paper.file}" data-preview-title="${paper.name}" data-recent-obj="${encodeURIComponent(JSON.stringify(paper))}"
+                                class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors" title="Preview">
+                                <span class="material-symbols-outlined text-[18px]">visibility</span>
+                            </button>
+                            <a href="${paper.file}" target="_blank" onclick="if(window.PaperStats) window.PaperStats.recordDownload('${paper.file}')" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
+                                <span class="material-symbols-outlined text-[16px]">download</span>
+                                <span class="hidden sm:inline">Download</span>
+                            </a>
+                        </div>
+                    </div></div>`;
+            }).join('');
+        }
+
+        function clickRecentFolder(event, pathStr) {
+            if (event.target.closest('button') || event.target.closest('a')) return;
+            let path = JSON.parse(decodeURIComponent(pathStr));
+            let pathArr = Array.isArray(path) ? path : path.split(' › ');
+            navigateTo(pathArr);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function getRecent() {
+            return JSON.parse(localStorage.getItem('sit_archive_recent') || '[]');
+        }
+        function saveRecent(paper) {
+            let recent = getRecent();
+            recent = recent.filter(r => r.code !== paper.code);
+            recent.unshift({
+                name: paper.name,
+                code: paper.code,
+                file: paper.file,
+                type: paper.type,
+                path: paper.path,
+                timestamp: Date.now()
+            });
+            if (recent.length > 15) recent.pop();
+            localStorage.setItem('sit_archive_recent', JSON.stringify(recent));
+            if (!isBookmarkView) {
+                renderRecentViewed();
+            }
+        }
+        function renderRecentViewed() {
+            const section = document.getElementById('recent-viewed-section');
+            const container = document.getElementById('recent-viewed-container');
+            const recent = getRecent();
+            
+            if (recent.length === 0) {
+                section.classList.add('hidden');
+                return;
+            }
+            
+            section.classList.remove('hidden');
+            container.innerHTML = recent.map(paper => `
+                <div onclick="clickRecentFolder(event, '${encodeURIComponent(JSON.stringify(paper.path))}')" class="folder-card relative flex-none w-[18rem] p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm transition-colors flex flex-col gap-2 snap-start cursor-pointer group">
+                    <div class="flex items-start gap-2">
+                        <span class="material-symbols-outlined text-primary text-xl shrink-0">description</span>
+                        <div class="min-w-0 flex-1">
+                            <h4 class="font-semibold text-xs text-wrap break-words group-hover:text-primary transition-colors">${paper.name}</h4>
+                            <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted">${paper.code}</p>
+                        </div>
+                    </div>
+                    <div class="px-2 py-1.5 rounded bg-bg-light-tertiary dark:bg-bg-dark-tertiary">
+                        <p class="text-[9px] text-text-light-muted dark:text-text-dark-muted text-wrap break-words">
+                            ${(() => {
+                                let pArr = Array.isArray(paper.path) ? paper.path : paper.path.split('›').map(s=>s.trim());
+                                return pArr.length > 1 ? pArr.slice(1).join(' › ') : pArr.join(' › ');
+                            })()}
+                        </p>
+                    </div>
+                    <div class="mt-auto pt-2 flex justify-between items-center border-t border-border-light dark:border-border-dark">
+                        ${paper.type ? `<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium ${paper.type.includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')}">${paper.type.split(' ')[0]}</span>` : '<div></div>'}
+                        <button type="button" data-preview-file="${paper.file}" data-preview-title="${paper.name}" data-recent-obj="${encodeURIComponent(JSON.stringify(paper))}"
+                            class="inline-flex items-center gap-1 px-2 py-1 rounded bg-primary/10 text-primary text-[10px] font-semibold hover:bg-primary hover:text-white transition-colors shrink-0 relative z-10">
+                            Preview
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
         // Sync currentPath with the URL hash so folders are shareable/bookmarkable
         // and survive a refresh (e.g. #SITHYD/CSE/2025-29/Sem%202/End-Sem).
         function pathToHash(path) {
@@ -347,6 +570,12 @@
         // Apply a path to the UI without touching browser history (used by
         // popstate/initial load, where history already reflects the path).
         function applyPath(path) {
+            isBookmarkView = false;
+            const btn = document.getElementById('bookmark-filter-btn');
+            if(btn) btn.classList.remove('border-primary', 'text-primary', 'bg-primary/5', 'dark:bg-primary/10');
+                document.getElementById('breadcrumb').style.opacity = '1';
+            const breadcrumb = document.getElementById('breadcrumb');
+            if(breadcrumb) breadcrumb.style.opacity = '1';
             currentPath = path;
             renderBreadcrumb();
             renderContent();
@@ -452,6 +681,13 @@
 
             const { data: currentData, level, semFolderLink } = getCurrentData();
 
+            // Show/hide recently viewed
+            if (!isBookmarkView) {
+                renderRecentViewed();
+            } else {
+                document.getElementById('recent-viewed-section').classList.add('hidden');
+            }
+
             // Show a "Download Entire Semester" button when browsing a semester's
             // categories (End-Sem/Mid-Sem/Backlog) and a Drive folder link is set.
             const semDownloadWrap = document.getElementById('sem-download-wrap');
@@ -506,7 +742,7 @@
                                 Nobody's added papers for this category yet. Have one? Be the first to help other students.
                             </p>
                             <a href="submit.html?${params.toString()}"
-                                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-sm font-bold transition-colors shadow-glow-sm hover:shadow-glow btn-shimmer">
+                                class="inline-flex items-center gap-2 px-3 sm:px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-sm font-bold transition-colors shadow-glow-sm hover:shadow-glow btn-shimmer">
                                 <span class="material-symbols-outlined text-[18px]">add_circle</span>
                                 Submit a Paper
                             </a>
@@ -538,6 +774,9 @@ Thank you!`);
                     return `
                     <div class="folder-card relative h-full flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm cursor-pointer group">
                         <div class="absolute top-3 right-3 flex gap-1">
+                            <button type="button" onclick="toggleBookmark('${encodeURIComponent(JSON.stringify({...paper, path: currentPath}))}'); event.stopPropagation(); event.preventDefault();" class="p-1.5 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 text-text-light-muted dark:text-text-dark-muted hover:text-primary dark:hover:text-primary transition-colors" title="Bookmark Paper">
+                                <span class="material-symbols-outlined text-[18px] ${isBookmarked(paper.code) ? 'text-primary' : ''}" style="font-variation-settings: 'FILL' ${isBookmarked(paper.code) ? 1 : 0}" data-bookmark-icon="${paper.code}">bookmark</span>
+                            </button>
                             <button type="button" onclick="if(navigator.share){navigator.share({title: '${paper.name}', text: 'Check out this paper: ${paper.name}', url: '${paper.file}'}).catch(console.error);}else{navigator.clipboard.writeText('${paper.file}');alert('Link copied to clipboard!');}; event.stopPropagation(); event.preventDefault();" class="p-1.5 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-blue-500 dark:hover:text-blue-400 transition-colors" title="Share Paper">
                                 <span class="material-symbols-outlined text-[18px]">share</span>
                             </button>
@@ -545,19 +784,19 @@ Thank you!`);
                                 <span class="material-symbols-outlined text-[18px]">flag</span>
                             </a>
                         </div>
-                        <div class="flex items-start gap-3 mb-3 pr-16 flex-1">
+                        <div class="flex items-start gap-3 mb-3 pr-24 flex-1">
                             <span class="material-symbols-outlined text-primary text-2xl shrink-0">description</span>
                             <div class="min-w-0 flex-1">
                                 <h3 class="font-semibold text-sm group-hover:text-primary transition-colors text-wrap">${paper.name}</h3>
                                 <p class="text-xs text-text-light-muted dark:text-text-dark-muted">${paper.code}</p>
                             </div>
                         </div>
-                        <div class="flex items-center justify-between gap-2 flex-wrap">
+                        <div class="flex items-center justify-between gap-2 flex-wrap mt-auto">
                             <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type === 'Mid-Sem (Unit Tests)' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">
                                 ${paper.type}
                             </span>
                             <div class="flex items-center gap-1.5">
-                                <button type="button" data-preview-file="${paper.file}" data-preview-title="${paper.name}"
+                                <button type="button" data-preview-file="${paper.file}" data-preview-title="${paper.name}" data-recent-obj="${encodeURIComponent(JSON.stringify({...paper, path: currentPath}))}"
                                     class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors" title="Preview">
                                     <span class="material-symbols-outlined text-[18px]">visibility</span>
                                 </button>
@@ -782,6 +1021,9 @@ Thank you!`);
 
                 return `<div class="folder-card relative h-full flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm group hover-lift">` +
                     `<div class="absolute top-3 right-3 flex gap-1">
+                            <button type="button" onclick="toggleBookmark('${encodeURIComponent(JSON.stringify({...paper, path: item.path}))}'); event.stopPropagation(); event.preventDefault();" class="p-1.5 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 text-text-light-muted dark:text-text-dark-muted hover:text-primary dark:hover:text-primary transition-colors" title="Bookmark Paper">
+                                <span class="material-symbols-outlined text-[18px] ${isBookmarked(paper.code) ? 'text-primary' : ''}" style="font-variation-settings: 'FILL' ${isBookmarked(paper.code) ? 1 : 0}" data-bookmark-icon="${paper.code}">bookmark</span>
+                            </button>
                             <button type="button" onclick="if(navigator.share){navigator.share({title: '${paper.name}', text: 'Check out this paper: ${paper.name}', url: '${paper.file}'}).catch(console.error);}else{navigator.clipboard.writeText('${paper.file}');alert('Link copied to clipboard!');}; event.stopPropagation(); event.preventDefault();" class="p-1.5 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-blue-500 dark:hover:text-blue-400 transition-colors" title="Share Paper">
                                 <span class="material-symbols-outlined text-[18px]">share</span>
                             </button>
@@ -789,7 +1031,7 @@ Thank you!`);
                                 <span class="material-symbols-outlined text-[18px]">flag</span>
                             </a>
                         </div>` +
-                    `<div class="flex items-start gap-3 mb-2 pr-16 flex-1">
+                    `<div class="flex items-start gap-3 mb-2 pr-24 flex-1">
                         <span class="material-symbols-outlined text-primary text-2xl shrink-0">description</span>
                         <div class="min-w-0 flex-1">
                             <h3 class="font-semibold text-sm group-hover:text-primary transition-colors text-wrap">${paper.name}</h3>
@@ -797,16 +1039,16 @@ Thank you!`);
                         </div>
                     </div>` +
                     `<div class="mb-3 px-2 py-1 rounded bg-bg-light-tertiary dark:bg-bg-dark-tertiary">
-                        <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted truncate" title="${pathStr}">
+                        <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted text-wrap break-words" title="${pathStr}">
                             ${pathStr}
                         </p>
                     </div>` +
-                    `<div class="flex items-center justify-between gap-2 flex-wrap">
+                    `<div class="flex items-center justify-between gap-2 flex-wrap mt-auto">
                         <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type.includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">
                             ${paper.type.split(' ')[0]}
                         </span>
                         <div class="flex items-center gap-1.5">
-                            <button type="button" data-preview-file="${paper.file}" data-preview-title="${paper.name}"
+                            <button type="button" data-preview-file="${paper.file}" data-preview-title="${paper.name}" data-recent-obj="${encodeURIComponent(JSON.stringify({...paper, path: item.path}))}"
                                 class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors" title="Preview">
                                 <span class="material-symbols-outlined text-[18px]">visibility</span>
                             </button>
@@ -891,7 +1133,13 @@ Thank you!`);
         // Event delegation: preview buttons are re-rendered on every navigation/search
         document.addEventListener('click', function (e) {
             const btn = e.target.closest('[data-preview-file]');
-            if (btn) openPreview(btn.dataset.previewFile, btn.dataset.previewTitle);
+            if (btn) {
+                const recentObj = btn.dataset.recentObj;
+                if (recentObj) {
+                    saveRecent(JSON.parse(decodeURIComponent(recentObj)));
+                }
+                openPreview(btn.dataset.previewFile, btn.dataset.previewTitle);
+            }
         });
 
         document.getElementById('preview-modal').addEventListener('click', function (e) {
@@ -915,6 +1163,8 @@ Thank you!`);
             if (window.PaperStats) {
                 await window.PaperStats.init();
             }
+
+            updateBookmarkCount();
             const path = hashToPath();
             if (path.length && isValidPath(path)) {
                 applyPath(path);

@@ -10,6 +10,23 @@ const CHANGELOG_DATA = [
         "subtitle": "Latest updates",
         "entries": [
             {
+                "date": "Sep 28, 2026",
+                "color": "blue",
+                "icon": "bug_report",
+                "badgeText": "Bug Fixes",
+                "title": "Mobile Viewport & Layout Fixes",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've rolled out a hotfix to address a few layout quirks on mobile devices and smaller screens.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Fixed Horizontal Scroll Bug:</strong> Resolved an issue where long text strings could cause the page to stretch wider than the screen on mobile devices, leading to a blank white gap on the right side.</li><li><strong>Smooth Hover States:</strong> Removed a jarring layout shift (shaking effect) that occasionally occurred when hovering over horizontal scrolling cards.</li><li><strong>Global Container Locks:</strong> Applied strict overflow constraints across the site to guarantee a rigid, app-like feel on iOS and Android browsers.</li></ul>"
+            },
+
+            {
+                "date": "Sep 28, 2026",
+                "color": "red",
+                "icon": "bookmark",
+                "badgeText": "New Features",
+                "title": "Bookmarks & Recently Viewed",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've introduced two powerful new ways to keep track of your study materials across sessions without needing an account.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Bookmarks:</strong> Save your most important papers by clicking the bookmark icon on any paper card, including on the homepage. Access your personalized list instantly using the Bookmarks toggle on the browse page.</li><li><strong>Recently Viewed:</strong> Never lose track of what you were studying. The new Recently Viewed section automatically remembers the last 15 papers you've opened.</li><li><strong>Redesigned Cards:</strong> Recently Viewed cards now display the exact folder breadcrumb path and category pill so you always know which version of a paper you are looking at.</li><li><strong>Homepage Integration:</strong> The Trending and Recently Added sections on the homepage now fully support direct bookmarks and sharing.</li><li><strong>UI Refinements:</strong> Card titles and paths now wrap perfectly across the entire site to avoid truncation.</li></ul>"
+            },
+            {
                 "date": "Sep 15, 2026",
                 "color": "indigo",
                 "icon": "rocket_launch",
@@ -216,6 +233,23 @@ const CHANGELOG_DATA = [
         "subtitle": "Previous updates",
         "entries": [
             {
+                "date": "Sep 28, 2026",
+                "color": "blue",
+                "icon": "bug_report",
+                "badgeText": "Bug Fixes",
+                "title": "Mobile Viewport & Layout Fixes",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've rolled out a hotfix to address a few layout quirks on mobile devices and smaller screens.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Fixed Horizontal Scroll Bug:</strong> Resolved an issue where long text strings could cause the page to stretch wider than the screen on mobile devices, leading to a blank white gap on the right side.</li><li><strong>Smooth Hover States:</strong> Removed a jarring layout shift (shaking effect) that occasionally occurred when hovering over horizontal scrolling cards.</li><li><strong>Global Container Locks:</strong> Applied strict overflow constraints across the site to guarantee a rigid, app-like feel on iOS and Android browsers.</li></ul>"
+            },
+
+            {
+                "date": "Sep 28, 2026",
+                "color": "red",
+                "icon": "bookmark",
+                "badgeText": "New Features",
+                "title": "Bookmarks & Recently Viewed",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've introduced two powerful new ways to keep track of your study materials across sessions without needing an account.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Bookmarks:</strong> Save your most important papers by clicking the bookmark icon on any paper card. Access your personalized list instantly using the new Bookmarks toggle.</li><li><strong>Recently Viewed:</strong> Never lose track of what you were studying. The new Recently Viewed section automatically remembers the last 15 papers you've opened and keeps them easily accessible on the browse page.</li><li><strong>Mobile Optimizations:</strong> Refined the layout to ensure new feature controls look great and remain easy to tap on smaller screens.</li></ul>"
+            },
+            {
                 "date": "Aug 09, 2026",
                 "color": "green",
                 "icon": "upload_file",
@@ -229,6 +263,23 @@ const CHANGELOG_DATA = [
         "month": "July 2026",
         "subtitle": "Previous updates",
         "entries": [
+            {
+                "date": "Sep 28, 2026",
+                "color": "blue",
+                "icon": "bug_report",
+                "badgeText": "Bug Fixes",
+                "title": "Mobile Viewport & Layout Fixes",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've rolled out a hotfix to address a few layout quirks on mobile devices and smaller screens.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Fixed Horizontal Scroll Bug:</strong> Resolved an issue where long text strings could cause the page to stretch wider than the screen on mobile devices, leading to a blank white gap on the right side.</li><li><strong>Smooth Hover States:</strong> Removed a jarring layout shift (shaking effect) that occasionally occurred when hovering over horizontal scrolling cards.</li><li><strong>Global Container Locks:</strong> Applied strict overflow constraints across the site to guarantee a rigid, app-like feel on iOS and Android browsers.</li></ul>"
+            },
+
+            {
+                "date": "Sep 28, 2026",
+                "color": "red",
+                "icon": "bookmark",
+                "badgeText": "New Features",
+                "title": "Bookmarks & Recently Viewed",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've introduced two powerful new ways to keep track of your study materials across sessions without needing an account.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Bookmarks:</strong> Save your most important papers by clicking the bookmark icon on any paper card. Access your personalized list instantly using the new Bookmarks toggle.</li><li><strong>Recently Viewed:</strong> Never lose track of what you were studying. The new Recently Viewed section automatically remembers the last 15 papers you've opened and keeps them easily accessible on the browse page.</li><li><strong>Mobile Optimizations:</strong> Refined the layout to ensure new feature controls look great and remain easy to tap on smaller screens.</li></ul>"
+            },
             {
                 "date": "Jul 30, 2026",
                 "color": "purple",
@@ -396,6 +447,23 @@ const CHANGELOG_DATA = [
         "subtitle": "Latest updates",
         "entries": [
             {
+                "date": "Sep 28, 2026",
+                "color": "blue",
+                "icon": "bug_report",
+                "badgeText": "Bug Fixes",
+                "title": "Mobile Viewport & Layout Fixes",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've rolled out a hotfix to address a few layout quirks on mobile devices and smaller screens.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Fixed Horizontal Scroll Bug:</strong> Resolved an issue where long text strings could cause the page to stretch wider than the screen on mobile devices, leading to a blank white gap on the right side.</li><li><strong>Smooth Hover States:</strong> Removed a jarring layout shift (shaking effect) that occasionally occurred when hovering over horizontal scrolling cards.</li><li><strong>Global Container Locks:</strong> Applied strict overflow constraints across the site to guarantee a rigid, app-like feel on iOS and Android browsers.</li></ul>"
+            },
+
+            {
+                "date": "Sep 28, 2026",
+                "color": "red",
+                "icon": "bookmark",
+                "badgeText": "New Features",
+                "title": "Bookmarks & Recently Viewed",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've introduced two powerful new ways to keep track of your study materials across sessions without needing an account.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Bookmarks:</strong> Save your most important papers by clicking the bookmark icon on any paper card. Access your personalized list instantly using the new Bookmarks toggle.</li><li><strong>Recently Viewed:</strong> Never lose track of what you were studying. The new Recently Viewed section automatically remembers the last 15 papers you've opened and keeps them easily accessible on the browse page.</li><li><strong>Mobile Optimizations:</strong> Refined the layout to ensure new feature controls look great and remain easy to tap on smaller screens.</li></ul>"
+            },
+            {
                 "date": "Jun 7, 2026",
                 "color": "orange",
                 "icon": "space_bar",
@@ -457,6 +525,23 @@ const CHANGELOG_DATA = [
         "month": "January 2026",
         "subtitle": "Recent updates",
         "entries": [
+            {
+                "date": "Sep 28, 2026",
+                "color": "blue",
+                "icon": "bug_report",
+                "badgeText": "Bug Fixes",
+                "title": "Mobile Viewport & Layout Fixes",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've rolled out a hotfix to address a few layout quirks on mobile devices and smaller screens.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Fixed Horizontal Scroll Bug:</strong> Resolved an issue where long text strings could cause the page to stretch wider than the screen on mobile devices, leading to a blank white gap on the right side.</li><li><strong>Smooth Hover States:</strong> Removed a jarring layout shift (shaking effect) that occasionally occurred when hovering over horizontal scrolling cards.</li><li><strong>Global Container Locks:</strong> Applied strict overflow constraints across the site to guarantee a rigid, app-like feel on iOS and Android browsers.</li></ul>"
+            },
+
+            {
+                "date": "Sep 28, 2026",
+                "color": "red",
+                "icon": "bookmark",
+                "badgeText": "New Features",
+                "title": "Bookmarks & Recently Viewed",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've introduced two powerful new ways to keep track of your study materials across sessions without needing an account.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Bookmarks:</strong> Save your most important papers by clicking the bookmark icon on any paper card. Access your personalized list instantly using the new Bookmarks toggle.</li><li><strong>Recently Viewed:</strong> Never lose track of what you were studying. The new Recently Viewed section automatically remembers the last 15 papers you've opened and keeps them easily accessible on the browse page.</li><li><strong>Mobile Optimizations:</strong> Refined the layout to ensure new feature controls look great and remain easy to tap on smaller screens.</li></ul>"
+            },
             {
                 "date": "Jan 26, 2026",
                 "color": "blue",
