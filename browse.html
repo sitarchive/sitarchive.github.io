@@ -954,7 +954,7 @@ Thank you!`);
                     } else {
                         const child = node[key];
                         if (typeof child === 'object') {
-                            traverse(child, [...pathNames, child.name || key]);
+                            traverse(child, [...pathNames, key]);
                         }
                     }
                 }
@@ -1158,8 +1158,17 @@ Thank you!`);
             if (iconMobile) iconMobile.textContent = isDark ? 'light_mode' : 'dark_mode';
         }
 
+
         // Initial render — restore folder from the URL hash if present (deep link / refresh)
         (async function initialRender() {
+            // Cleanup old cache format (display names vs keys)
+            try {
+                const rec = localStorage.getItem('sit_archive_recent');
+                if (rec && rec.includes('SIT Hyderabad')) localStorage.removeItem('sit_archive_recent');
+                const bkm = localStorage.getItem('sit_archive_bookmarks');
+                if (bkm && bkm.includes('SIT Hyderabad')) localStorage.removeItem('sit_archive_bookmarks');
+            } catch(e) {}
+
             if (window.PaperStats) {
                 await window.PaperStats.init();
             }
