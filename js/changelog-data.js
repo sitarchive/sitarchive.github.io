@@ -10,6 +10,14 @@ const CHANGELOG_DATA = [
         "subtitle": "Latest updates",
         "entries": [
             {
+                "date": "Sep 29, 2026",
+                "color": "green",
+                "icon": "route",
+                "badgeText": "Bug Fixes",
+                "title": "Navigation & Preview Sync",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've resolved a few routing and state synchronization issues with the new Bookmarks and Recently Viewed features.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Homepage Previews Sync:</strong> Previewing a Trending or Recently Added paper directly from the homepage now correctly adds it to your Recently Viewed list.</li><li><strong>Navigation Bug Fixed:</strong> Fixed an issue where clicking on a Recently Viewed paper card would redirect to the homepage instead of navigating to the paper's specific folder.</li><li><strong>Robust Internal Routing:</strong> Upgraded the internal search and bookmark tracking to use strict database keys instead of display names, ensuring deeper stability when folder names change.</li></ul>"
+            },
+            {
                 "date": "Sep 28, 2026",
                 "color": "blue",
                 "icon": "bug_report",
@@ -233,6 +241,14 @@ const CHANGELOG_DATA = [
         "subtitle": "Previous updates",
         "entries": [
             {
+                "date": "Sep 29, 2026",
+                "color": "green",
+                "icon": "route",
+                "badgeText": "Bug Fixes",
+                "title": "Navigation & Preview Sync",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've resolved a few routing and state synchronization issues with the new Bookmarks and Recently Viewed features.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Homepage Previews Sync:</strong> Previewing a Trending or Recently Added paper directly from the homepage now correctly adds it to your Recently Viewed list.</li><li><strong>Navigation Bug Fixed:</strong> Fixed an issue where clicking on a Recently Viewed paper card would redirect to the homepage instead of navigating to the paper's specific folder.</li><li><strong>Robust Internal Routing:</strong> Upgraded the internal search and bookmark tracking to use strict database keys instead of display names, ensuring deeper stability when folder names change.</li></ul>"
+            },
+            {
                 "date": "Sep 28, 2026",
                 "color": "blue",
                 "icon": "bug_report",
@@ -263,6 +279,14 @@ const CHANGELOG_DATA = [
         "month": "July 2026",
         "subtitle": "Previous updates",
         "entries": [
+            {
+                "date": "Sep 29, 2026",
+                "color": "green",
+                "icon": "route",
+                "badgeText": "Bug Fixes",
+                "title": "Navigation & Preview Sync",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've resolved a few routing and state synchronization issues with the new Bookmarks and Recently Viewed features.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Homepage Previews Sync:</strong> Previewing a Trending or Recently Added paper directly from the homepage now correctly adds it to your Recently Viewed list.</li><li><strong>Navigation Bug Fixed:</strong> Fixed an issue where clicking on a Recently Viewed paper card would redirect to the homepage instead of navigating to the paper's specific folder.</li><li><strong>Robust Internal Routing:</strong> Upgraded the internal search and bookmark tracking to use strict database keys instead of display names, ensuring deeper stability when folder names change.</li></ul>"
+            },
             {
                 "date": "Sep 28, 2026",
                 "color": "blue",
@@ -447,6 +471,14 @@ const CHANGELOG_DATA = [
         "subtitle": "Latest updates",
         "entries": [
             {
+                "date": "Sep 29, 2026",
+                "color": "green",
+                "icon": "route",
+                "badgeText": "Bug Fixes",
+                "title": "Navigation & Preview Sync",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've resolved a few routing and state synchronization issues with the new Bookmarks and Recently Viewed features.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Homepage Previews Sync:</strong> Previewing a Trending or Recently Added paper directly from the homepage now correctly adds it to your Recently Viewed list.</li><li><strong>Navigation Bug Fixed:</strong> Fixed an issue where clicking on a Recently Viewed paper card would redirect to the homepage instead of navigating to the paper's specific folder.</li><li><strong>Robust Internal Routing:</strong> Upgraded the internal search and bookmark tracking to use strict database keys instead of display names, ensuring deeper stability when folder names change.</li></ul>"
+            },
+            {
                 "date": "Sep 28, 2026",
                 "color": "blue",
                 "icon": "bug_report",
@@ -525,6 +557,14 @@ const CHANGELOG_DATA = [
         "month": "January 2026",
         "subtitle": "Recent updates",
         "entries": [
+            {
+                "date": "Sep 29, 2026",
+                "color": "green",
+                "icon": "route",
+                "badgeText": "Bug Fixes",
+                "title": "Navigation & Preview Sync",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've resolved a few routing and state synchronization issues with the new Bookmarks and Recently Viewed features.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Homepage Previews Sync:</strong> Previewing a Trending or Recently Added paper directly from the homepage now correctly adds it to your Recently Viewed list.</li><li><strong>Navigation Bug Fixed:</strong> Fixed an issue where clicking on a Recently Viewed paper card would redirect to the homepage instead of navigating to the paper's specific folder.</li><li><strong>Robust Internal Routing:</strong> Upgraded the internal search and bookmark tracking to use strict database keys instead of display names, ensuring deeper stability when folder names change.</li></ul>"
+            },
             {
                 "date": "Sep 28, 2026",
                 "color": "blue",
