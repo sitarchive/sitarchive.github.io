@@ -1,12 +1,18 @@
 /* =====================================================
    SIT ARCHIVE - AUTH MANAGER
-   Supabase Auth (Google OAuth + Magic Link)
+   Supabase Auth — Google OAuth only
+   Restricted to @sithyd.siu.edu.in domain.
    - Logged-in users: bookmarks & recently viewed synced to cloud
    - Guests: localStorage only (no change in experience)
    ===================================================== */
 
 const AUTH_SUPABASE_URL = 'https://etlkpjbsculcnrymhflw.supabase.co';
 const AUTH_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV0bGtwamJzY3VsY25yeW1oZmx3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMTk4NjgsImV4cCI6MjEwNDc5NTg2OH0.PNdvzEujn7F5AJu-GK-5GyVshkZIF9jQAOOof8AiG84';
+const AUTH_ALLOWED_DOMAIN = 'sithyd.siu.edu.in';
+
+function _isAllowedEmail(email) {
+    return typeof email === 'string' && email.toLowerCase().endsWith('@' + AUTH_ALLOWED_DOMAIN);
+}
 
 window.AuthManager = (() => {
     let _session = null;
@@ -61,16 +67,7 @@ window.AuthManager = (() => {
     async function signInWithGoogle() {
         const redirectTo = encodeURIComponent(window.location.origin + '/profile.html');
         window.location.href =
-            `${AUTH_SUPABASE_URL}/auth/v1/authorize?provider=google&redirect_to=${redirectTo}&access_type=offline&response_type=code&scopes=email+profile&apikey=${AUTH_SUPABASE_ANON_KEY}`;
-    }
-
-    async function signInWithMagicLink(email) {
-        const redirectTo = window.location.origin + '/profile.html';
-        const res = await _supabaseFetch('/auth/v1/otp', {
-            method: 'POST',
-            body: JSON.stringify({ email, options: { emailRedirectTo: redirectTo } })
-        });
-        return res.ok;
+            `${AUTH_SUPABASE_URL}/auth/v1/authorize?provider=google&redirect_to=${redirectTo}&access_type=offline&response_type=code&scopes=email+profile&hd=${AUTH_ALLOWED_DOMAIN}&apikey=${AUTH_SUPABASE_ANON_KEY}`;
     }
 
     async function signOut() {
@@ -78,6 +75,21 @@ window.AuthManager = (() => {
             await _supabaseFetch('/auth/v1/logout', { method: 'POST' }).catch(() => {});
         }
         _saveSession(null);
+    }
+
+    // ── Domain gate — call this right after getting the user object ──
+    async function _domainCheck(access_token, user) {
+        if (!_isAllowedEmail(user?.email)) {
+            // Sign out from Supabase immediately
+            await fetch(`${AUTH_SUPABASE_URL}/auth/v1/logout`, {
+                method: 'POST',
+                headers: _headers(access_token)
+            }).catch(() => {});
+            // Clean URL and signal domain error
+            history.replaceState(null, '', window.location.pathname + '?auth_error=domain');
+            return false;
+        }
+        return true;
     }
 
     // Handle OAuth callback token in URL hash/query
@@ -93,14 +105,14 @@ window.AuthManager = (() => {
             const expires_at = Date.now() / 1000 + parseInt(params.get('expires_in') || '3600');
 
             if (access_token) {
-                // Get user info
                 const userRes = await fetch(`${AUTH_SUPABASE_URL}/auth/v1/user`, {
                     headers: _headers(access_token)
                 });
                 if (userRes.ok) {
                     const user = await userRes.json();
+                    const allowed = await _domainCheck(access_token, user);
+                    if (!allowed) return 'domain_error';
                     _saveSession({ access_token, refresh_token, expires_at, user });
-                    // Clean URL
                     history.replaceState(null, '', window.location.pathname);
                     return true;
                 }
@@ -123,6 +135,8 @@ window.AuthManager = (() => {
                     });
                     if (userRes.ok) {
                         const user = await userRes.json();
+                        const allowed = await _domainCheck(data.access_token, user);
+                        if (!allowed) return 'domain_error';
                         _saveSession({
                             access_token: data.access_token,
                             refresh_token: data.refresh_token,
@@ -135,6 +149,13 @@ window.AuthManager = (() => {
                 }
             }
         }
+
+        // Check for pre-set domain error in URL (from a previous redirect)
+        if (search && search.includes('auth_error=domain')) {
+            history.replaceState(null, '', window.location.pathname);
+            return 'domain_error';
+        }
+
         return false;
     }
 
@@ -255,9 +276,16 @@ window.AuthManager = (() => {
     }
 
     // ── Init ─────────────────────────────────────────────
+    let _domainError = false;
+
     async function init() {
         // 1. Try to restore from callback URL
         const fromCallback = await _handleCallback();
+        if (fromCallback === 'domain_error') {
+            _domainError = true;
+            _notify();
+            return;
+        }
         if (fromCallback) return;
 
         // 2. Try to restore from localStorage
@@ -280,16 +308,17 @@ window.AuthManager = (() => {
     function getSession() { return _session; }
     function getUser() { return _session?.user || null; }
     function isLoggedIn() { return !!_session; }
+    function isDomainError() { return _domainError; }
     function onAuthChange(fn) { _listeners.push(fn); fn(_session); }
 
     return {
         init,
         signInWithGoogle,
-        signInWithMagicLink,
         signOut,
         getSession,
         getUser,
         isLoggedIn,
+        isDomainError,
         onAuthChange,
         getBookmarks,
         addBookmark,
@@ -299,3 +328,4 @@ window.AuthManager = (() => {
         saveRecentlyViewed
     };
 })();
+
