@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Sep 29, 2026",
+                "color": "purple",
+                "icon": "person",
+                "badgeText": "New Feature",
+                "title": "Accounts & Cloud Sync (Optional)",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">You can now sign in to SIT Archive to sync your bookmarks and recently viewed papers across all your devices. Sign-in is completely optional — the site works exactly as before without an account.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Google Sign-In:</strong> One-tap login with your Google account. No password required.</li><li><strong>Magic Link Login:</strong> Enter your email and receive a secure, one-click sign-in link.</li><li><strong>Cloud Bookmarks:</strong> Bookmarks are now synced to the cloud for logged-in users and persist across devices.</li><li><strong>Cloud History:</strong> Your Recently Viewed papers are backed up to your account automatically.</li><li><strong>Profile Page:</strong> New dedicated profile page showing your bookmarks, history, and account settings.</li><li><strong>Nav Login Button:</strong> A sign-in button now appears in the navigation bar on all pages. When signed in, your avatar is shown instead.</li></ul>"
+            },
+            {
+                "date": "Sep 29, 2026",
                 "color": "green",
                 "icon": "route",
                 "badgeText": "Bug Fixes",
