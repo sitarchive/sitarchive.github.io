@@ -862,6 +862,27 @@
             saveBookmarks(bookmarks);
             updateBookmarkIcons(paper.code);
         }
+
+        function getRecent() {
+            try {
+                return JSON.parse(localStorage.getItem('sit_archive_recent')) || [];
+            } catch(e) { return []; }
+        }
+        function saveRecent(paper) {
+            let recent = getRecent();
+            recent = recent.filter(r => r.code !== paper.code);
+            recent.unshift({
+                name: paper.name,
+                code: paper.code,
+                file: paper.file,
+                type: paper.type,
+                path: paper.path,
+                timestamp: Date.now()
+            });
+            if (recent.length > 15) recent.pop();
+            localStorage.setItem('sit_archive_recent', JSON.stringify(recent));
+        }
+
         function updateBookmarkIcons(code) {
             const icons = document.querySelectorAll(`[data-bookmark-icon="${code}"]`);
             const filled = isBookmarked(code);
