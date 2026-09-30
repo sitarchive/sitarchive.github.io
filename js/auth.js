@@ -148,6 +148,11 @@ window.AuthManager = (() => {
         const hash = window.location.hash;
         const search = window.location.search;
 
+        if ((hash && hash.includes('access_token')) || (search && search.includes('code='))) {
+            // Clean the URL synchronously immediately to prevent copying/leaking tokens
+            history.replaceState(null, '', window.location.pathname);
+        }
+
         // Check for access_token in hash (implicit flow)
         if (hash && hash.includes('access_token')) {
             const params = new URLSearchParams(hash.slice(1));
@@ -164,7 +169,6 @@ window.AuthManager = (() => {
                     const allowed = await _domainCheck(access_token, user);
                     if (!allowed) return 'domain_error';
                     _saveSession({ access_token, refresh_token, expires_at, user });
-                    history.replaceState(null, '', window.location.pathname);
                     return true;
                 }
             }
@@ -194,7 +198,6 @@ window.AuthManager = (() => {
                             expires_at: Date.now() / 1000 + (data.expires_in || 3600),
                             user
                         });
-                        history.replaceState(null, '', window.location.pathname);
                         return true;
                     }
                 }
