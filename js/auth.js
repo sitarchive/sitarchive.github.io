@@ -69,8 +69,26 @@ window.AuthManager = (() => {
                 _supabaseFetch('/rest/v1/user_bookmarks?select=*'),
                 _supabaseFetch('/rest/v1/user_recently_viewed?select=*')
             ]);
-            if (bRes.ok) _bookmarksCache = await bRes.json();
-            if (hRes.ok) _historyCache = await hRes.json();
+            if (bRes.ok) {
+                _bookmarksCache = await bRes.json();
+                localStorage.setItem('sit_archive_bookmarks', JSON.stringify(_bookmarksCache.map(b => ({
+                    name: b.paper_name,
+                    code: b.paper_code,
+                    file: b.file_url,
+                    type: b.paper_type,
+                    path: typeof b.paper_path === 'string' ? JSON.parse(b.paper_path) : b.paper_path
+                }))));
+            }
+            if (hRes.ok) {
+                _historyCache = await hRes.json();
+                localStorage.setItem('sit_archive_recent', JSON.stringify(_historyCache.map(h => ({
+                    name: h.paper_name,
+                    code: h.paper_code,
+                    file: h.file_url,
+                    type: h.paper_type,
+                    path: typeof h.paper_path === 'string' ? JSON.parse(h.paper_path) : h.paper_path
+                }))));
+            }
             
             // Notify UI to re-render bookmark icons
             window.dispatchEvent(new Event('auth_cache_loaded'));
@@ -349,6 +367,7 @@ window.AuthManager = (() => {
                 const user = await res.json();
                 _session = { ...stored, user };
                 _notify();
+                _preloadCaches();
             } else {
                 _saveSession(null);
             }

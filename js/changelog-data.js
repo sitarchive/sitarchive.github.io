@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Sep 30, 2026",
+                "color": "amber",
+                "icon": "bookmark",
+                "badgeText": "UI Fix",
+                "title": "Homepage Bookmark Icons Sync",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Fixed an issue where bookmarking papers on the homepage (Trending/Recently Added) correctly saved the paper, but the bookmark icon wouldn't appear filled when returning to the homepage. The frontend cache now accurately syncs with the database on all pages.</p>"
+            },
+            {
+                "date": "Sep 30, 2026",
                 "color": "blue",
                 "icon": "bug_report",
                 "badgeText": "Bug Fixes",
