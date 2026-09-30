@@ -886,17 +886,9 @@
             });
         });
 
-        function getRecent() {
-            try {
-                return JSON.parse(localStorage.getItem('sit_archive_recent')) || [];
-            } catch(e) { return []; }
-        }
         function saveRecent(paper) {
             if (!window.AuthManager || !AuthManager.isLoggedIn()) return;
             AuthManager.saveRecentlyViewed({ name: paper.name, code: paper.code, file: paper.file, type: paper.type || '', path: paper.path }).catch(() => {});
-        });
-            if (recent.length > 15) recent.pop();
-            localStorage.setItem('sit_archive_recent', JSON.stringify(recent));
         }
 
         function updateBookmarkIcons(code) {
@@ -1002,10 +994,15 @@
 
         
         document.addEventListener('DOMContentLoaded', async () => {
-            if (window.PaperStats) {
-                await window.PaperStats.init();
+            try {
+                if (window.PaperStats) {
+                    await window.PaperStats.init();
+                    console.log("Stats loaded:", Object.keys(window.PaperStats.statsMap || {}).length);
+                }
+            } catch (e) {
+                console.error("PaperStats init failed", e);
             }
-            console.log("Stats loaded:", Object.keys(window.PaperStats.statsMap).length); renderRecentlyAdded();
+            renderRecentlyAdded();
             renderTrendingPapers();
         });
 
