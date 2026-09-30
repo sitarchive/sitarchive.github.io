@@ -87,6 +87,7 @@ window.AuthManager = (() => {
             localStorage.removeItem('sit_auth_session');
             _bookmarksCache = [];
             _historyCache = [];
+            window.dispatchEvent(new Event('auth_cache_loaded'));
         }
         _notify();
     }

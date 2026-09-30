@@ -14,8 +14,8 @@ const CHANGELOG_DATA = [
                 "color": "amber",
                 "icon": "bookmark",
                 "badgeText": "UI Fix",
-                "title": "Homepage Bookmark Icons Sync",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Fixed an issue where bookmarking papers on the homepage (Trending/Recently Added) correctly saved the paper, but the bookmark icon wouldn't appear filled when returning to the homepage. The frontend cache now accurately syncs with the database on all pages.</p>"
+                "title": "Cloud-Only Bookmarks & History Sync",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-2\">Bookmarks and recently viewed history are now exclusively tied to your SIT account via Supabase. We completely removed local device storage to prevent sync issues across devices.</p><ul class=\"list-disc pl-5 mt-2 space-y-1 text-sm text-text-light-muted dark:text-text-dark-muted\"><li>Guests will now be prompted to sign in when attempting to bookmark papers.</li><li>Fixed a bug where icons wouldn't appear filled on the homepage upon reload.</li><li>Logging out instantly clears the UI to protect your privacy on shared devices.</li></ul>"
             },
             {
                 "date": "Sep 30, 2026",

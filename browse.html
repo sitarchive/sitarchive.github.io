@@ -332,7 +332,9 @@
 
         function toggleBookmark(paperDataStr) {
             if (!window.AuthManager || !AuthManager.isLoggedIn()) {
-                alert('Please sign in to save bookmarks.');
+                if (confirm('Please sign in with your SIT email to save bookmarks. Would you like to sign in now?')) {
+                    AuthManager.signInWithGoogle();
+                }
                 return;
             }
             const paper = JSON.parse(decodeURIComponent(paperDataStr));
