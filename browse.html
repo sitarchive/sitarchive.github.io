@@ -325,37 +325,30 @@
 
         // --- Bookmarks & Recently Viewed State ---
         // ── Bookmarks — uses AuthManager when logged in, localStorage for guests ──
-        function getBookmarks() {
-            try { return JSON.parse(localStorage.getItem('sit_archive_bookmarks') || '[]'); }
-            catch { return []; }
-        }
-        function saveBookmarks(bookmarks) {
-            localStorage.setItem('sit_archive_bookmarks', JSON.stringify(bookmarks));
-        }
         function isBookmarked(code) {
-            return getBookmarks().some(b => b.code === code);
+            if (!window.AuthManager || !AuthManager.isLoggedIn()) return false;
+            return AuthManager.getCachedBookmarks().some(b => b.paper_code === code);
         }
+
         function toggleBookmark(paperDataStr) {
-            const paper = JSON.parse(decodeURIComponent(paperDataStr));
-            let bookmarks = getBookmarks();
-            const alreadySaved = isBookmarked(paper.code);
-            if (alreadySaved) {
-                bookmarks = bookmarks.filter(b => b.code !== paper.code);
-                // Cloud: remove for logged-in users
-                if (window.AuthManager && AuthManager.isLoggedIn()) {
-                    AuthManager.removeBookmark(paper.code).catch(() => {});
-                }
-            } else {
-                bookmarks.push({ name: paper.name, code: paper.code, file: paper.file, type: paper.type, path: paper.path });
-                // Cloud: save for logged-in users
-                if (window.AuthManager && AuthManager.isLoggedIn()) {
-                    AuthManager.addBookmark({ name: paper.name, code: paper.code, file: paper.file, type: paper.type || '', path: paper.path }).catch(() => {});
-                }
+            if (!window.AuthManager || !AuthManager.isLoggedIn()) {
+                alert('Please sign in to save bookmarks.');
+                return;
             }
-            saveBookmarks(bookmarks);
+            const paper = JSON.parse(decodeURIComponent(paperDataStr));
+            const alreadySaved = isBookmarked(paper.code);
+            
+            // Optimistic UI update
+            let cache = AuthManager.getCachedBookmarks();
+            if (alreadySaved) {
+                const idx = cache.findIndex(b => b.paper_code === paper.code);
+                if (idx > -1) cache.splice(idx, 1);
+                AuthManager.removeBookmark(paper.code).catch(() => {});
+            } else {
+                cache.push({ paper_code: paper.code });
+                AuthManager.addBookmark({ name: paper.name, code: paper.code, file: paper.file, type: paper.type || '', path: paper.path }).catch(() => {});
+            }
             updateBookmarkIcons(paper.code);
-            
-            
         }
         function updateBookmarkIcons(code) {
             const icons = document.querySelectorAll(`[data-bookmark-icon="${code}"]`);
@@ -372,6 +365,12 @@
             });
         }
 
+        window.addEventListener('auth_cache_loaded', () => {
+            document.querySelectorAll('[data-bookmark-icon]').forEach(icon => {
+                const code = icon.getAttribute('data-bookmark-icon');
+                updateBookmarkIcons(code);
+            });
+        });
         
 
         function clickRecentFolder(event, pathStr) {

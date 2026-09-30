@@ -846,36 +846,29 @@
     <!-- Recently Added Widget -->
     <script>
         // ── Bookmarks & History — Strictly Supabase Auth ──
-        function getBookmarks() {
-            try { return JSON.parse(localStorage.getItem('sit_archive_bookmarks') || '[]'); }
-            catch { return []; }
-        }
-
-        function saveBookmarks(bookmarks) {
-            localStorage.setItem('sit_archive_bookmarks', JSON.stringify(bookmarks));
-        }
-
         function isBookmarked(code) {
-            return getBookmarks().some(b => b.code === code || b.paper_code === code);
+            if (!window.AuthManager || !AuthManager.isLoggedIn()) return false;
+            return AuthManager.getCachedBookmarks().some(b => b.paper_code === code);
         }
 
         function toggleBookmark(paperDataStr) {
+            if (!window.AuthManager || !AuthManager.isLoggedIn()) {
+                alert('Please sign in to save bookmarks.');
+                return;
+            }
             const paper = JSON.parse(decodeURIComponent(paperDataStr));
-            let bookmarks = getBookmarks();
             const alreadySaved = isBookmarked(paper.code);
             
+            // Optimistic UI update
+            let cache = AuthManager.getCachedBookmarks();
             if (alreadySaved) {
-                bookmarks = bookmarks.filter(b => b.code !== paper.code && b.paper_code !== paper.code);
-                if (window.AuthManager && AuthManager.isLoggedIn()) {
-                    AuthManager.removeBookmark(paper.code).catch(() => {});
-                }
+                const idx = cache.findIndex(b => b.paper_code === paper.code);
+                if (idx > -1) cache.splice(idx, 1);
+                AuthManager.removeBookmark(paper.code).catch(() => {});
             } else {
-                bookmarks.push({ name: paper.name, code: paper.code, file: paper.file, type: paper.type || '', path: paper.path });
-                if (window.AuthManager && AuthManager.isLoggedIn()) {
-                    AuthManager.addBookmark({ name: paper.name, code: paper.code, file: paper.file, type: paper.type || '', path: paper.path }).catch(() => {});
-                }
+                cache.push({ paper_code: paper.code });
+                AuthManager.addBookmark({ name: paper.name, code: paper.code, file: paper.file, type: paper.type || '', path: paper.path }).catch(() => {});
             }
-            saveBookmarks(bookmarks);
             updateBookmarkIcons(paper.code);
         }
 

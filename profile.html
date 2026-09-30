@@ -337,16 +337,6 @@
                 </div>
 
                 <!-- Data management -->
-                <div class="p-5 rounded-2xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary">
-                    <h3 class="font-bold text-sm mb-3 flex items-center gap-2">
-                        <span class="material-symbols-outlined text-[18px] text-primary">cloud_sync</span>Data & Storage
-                    </h3>
-                    <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-4">Your bookmarks and history are securely backed up to the cloud. You can clear the local device cache anytime without affecting cloud data.</p>
-                    <button onclick="clearLocalCache()"
-                        class="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border-light dark:border-border-dark text-sm hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary transition-colors font-medium">
-                        <span class="material-symbols-outlined text-[17px]">delete_sweep</span>Clear Local Cache
-                    </button>
-                </div>
 
                 <!-- Sign out -->
                 <div class="p-5 rounded-2xl border border-red-200 dark:border-red-900/60 bg-red-50/50 dark:bg-red-900/10">
@@ -550,13 +540,6 @@ async function removeBookmarkCard(code, btn) {
     }
 }
 
-// ── Clear local cache ─────────────────────────────────
-function clearLocalCache() {
-    if (!confirm('Clear local cache? Cloud data is safe.')) return;
-    localStorage.removeItem('sit_archive_bookmarks');
-    localStorage.removeItem('sit_archive_recent');
-    alert('Local cache cleared!');
-}
 
 // ── Auth state listener ───────────────────────────────
 AuthManager.onAuthChange(async (session) => {

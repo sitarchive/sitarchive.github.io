@@ -69,26 +69,8 @@ window.AuthManager = (() => {
                 _supabaseFetch('/rest/v1/user_bookmarks?select=*'),
                 _supabaseFetch('/rest/v1/user_recently_viewed?select=*')
             ]);
-            if (bRes.ok) {
-                _bookmarksCache = await bRes.json();
-                localStorage.setItem('sit_archive_bookmarks', JSON.stringify(_bookmarksCache.map(b => ({
-                    name: b.paper_name,
-                    code: b.paper_code,
-                    file: b.file_url,
-                    type: b.paper_type,
-                    path: typeof b.paper_path === 'string' ? JSON.parse(b.paper_path) : b.paper_path
-                }))));
-            }
-            if (hRes.ok) {
-                _historyCache = await hRes.json();
-                localStorage.setItem('sit_archive_recent', JSON.stringify(_historyCache.map(h => ({
-                    name: h.paper_name,
-                    code: h.paper_code,
-                    file: h.file_url,
-                    type: h.paper_type,
-                    path: typeof h.paper_path === 'string' ? JSON.parse(h.paper_path) : h.paper_path
-                }))));
-            }
+            if (bRes.ok) _bookmarksCache = await bRes.json();
+            if (hRes.ok) _historyCache = await hRes.json();
             
             // Notify UI to re-render bookmark icons
             window.dispatchEvent(new Event('auth_cache_loaded'));
@@ -229,11 +211,7 @@ window.AuthManager = (() => {
 
     // ── Bookmarks (cloud sync) ───────────────────────────
     async function getBookmarks() {
-        if (!_session) {
-            // Guest: localStorage
-            try { return JSON.parse(localStorage.getItem('sit_archive_bookmarks') || '[]'); }
-            catch { return []; }
-        }
+        if (!_session) return [];
         try {
             const res = await _supabaseFetch(`/rest/v1/user_bookmarks?user_id=eq.${_session.user.id}&order=saved_at.desc`);
             if (res.ok) {
@@ -252,13 +230,6 @@ window.AuthManager = (() => {
     }
 
     async function addBookmark(paper) {
-        // Always save locally too
-        let local = [];
-        try { local = JSON.parse(localStorage.getItem('sit_archive_bookmarks') || '[]'); } catch {}
-        local = local.filter(b => b.code !== paper.code);
-        local.unshift({ ...paper, savedAt: Date.now() });
-        localStorage.setItem('sit_archive_bookmarks', JSON.stringify(local));
-
         if (!_session) return;
         await _supabaseFetch('/rest/v1/user_bookmarks', {
             method: 'POST',
@@ -273,32 +244,30 @@ window.AuthManager = (() => {
                 saved_at: new Date().toISOString()
             })
         }).catch(() => {});
+        // Update memory cache
+        _bookmarksCache = _bookmarksCache.filter(b => b.paper_code !== paper.code);
+        _bookmarksCache.unshift({ paper_code: paper.code, paper_name: paper.name, file_url: paper.file, paper_type: paper.type, paper_path: JSON.stringify(paper.path) });
+        window.dispatchEvent(new Event('auth_cache_loaded'));
     }
 
     async function removeBookmark(paperCode) {
-        let local = [];
-        try { local = JSON.parse(localStorage.getItem('sit_archive_bookmarks') || '[]'); } catch {}
-        local = local.filter(b => b.code !== paperCode);
-        localStorage.setItem('sit_archive_bookmarks', JSON.stringify(local));
-
         if (!_session) return;
         await _supabaseFetch(`/rest/v1/user_bookmarks?user_id=eq.${_session.user.id}&paper_code=eq.${encodeURIComponent(paperCode)}`, {
             method: 'DELETE'
         }).catch(() => {});
+        // Update memory cache
+        _bookmarksCache = _bookmarksCache.filter(b => b.paper_code !== paperCode);
+        window.dispatchEvent(new Event('auth_cache_loaded'));
     }
 
     async function isBookmarked(paperCode) {
-        let local = [];
-        try { local = JSON.parse(localStorage.getItem('sit_archive_bookmarks') || '[]'); } catch {}
-        return local.some(b => b.code === paperCode);
+        if (!_session) return false;
+        return _bookmarksCache.some(b => b.paper_code === paperCode);
     }
 
     // ── Recently Viewed (cloud sync) ─────────────────────
     async function getRecentlyViewed() {
-        if (!_session) {
-            try { return JSON.parse(localStorage.getItem('sit_archive_recent') || '[]'); }
-            catch { return []; }
-        }
+        if (!_session) return [];
         try {
             const res = await _supabaseFetch(
                 `/rest/v1/user_recently_viewed?user_id=eq.${_session.user.id}&order=viewed_at.desc&limit=15`
@@ -319,14 +288,6 @@ window.AuthManager = (() => {
     }
 
     async function saveRecentlyViewed(paper) {
-        // Always save locally
-        let local = [];
-        try { local = JSON.parse(localStorage.getItem('sit_archive_recent') || '[]'); } catch {}
-        local = local.filter(r => r.code !== paper.code);
-        local.unshift({ ...paper, timestamp: Date.now() });
-        if (local.length > 15) local.pop();
-        localStorage.setItem('sit_archive_recent', JSON.stringify(local));
-
         if (!_session) return;
         await _supabaseFetch('/rest/v1/user_recently_viewed', {
             method: 'POST',
@@ -341,6 +302,9 @@ window.AuthManager = (() => {
                 viewed_at: new Date().toISOString()
             })
         }).catch(() => {});
+        // Update memory cache
+        _historyCache = _historyCache.filter(b => b.paper_code !== paper.code);
+        _historyCache.unshift({ paper_code: paper.code, paper_name: paper.name, file_url: paper.file, paper_type: paper.type, paper_path: JSON.stringify(paper.path) });
     }
 
     // ── Init ─────────────────────────────────────────────
