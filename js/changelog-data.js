@@ -14,7 +14,7 @@ const CHANGELOG_DATA = [
                 "color": "purple",
                 "icon": "person",
                 "badgeText": "New Feature",
-                "title": "Accounts & Cloud Sync (Optional)",
+                "title": "Cloud Sync & Accounts (Optional)",
                 "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">You can now sign in to SIT Archive to sync your bookmarks and recently viewed papers across all your devices. Sign-in is completely optional — the site works exactly as before without an account.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Google Sign-In:</strong> One-tap login with your Google account. No password required.</li><li><strong>Magic Link Login:</strong> Enter your email and receive a secure, one-click sign-in link.</li><li><strong>Cloud Bookmarks:</strong> Bookmarks are now synced to the cloud for logged-in users and persist across devices.</li><li><strong>Cloud History:</strong> Your Recently Viewed papers are backed up to your account automatically.</li><li><strong>Profile Page:</strong> New dedicated profile page showing your bookmarks, history, and account settings.</li><li><strong>Nav Login Button:</strong> A sign-in button now appears in the navigation bar on all pages. When signed in, your avatar is shown instead.</li></ul>"
             },
             {
@@ -279,7 +279,22 @@ const CHANGELOG_DATA = [
                 "icon": "upload_file",
                 "badgeText": "Papers Added",
                 "title": "6 New Question Papers Uploaded",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Added new End-Sem and Mid-Sem papers for AIML 2024-28.\n                                </p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>\n                                        AIML 2024-28 Sem 1 End-Sem: Linear Algebra, Introduction to AI &amp; Python Programming, Chemistry, Basic Electrical and Electronics Engineering\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>\n                                        AIML 2024-28 Sem 4 End-Sem: Supervised Machine Learning\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">quiz</span>\n                                        AIML 2024-28 Sem 4 Mid-Sem: Design and Analysis of Algorithms\n                                    </li>\n</ul>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">
+                                    Added new End-Sem and Mid-Sem papers for AIML 2024-28.
+                                </p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\">
+<li class=\"flex items-center gap-2\">
+<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>
+                                        AIML 2024-28 Sem 1 End-Sem: Linear Algebra, Introduction to AI &amp; Python Programming, Chemistry, Basic Electrical and Electronics Engineering
+                                    </li>
+<li class=\"flex items-center gap-2\">
+<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>
+                                        AIML 2024-28 Sem 4 End-Sem: Supervised Machine Learning
+                                    </li>
+<li class=\"flex items-center gap-2\">
+<span class=\"material-symbols-outlined text-[14px] text-primary\">quiz</span>
+                                        AIML 2024-28 Sem 4 Mid-Sem: Design and Analysis of Algorithms
+                                    </li>
+</ul>"
             }
         ]
     },
@@ -326,7 +341,22 @@ const CHANGELOG_DATA = [
                 "icon": "upload_file",
                 "badgeText": "Papers Added",
                 "title": "11 New Question Papers Uploaded",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Added new Backlog and End-Sem papers across CSE, CST, and AIML branches.\n                                </p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">history</span>\n                                        CST & CSE 2024-28 Sem 3 Backlog: Discrete Mathematics, Programming Paradigms, Data Structures, Sensors and Microcontrollers\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">history</span>\n                                        CST & CSE 2024-28 Sem 2 Backlog: Statistics and Probability\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>\n                                        AIML 2024-28 Sem 4 End-Sem: Design and Analysis of Algorithms, Unsupervised Learning\n                                    </li>\n</ul>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">
+                                    Added new Backlog and End-Sem papers across CSE, CST, and AIML branches.
+                                </p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\">
+<li class=\"flex items-center gap-2\">
+<span class=\"material-symbols-outlined text-[14px] text-primary\">history</span>
+                                        CST & CSE 2024-28 Sem 3 Backlog: Discrete Mathematics, Programming Paradigms, Data Structures, Sensors and Microcontrollers
+                                    </li>
+<li class=\"flex items-center gap-2\">
+<span class=\"material-symbols-outlined text-[14px] text-primary\">history</span>
+                                        CST & CSE 2024-28 Sem 2 Backlog: Statistics and Probability
+                                    </li>
+<li class=\"flex items-center gap-2\">
+<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>
+                                        AIML 2024-28 Sem 4 End-Sem: Design and Analysis of Algorithms, Unsupervised Learning
+                                    </li>
+</ul>"
             },
             {
                 "date": "Jul 21, 2026",
@@ -454,7 +484,12 @@ const CHANGELOG_DATA = [
                 "icon": "update",
                 "badgeText": "Announcement",
                 "title": "Hero Badge Updated: 2026 Papers Are Here",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">\n                                    The status badge on the homepage and About page now reads\n                                    <span class=\"font-medium text-text-light dark:text-text-dark\">\"Now with 2026\n                                        papers\"</span>, replacing the earlier \"Updating with 2026 papers soon\"\n                                    message, since 2026 papers have started being uploaded.\n                                </p>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">
+                                    The status badge on the homepage and About page now reads
+                                    <span class=\"font-medium text-text-light dark:text-text-dark\">\"Now with 2026
+                                        papers\"</span>, replacing the earlier \"Updating with 2026 papers soon\"
+                                    message, since 2026 papers have started being uploaded.
+                                </p>"
             },
             {
                 "date": "Jul 20, 2026",
@@ -462,7 +497,41 @@ const CHANGELOG_DATA = [
                 "icon": "upload_file",
                 "badgeText": "Papers Added",
                 "title": "19 New Question Papers Uploaded",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Added new End-Sem and Backlog papers across CSE, CSE AIML, and CST branches,\n                                    spanning multiple semesters and batches.\n                                </p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">history</span>\n                                        CSE 2025-29 Sem 1 Backlog: Fundamentals of Quantum Physics, Digital\n                                        Electronics and Logic Design, Calculus\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>\n                                        CSE 2025-29 Sem 2 End-Sem: CAO, Linear Algebra, Microcontrollers and Sensors,\n                                        Python Programming, Software Engineering\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>\n                                        CSE 2024-28 Sem 4 End-Sem: Operating Systems, Engineering Mathematics-III,\n                                        Database Management Systems\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>\n                                        CST 2024-28 Sem 4 End-Sem: Operating Systems, Engineering Mathematics-III,\n                                        Database Management Systems\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>\n                                        CSE AIML 2025-29 Sem 2 End-Sem: Statistics for Data Science, Introduction to\n                                        AI and Python Programming, Calculus\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">history</span>\n                                        CSE AIML 2025-29 Sem 1 Backlog: Digital Electronics and Logic Design,\n                                        Chemistry\n                                    </li>\n</ul>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">
+                                    Added new End-Sem and Backlog papers across CSE, CSE AIML, and CST branches,
+                                    spanning multiple semesters and batches.
+                                </p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\">
+<li class=\"flex items-center gap-2\">
+<span class=\"material-symbols-outlined text-[14px] text-primary\">history</span>
+                                        CSE 2025-29 Sem 1 Backlog: Fundamentals of Quantum Physics, Digital
+                                        Electronics and Logic Design, Calculus
+                                    </li>
+<li class=\"flex items-center gap-2\">
+<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>
+                                        CSE 2025-29 Sem 2 End-Sem: CAO, Linear Algebra, Microcontrollers and Sensors,
+                                        Python Programming, Software Engineering
+                                    </li>
+<li class=\"flex items-center gap-2\">
+<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>
+                                        CSE 2024-28 Sem 4 End-Sem: Operating Systems, Engineering Mathematics-III,
+                                        Database Management Systems
+                                    </li>
+<li class=\"flex items-center gap-2\">
+<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>
+                                        CST 2024-28 Sem 4 End-Sem: Operating Systems, Engineering Mathematics-III,
+                                        Database Management Systems
+                                    </li>
+<li class=\"flex items-center gap-2\">
+<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>
+                                        CSE AIML 2025-29 Sem 2 End-Sem: Statistics for Data Science, Introduction to
+                                        AI and Python Programming, Calculus
+                                    </li>
+<li class=\"flex items-center gap-2\">
+<span class=\"material-symbols-outlined text-[14px] text-primary\">history</span>
+                                        CSE AIML 2025-29 Sem 1 Backlog: Digital Electronics and Logic Design,
+                                        Chemistry
+                                    </li>
+</ul>"
             },
             {
                 "date": "Jul 11, 2026",
@@ -470,7 +539,23 @@ const CHANGELOG_DATA = [
                 "icon": "account_tree",
                 "badgeText": "Structure Update",
                 "title": "Full 8-Semester Structure & Backlog Category Added",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Every existing batch across CSE, CSE AIML, AIML, and CST now has all 8 semesters\n                                    scaffolded, and every semester includes an <span class=\"font-medium text-text-light dark:text-text-dark\">End-Sem</span>, <span class=\"font-medium text-text-light dark:text-text-dark\">Mid-Sem (Unit\n                                        Tests)</span>, and new <span class=\"font-medium text-text-light dark:text-text-dark\">Backlog</span>\n                                    category. Empty categories are ready and will be filled in as more papers are\n                                    uploaded.\n                                </p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">folder</span>\n                                        CSE (2024-28, 2025-29), CSE AIML (2025-29), AIML (2024-28), CST (2024-28) →\n                                        Sem 1-8\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">history</span>\n                                        Backlog category added alongside End-Sem and Mid-Sem in every semester\n                                    </li>\n</ul>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">
+                                    Every existing batch across CSE, CSE AIML, AIML, and CST now has all 8 semesters
+                                    scaffolded, and every semester includes an <span class=\"font-medium text-text-light dark:text-text-dark\">End-Sem</span>, <span class=\"font-medium text-text-light dark:text-text-dark\">Mid-Sem (Unit
+                                        Tests)</span>, and new <span class=\"font-medium text-text-light dark:text-text-dark\">Backlog</span>
+                                    category. Empty categories are ready and will be filled in as more papers are
+                                    uploaded.
+                                </p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\">
+<li class=\"flex items-center gap-2\">
+<span class=\"material-symbols-outlined text-[14px] text-primary\">folder</span>
+                                        CSE (2024-28, 2025-29), CSE AIML (2025-29), AIML (2024-28), CST (2024-28) →
+                                        Sem 1-8
+                                    </li>
+<li class=\"flex items-center gap-2\">
+<span class=\"material-symbols-outlined text-[14px] text-primary\">history</span>
+                                        Backlog category added alongside End-Sem and Mid-Sem in every semester
+                                    </li>
+</ul>"
             }
         ]
     },
@@ -509,7 +594,12 @@ const CHANGELOG_DATA = [
                 "icon": "space_bar",
                 "badgeText": "Bug Fix",
                 "title": "Nav Spacing Fixed — Theme Toggle Gap Corrected",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">\n                                    Fixed excessive gap between the last nav link (\"Feedback\") and the theme toggle\n                                    button. Restored the original <code class=\"text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded\">justify-between</code>\n                                    layout on the outer nav container and reverted the desktop nav to <code class=\"text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded\">gap-8</code>\n                                    spacing, matching the original design. Also fixed correct nav link order across all 11 pages.\n                                </p>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">
+                                    Fixed excessive gap between the last nav link (\"Feedback\") and the theme toggle
+                                    button. Restored the original <code class=\"text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded\">justify-between</code>
+                                    layout on the outer nav container and reverted the desktop nav to <code class=\"text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded\">gap-8</code>
+                                    spacing, matching the original design. Also fixed correct nav link order across all 11 pages.
+                                </p>"
             },
             {
                 "date": "Jun 7, 2026",
@@ -517,7 +607,20 @@ const CHANGELOG_DATA = [
                 "icon": "phone_iphone",
                 "badgeText": "Bug Fix",
                 "title": "Mobile Layout & Performance Fixes",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">\n                                    Fixed two <a class=\"text-primary hover:underline font-medium\" href=\"docs.html\">Docs\n                                        page</a> mobile issues: (1) Nav was missing\n                                    <code class=\"text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded\">hidden md:flex</code>\n                                    so all desktop links showed on mobile causing horizontal overflow — rebuilt the nav\n                                    with proper responsive structure and logo. (2) The\n                                    <code class=\"text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded\">pre</code>\n                                    folder-tree code block was pushing the flex layout wider than the viewport — fixed\n                                    by adding\n                                    <code class=\"text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded\">min-w-0</code>\n                                    to the main flex item so code blocks scroll horizontally instead of expanding the\n                                    page. Also disabled heavy GPU animations (blur orbs, dot grid) on mobile to fix\n                                    homepage scroll lag.\n                                </p>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">
+                                    Fixed two <a class=\"text-primary hover:underline font-medium\" href=\"docs.html\">Docs
+                                        page</a> mobile issues: (1) Nav was missing
+                                    <code class=\"text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded\">hidden md:flex</code>
+                                    so all desktop links showed on mobile causing horizontal overflow — rebuilt the nav
+                                    with proper responsive structure and logo. (2) The
+                                    <code class=\"text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded\">pre</code>
+                                    folder-tree code block was pushing the flex layout wider than the viewport — fixed
+                                    by adding
+                                    <code class=\"text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded\">min-w-0</code>
+                                    to the main flex item so code blocks scroll horizontally instead of expanding the
+                                    page. Also disabled heavy GPU animations (blur orbs, dot grid) on mobile to fix
+                                    homepage scroll lag.
+                                </p>"
             },
             {
                 "date": "Jun 7, 2026",
@@ -525,7 +628,13 @@ const CHANGELOG_DATA = [
                 "icon": "animation",
                 "badgeText": "Enhancement",
                 "title": "Rich Animations Added Site-Wide",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">\n                                    Added a full suite of animations inspired by Linear, Vercel, and Stripe — ambient\n                                    cursor glow, animated scroll progress bar, card spotlight (mouse-tracking inner glow),\n                                    smooth page transitions, staggered folder card reveals on Browse, floating gradient\n                                    orbs in the hero, button shimmer streaks, an animated live-status dot in the footer,\n                                    and auto scroll-reveal on sections across all 11 pages.\n                                </p>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">
+                                    Added a full suite of animations inspired by Linear, Vercel, and Stripe — ambient
+                                    cursor glow, animated scroll progress bar, card spotlight (mouse-tracking inner glow),
+                                    smooth page transitions, staggered folder card reveals on Browse, floating gradient
+                                    orbs in the hero, button shimmer streaks, an animated live-status dot in the footer,
+                                    and auto scroll-reveal on sections across all 11 pages.
+                                </p>"
             },
             {
                 "date": "Jun 7, 2026",
@@ -533,7 +642,13 @@ const CHANGELOG_DATA = [
                 "icon": "group_add",
                 "badgeText": "New Feature",
                 "title": "Collaborate Page Added",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">\n                                    Added a new <a class=\"text-primary hover:underline font-medium\" href=\"collaborate.html\">Collaborate page</a> for\n                                    students and developers who want to contribute to SIT Archive on GitHub. Includes a\n                                    full step-by-step guide (fork, clone, branch, edit, commit, PR, review), code\n                                    blocks, tips for smooth contributions, and a direct link to the repository. Added to\n                                    the nav and footer across all pages.\n                                </p>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">
+                                    Added a new <a class=\"text-primary hover:underline font-medium\" href=\"collaborate.html\">Collaborate page</a> for
+                                    students and developers who want to contribute to SIT Archive on GitHub. Includes a
+                                    full step-by-step guide (fork, clone, branch, edit, commit, PR, review), code
+                                    blocks, tips for smooth contributions, and a direct link to the repository. Added to
+                                    the nav and footer across all pages.
+                                </p>"
             },
             {
                 "date": "Jun 7, 2026",
@@ -541,7 +656,12 @@ const CHANGELOG_DATA = [
                 "icon": "rate_review",
                 "badgeText": "New Feature",
                 "title": "Feedback Page Added",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">\n                                    Students can now submit feedback, report bugs, request missing papers, or share\n                                    suggestions directly via the new <a class=\"text-primary hover:underline font-medium\" href=\"feedback.html\">Feedback page</a>. The form\n                                    opens your email client with everything pre-filled — just hit send. Added to the nav\n                                    and footer across all pages.\n                                </p>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">
+                                    Students can now submit feedback, report bugs, request missing papers, or share
+                                    suggestions directly via the new <a class=\"text-primary hover:underline font-medium\" href=\"feedback.html\">Feedback page</a>. The form
+                                    opens your email client with everything pre-filled — just hit send. Added to the nav
+                                    and footer across all pages.
+                                </p>"
             },
             {
                 "date": "Jun 6, 2026",
@@ -549,7 +669,10 @@ const CHANGELOG_DATA = [
                 "icon": "people",
                 "badgeText": "New Feature",
                 "title": "Visitor Counter Added",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">\n                                    Added a live visitor counter bar at the top of all pages. The counter tracks unique\n                                    session-based visits and is displayed site-wide with the matching theme.\n                                </p>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">
+                                    Added a live visitor counter bar at the top of all pages. The counter tracks unique
+                                    session-based visits and is displayed site-wide with the matching theme.
+                                </p>"
             },
             {
                 "date": "Jun 6, 2026",
@@ -557,7 +680,11 @@ const CHANGELOG_DATA = [
                 "icon": "update",
                 "badgeText": "Announcement",
                 "title": "2026 Papers Coming Soon",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">\n                                    Updated the status badge across all pages to reflect that 2026 exam papers are\n                                    currently being collected and will be uploaded soon. The hero badge now reads\n                                    \"Updating with 2026 papers soon\".\n                                </p>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">
+                                    Updated the status badge across all pages to reflect that 2026 exam papers are
+                                    currently being collected and will be uploaded soon. The hero badge now reads
+                                    \"Updating with 2026 papers soon\".
+                                </p>"
             }
         ]
     },
@@ -596,7 +723,27 @@ const CHANGELOG_DATA = [
                 "icon": "library_add",
                 "badgeText": "Mass Update",
                 "title": "Comprehensive Paper Addition",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Added 16+ new papers and updated links for CST, CSE, and AIML branches (2024-28\n                                    Batch).\n                                </p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\">\n<div>\n<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 (Mid &amp; End)</h4>\n<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li>• Mathematics-I (Mid/End)</li>\n<li>• Programming &amp; Problem Solving</li>\n<li>• Critical Thinking</li>\n<li>• Basic Electrical Engineering</li>\n</ul>\n</div>\n<div>\n<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 2 (Mid &amp; End)</h4>\n<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li>• Programming in C (End)</li>\n<li>• Basic Electrical Engineering (Mid)</li>\n</ul>\n</div>\n</div>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">
+                                    Added 16+ new papers and updated links for CST, CSE, and AIML branches (2024-28
+                                    Batch).
+                                </p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\">
+<div>
+<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 (Mid &amp; End)</h4>
+<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">
+<li>• Mathematics-I (Mid/End)</li>
+<li>• Programming &amp; Problem Solving</li>
+<li>• Critical Thinking</li>
+<li>• Basic Electrical Engineering</li>
+</ul>
+</div>
+<div>
+<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 2 (Mid &amp; End)</h4>
+<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">
+<li>• Programming in C (End)</li>
+<li>• Basic Electrical Engineering (Mid)</li>
+</ul>
+</div>
+</div>"
             },
             {
                 "date": "Jan 26, 2026",
@@ -604,7 +751,10 @@ const CHANGELOG_DATA = [
                 "icon": "cleaning_services",
                 "badgeText": "Cleanup",
                 "title": "Removed Placeholder Entries",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">\n                                    Removed 3 CST Sem 1 entries that had no links available yet (Programming &amp; Problem\n                                    Solving End-Sem, Basic Electrical End-Sem &amp; Mid-Sem).\n                                </p>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">
+                                    Removed 3 CST Sem 1 entries that had no links available yet (Programming &amp; Problem
+                                    Solving End-Sem, Basic Electrical End-Sem &amp; Mid-Sem).
+                                </p>"
             },
             {
                 "date": "Jan 26, 2026",
@@ -612,7 +762,18 @@ const CHANGELOG_DATA = [
                 "icon": "add",
                 "badgeText": "New Branch",
                 "title": "AIML Branch Added",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Added new AIML branch under SIT Hyderabad with 2024-28 batch.\n                                </p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">folder</span>\n                                        AIML → 2024-28 → Sem 1, 2, 3, 4\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>\n                                        Sem 2 End-Sem: Programming in C\n                                    </li>\n</ul>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">
+                                    Added new AIML branch under SIT Hyderabad with 2024-28 batch.
+                                </p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\">
+<li class=\"flex items-center gap-2\">
+<span class=\"material-symbols-outlined text-[14px] text-primary\">folder</span>
+                                        AIML → 2024-28 → Sem 1, 2, 3, 4
+                                    </li>
+<li class=\"flex items-center gap-2\">
+<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>
+                                        Sem 2 End-Sem: Programming in C
+                                    </li>
+</ul>"
             },
             {
                 "date": "Jan 26, 2026",
@@ -620,7 +781,27 @@ const CHANGELOG_DATA = [
                 "icon": "upload_file",
                 "badgeText": "Papers Added",
                 "title": "CST 2024-28 Sem 1 & 2 Papers",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Added multiple papers for CST branch Semester 1 and 2.\n                                </p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\">\n<div>\n<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 End-Sem</h4>\n<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li>• Mathematics-I</li>\n<li>• Programming and Problem Solving</li>\n<li>• Basic Electrical and Electronics Engineering</li>\n</ul>\n</div>\n<div>\n<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 Mid-Sem</h4>\n<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li>• Basic Electrical and Electronics Engineering</li>\n<li>• Critical Thinking</li>\n<li>• Programming and Problem Solving</li>\n<li>• Mathematics-I</li>\n</ul>\n</div>\n</div>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">
+                                    Added multiple papers for CST branch Semester 1 and 2.
+                                </p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\">
+<div>
+<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 End-Sem</h4>
+<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">
+<li>• Mathematics-I</li>
+<li>• Programming and Problem Solving</li>
+<li>• Basic Electrical and Electronics Engineering</li>
+</ul>
+</div>
+<div>
+<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 Mid-Sem</h4>
+<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">
+<li>• Basic Electrical and Electronics Engineering</li>
+<li>• Critical Thinking</li>
+<li>• Programming and Problem Solving</li>
+<li>• Mathematics-I</li>
+</ul>
+</div>
+</div>"
             },
             {
                 "date": "Jan 25, 2026",
@@ -628,7 +809,26 @@ const CHANGELOG_DATA = [
                 "icon": "upload_file",
                 "badgeText": "Papers Added",
                 "title": "CSE 2024-28 Sem 2 & 3 Papers",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Added papers for CSE branch Semester 2 and 3.\n                                </p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\">\n<div>\n<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 2 End-Sem</h4>\n<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li>• Programming in C</li>\n</ul>\n</div>\n<div>\n<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 3 End-Sem</h4>\n<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li>• Sensors and Microcontrollers</li>\n<li>• Programming Paradigms</li>\n<li>• Discrete Mathematics</li>\n<li>• Data Structures</li>\n<li>• Computer Organization</li>\n</ul>\n</div>\n</div>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">
+                                    Added papers for CSE branch Semester 2 and 3.
+                                </p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\">
+<div>
+<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 2 End-Sem</h4>
+<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">
+<li>• Programming in C</li>
+</ul>
+</div>
+<div>
+<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 3 End-Sem</h4>
+<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">
+<li>• Sensors and Microcontrollers</li>
+<li>• Programming Paradigms</li>
+<li>• Discrete Mathematics</li>
+<li>• Data Structures</li>
+<li>• Computer Organization</li>
+</ul>
+</div>
+</div>"
             },
             {
                 "date": "Jan 25, 2026",
@@ -636,7 +836,10 @@ const CHANGELOG_DATA = [
                 "icon": "edit",
                 "badgeText": "Link Updated",
                 "title": "Discrete Mathematics Links Fixed",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">\n                                    Updated Google Drive links for \"Discrete Mathematics and Graph Theory\" in CSE and\n                                    CST branches (Sem 3 End-Sem).\n                                </p>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">
+                                    Updated Google Drive links for \"Discrete Mathematics and Graph Theory\" in CSE and
+                                    CST branches (Sem 3 End-Sem).
+                                </p>"
             },
             {
                 "date": "Jan 24, 2026",
@@ -644,7 +847,10 @@ const CHANGELOG_DATA = [
                 "icon": "palette",
                 "badgeText": "UI Update",
                 "title": "Default Theme Changed to Light",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">\n                                    Changed the default theme from dark to light mode. Dark mode is still available via\n                                    the toggle.\n                                </p>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">
+                                    Changed the default theme from dark to light mode. Dark mode is still available via
+                                    the toggle.
+                                </p>"
             }
         ]
     }
