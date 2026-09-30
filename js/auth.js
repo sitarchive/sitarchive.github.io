@@ -91,10 +91,10 @@ window.AuthManager = (() => {
     // ── OAuth & Auth flows ──────────────────────────────
     async function signInWithGoogle() {
         const redirectTo = encodeURIComponent(window.location.origin + '/profile.html');
-        // Note: no hd= hint since we allow multiple SIT domains.
-        // Domain enforcement happens in _domainCheck() after callback.
+        // Using implicit flow (response_type=token) — access_token comes back in URL hash.
+        // PKCE (response_type=code) requires a stored code_verifier which we don't implement.
         window.location.href =
-            `${AUTH_SUPABASE_URL}/auth/v1/authorize?provider=google&redirect_to=${redirectTo}&access_type=offline&response_type=code&scopes=email+profile&prompt=select_account&apikey=${AUTH_SUPABASE_ANON_KEY}`;
+            `${AUTH_SUPABASE_URL}/auth/v1/authorize?provider=google&redirect_to=${redirectTo}&response_type=token&scopes=email+profile&prompt=select_account&apikey=${AUTH_SUPABASE_ANON_KEY}`;
     }
 
     async function signOut() {

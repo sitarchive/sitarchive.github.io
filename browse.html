@@ -334,8 +334,10 @@
         let currentPath = [];
 
         // --- Bookmarks & Recently Viewed State ---
+        // ── Bookmarks — uses AuthManager when logged in, localStorage for guests ──
         function getBookmarks() {
-            return JSON.parse(localStorage.getItem('sit_archive_bookmarks') || '[]');
+            try { return JSON.parse(localStorage.getItem('sit_archive_bookmarks') || '[]'); }
+            catch { return []; }
         }
         function saveBookmarks(bookmarks) {
             localStorage.setItem('sit_archive_bookmarks', JSON.stringify(bookmarks));
@@ -346,24 +348,24 @@
         function toggleBookmark(paperDataStr) {
             const paper = JSON.parse(decodeURIComponent(paperDataStr));
             let bookmarks = getBookmarks();
-            if (isBookmarked(paper.code)) {
+            const alreadySaved = isBookmarked(paper.code);
+            if (alreadySaved) {
                 bookmarks = bookmarks.filter(b => b.code !== paper.code);
+                // Cloud: remove for logged-in users
+                if (window.AuthManager && AuthManager.isLoggedIn()) {
+                    AuthManager.removeBookmark(paper.code).catch(() => {});
+                }
             } else {
-                bookmarks.push({
-                    name: paper.name,
-                    code: paper.code,
-                    file: paper.file,
-                    type: paper.type,
-                    path: paper.path
-                });
+                bookmarks.push({ name: paper.name, code: paper.code, file: paper.file, type: paper.type, path: paper.path });
+                // Cloud: save for logged-in users
+                if (window.AuthManager && AuthManager.isLoggedIn()) {
+                    AuthManager.addBookmark({ name: paper.name, code: paper.code, file: paper.file, type: paper.type || '', path: paper.path }).catch(() => {});
+                }
             }
             saveBookmarks(bookmarks);
             updateBookmarkIcons(paper.code);
-
             updateBookmarkCount();
-            if (isBookmarkView) {
-                renderBookmarksView();
-            }
+            if (isBookmarkView) { renderBookmarksView(); }
         }
         function updateBookmarkIcons(code) {
             const icons = document.querySelectorAll(`[data-bookmark-icon="${code}"]`);
@@ -482,21 +484,19 @@ semDownloadWrap.innerHTML = '';
         }
 
         function getRecent() {
-            return JSON.parse(localStorage.getItem('sit_archive_recent') || '[]');
+            try { return JSON.parse(localStorage.getItem('sit_archive_recent') || '[]'); }
+            catch { return []; }
         }
         function saveRecent(paper) {
             let recent = getRecent();
             recent = recent.filter(r => r.code !== paper.code);
-            recent.unshift({
-                name: paper.name,
-                code: paper.code,
-                file: paper.file,
-                type: paper.type,
-                path: paper.path,
-                timestamp: Date.now()
-            });
+            recent.unshift({ name: paper.name, code: paper.code, file: paper.file, type: paper.type, path: paper.path, timestamp: Date.now() });
             if (recent.length > 15) recent.pop();
             localStorage.setItem('sit_archive_recent', JSON.stringify(recent));
+            // Cloud: save for logged-in users
+            if (window.AuthManager && AuthManager.isLoggedIn()) {
+                AuthManager.saveRecentlyViewed({ name: paper.name, code: paper.code, file: paper.file, type: paper.type || '', path: paper.path }).catch(() => {});
+            }
             if (!isBookmarkView) {
                 renderRecentViewed();
             }
@@ -1192,8 +1192,8 @@ Thank you!`);
     </script>
 
     <!-- Auth -->
-    <script src="js/auth.js?v=1"></script>
-    <script src="js/nav-auth.js?v=1"></script>
+    <script src="js/auth.js?v=2"></script>
+    <script src="js/nav-auth.js?v=2"></script>
 
     <!-- Animation Controller -->
     <script src="js/animations.js?v=2"></script>

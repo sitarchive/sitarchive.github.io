@@ -176,6 +176,9 @@
                     </div>
                 </div>
 
+                <!-- Auth Slot (desktop) -->
+                <div id="nav-auth-slot"></div>
+
                 <button onclick="toggleTheme()"
                     class="flex items-center justify-center w-10 h-10 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary border border-border-light dark:border-border-dark transition-colors">
                     <span id="theme-icon" class="material-symbols-outlined text-[20px]">dark_mode</span>
@@ -187,6 +190,8 @@
                     class="flex items-center justify-center w-10 h-10 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark">
                     <span id="theme-icon-mobile" class="material-symbols-outlined text-[20px]">dark_mode</span>
                 </button>
+                <!-- Compact Auth (mobile top bar) -->
+                <div id="nav-auth-slot-mobile-icon" class="flex items-center"></div>
                 <button class="text-text-light dark:text-text-dark" id="mobile-menu-btn">
                     <span class="material-symbols-outlined">menu</span>
                 </button>
@@ -196,7 +201,9 @@
         <div id="mobile-menu"
             class="hidden md:hidden border-t border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark">
             <div class="px-4 py-4 space-y-3">
-                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="index.html">Home</a>
+                <!-- Auth slot (mobile menu) -->
+                <div id="nav-auth-slot-mobile" class="pb-2 border-b border-border-light dark:border-border-dark"></div>
+<a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="index.html">Home</a>
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="browse.html">Browse Papers</a>
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="submit.html">Submit Papers</a>
                 <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="contributors.html">Contributors</a>
@@ -474,6 +481,8 @@
     </script>
 
     <!-- Animation Controller -->
+    <script src="js/auth.js?v=2"></script>
+    <script src="js/nav-auth.js?v=2"></script>
     <script src="js/animations.js?v=2"></script>
     <script>
         if ("serviceWorker" in navigator) {
