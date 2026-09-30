@@ -3,8 +3,8 @@
    Supabase Auth — Google OAuth only
    Restricted to SIT campus emails only:
      @sithyd.siu.edu.in  (Hyderabad)
-     @sitpune.edu.in     (Pune)
-     @sitnagpur.edu.in   (Nagpur)
+     @sitpune.siu.edu.in     (Pune)
+     @sitnagpur.siu.edu.in   (Nagpur)
    - Logged-in users: bookmarks & recently viewed synced to cloud
    - Guests: localStorage only (no change in experience)
    ===================================================== */
@@ -15,15 +15,15 @@ const AUTH_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ
 // All allowed SIT campus email domains
 const AUTH_ALLOWED_DOMAINS = [
     'sithyd.siu.edu.in',   // SIT Hyderabad
-    'sitpune.edu.in',       // SIT Pune
-    'sitnagpur.edu.in',     // SIT Nagpur
+    'sitpune.siu.edu.in',       // SIT Pune
+    'sitnagpur.siu.edu.in',     // SIT Nagpur
 ];
 
 // Campus info lookup by domain
 const AUTH_CAMPUS_INFO = {
     'sithyd.siu.edu.in': { name: 'SIT Hyderabad', short: 'SITHYD', dbKey: 'SITHYD' },
-    'sitpune.edu.in':    { name: 'SIT Pune',      short: 'SITPUNE', dbKey: 'SITPUNE' },
-    'sitnagpur.edu.in':  { name: 'SIT Nagpur',    short: 'SITNAG',  dbKey: 'SITNAG' },
+    'sitpune.siu.edu.in':    { name: 'SIT Pune',      short: 'SITPUNE', dbKey: 'SITPUNE' },
+    'sitnagpur.siu.edu.in':  { name: 'SIT Nagpur',    short: 'SITNAG',  dbKey: 'SITNAG' },
 };
 
 function _isAllowedEmail(email) {

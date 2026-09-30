@@ -9,7 +9,7 @@
      #nav-auth-slot-mobile       → mobile slide-out menu row
    ===================================================== */
 
-// Works with all SIT campus domains: sithyd.siu.edu.in, sitpune.edu.in, sitnagpur.edu.in
+// Works with all SIT campus domains: sithyd.siu.edu.in, sitpune.siu.edu.in, sitnagpur.siu.edu.in
 window.NavAuth = (() => {
 
     function _getInitials(user) {

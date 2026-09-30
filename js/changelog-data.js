@@ -11,6 +11,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Sep 30, 2026",
+                "color": "blue",
+                "icon": "bug_report",
+                "badgeText": "Bug Fixes",
+                "title": "Bookmarks Path Fix & Campus Login Domains",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Fixed an issue where clicking the folder icon on bookmarks or recently viewed papers would not open the correct folder. Also updated the allowed login domains to specifically require <code class=\"text-xs bg-bg-light-secondary dark:bg-bg-dark-secondary px-1 py-0.5 rounded\">.siu.edu.in</code> for all campuses (Hyderabad, Pune, Nagpur).</p>"
+            },
+            {
+                "date": "Sep 30, 2026",
                 "color": "emerald",
                 "icon": "menu",
                 "badgeText": "Hotfix",
