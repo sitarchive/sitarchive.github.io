@@ -154,7 +154,7 @@
                 <span class="text-xl font-bold tracking-tight">SIT Archive</span>
             </a>
             <div class="hidden md:flex items-center gap-8">
-                <div class="flex items-center gap-4 sm:p-6 overflow-hidden break-words">
+                <div class="flex items-center gap-6">
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="index.html">Home</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="browse.html">Browse Papers</a>
                     <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="submit.html">Submit Papers</a>
@@ -177,13 +177,16 @@
                     </div>
                 </div>
 
+                <div class="flex items-center gap-2">
                 <!-- Auth Slot (desktop) -->
+                <div class="flex items-center gap-2">
                 <div id="nav-auth-slot"></div>
 
                 <button onclick="toggleTheme()"
                     class="flex items-center justify-center w-10 h-10 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary border border-border-light dark:border-border-dark transition-colors">
                     <span id="theme-icon" class="material-symbols-outlined text-[20px]">dark_mode</span>
                 </button>
+            </div>
             </div>
 
             <div class="md:hidden flex items-center gap-3 ml-auto">
@@ -196,7 +199,6 @@
                 <button class="text-text-light dark:text-text-dark" id="mobile-menu-btn">
                     <span class="material-symbols-outlined">menu</span>
                 </button>
-            </div>
         </div>
 
         <div id="mobile-menu"

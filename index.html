@@ -332,6 +332,7 @@
                     </div>
                 </div>
 
+                <div class="flex items-center gap-2">
                 <!-- Auth Slot (desktop) -->
                 <div id="nav-auth-slot"></div>
 
@@ -353,7 +354,6 @@
                 <button class="text-text-light dark:text-text-dark" id="mobile-menu-btn">
                     <span class="material-symbols-outlined">menu</span>
                 </button>
-            </div>
         </div>
 
         <!-- Mobile Menu -->
@@ -843,32 +843,48 @@
 
     <!-- Recently Added Widget -->
     <script>
-        function getBookmarks() {
-            return JSON.parse(localStorage.getItem('sit_archive_bookmarks') || '[]');
-        }
-        function saveBookmarks(bookmarks) {
-            localStorage.setItem('sit_archive_bookmarks', JSON.stringify(bookmarks));
-        }
+        // ── Bookmarks & History — Strictly Supabase Auth ──
         function isBookmarked(code) {
-            return getBookmarks().some(b => b.code === code);
+            if (!window.AuthManager || !AuthManager.isLoggedIn()) return false;
+            return AuthManager.getCachedBookmarks().some(b => b.paper_code === code);
         }
+
         function toggleBookmark(paperDataStr) {
-            const paper = JSON.parse(decodeURIComponent(paperDataStr));
-            let bookmarks = getBookmarks();
-            if (isBookmarked(paper.code)) {
-                bookmarks = bookmarks.filter(b => b.code !== paper.code);
-            } else {
-                bookmarks.push({
-                    name: paper.name,
-                    code: paper.code,
-                    file: paper.file,
-                    type: paper.type,
-                    path: paper.path
-                });
+            if (!window.AuthManager || !AuthManager.isLoggedIn()) {
+                alert('Please sign in to save bookmarks.');
+                return;
             }
-            saveBookmarks(bookmarks);
+            const paper = JSON.parse(decodeURIComponent(paperDataStr));
+            const alreadySaved = isBookmarked(paper.code);
+            
+            // Optimistic UI update
+            let cache = AuthManager.getCachedBookmarks();
+            if (alreadySaved) {
+                const idx = cache.findIndex(b => b.paper_code === paper.code);
+                if (idx > -1) cache.splice(idx, 1);
+                AuthManager.removeBookmark(paper.code).catch(() => {});
+            } else {
+                cache.push({ paper_code: paper.code });
+                AuthManager.addBookmark({ name: paper.name, code: paper.code, file: paper.file, type: paper.type || '', path: paper.path }).catch(() => {});
+            }
             updateBookmarkIcons(paper.code);
         }
+
+        // Re-render icons when auth cache loads
+        window.addEventListener('auth_cache_loaded', () => {
+            document.querySelectorAll('[data-bookmark-icon]').forEach(icon => {
+                const code = icon.getAttribute('data-bookmark-icon');
+                const filled = isBookmarked(code);
+                icon.textContent = 'bookmark';
+                if (filled) {
+                    icon.classList.add('text-primary');
+                    icon.style.fontVariationSettings = "'FILL' 1";
+                } else {
+                    icon.classList.remove('text-primary');
+                    icon.style.fontVariationSettings = "'FILL' 0";
+                }
+            });
+        });
 
         function getRecent() {
             try {
@@ -876,16 +892,9 @@
             } catch(e) { return []; }
         }
         function saveRecent(paper) {
-            let recent = getRecent();
-            recent = recent.filter(r => r.code !== paper.code);
-            recent.unshift({
-                name: paper.name,
-                code: paper.code,
-                file: paper.file,
-                type: paper.type,
-                path: paper.path,
-                timestamp: Date.now()
-            });
+            if (!window.AuthManager || !AuthManager.isLoggedIn()) return;
+            AuthManager.saveRecentlyViewed({ name: paper.name, code: paper.code, file: paper.file, type: paper.type || '', path: paper.path }).catch(() => {});
+        });
             if (recent.length > 15) recent.pop();
             localStorage.setItem('sit_archive_recent', JSON.stringify(recent));
         }

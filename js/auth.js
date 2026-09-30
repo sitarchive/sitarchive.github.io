@@ -42,6 +42,8 @@ function _getCampusFromEmail(email) {
 window.AuthManager = (() => {
     let _session = null;
     let _listeners = [];
+    let _bookmarksCache = [];
+    let _historyCache = [];
 
     function _headers(token) {
         return {
@@ -59,13 +61,32 @@ window.AuthManager = (() => {
         });
     }
 
+    
+    async function _preloadCaches() {
+        if (!_session) return;
+        try {
+            const [bRes, hRes] = await Promise.all([
+                _supabaseFetch('/rest/v1/user_bookmarks?select=*'),
+                _supabaseFetch('/rest/v1/user_recently_viewed?select=*')
+            ]);
+            if (bRes.ok) _bookmarksCache = await bRes.json();
+            if (hRes.ok) _historyCache = await hRes.json();
+            
+            // Notify UI to re-render bookmark icons
+            window.dispatchEvent(new Event('auth_cache_loaded'));
+        } catch (err) { console.error('Cache preload failed', err); }
+    }
+
     // ── Session management ──────────────────────────────
     function _saveSession(session) {
         _session = session;
         if (session) {
             localStorage.setItem('sit_auth_session', JSON.stringify(session));
+            _preloadCaches();
         } else {
             localStorage.removeItem('sit_auth_session');
+            _bookmarksCache = [];
+            _historyCache = [];
         }
         _notify();
     }
@@ -78,6 +99,8 @@ window.AuthManager = (() => {
             // Check if expired (with 60s buffer)
             if (s.expires_at && Date.now() / 1000 > s.expires_at - 60) {
                 localStorage.removeItem('sit_auth_session');
+            _bookmarksCache = [];
+            _historyCache = [];
                 return null;
             }
             return s;
@@ -348,6 +371,9 @@ window.AuthManager = (() => {
         isDomainError,
         onAuthChange,
         getCampusFromEmail: _getCampusFromEmail,
+        
+        getCachedBookmarks: () => _bookmarksCache,
+        getCachedHistory: () => _historyCache,
         getBookmarks,
         addBookmark,
         removeBookmark,

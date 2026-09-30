@@ -176,6 +176,7 @@
                     </div>
                 </div>
 
+                <div class="flex items-center gap-2">
                 <!-- Auth Slot (desktop) -->
                 <div id="nav-auth-slot"></div>
 
@@ -195,7 +196,6 @@
                 <button class="text-text-light dark:text-text-dark" id="mobile-menu-btn">
                     <span class="material-symbols-outlined">menu</span>
                 </button>
-            </div>
         </div>
 
         <div id="mobile-menu"
@@ -248,11 +248,7 @@
                     <input id="search-input" type="text" placeholder="Search all papers..."
                         class="w-full h-12 pl-12 pr-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary text-text-light dark:text-text-dark placeholder-text-light-muted dark:placeholder-text-dark-muted focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors" />
                 </div>
-                <button id="bookmark-filter-btn" onclick="toggleBookmarkView()" class="flex items-center justify-center gap-2 h-12 px-3 sm:px-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary text-text-light dark:text-text-dark hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary hover:border-primary/50 hover:text-primary transition-colors shadow-sm whitespace-nowrap">
-                    <span class="material-symbols-outlined text-[20px]" id="bookmark-filter-icon">bookmark_border</span>
-                    <span class="font-medium text-sm hidden sm:inline">Bookmarks</span><span class="font-medium text-sm">(<span id="bookmark-count">0</span>)</span>
-                </button>
-            </div>
+                
 
             <!-- Current Folder Info -->
             <div id="folder-info" class="mb-6 flex items-center justify-between gap-3 flex-wrap animate-on-scroll">
@@ -364,8 +360,8 @@
             }
             saveBookmarks(bookmarks);
             updateBookmarkIcons(paper.code);
-            updateBookmarkCount();
-            if (isBookmarkView) { renderBookmarksView(); }
+            
+            
         }
         function updateBookmarkIcons(code) {
             const icons = document.querySelectorAll(`[data-bookmark-icon="${code}"]`);
@@ -382,98 +378,7 @@
             });
         }
 
-        function updateBookmarkCount() {
-            const countSpan = document.getElementById('bookmark-count');
-            if(countSpan) countSpan.textContent = getBookmarks().length;
-        }
-
-        let isBookmarkView = false;
-        function toggleBookmarkView() {
-            isBookmarkView = !isBookmarkView;
-            const btn = document.getElementById('bookmark-filter-btn');
-            if (isBookmarkView) {
-                btn.classList.add('border-primary', 'text-primary', 'bg-primary/5', 'dark:bg-primary/10');
-                renderBookmarksView();
-            } else {
-                btn.classList.remove('border-primary', 'text-primary', 'bg-primary/5', 'dark:bg-primary/10');
-                document.getElementById('breadcrumb').style.opacity = '1';
-                renderContent();
-            }
-        }
-
-        function renderBookmarksView() {
-            const grid = document.getElementById('content-grid');
-            const folderName = document.getElementById('current-folder-name');
-            const folderCount = document.getElementById('current-folder-count');
-            const breadcrumb = document.getElementById('breadcrumb');
-            const semDownloadWrap = document.getElementById('sem-download-wrap');
-            const bookmarks = getBookmarks();
-
-semDownloadWrap.innerHTML = '';
-            breadcrumb.style.opacity = '0.5';
-            
-            folderName.textContent = 'Bookmarked Papers';
-            folderCount.textContent = `${bookmarks.length} papers`;
-            document.getElementById('recent-viewed-section').classList.add('hidden');
-
-            if (bookmarks.length === 0) {
-                grid.innerHTML = `
-                    <div class="col-span-full flex flex-col items-center justify-center py-16 text-center">
-                        <span class="material-symbols-outlined text-6xl text-text-light-muted dark:text-text-dark-muted mb-4">bookmark_border</span>
-                        <h3 class="text-lg font-semibold mb-2">No bookmarks yet</h3>
-                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted">Papers you bookmark will appear here.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            grid.innerHTML = bookmarks.map(paper => {
-                const pathStr = Array.isArray(paper.path) ? paper.path.join(' › ') : paper.path;
-                const reportSubject = encodeURIComponent(`SIT Archive - Report Issue: ${paper.name} (${paper.code})`);
-                const reportBody = encodeURIComponent(`Hi SIT Archive Team,\n\nI would like to report an issue with the following paper:\n\n📍 Location: ${pathStr}\n📄 Paper: ${paper.name}\n📝 Code: ${paper.code}\n📌 Type: ${paper.type}\n\n🔴 Issue Description:\n[Please describe the issue here]\n\nThank you!`);
-                const reportLink = `mailto:students.sit.archive@gmail.com?subject=${reportSubject}&body=${reportBody}`;
-
-                return `<div class="folder-card relative h-full flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm group hover-lift">` +
-                    `<div class="absolute top-3 right-3 flex gap-1">
-                            <button type="button" onclick="toggleBookmark('${encodeURIComponent(JSON.stringify(paper))}'); event.stopPropagation(); event.preventDefault();" class="p-1.5 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 text-text-light-muted dark:text-text-dark-muted hover:text-primary dark:hover:text-primary transition-colors" title="Bookmark Paper">
-                                <span class="material-symbols-outlined text-[18px] ${isBookmarked(paper.code) ? 'text-primary' : ''}" style="font-variation-settings: 'FILL' ${isBookmarked(paper.code) ? 1 : 0}" data-bookmark-icon="${paper.code}">bookmark</span>
-                            </button>
-                            <button type="button" onclick="if(navigator.share){navigator.share({title: '${paper.name}', text: 'Check out this paper: ${paper.name}', url: '${paper.file}'}).catch(console.error);}else{navigator.clipboard.writeText('${paper.file}');alert('Link copied to clipboard!');}; event.stopPropagation(); event.preventDefault();" class="p-1.5 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-blue-500 dark:hover:text-blue-400 transition-colors" title="Share Paper">
-                                <span class="material-symbols-outlined text-[18px]">share</span>
-                            </button>
-                            <a href="${reportLink}" class="p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-red-500 dark:hover:text-red-400 transition-colors" title="Report an issue">
-                                <span class="material-symbols-outlined text-[18px]">flag</span>
-                            </a>
-                        </div>` +
-                    `<div class="flex items-start gap-3 mb-2 pr-24 flex-1">
-                        <span class="material-symbols-outlined text-primary text-2xl shrink-0">description</span>
-                        <div class="min-w-0 flex-1">
-                            <h3 class="font-semibold text-sm group-hover:text-primary transition-colors text-wrap">${paper.name}</h3>
-                            <p class="text-xs text-text-light-muted dark:text-text-dark-muted">${paper.code}</p>
-                        </div>
-                    </div>` +
-                    `<div class="mb-3 px-2 py-1 rounded bg-bg-light-tertiary dark:bg-bg-dark-tertiary">
-                        <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted text-wrap break-words" title="${pathStr}">
-                            ${pathStr}
-                        </p>
-                    </div>` +
-                    `<div class="flex items-center justify-between gap-2 flex-wrap mt-auto">
-                        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type.includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">
-                            ${paper.type.split(' ')[0]}
-                        </span>
-                        <div class="flex items-center gap-1.5">
-                            <button type="button" data-preview-file="${paper.file}" data-preview-title="${paper.name}" data-recent-obj="${encodeURIComponent(JSON.stringify(paper))}"
-                                class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors" title="Preview">
-                                <span class="material-symbols-outlined text-[18px]">visibility</span>
-                            </button>
-                            <a href="${paper.file}" target="_blank" onclick="if(window.PaperStats) window.PaperStats.recordDownload('${paper.file}')" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
-                                <span class="material-symbols-outlined text-[16px]">download</span>
-                                <span class="hidden sm:inline">Download</span>
-                            </a>
-                        </div>
-                    </div></div>`;
-            }).join('');
-        }
+        
 
         function clickRecentFolder(event, pathStr) {
             if (event.target.closest('button') || event.target.closest('a')) return;
@@ -808,7 +713,7 @@ Thank you!`);
                                     <span class="material-symbols-outlined text-[18px]">visibility</span>
                                 </button>
                                 
-                                <a href="${paper.file}" target="_blank" onclick="if(window.PaperStats) window.PaperStats.recordDownload('${paper.file}')" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
+                                <a href="${paper.file}" target="_blank" onclick="if(window.PaperStats) window.PaperStats.recordDownload(\'${paper.file}\'); saveRecent(JSON.parse(decodeURIComponent(\'${encodeURIComponent(JSON.stringify(paper))}\')));" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
                                     <span class="material-symbols-outlined text-[16px]">download</span>
                                     Download
                                 </a>
@@ -1060,7 +965,7 @@ Thank you!`);
                                 <span class="material-symbols-outlined text-[18px]">visibility</span>
                             </button>
                             
-                            <a href="${paper.file}" target="_blank" onclick="if(window.PaperStats) window.PaperStats.recordDownload('${paper.file}')" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
+                            <a href="${paper.file}" target="_blank" onclick="if(window.PaperStats) window.PaperStats.recordDownload(\'${paper.file}\'); saveRecent(JSON.parse(decodeURIComponent(\'${encodeURIComponent(JSON.stringify(paper))}\')));" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
                                 <span class="material-symbols-outlined text-[16px]">download</span>
                                 Download
                             </a>
@@ -1180,7 +1085,7 @@ Thank you!`);
                 await window.PaperStats.init();
             }
 
-            updateBookmarkCount();
+            
             const path = hashToPath();
             if (path.length && isValidPath(path)) {
                 applyPath(path);
