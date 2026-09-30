@@ -42,6 +42,13 @@
 
 <body class="bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark min-h-screen flex flex-col">
 
+    <!-- Visitor Counter Bar -->
+    <div id="visitor-bar" class="w-full bg-bg-light-secondary dark:bg-bg-dark-secondary border-b border-border-light dark:border-border-dark py-1.5">
+        <div class="flex items-center justify-center gap-2 text-xs text-text-light-muted dark:text-text-dark-muted">
+            <span class="material-symbols-outlined text-primary" style="font-size:14px;">people</span>
+            <span>Total Visitors: <span id="visitor-count" class="font-semibold text-primary">—</span></span>
+        </div>
+    </div>
     <!-- Navigation -->
     <nav class="w-full border-b border-border-light dark:border-border-dark bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-md">
         <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
