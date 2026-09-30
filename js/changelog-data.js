@@ -10,6 +10,14 @@ const CHANGELOG_DATA = [
         "subtitle": "Latest updates",
         "entries": [
             {
+                "date": "Sep 30, 2026",
+                "color": "emerald",
+                "icon": "menu",
+                "badgeText": "Hotfix",
+                "title": "Mobile Navigation & Layout Fixes",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Fixed an HTML structure issue that caused the mobile hamburger menu to be hidden on smaller screens, and restored proper grid alignment on the Browse page.</p>"
+            },
+            {
                 "date": "Sep 29, 2026",
                 "color": "purple",
                 "icon": "person",
