@@ -651,7 +651,7 @@ Thank you!`);
                                     <span class="material-symbols-outlined text-[18px]">visibility</span>
                                 </button>
                                 
-                                <a href="${paper.file}" target="_blank" onclick="if(window.PaperStats) window.PaperStats.recordDownload(\'${paper.file}\'); saveRecent(JSON.parse(decodeURIComponent(\'${encodeURIComponent(JSON.stringify(paper))}\')));" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
+                                <a href="${paper.file}" target="_blank" onclick="if(window.PaperStats) window.PaperStats.recordDownload(\'${paper.file}\'); saveRecent(JSON.parse(decodeURIComponent(\'${encodeURIComponent(JSON.stringify({...paper, path: currentPath}))}\')));" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
                                     <span class="material-symbols-outlined text-[16px]">download</span>
                                     Download
                                 </a>
@@ -903,7 +903,7 @@ Thank you!`);
                                 <span class="material-symbols-outlined text-[18px]">visibility</span>
                             </button>
                             
-                            <a href="${paper.file}" target="_blank" onclick="if(window.PaperStats) window.PaperStats.recordDownload(\'${paper.file}\'); saveRecent(JSON.parse(decodeURIComponent(\'${encodeURIComponent(JSON.stringify(paper))}\')));" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
+                            <a href="${paper.file}" target="_blank" onclick="if(window.PaperStats) window.PaperStats.recordDownload(\'${paper.file}\'); saveRecent(JSON.parse(decodeURIComponent(\'${encodeURIComponent(JSON.stringify({...paper, path: item.path}))}\')));" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors btn-shimmer">
                                 <span class="material-symbols-outlined text-[16px]">download</span>
                                 Download
                             </a>

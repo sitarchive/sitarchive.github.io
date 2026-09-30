@@ -429,7 +429,12 @@ function buildQuickAccess(campus) {
 
 // ── Render a paper card ───────────────────────────────
 function renderPaperCard(paper, type = 'bookmark') {
-    const pathArr = Array.isArray(paper.path) ? paper.path : [];
+    let pathArr = [];
+    if (Array.isArray(paper.path)) {
+        pathArr = paper.path;
+    } else if (typeof paper.path === 'string') {
+        pathArr = paper.path.split(' › ');
+    }
     const breadcrumb = pathArr.length > 1 ? pathArr.slice(1).join(' › ') : pathArr.join(' › ');
     const paperType = paper.type || '';
     const typeClass = paperType.toLowerCase().includes('mid')

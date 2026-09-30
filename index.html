@@ -913,7 +913,7 @@
             (function traverse(node, pathNames) {
                 if (!node || typeof node !== 'object') return;
                 if (Array.isArray(node.subjects)) {
-                    node.subjects.forEach(s => { if (s.dateAdded) papers.push({ ...s, path: pathNames.join(' › '), type: pathNames[pathNames.length-1] }); });
+                    node.subjects.forEach(s => { if (s.dateAdded) papers.push({ ...s, path: pathNames, pathStr: pathNames.join(' › '), type: pathNames[pathNames.length-1] }); });
                     return;
                 }
                 for (const key of Object.keys(node)) {
@@ -950,7 +950,7 @@
                         </div>
                     </div>
                     <div class="mb-3 px-2 py-1 rounded bg-bg-light-tertiary dark:bg-bg-dark-tertiary">
-                        <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted text-wrap break-words" title="${paper.path}">${paper.path}</p>
+                        <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted text-wrap break-words" title="${paper.pathStr}">${paper.pathStr}</p>
                     </div>
                     <div class="flex items-center justify-between gap-2">
                         ${paper.type ? `<span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type.includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">${paper.type.split(' ')[0]}</span>` : '<div></div>'}
@@ -1013,7 +1013,7 @@
             (function traverse(node, pathNames) {
                 if (!node || typeof node !== 'object') return;
                 if (Array.isArray(node.subjects)) {
-                    node.subjects.forEach(s => { allPapers.push({ ...s, path: pathNames.join(' › '), type: pathNames[pathNames.length-1] }); });
+                    node.subjects.forEach(s => { allPapers.push({ ...s, path: pathNames, pathStr: pathNames.join(' › '), type: pathNames[pathNames.length-1] }); });
                     return;
                 }
                 for (const key of Object.keys(node)) {
@@ -1067,7 +1067,7 @@
                         </div>
                     </div>
                     <div class="mb-3 px-2 py-1 rounded bg-bg-light-tertiary dark:bg-bg-dark-tertiary">
-                        <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted text-wrap break-words" title="${paper.path}">${paper.path}</p>
+                        <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted text-wrap break-words" title="${paper.pathStr}">${paper.pathStr}</p>
                     </div>
                     <div class="flex items-center justify-between gap-2">
                         ${paper.type ? `<span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${paper.type.includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')} btn-shimmer">${paper.type.split(' ')[0]}</span>` : '<div></div>'}
