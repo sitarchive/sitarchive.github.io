@@ -269,16 +269,7 @@
                 <!-- Content will be populated by JavaScript -->
             </div>
             
-            <!-- Recently Viewed Section -->
-            <div id="recent-viewed-section" class="mt-8 pt-8 border-t border-border-light dark:border-border-dark hidden animate-on-scroll">
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="material-symbols-outlined text-primary text-xl">history</span>
-                    <h3 class="text-lg font-bold">Recently Viewed</h3>
-                </div>
-                <div class="flex overflow-x-auto gap-4 pb-4 snap-x hide-scrollbar" id="recent-viewed-container">
-                    <!-- JS fills this -->
-                </div>
-            </div>
+
         </div>
     </main>
 
@@ -388,62 +379,12 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function getRecent() {
-            try { return JSON.parse(localStorage.getItem('sit_archive_recent') || '[]'); }
-            catch { return []; }
-        }
         function saveRecent(paper) {
-            let recent = getRecent();
-            recent = recent.filter(r => r.code !== paper.code);
-            recent.unshift({ name: paper.name, code: paper.code, file: paper.file, type: paper.type, path: paper.path, timestamp: Date.now() });
-            if (recent.length > 15) recent.pop();
-            localStorage.setItem('sit_archive_recent', JSON.stringify(recent));
-            // Cloud: save for logged-in users
-            if (window.AuthManager && AuthManager.isLoggedIn()) {
-                AuthManager.saveRecentlyViewed({ name: paper.name, code: paper.code, file: paper.file, type: paper.type || '', path: paper.path }).catch(() => {});
-            }
-            if (!isBookmarkView) {
-                renderRecentViewed();
-            }
+            if (!window.AuthManager || !AuthManager.isLoggedIn()) return;
+            AuthManager.saveRecentlyViewed({ name: paper.name, code: paper.code, file: paper.file, type: paper.type || '', path: paper.path }).catch(() => {});
         }
-        function renderRecentViewed() {
-            const section = document.getElementById('recent-viewed-section');
-            const container = document.getElementById('recent-viewed-container');
-            const recent = getRecent();
             
-            if (recent.length === 0) {
-                section.classList.add('hidden');
-                return;
-            }
-            
-            section.classList.remove('hidden');
-            container.innerHTML = recent.map(paper => `
-                <div onclick="clickRecentFolder(event, '${encodeURIComponent(JSON.stringify(paper.path))}')" class="folder-card relative flex-none w-[18rem] p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/50 hover:shadow-glow-sm transition-colors flex flex-col gap-2 snap-start cursor-pointer group">
-                    <div class="flex items-start gap-2">
-                        <span class="material-symbols-outlined text-primary text-xl shrink-0">description</span>
-                        <div class="min-w-0 flex-1">
-                            <h4 class="font-semibold text-xs text-wrap break-words group-hover:text-primary transition-colors">${paper.name}</h4>
-                            <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted">${paper.code}</p>
-                        </div>
-                    </div>
-                    <div class="px-2 py-1.5 rounded bg-bg-light-tertiary dark:bg-bg-dark-tertiary">
-                        <p class="text-[9px] text-text-light-muted dark:text-text-dark-muted text-wrap break-words">
-                            ${(() => {
-                                let pArr = Array.isArray(paper.path) ? paper.path : paper.path.split('›').map(s=>s.trim());
-                                return pArr.length > 1 ? pArr.slice(1).join(' › ') : pArr.join(' › ');
-                            })()}
-                        </p>
-                    </div>
-                    <div class="mt-auto pt-2 flex justify-between items-center border-t border-border-light dark:border-border-dark">
-                        ${paper.type ? `<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium ${paper.type.includes('Mid') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : (paper.type === 'Internals' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400' : 'bg-primary/10 text-primary')}">${paper.type.split(' ')[0]}</span>` : '<div></div>'}
-                        <button type="button" data-preview-file="${paper.file}" data-preview-title="${paper.name}" data-recent-obj="${encodeURIComponent(JSON.stringify(paper))}"
-                            class="inline-flex items-center gap-1 px-2 py-1 rounded bg-primary/10 text-primary text-[10px] font-semibold hover:bg-primary hover:text-white transition-colors shrink-0 relative z-10">
-                            Preview
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        }
+
 
         // Sync currentPath with the URL hash so folders are shareable/bookmarkable
         // and survive a refresh (e.g. #SITHYD/CSE/2025-29/Sem%202/End-Sem).
@@ -482,7 +423,6 @@
         // Apply a path to the UI without touching browser history (used by
         // popstate/initial load, where history already reflects the path).
         function applyPath(path) {
-            isBookmarkView = false;
             const btn = document.getElementById('bookmark-filter-btn');
             if(btn) btn.classList.remove('border-primary', 'text-primary', 'bg-primary/5', 'dark:bg-primary/10');
                 document.getElementById('breadcrumb').style.opacity = '1';
@@ -593,12 +533,7 @@
 
             const { data: currentData, level, semFolderLink } = getCurrentData();
 
-            // Show/hide recently viewed
-            if (!isBookmarkView) {
-                renderRecentViewed();
-            } else {
-                document.getElementById('recent-viewed-section').classList.add('hidden');
-            }
+
 
             // Show a "Download Entire Semester" button when browsing a semester's
             // categories (End-Sem/Mid-Sem/Backlog) and a Drive folder link is set.
@@ -1081,9 +1016,11 @@ Thank you!`);
                 if (bkm && bkm.includes('SIT Hyderabad')) localStorage.removeItem('sit_archive_bookmarks');
             } catch(e) {}
 
-            if (window.PaperStats) {
-                await window.PaperStats.init();
-            }
+            try {
+                if (window.PaperStats) {
+                    await window.PaperStats.init();
+                }
+            } catch(e) { console.error("PaperStats init failed", e); }
 
             
             const path = hashToPath();
