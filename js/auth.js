@@ -1,17 +1,42 @@
 /* =====================================================
    SIT ARCHIVE - AUTH MANAGER
    Supabase Auth — Google OAuth only
-   Restricted to @sithyd.siu.edu.in domain.
+   Restricted to SIT campus emails only:
+     @sithyd.siu.edu.in  (Hyderabad)
+     @sitpune.edu.in     (Pune)
+     @sitnagpur.edu.in   (Nagpur)
    - Logged-in users: bookmarks & recently viewed synced to cloud
    - Guests: localStorage only (no change in experience)
    ===================================================== */
 
 const AUTH_SUPABASE_URL = 'https://etlkpjbsculcnrymhflw.supabase.co';
 const AUTH_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV0bGtwamJzY3VsY25yeW1oZmx3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMTk4NjgsImV4cCI6MjEwNDc5NTg2OH0.PNdvzEujn7F5AJu-GK-5GyVshkZIF9jQAOOof8AiG84';
-const AUTH_ALLOWED_DOMAIN = 'sithyd.siu.edu.in';
+
+// All allowed SIT campus email domains
+const AUTH_ALLOWED_DOMAINS = [
+    'sithyd.siu.edu.in',   // SIT Hyderabad
+    'sitpune.edu.in',       // SIT Pune
+    'sitnagpur.edu.in',     // SIT Nagpur
+];
+
+// Campus info lookup by domain
+const AUTH_CAMPUS_INFO = {
+    'sithyd.siu.edu.in': { name: 'SIT Hyderabad', short: 'SITHYD', dbKey: 'SITHYD' },
+    'sitpune.edu.in':    { name: 'SIT Pune',      short: 'SITPUNE', dbKey: 'SITPUNE' },
+    'sitnagpur.edu.in':  { name: 'SIT Nagpur',    short: 'SITNAG',  dbKey: 'SITNAG' },
+};
 
 function _isAllowedEmail(email) {
-    return typeof email === 'string' && email.toLowerCase().endsWith('@' + AUTH_ALLOWED_DOMAIN);
+    if (typeof email !== 'string') return false;
+    const lower = email.toLowerCase();
+    return AUTH_ALLOWED_DOMAINS.some(domain => lower.endsWith('@' + domain));
+}
+
+function _getCampusFromEmail(email) {
+    if (typeof email !== 'string') return null;
+    const lower = email.toLowerCase();
+    const domain = AUTH_ALLOWED_DOMAINS.find(d => lower.endsWith('@' + d));
+    return domain ? AUTH_CAMPUS_INFO[domain] : null;
 }
 
 window.AuthManager = (() => {
@@ -66,8 +91,10 @@ window.AuthManager = (() => {
     // ── OAuth & Auth flows ──────────────────────────────
     async function signInWithGoogle() {
         const redirectTo = encodeURIComponent(window.location.origin + '/profile.html');
+        // Note: no hd= hint since we allow multiple SIT domains.
+        // Domain enforcement happens in _domainCheck() after callback.
         window.location.href =
-            `${AUTH_SUPABASE_URL}/auth/v1/authorize?provider=google&redirect_to=${redirectTo}&access_type=offline&response_type=code&scopes=email+profile&hd=${AUTH_ALLOWED_DOMAIN}&apikey=${AUTH_SUPABASE_ANON_KEY}`;
+            `${AUTH_SUPABASE_URL}/auth/v1/authorize?provider=google&redirect_to=${redirectTo}&access_type=offline&response_type=code&scopes=email+profile&prompt=select_account&apikey=${AUTH_SUPABASE_ANON_KEY}`;
     }
 
     async function signOut() {
@@ -320,6 +347,7 @@ window.AuthManager = (() => {
         isLoggedIn,
         isDomainError,
         onAuthChange,
+        getCampusFromEmail: _getCampusFromEmail,
         getBookmarks,
         addBookmark,
         removeBookmark,
@@ -328,4 +356,3 @@ window.AuthManager = (() => {
         saveRecentlyViewed
     };
 })();
-

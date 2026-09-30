@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -8,534 +7,576 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <title>My Profile - SIT Archive</title>
-    <meta name="description" content="Manage your bookmarks, recently viewed papers, and account on SIT Archive." />
+    <meta name="description" content="Your SIT Archive profile — bookmarks, recently viewed papers, and account settings." />
     <meta name="robots" content="noindex" />
 
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-
-    <!-- Animation Styles -->
     <link rel="stylesheet" href="css/animations.css">
 
-    <!-- Theme Configuration -->
     <script>
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#C8102E",
-                        "primary-hover": "#A60D26",
-                        "bg-light": "#FFFFFF",
-                        "bg-light-secondary": "#F8F6F6",
-                        "bg-light-tertiary": "#F0EEEE",
-                        "text-light": "#181112",
-                        "text-light-muted": "#6B7280",
-                        "border-light": "#E5E7EB",
-                        "bg-dark": "#0D0D0D",
-                        "bg-dark-secondary": "#161616",
-                        "bg-dark-tertiary": "#1A1A1A",
-                        "text-dark": "#FFFFFF",
-                        "text-dark-muted": "#A1A1AA",
-                        "border-dark": "#2A2A2A",
+                        "primary": "#C8102E", "primary-hover": "#A60D26",
+                        "bg-light": "#FFFFFF", "bg-light-secondary": "#F8F6F6", "bg-light-tertiary": "#F0EEEE",
+                        "text-light": "#181112", "text-light-muted": "#6B7280", "border-light": "#E5E7EB",
+                        "bg-dark": "#0D0D0D", "bg-dark-secondary": "#161616", "bg-dark-tertiary": "#1A1A1A",
+                        "text-dark": "#FFFFFF", "text-dark-muted": "#A1A1AA", "border-dark": "#2A2A2A",
                     },
-                    fontFamily: {
-                        "display": ["Lexend", "sans-serif"],
-                        "body": ["Noto Sans", "sans-serif"]
-                    },
-                    boxShadow: {
-                        'glow': '0 0 40px -10px rgba(200, 16, 46, 0.3)',
-                        'glow-sm': '0 0 20px -5px rgba(200, 16, 46, 0.2)',
-                    }
-                },
-            },
+                    fontFamily: { "display": ["Lexend","sans-serif"], "body": ["Noto Sans","sans-serif"] },
+                }
+            }
         }
     </script>
-
-    <!-- Theme Script -->
     <script src="js/theme.js"></script>
 
     <style>
         body { font-family: 'Lexend', sans-serif; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        .dark ::-webkit-scrollbar-track { background: #0D0D0D; }
+        ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
         .dark ::-webkit-scrollbar-thumb { background: #2A2A2A; }
-
-        .tab-active {
-            border-bottom: 2px solid #C8102E;
-            color: #C8102E;
-            font-weight: 700;
-        }
-        .paper-card {
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .paper-card:hover {
-            border-color: rgba(200,16,46,0.4);
-            box-shadow: 0 0 20px -5px rgba(200, 16, 46, 0.15);
-        }
+        .tab-btn { transition: color 0.15s, border-color 0.15s; }
+        .tab-btn.active { border-bottom: 2px solid #C8102E; color: #C8102E; font-weight: 700; }
+        .paper-card { transition: border-color 0.2s, box-shadow 0.2s; }
+        .paper-card:hover { border-color: rgba(200,16,46,0.35); box-shadow: 0 0 18px -6px rgba(200,16,46,0.15); }
     </style>
 </head>
 
 <body class="overflow-x-hidden min-h-screen flex flex-col bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark">
 
-    <!-- NAV -->
-    <nav class="sticky top-0 z-50 w-full border-b border-border-light dark:border-border-dark bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-md">
-        <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-            <a class="flex items-center gap-3 group shrink-0" href="index.html">
-                <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <span class="material-symbols-outlined text-[24px]">school</span>
-                </div>
-                <span class="text-xl font-bold tracking-tight">SIT Archive</span>
-            </a>
-
-            <div class="hidden md:flex items-center gap-8">
-                <div class="flex items-center gap-6">
-                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="index.html">Home</a>
-                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="browse.html">Browse Papers</a>
-                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="submit.html">Submit Papers</a>
-                    <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="changelog.html">Changelog</a>
-                </div>
-                <div class="flex items-center gap-2">
-                    <button onclick="toggleTheme()" class="flex items-center justify-center w-10 h-10 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary border border-border-light dark:border-border-dark transition-colors">
-                        <span id="theme-icon" class="material-symbols-outlined text-[20px]">dark_mode</span>
-                    </button>
-                    <!-- Auth slot (desktop) -->
-                    <div id="nav-auth-slot"></div>
-                </div>
+<!-- ═══ NAV ═══ -->
+<nav class="sticky top-0 z-50 w-full border-b border-border-light dark:border-border-dark bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-md">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <a class="flex items-center gap-3 group shrink-0" href="index.html">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                <span class="material-symbols-outlined text-[24px]">school</span>
             </div>
+            <span class="text-xl font-bold tracking-tight">SIT Archive</span>
+        </a>
 
-            <!-- Mobile -->
-            <div class="md:hidden flex items-center gap-2 ml-auto">
-                <button onclick="toggleTheme()" class="flex items-center justify-center w-10 h-10 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark">
-                    <span id="theme-icon-mobile" class="material-symbols-outlined text-[20px]">dark_mode</span>
-                </button>
-                <button class="text-text-light dark:text-text-dark" id="mobile-menu-btn">
-                    <span class="material-symbols-outlined">menu</span>
+        <!-- Desktop nav -->
+        <div class="hidden md:flex items-center gap-6">
+            <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="index.html">Home</a>
+            <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="browse.html">Browse Papers</a>
+            <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="submit.html">Submit</a>
+            <a class="text-sm font-medium text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors" href="changelog.html">Changelog</a>
+            <div class="flex items-center gap-2">
+                <!-- Auth Slot (desktop) -->
+                <div id="nav-auth-slot"></div>
+                <button onclick="toggleTheme()" class="flex items-center justify-center w-10 h-10 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary border border-border-light dark:border-border-dark transition-colors">
+                    <span id="theme-icon" class="material-symbols-outlined text-[20px]">dark_mode</span>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden border-t border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark">
-            <div class="px-4 py-4 space-y-3">
-                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="index.html">Home</a>
-                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="browse.html">Browse Papers</a>
-                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="submit.html">Submit Papers</a>
-                <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="changelog.html">Changelog</a>
-                <div class="pt-2 border-t border-border-light dark:border-border-dark" id="nav-auth-slot-mobile"></div>
-            </div>
+        <!-- Mobile top bar -->
+        <div class="md:hidden flex items-center gap-2 ml-auto">
+            <div id="nav-auth-slot-mobile-icon" class="flex items-center"></div>
+            <button onclick="toggleTheme()" class="flex items-center justify-center w-10 h-10 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark">
+                <span id="theme-icon-mobile" class="material-symbols-outlined text-[20px]">dark_mode</span>
+            </button>
+            <button class="text-text-light dark:text-text-dark" id="mobile-menu-btn">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
         </div>
-    </nav>
+    </div>
 
-    <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark">
+        <div class="px-4 py-4 space-y-3">
+            <div id="nav-auth-slot-mobile" class="pb-2 border-b border-border-light dark:border-border-dark"></div>
+            <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="index.html">Home</a>
+            <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="browse.html">Browse Papers</a>
+            <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="submit.html">Submit</a>
+            <a class="block text-sm font-medium text-text-light-muted dark:text-text-dark-muted py-2" href="changelog.html">Changelog</a>
+        </div>
+    </div>
+</nav>
 
-        <!-- ═══════════ GUEST STATE ═══════════ -->
-        <div id="guest-view" class="hidden flex flex-col items-center justify-center min-h-[60vh] text-center py-16 px-4">
+<main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- ═══════════ GUEST / SIGN-IN VIEW ═══════════ -->
+    <div id="guest-view" class="hidden">
+        <div class="flex flex-col items-center justify-center min-h-[65vh] text-center px-4">
+
             <!-- Domain error banner -->
-            <div id="domain-error-banner" class="hidden w-full max-w-sm mb-6 p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-left">
+            <div id="domain-error-banner" class="hidden w-full max-w-sm mb-6 p-4 rounded-2xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-left">
                 <div class="flex items-start gap-3">
                     <span class="material-symbols-outlined text-red-500 text-[22px] shrink-0 mt-0.5">error</span>
                     <div>
                         <p class="text-sm font-bold text-red-600 dark:text-red-400 mb-1">Access Denied</p>
-                        <p class="text-sm text-red-500 dark:text-red-400">Only <strong>@sithyd.siu.edu.in</strong> accounts are allowed. Please sign in with your SIT email.</p>
+                        <p class="text-sm text-red-500 dark:text-red-400">Only SIT campus Google accounts are allowed. Please use your college email.</p>
                     </div>
                 </div>
             </div>
 
             <div class="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-                <span class="material-symbols-outlined text-primary text-4xl">school</span>
+                <span class="material-symbols-outlined text-primary text-[40px]">school</span>
             </div>
-            <h1 class="text-2xl sm:text-3xl font-bold mb-3">Sign In to SIT Archive</h1>
-            <p class="text-text-light-muted dark:text-text-dark-muted text-sm sm:text-base max-w-sm mb-2">
-                Sync your bookmarks and recently viewed papers across devices.
+            <h1 class="text-2xl sm:text-3xl font-bold mb-2">Sign In to SIT Archive</h1>
+            <p class="text-text-light-muted dark:text-text-dark-muted text-sm max-w-sm mb-4">
+                Sync your bookmarks and recently viewed papers across devices. Sign-in is completely optional.
             </p>
-            <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-semibold mb-8">
-                <span class="material-symbols-outlined text-[15px]">lock</span>
-                @sithyd.siu.edu.in accounts only
+
+            <!-- Allowed domains pill -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
+                    <span class="material-symbols-outlined text-[13px]">lock</span>@sithyd.siu.edu.in
+                </span>
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
+                    <span class="material-symbols-outlined text-[13px]">lock</span>@sitpune.edu.in
+                </span>
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
+                    <span class="material-symbols-outlined text-[13px]">lock</span>@sitnagpur.edu.in
+                </span>
             </div>
 
             <!-- Google Sign In -->
             <button onclick="AuthManager.signInWithGoogle()"
-                class="flex items-center gap-3 px-6 py-3.5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/40 hover:shadow-glow-sm active:scale-95 transition-all font-semibold text-sm w-full max-w-xs justify-center">
-                <svg class="w-5 h-5 shrink-0" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.34-8.16 2.34-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+                class="flex items-center gap-3 px-6 py-3.5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary hover:border-primary/40 hover:shadow-lg active:scale-95 transition-all font-semibold text-sm w-full max-w-xs justify-center">
+                <svg class="w-5 h-5 shrink-0" viewBox="0 0 48 48">
+                    <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                    <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                    <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                    <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.34-8.16 2.34-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                </svg>
                 Continue with Google
             </button>
 
             <p class="mt-5 text-xs text-text-light-muted dark:text-text-dark-muted max-w-xs">
-                Signing in is <span class="font-semibold">optional</span> — you can browse and download papers without an account.
+                Use your <strong>SIT college Google account</strong> to sign in. Personal Gmail accounts are not allowed.
             </p>
         </div>
+    </div>
 
-        <!-- ═══════════ LOGGED IN STATE ═══════════ -->
-        <div id="user-view" class="hidden">
-            <!-- Profile Header -->
-            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-8 pb-6 border-b border-border-light dark:border-border-dark">
-                <div id="profile-avatar" class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-2xl font-bold text-primary shrink-0"></div>
-                <div class="flex-1 min-w-0">
-                    <h1 id="profile-name" class="text-2xl font-bold truncate"></h1>
-                    <p id="profile-email" class="text-sm text-text-light-muted dark:text-text-dark-muted truncate"></p>
-                    <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-1">Student · SIT Archive Member</p>
-                </div>
-                <button onclick="AuthManager.signOut().then(() => window.location.reload())"
-                    class="flex items-center gap-2 px-4 py-2 rounded-lg border border-red-200 dark:border-red-800 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 text-sm font-semibold transition-colors shrink-0">
-                    <span class="material-symbols-outlined text-[18px]">logout</span>
-                    Sign Out
-                </button>
-            </div>
+    <!-- ═══════════ LOGGED-IN VIEW ═══════════ -->
+    <div id="user-view" class="hidden">
 
-            <!-- Stats Row -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
-                <div class="p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary">
-                    <p class="text-2xl font-bold text-primary" id="stat-bookmarks">0</p>
-                    <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-1">Papers Bookmarked</p>
-                </div>
-                <div class="p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary">
-                    <p class="text-2xl font-bold text-primary" id="stat-recent">0</p>
-                    <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-1">Recently Viewed</p>
-                </div>
-                <div class="p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary col-span-2 sm:col-span-1">
-                    <p class="text-2xl font-bold text-primary">∞</p>
-                    <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-1">Papers Available</p>
-                </div>
-            </div>
-
-            <!-- Tabs -->
-            <div class="flex border-b border-border-light dark:border-border-dark mb-6 gap-6">
-                <button onclick="switchTab('bookmarks')" id="tab-bookmarks"
-                    class="tab-active pb-3 text-sm transition-colors" >
-                    <span class="flex items-center gap-1.5">
-                        <span class="material-symbols-outlined text-[17px]">bookmark</span>
-                        Bookmarks
+        <!-- Profile Header -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8 pb-6 border-b border-border-light dark:border-border-dark">
+            <div id="profile-avatar" class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-2xl font-bold text-primary shrink-0 overflow-hidden"></div>
+            <div class="flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-2 mb-1">
+                    <h1 id="profile-name" class="text-xl sm:text-2xl font-bold truncate"></h1>
+                    <!-- Campus badge -->
+                    <span id="campus-badge" class="hidden inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-bold">
+                        <span class="material-symbols-outlined text-[12px]">location_on</span>
+                        <span id="campus-badge-text"></span>
                     </span>
-                </button>
-                <button onclick="switchTab('history')" id="tab-history"
-                    class="pb-3 text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors">
-                    <span class="flex items-center gap-1.5">
-                        <span class="material-symbols-outlined text-[17px]">history</span>
-                        Recently Viewed
-                    </span>
-                </button>
-                <button onclick="switchTab('account')" id="tab-account"
-                    class="pb-3 text-sm text-text-light-muted dark:text-text-dark-muted hover:text-text-light dark:hover:text-text-dark transition-colors">
-                    <span class="flex items-center gap-1.5">
-                        <span class="material-symbols-outlined text-[17px]">manage_accounts</span>
-                        Account
-                    </span>
-                </button>
+                </div>
+                <p id="profile-email" class="text-sm text-text-light-muted dark:text-text-dark-muted truncate"></p>
+                <p id="profile-batch" class="text-xs text-text-light-muted dark:text-text-dark-muted mt-0.5"></p>
             </div>
+            <button onclick="AuthManager.signOut().then(() => window.location.href='index.html')"
+                class="flex items-center gap-2 px-3 py-2 rounded-lg border border-red-200 dark:border-red-900 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 text-sm font-semibold transition-colors shrink-0">
+                <span class="material-symbols-outlined text-[17px]">logout</span>
+                <span class="hidden sm:inline">Sign Out</span>
+            </button>
+        </div>
 
-            <!-- TAB: Bookmarks -->
-            <div id="panel-bookmarks">
-                <div id="bookmarks-loading" class="flex items-center gap-3 py-8 text-text-light-muted dark:text-text-dark-muted text-sm">
-                    <span class="material-symbols-outlined animate-spin text-[20px]">refresh</span> Loading bookmarks...
-                </div>
-                <div id="bookmarks-empty" class="hidden flex flex-col items-center justify-center py-16 text-center">
-                    <span class="material-symbols-outlined text-5xl text-text-light-muted dark:text-text-dark-muted mb-3">bookmark_border</span>
-                    <h3 class="text-base font-semibold mb-1">No bookmarks yet</h3>
-                    <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-4">Save papers you want to revisit by tapping the bookmark icon on any paper card.</p>
-                    <a href="browse.html" class="px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold transition-colors hover:bg-primary-hover">Browse Papers</a>
-                </div>
-                <div id="bookmarks-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 hidden"></div>
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+            <div class="p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary">
+                <p class="text-2xl font-bold text-primary" id="stat-bookmarks">–</p>
+                <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-1 flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[14px]">bookmark</span>Saved
+                </p>
             </div>
-
-            <!-- TAB: Recently Viewed -->
-            <div id="panel-history" class="hidden">
-                <div id="history-loading" class="flex items-center gap-3 py-8 text-text-light-muted dark:text-text-dark-muted text-sm">
-                    <span class="material-symbols-outlined animate-spin text-[20px]">refresh</span> Loading history...
-                </div>
-                <div id="history-empty" class="hidden flex flex-col items-center justify-center py-16 text-center">
-                    <span class="material-symbols-outlined text-5xl text-text-light-muted dark:text-text-dark-muted mb-3">history</span>
-                    <h3 class="text-base font-semibold mb-1">No history yet</h3>
-                    <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-4">Papers you preview will appear here automatically.</p>
-                    <a href="browse.html" class="px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold transition-colors hover:bg-primary-hover">Start Browsing</a>
-                </div>
-                <div id="history-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 hidden"></div>
+            <div class="p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary">
+                <p class="text-2xl font-bold text-primary" id="stat-recent">–</p>
+                <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-1 flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[14px]">history</span>Viewed
+                </p>
             </div>
+            <div class="p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary">
+                <p class="text-2xl font-bold" id="stat-campus">–</p>
+                <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-1 flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[14px]">location_on</span>Campus
+                </p>
+            </div>
+            <div class="p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary">
+                <p class="text-2xl font-bold" id="stat-batch">–</p>
+                <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-1 flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[14px]">school</span>Batch
+                </p>
+            </div>
+        </div>
 
-            <!-- TAB: Account -->
-            <div id="panel-account" class="hidden">
-                <div class="max-w-lg space-y-4">
-                    <div class="p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary">
-                        <h3 class="font-bold text-sm mb-3 flex items-center gap-2">
-                            <span class="material-symbols-outlined text-[18px] text-primary">info</span> Account Details
-                        </h3>
-                        <div class="space-y-2 text-sm">
-                            <div class="flex justify-between">
-                                <span class="text-text-light-muted dark:text-text-dark-muted">Name</span>
-                                <span id="acct-name" class="font-medium truncate max-w-[60%]"></span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-text-light-muted dark:text-text-dark-muted">Email</span>
-                                <span id="acct-email" class="font-medium truncate max-w-[60%]"></span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-text-light-muted dark:text-text-dark-muted">Provider</span>
-                                <span id="acct-provider" class="font-medium capitalize"></span>
-                            </div>
+        <!-- Quick Access Banner -->
+        <div id="quick-access-banner" class="hidden mb-8 p-4 rounded-2xl border border-border-light dark:border-border-dark bg-bg-light-secondary dark:bg-bg-dark-secondary">
+            <p class="text-xs font-bold uppercase tracking-wider text-text-light-muted dark:text-text-dark-muted mb-3 flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[15px]">bolt</span>Quick Access
+            </p>
+            <div class="flex flex-wrap gap-2" id="quick-access-links"></div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="flex gap-1 border-b border-border-light dark:border-border-dark mb-6 overflow-x-auto">
+            <button onclick="switchTab('bookmarks')" id="tab-bookmarks"
+                class="tab-btn active flex items-center gap-1.5 px-1 pb-3 pt-1 text-sm whitespace-nowrap">
+                <span class="material-symbols-outlined text-[17px]">bookmark</span>Bookmarks
+            </button>
+            <button onclick="switchTab('history')" id="tab-history"
+                class="tab-btn flex items-center gap-1.5 px-3 pb-3 pt-1 text-sm text-text-light-muted dark:text-text-dark-muted whitespace-nowrap">
+                <span class="material-symbols-outlined text-[17px]">history</span>Recently Viewed
+            </button>
+            <button onclick="switchTab('account')" id="tab-account"
+                class="tab-btn flex items-center gap-1.5 px-3 pb-3 pt-1 text-sm text-text-light-muted dark:text-text-dark-muted whitespace-nowrap">
+                <span class="material-symbols-outlined text-[17px]">manage_accounts</span>Account
+            </button>
+        </div>
+
+        <!-- ── Bookmarks Panel ── -->
+        <div id="panel-bookmarks">
+            <div id="bookmarks-loading" class="flex items-center gap-3 py-10 text-text-light-muted dark:text-text-dark-muted text-sm">
+                <span class="material-symbols-outlined animate-spin text-[20px]">refresh</span> Loading bookmarks...
+            </div>
+            <div id="bookmarks-empty" class="hidden flex flex-col items-center py-16 text-center">
+                <span class="material-symbols-outlined text-5xl text-border-light dark:text-border-dark mb-3">bookmark_border</span>
+                <h3 class="font-bold mb-1">No bookmarks yet</h3>
+                <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-5 max-w-xs">Tap the bookmark icon on any paper card while browsing to save it here.</p>
+                <a href="browse.html" class="px-5 py-2 rounded-xl bg-primary text-white text-sm font-bold hover:bg-primary-hover transition-colors">Browse Papers</a>
+            </div>
+            <div id="bookmarks-grid" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </div>
+
+        <!-- ── History Panel ── -->
+        <div id="panel-history" class="hidden">
+            <div id="history-loading" class="flex items-center gap-3 py-10 text-text-light-muted dark:text-text-dark-muted text-sm">
+                <span class="material-symbols-outlined animate-spin text-[20px]">refresh</span> Loading history...
+            </div>
+            <div id="history-empty" class="hidden flex flex-col items-center py-16 text-center">
+                <span class="material-symbols-outlined text-5xl text-border-light dark:text-border-dark mb-3">history</span>
+                <h3 class="font-bold mb-1">No history yet</h3>
+                <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-5 max-w-xs">Papers you preview will appear here automatically.</p>
+                <a href="browse.html" class="px-5 py-2 rounded-xl bg-primary text-white text-sm font-bold hover:bg-primary-hover transition-colors">Start Browsing</a>
+            </div>
+            <div id="history-grid" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </div>
+
+        <!-- ── Account Panel ── -->
+        <div id="panel-account" class="hidden">
+            <div class="max-w-lg space-y-4">
+                <!-- Account info -->
+                <div class="p-5 rounded-2xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary">
+                    <h3 class="font-bold text-sm mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px] text-primary">person</span>Account Info
+                    </h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between gap-3">
+                            <span class="text-text-light-muted dark:text-text-dark-muted shrink-0">Name</span>
+                            <span id="acct-name" class="font-medium text-right break-all"></span>
+                        </div>
+                        <div class="flex justify-between gap-3">
+                            <span class="text-text-light-muted dark:text-text-dark-muted shrink-0">Email</span>
+                            <span id="acct-email" class="font-medium text-right break-all"></span>
+                        </div>
+                        <div class="flex justify-between gap-3">
+                            <span class="text-text-light-muted dark:text-text-dark-muted shrink-0">Campus</span>
+                            <span id="acct-campus" class="font-medium text-right"></span>
+                        </div>
+                        <div class="flex justify-between gap-3">
+                            <span class="text-text-light-muted dark:text-text-dark-muted shrink-0">Sign-in</span>
+                            <span id="acct-provider" class="font-medium text-right capitalize flex items-center gap-1">
+                                <svg class="w-4 h-4" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.34-8.16 2.34-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+                                Google
+                            </span>
                         </div>
                     </div>
+                </div>
 
-                    <div class="p-5 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary">
-                        <h3 class="font-bold text-sm mb-3 flex items-center gap-2">
-                            <span class="material-symbols-outlined text-[18px] text-primary">storage</span> Your Data
-                        </h3>
-                        <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-4">Your bookmarks and history are securely stored. You can clear your local cache any time.</p>
-                        <div class="flex flex-col gap-2">
-                            <button onclick="clearLocalCache()"
-                                class="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border-light dark:border-border-dark text-sm hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary transition-colors font-medium">
-                                <span class="material-symbols-outlined text-[17px]">delete_sweep</span>
-                                Clear Local Cache
-                            </button>
-                        </div>
-                    </div>
+                <!-- Data management -->
+                <div class="p-5 rounded-2xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary">
+                    <h3 class="font-bold text-sm mb-3 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px] text-primary">cloud_sync</span>Data & Storage
+                    </h3>
+                    <p class="text-sm text-text-light-muted dark:text-text-dark-muted mb-4">Your bookmarks and history are securely backed up to the cloud. You can clear the local device cache anytime without affecting cloud data.</p>
+                    <button onclick="clearLocalCache()"
+                        class="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border-light dark:border-border-dark text-sm hover:bg-bg-light-tertiary dark:hover:bg-bg-dark-tertiary transition-colors font-medium">
+                        <span class="material-symbols-outlined text-[17px]">delete_sweep</span>Clear Local Cache
+                    </button>
+                </div>
 
-                    <div class="p-5 rounded-xl border border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-900/10">
-                        <h3 class="font-bold text-sm text-red-600 dark:text-red-400 mb-2">Sign Out</h3>
-                        <p class="text-sm text-red-500 dark:text-red-400 mb-4">This will sign you out on this device. Your cloud data stays safe.</p>
-                        <button onclick="AuthManager.signOut().then(() => window.location.href='index.html')"
-                            class="flex items-center gap-2 px-4 py-2 rounded-lg bg-red-500 text-white text-sm font-bold hover:bg-red-600 transition-colors">
-                            <span class="material-symbols-outlined text-[17px]">logout</span>
-                            Sign Out
-                        </button>
-                    </div>
+                <!-- Sign out -->
+                <div class="p-5 rounded-2xl border border-red-200 dark:border-red-900/60 bg-red-50/50 dark:bg-red-900/10">
+                    <h3 class="font-bold text-sm text-red-600 dark:text-red-400 mb-1">Sign Out</h3>
+                    <p class="text-xs text-red-500 dark:text-red-400 mb-4">Signs you out on this device only. Your cloud data stays safe.</p>
+                    <button onclick="AuthManager.signOut().then(() => window.location.href='index.html')"
+                        class="flex items-center gap-2 px-4 py-2 rounded-xl bg-red-500 text-white text-sm font-bold hover:bg-red-600 transition-colors">
+                        <span class="material-symbols-outlined text-[17px]">logout</span>Sign Out
+                    </button>
                 </div>
             </div>
         </div>
 
-    </main>
+    </div><!-- /user-view -->
+</main>
 
-    <!-- Footer -->
-    <footer class="border-t border-border-light dark:border-border-dark py-6 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-text-light-muted dark:text-text-dark-muted">
-            © 2026 SIT Archive · <a href="privacy.html" class="hover:text-primary transition-colors">Privacy</a> · <a href="terms.html" class="hover:text-primary transition-colors">Terms</a>
+<!-- Footer -->
+<footer class="border-t border-border-light dark:border-border-dark py-5 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 text-center text-xs text-text-light-muted dark:text-text-dark-muted">
+        © 2026 SIT Archive
+    </div>
+</footer>
+
+<script src="js/auth.js?v=2"></script>
+<script src="js/nav-auth.js?v=2"></script>
+<script src="js/animations.js?v=2"></script>
+
+<script>
+// ── Mobile menu ───────────────────────────────────────
+document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+});
+
+// ── Theme icon sync ───────────────────────────────────
+function updateToggleIcon(isDark) {
+    const icon = document.getElementById('theme-icon');
+    const iconM = document.getElementById('theme-icon-mobile');
+    if (icon) icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+    if (iconM) iconM.textContent = isDark ? 'light_mode' : 'dark_mode';
+}
+
+// ── Tab switching ─────────────────────────────────────
+function switchTab(tab) {
+    ['bookmarks', 'history', 'account'].forEach(t => {
+        document.getElementById(`panel-${t}`).classList.add('hidden');
+        const btn = document.getElementById(`tab-${t}`);
+        btn.classList.remove('active');
+        btn.classList.add('text-text-light-muted', 'dark:text-text-dark-muted');
+    });
+    document.getElementById(`panel-${tab}`).classList.remove('hidden');
+    const active = document.getElementById(`tab-${tab}`);
+    active.classList.add('active');
+    active.classList.remove('text-text-light-muted', 'dark:text-text-dark-muted');
+}
+
+// ── Campus & batch helpers ────────────────────────────
+function detectBatchFromEmail(email) {
+    if (!email) return null;
+    // SIT emails typically: YYXXXXXXXXXx@domain
+    // First 2 digits = last 2 of admission year
+    const local = email.split('@')[0];
+    const match = local.match(/^(\d{2})/);
+    if (!match) return null;
+    const yr = parseInt(match[1]);
+    const year = yr >= 20 ? 2000 + yr : 1900 + yr;
+    return { admissionYear: year, gradYear: year + 4 };
+}
+
+// ── Quick access links by campus ──────────────────────
+function buildQuickAccess(campus) {
+    if (!campus) return;
+    const banner = document.getElementById('quick-access-banner');
+    const container = document.getElementById('quick-access-links');
+    const links = [
+        { label: 'Browse ' + campus.short, href: `browse.html#${campus.dbKey}`, icon: 'folder_open' },
+        { label: 'Browse All', href: 'browse.html', icon: 'grid_view' },
+        { label: 'Submit a Paper', href: 'submit.html', icon: 'upload' },
+        { label: 'Changelog', href: 'changelog.html', icon: 'new_releases' },
+    ];
+    container.innerHTML = links.map(l => `
+        <a href="${l.href}"
+            class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark hover:border-primary/40 hover:text-primary transition-colors text-xs font-semibold">
+            <span class="material-symbols-outlined text-[15px]">${l.icon}</span>${l.label}
+        </a>`).join('');
+    banner.classList.remove('hidden');
+}
+
+// ── Render a paper card ───────────────────────────────
+function renderPaperCard(paper, type = 'bookmark') {
+    const pathArr = Array.isArray(paper.path) ? paper.path : [];
+    const breadcrumb = pathArr.length > 1 ? pathArr.slice(1).join(' › ') : pathArr.join(' › ');
+    const paperType = paper.type || '';
+    const typeClass = paperType.toLowerCase().includes('mid')
+        ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'
+        : paperType.toLowerCase().includes('internal')
+            ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400'
+            : 'bg-primary/10 text-primary';
+    const browseUrl = pathArr.length ? `browse.html#${pathArr.map(encodeURIComponent).join('/')}` : 'browse.html';
+    const timeAgo = paper.savedAt || paper.timestamp ? _timeAgo(paper.savedAt || paper.timestamp) : '';
+
+    return `
+    <div class="paper-card relative flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary">
+        <div class="absolute top-3 right-3 flex gap-1">
+            ${type === 'bookmark' ? `
+            <button onclick="removeBookmarkCard('${paper.code}', this)" title="Remove"
+                class="p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-red-500 transition-colors">
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings:'FILL' 1">bookmark</span>
+            </button>` : ''}
+            <a href="${paper.file}" target="_blank" rel="noopener" title="Open"
+                class="p-1.5 rounded-lg hover:bg-primary/10 text-text-light-muted dark:text-text-dark-muted hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[17px]">open_in_new</span>
+            </a>
         </div>
-    </footer>
 
-    <!-- Auth Scripts -->
-    <script src="js/auth.js?v=1"></script>
-    <script src="js/nav-auth.js?v=1"></script>
-    <script src="js/animations.js?v=2"></script>
+        <div class="flex items-start gap-2 mb-2 pr-16">
+            <span class="material-symbols-outlined text-primary shrink-0 mt-0.5">description</span>
+            <div class="min-w-0">
+                <h4 class="font-semibold text-sm leading-snug break-words">${paper.name}</h4>
+                <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-0.5">${paper.code}</p>
+            </div>
+        </div>
 
-    <script>
-        // ── Mobile menu ──────────────────────────────────
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
+        ${breadcrumb ? `<div class="px-2 py-1.5 rounded-lg bg-bg-light-tertiary dark:bg-bg-dark-tertiary mb-3">
+            <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted break-words">${breadcrumb}</p>
+        </div>` : ''}
 
-        // ── Theme icon sync ──────────────────────────────
-        function updateToggleIcon(isDark) {
-            const icon = document.getElementById('theme-icon');
-            const iconM = document.getElementById('theme-icon-mobile');
-            if (icon) icon.textContent = isDark ? 'light_mode' : 'dark_mode';
-            if (iconM) iconM.textContent = isDark ? 'light_mode' : 'dark_mode';
+        <div class="mt-auto flex items-center justify-between gap-2 flex-wrap">
+            ${paperType ? `<span class="text-xs px-2 py-0.5 rounded-full font-medium ${typeClass}">${paperType}</span>` : '<div></div>'}
+            <div class="flex items-center gap-1.5">
+                ${timeAgo ? `<span class="text-[10px] text-text-light-muted dark:text-text-dark-muted">${timeAgo}</span>` : ''}
+                <a href="${browseUrl}" title="Go to folder"
+                    class="inline-flex items-center justify-center w-7 h-7 rounded-lg border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined text-[15px]">folder_open</span>
+                </a>
+                <a href="${paper.file}" target="_blank" rel="noopener"
+                    class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors">
+                    <span class="material-symbols-outlined text-[14px]">download</span>Open
+                </a>
+            </div>
+        </div>
+    </div>`;
+}
+
+function _timeAgo(ts) {
+    const diff = Date.now() - (typeof ts === 'string' ? new Date(ts).getTime() : ts);
+    const m = Math.floor(diff / 60000);
+    if (m < 1) return 'just now';
+    if (m < 60) return `${m}m ago`;
+    const h = Math.floor(m / 60);
+    if (h < 24) return `${h}h ago`;
+    const d = Math.floor(h / 24);
+    return d === 1 ? 'yesterday' : `${d}d ago`;
+}
+
+// ── Load bookmarks ────────────────────────────────────
+async function loadBookmarks() {
+    const loading = document.getElementById('bookmarks-loading');
+    const empty = document.getElementById('bookmarks-empty');
+    const grid = document.getElementById('bookmarks-grid');
+    loading.classList.remove('hidden');
+    empty.classList.add('hidden');
+    grid.classList.add('hidden');
+    const bookmarks = await AuthManager.getBookmarks();
+    document.getElementById('stat-bookmarks').textContent = bookmarks.length;
+    loading.classList.add('hidden');
+    if (bookmarks.length === 0) { empty.classList.remove('hidden'); return; }
+    grid.innerHTML = bookmarks.map(b => renderPaperCard(b, 'bookmark')).join('');
+    grid.classList.remove('hidden');
+}
+
+// ── Load history ──────────────────────────────────────
+async function loadHistory() {
+    const loading = document.getElementById('history-loading');
+    const empty = document.getElementById('history-empty');
+    const grid = document.getElementById('history-grid');
+    loading.classList.remove('hidden');
+    empty.classList.add('hidden');
+    grid.classList.add('hidden');
+    const history = await AuthManager.getRecentlyViewed();
+    document.getElementById('stat-recent').textContent = history.length;
+    loading.classList.add('hidden');
+    if (history.length === 0) { empty.classList.remove('hidden'); return; }
+    grid.innerHTML = history.map(h => renderPaperCard(h, 'history')).join('');
+    grid.classList.remove('hidden');
+}
+
+// ── Remove bookmark inline ────────────────────────────
+async function removeBookmarkCard(code, btn) {
+    await AuthManager.removeBookmark(code);
+    btn.closest('.paper-card')?.remove();
+    const count = document.querySelectorAll('#bookmarks-grid .paper-card').length;
+    document.getElementById('stat-bookmarks').textContent = count;
+    if (count === 0) {
+        document.getElementById('bookmarks-grid').classList.add('hidden');
+        document.getElementById('bookmarks-empty').classList.remove('hidden');
+    }
+}
+
+// ── Clear local cache ─────────────────────────────────
+function clearLocalCache() {
+    if (!confirm('Clear local cache? Cloud data is safe.')) return;
+    localStorage.removeItem('sit_archive_bookmarks');
+    localStorage.removeItem('sit_archive_recent');
+    alert('Local cache cleared!');
+}
+
+// ── Auth state listener ───────────────────────────────
+AuthManager.onAuthChange(async (session) => {
+    const guestView = document.getElementById('guest-view');
+    const userView = document.getElementById('user-view');
+
+    if (!session) {
+        guestView.classList.remove('hidden');
+        userView.classList.add('hidden');
+        if (AuthManager.isDomainError()) {
+            document.getElementById('domain-error-banner')?.classList.remove('hidden');
         }
+        return;
+    }
 
-        // ── Tab switching ────────────────────────────────
-        function switchTab(tab) {
-            ['bookmarks', 'history', 'account'].forEach(t => {
-                document.getElementById(`panel-${t}`).classList.add('hidden');
-                const btn = document.getElementById(`tab-${t}`);
-                btn.classList.remove('tab-active');
-                btn.classList.add('text-text-light-muted', 'dark:text-text-dark-muted');
-            });
-            document.getElementById(`panel-${tab}`).classList.remove('hidden');
-            const activeBtn = document.getElementById(`tab-${tab}`);
-            activeBtn.classList.add('tab-active');
-            activeBtn.classList.remove('text-text-light-muted', 'dark:text-text-dark-muted');
-        }
+    guestView.classList.add('hidden');
+    userView.classList.remove('hidden');
 
-        // ── Render a paper card ──────────────────────────
-        function renderPaperCard(paper, type = 'bookmark') {
-            const pathArr = Array.isArray(paper.path) ? paper.path : [];
-            const breadcrumb = pathArr.length > 1 ? pathArr.slice(1).join(' › ') : pathArr.join(' › ');
-            const paperType = paper.type || '';
-            const typeClass = paperType.includes('Mid')
-                ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'
-                : (paperType === 'Internals'
-                    ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400'
-                    : 'bg-primary/10 text-primary');
-            const browseUrl = pathArr.length
-                ? `browse.html#${pathArr.map(encodeURIComponent).join('/')}`
-                : 'browse.html';
-            const timeAgo = paper.savedAt || paper.timestamp
-                ? _timeAgo(paper.savedAt || paper.timestamp)
-                : '';
+    const user = session.user;
+    const email = user?.email || '';
+    const name = user?.user_metadata?.full_name || email.split('@')[0] || 'Student';
+    const initials = name.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase();
+    const avatar = user?.user_metadata?.avatar_url;
+    const campus = AuthManager.getCampusFromEmail(email);
+    const batch = detectBatchFromEmail(email);
 
-            return `
-            <div class="paper-card relative flex flex-col p-4 rounded-xl border border-border-light dark:border-border-dark bg-bg-light dark:bg-bg-dark-secondary group">
-                <!-- Action buttons -->
-                <div class="absolute top-3 right-3 flex gap-1">
-                    ${type === 'bookmark' ? `
-                    <button onclick="removeBookmarkCard('${paper.code}', this)" title="Remove Bookmark"
-                        class="p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-text-light-muted dark:text-text-dark-muted hover:text-red-500 transition-colors">
-                        <span class="material-symbols-outlined text-[17px]" style="font-variation-settings:'FILL' 1">bookmark</span>
-                    </button>` : ''}
-                    <a href="${paper.file}" target="_blank" rel="noopener" title="Open Paper"
-                        class="p-1.5 rounded-lg hover:bg-primary/10 text-text-light-muted dark:text-text-dark-muted hover:text-primary transition-colors">
-                        <span class="material-symbols-outlined text-[17px]">open_in_new</span>
-                    </a>
-                </div>
+    // Avatar
+    const avatarEl = document.getElementById('profile-avatar');
+    avatarEl.innerHTML = avatar
+        ? `<img src="${avatar}" alt="${name}" class="w-full h-full object-cover">`
+        : `<span class="text-2xl font-bold">${initials}</span>`;
 
-                <div class="flex items-start gap-2 mb-2 pr-16">
-                    <span class="material-symbols-outlined text-primary text-xl shrink-0">description</span>
-                    <div class="min-w-0 flex-1">
-                        <h4 class="font-semibold text-sm group-hover:text-primary transition-colors text-wrap break-words leading-snug">${paper.name}</h4>
-                        <p class="text-xs text-text-light-muted dark:text-text-dark-muted mt-0.5">${paper.code}</p>
-                    </div>
-                </div>
+    // Name & email
+    document.getElementById('profile-name').textContent = name;
+    document.getElementById('profile-email').textContent = email;
 
-                ${breadcrumb ? `<div class="px-2 py-1.5 rounded bg-bg-light-tertiary dark:bg-bg-dark-tertiary mb-3">
-                    <p class="text-[10px] text-text-light-muted dark:text-text-dark-muted break-words">${breadcrumb}</p>
-                </div>` : ''}
+    // Campus badge
+    if (campus) {
+        const badge = document.getElementById('campus-badge');
+        document.getElementById('campus-badge-text').textContent = campus.name;
+        badge.classList.remove('hidden');
+        document.getElementById('stat-campus').textContent = campus.short;
+        document.getElementById('acct-campus').textContent = campus.name;
+    } else {
+        document.getElementById('stat-campus').textContent = 'SIT';
+        document.getElementById('acct-campus').textContent = 'SIT';
+    }
 
-                <div class="mt-auto flex items-center justify-between gap-2 flex-wrap">
-                    ${paperType ? `<span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium ${typeClass}">${paperType.split(' ')[0]}</span>` : '<div></div>'}
-                    <div class="flex items-center gap-1.5">
-                        ${timeAgo ? `<span class="text-[10px] text-text-light-muted dark:text-text-dark-muted">${timeAgo}</span>` : ''}
-                        <a href="${browseUrl}" title="Go to folder"
-                            class="inline-flex items-center justify-center w-7 h-7 rounded-lg border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors" >
-                            <span class="material-symbols-outlined text-[16px]">folder_open</span>
-                        </a>
-                        <a href="${paper.file}" target="_blank" rel="noopener"
-                            class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold transition-colors">
-                            <span class="material-symbols-outlined text-[15px]">download</span>
-                            Open
-                        </a>
-                    </div>
-                </div>
-            </div>`;
-        }
+    // Batch info
+    if (batch) {
+        document.getElementById('profile-batch').textContent = `Batch ${batch.admissionYear}–${batch.gradYear}`;
+        document.getElementById('stat-batch').textContent = `'${String(batch.admissionYear).slice(2)}`;
+    } else {
+        document.getElementById('stat-batch').textContent = '–';
+    }
 
-        function _timeAgo(ts) {
-            const diff = Date.now() - (typeof ts === 'string' ? new Date(ts).getTime() : ts);
-            const m = Math.floor(diff / 60000);
-            if (m < 1) return 'just now';
-            if (m < 60) return `${m}m ago`;
-            const h = Math.floor(m / 60);
-            if (h < 24) return `${h}h ago`;
-            const d = Math.floor(h / 24);
-            return d === 1 ? 'yesterday' : `${d}d ago`;
-        }
+    // Account panel
+    document.getElementById('acct-name').textContent = name;
+    document.getElementById('acct-email').textContent = email;
 
-        // ── Load bookmarks ────────────────────────────────
-        async function loadBookmarks() {
-            const loading = document.getElementById('bookmarks-loading');
-            const empty = document.getElementById('bookmarks-empty');
-            const grid = document.getElementById('bookmarks-grid');
-            loading.classList.remove('hidden');
-            empty.classList.add('hidden');
-            grid.classList.add('hidden');
+    // Quick access
+    buildQuickAccess(campus);
 
-            const bookmarks = await AuthManager.getBookmarks();
-            document.getElementById('stat-bookmarks').textContent = bookmarks.length;
-            loading.classList.add('hidden');
+    // Load data
+    await Promise.all([loadBookmarks(), loadHistory()]);
 
-            if (bookmarks.length === 0) {
-                empty.classList.remove('hidden');
-                return;
-            }
-            grid.innerHTML = bookmarks.map(b => renderPaperCard(b, 'bookmark')).join('');
-            grid.classList.remove('hidden');
-        }
-
-        // ── Load history ──────────────────────────────────
-        async function loadHistory() {
-            const loading = document.getElementById('history-loading');
-            const empty = document.getElementById('history-empty');
-            const grid = document.getElementById('history-grid');
-            loading.classList.remove('hidden');
-            empty.classList.add('hidden');
-            grid.classList.add('hidden');
-
-            const history = await AuthManager.getRecentlyViewed();
-            document.getElementById('stat-recent').textContent = history.length;
-            loading.classList.add('hidden');
-
-            if (history.length === 0) {
-                empty.classList.remove('hidden');
-                return;
-            }
-            grid.innerHTML = history.map(h => renderPaperCard(h, 'history')).join('');
-            grid.classList.remove('hidden');
-        }
-
-        // ── Remove bookmark inline ────────────────────────
-        async function removeBookmarkCard(code, btn) {
-            await AuthManager.removeBookmark(code);
-            const card = btn.closest('.paper-card');
-            if (card) card.remove();
-            const count = document.querySelectorAll('#bookmarks-grid .paper-card').length;
-            document.getElementById('stat-bookmarks').textContent = count;
-            if (count === 0) {
-                document.getElementById('bookmarks-grid').classList.add('hidden');
-                document.getElementById('bookmarks-empty').classList.remove('hidden');
-            }
-        }
-
-        // ── Clear local cache ─────────────────────────────
-        function clearLocalCache() {
-            if (!confirm('Clear local cache? This removes locally stored bookmarks and history. Cloud data is kept safe.')) return;
-            localStorage.removeItem('sit_archive_bookmarks');
-            localStorage.removeItem('sit_archive_recent');
-            alert('Local cache cleared!');
-        }
-
-        // ── Auth state listener ───────────────────────────
-        AuthManager.onAuthChange(async (session) => {
-            const guestView = document.getElementById('guest-view');
-            const userView = document.getElementById('user-view');
-            const domainBanner = document.getElementById('domain-error-banner');
-
-            if (!session) {
-                guestView.classList.remove('hidden');
-                userView.classList.add('hidden');
-                // Show domain error banner if it was a domain rejection
-                if (AuthManager.isDomainError() && domainBanner) {
-                    domainBanner.classList.remove('hidden');
-                }
-                return;
-            }
-
-            guestView.classList.add('hidden');
-            userView.classList.remove('hidden');
-
-            const user = session.user;
-            const name = user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'Student';
-            const email = user?.email || '';
-            const initials = name.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase();
-            const avatar = user?.user_metadata?.avatar_url;
-            const provider = user?.app_metadata?.provider || 'email';
-
-            // Avatar
-            const avatarEl = document.getElementById('profile-avatar');
-            avatarEl.innerHTML = avatar
-                ? `<img src="${avatar}" alt="${name}" class="w-16 h-16 rounded-2xl object-cover">`
-                : initials;
-
-            document.getElementById('profile-name').textContent = name;
-            document.getElementById('profile-email').textContent = email;
-            document.getElementById('acct-name').textContent = name;
-            document.getElementById('acct-email').textContent = email;
-            document.getElementById('acct-provider').textContent = provider;
-
-            // Load data
-            await Promise.all([loadBookmarks(), loadHistory()]);
-
-            // Deep link to tab via hash
-            const hash = window.location.hash.slice(1);
-            if (['bookmarks', 'history', 'account'].includes(hash)) {
-                switchTab(hash);
-            }
-        });
-    </script>
+    // Deep link via hash
+    const hash = window.location.hash.slice(1);
+    if (['bookmarks', 'history', 'account'].includes(hash)) switchTab(hash);
+});
+</script>
 </body>
-
 </html>

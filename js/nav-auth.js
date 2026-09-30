@@ -8,6 +8,7 @@
    Load AFTER auth.js and theme.js.
    ===================================================== */
 
+// Works with all SIT campus domains: sithyd.siu.edu.in, sitpune.edu.in, sitnagpur.edu.in
 window.NavAuth = (() => {
     function _getInitials(user) {
         const name = user?.user_metadata?.full_name || user?.email || '?';
