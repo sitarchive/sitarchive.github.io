@@ -196,7 +196,7 @@ window.AuthManager = (() => {
                         _saveSession({
                             access_token: data.access_token,
                             refresh_token: data.refresh_token,
-                            expires_at: Date.now() / 1000 + (data.expires_in || 3600),
+                            expires_at: Date.now() / 1000 + (parseInt(data.expires_in) || 3600),
                             user
                         });
                         return true;
@@ -333,15 +333,22 @@ window.AuthManager = (() => {
             const res = await fetch(`${AUTH_SUPABASE_URL}/auth/v1/user`, {
                 headers: _headers(stored.access_token)
             }).catch(() => null);
+            
             if (res && res.ok) {
                 const user = await res.json();
                 _session = { ...stored, user };
                 _ready = true;
                 _notify();
                 _preloadCaches();
-            } else {
+            } else if (res && (res.status === 401 || res.status === 403)) {
+                // Token is actually expired or invalid - wipe session
                 _ready = true;
                 _saveSession(null);
+            } else {
+                // Network error or Supabase 500 timeout - assume session is still good to prevent random logouts
+                _session = stored;
+                _ready = true;
+                _notify();
             }
         } else {
             _ready = true;
