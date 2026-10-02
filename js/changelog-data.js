@@ -5,6 +5,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Oct 02, 2026",
+                "color": "green",
+                "icon": "verified_user",
+                "badgeText": "Bug Fix",
+                "title": "Auth & Session Stability",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've shipped critical patches to improve the stability of user sessions.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Fixed Random Logouts:</strong> Resolved an issue where a brief network timeout or database delay would permanently log you out. Your session is now preserved safely during connectivity drops.</li><li><strong>24-Hour Session Math:</strong> Fixed an invisible calculation bug that prevented the new 24-hour token expiration from being tracked accurately by the browser.</li></ul>"
+            },
+            {
+                "date": "Oct 02, 2026",
                 "color": "blue",
                 "icon": "speed",
                 "badgeText": "Performance & Polish",
