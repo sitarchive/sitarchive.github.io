@@ -44,6 +44,7 @@ window.AuthManager = (() => {
     let _listeners = [];
     let _bookmarksCache = [];
     let _historyCache = [];
+    let _ready = false;
 
     function _headers(token) {
         return {
@@ -319,10 +320,11 @@ window.AuthManager = (() => {
         const fromCallback = await _handleCallback();
         if (fromCallback === 'domain_error') {
             _domainError = true;
+            _ready = true;
             _notify();
             return;
         }
-        if (fromCallback) return;
+        if (fromCallback) { _ready = true; _notify(); return; }
 
         // 2. Try to restore from localStorage
         const stored = _loadStoredSession();
@@ -334,11 +336,16 @@ window.AuthManager = (() => {
             if (res && res.ok) {
                 const user = await res.json();
                 _session = { ...stored, user };
+                _ready = true;
                 _notify();
                 _preloadCaches();
             } else {
+                _ready = true;
                 _saveSession(null);
             }
+        } else {
+            _ready = true;
+            _notify();
         }
     }
 
@@ -346,7 +353,7 @@ window.AuthManager = (() => {
     function getUser() { return _session?.user || null; }
     function isLoggedIn() { return !!_session; }
     function isDomainError() { return _domainError; }
-    function onAuthChange(fn) { _listeners.push(fn); fn(_session); }
+    function onAuthChange(fn) { _listeners.push(fn); if (_ready) fn(_session); }
 
     return {
         init,
