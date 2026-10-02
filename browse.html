@@ -324,7 +324,7 @@
         let currentPath = [];
 
         // --- Bookmarks & Recently Viewed State ---
-        // ── Bookmarks — uses AuthManager when logged in, localStorage for guests ──
+        // ── Bookmarks — relies exclusively on Supabase via AuthManager ──
         function isBookmarked(code) {
             if (!window.AuthManager || !AuthManager.isLoggedIn()) return false;
             return AuthManager.getCachedBookmarks().some(b => b.paper_code === code);

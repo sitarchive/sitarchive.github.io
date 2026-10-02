@@ -6,7 +6,7 @@
      @sitpune.siu.edu.in     (Pune)
      @sitnagpur.siu.edu.in   (Nagpur)
    - Logged-in users: bookmarks & recently viewed synced to cloud
-   - Guests: localStorage only (no change in experience)
+   - Guests: no session data saved locally
    ===================================================== */
 
 const AUTH_SUPABASE_URL = 'https://etlkpjbsculcnrymhflw.supabase.co';

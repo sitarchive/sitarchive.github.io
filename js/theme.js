@@ -5,13 +5,16 @@
 
 const THEME_KEY = 'sit-archive-theme';
 
-// Initialize theme on page load
-function initTheme() {
+// Run synchronously before the body loads to prevent FOUC
+(function() {
     const saved = localStorage.getItem(THEME_KEY);
-    // Default to light theme if no preference saved
     const isDark = saved ? saved === 'dark' : false;
-
     document.documentElement.classList.toggle('dark', isDark);
+})();
+
+// Initialize theme on page load (for UI elements)
+function initTheme() {
+    const isDark = document.documentElement.classList.contains('dark');
     updateToggleIcon(isDark);
 }
 

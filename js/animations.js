@@ -6,6 +6,13 @@
 
 // Initialize all animations when DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+        addLoadedClass(); // Just show the page immediately
+        return; 
+    }
+
     initScrollAnimations();
     initCounterAnimations();
     initStaggeredAnimations();
@@ -125,6 +132,7 @@ function animateCounter(element) {
 
 // ===== MAGNETIC BUTTON EFFECT =====
 function initMagneticButtons() {
+    if (window.matchMedia('(hover: none)').matches) return;
     const magneticElements = document.querySelectorAll('.magnetic, .btn-magnetic');
 
     magneticElements.forEach(el => {
@@ -144,6 +152,7 @@ function initMagneticButtons() {
 
 // ===== 3D TILT EFFECT FOR CARDS =====
 function initTiltCards() {
+    if (window.matchMedia('(hover: none)').matches) return;
     const tiltCards = document.querySelectorAll('.tilt-card, .card-3d');
 
     tiltCards.forEach(card => {

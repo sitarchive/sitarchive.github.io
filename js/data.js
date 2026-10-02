@@ -105,7 +105,7 @@ const SIT_ARCHIVE_DATA = {
                                                 { name: "Programming Paradigms", code: "0707210305", file: "https://drive.google.com/file/d/1ce51TmTHuCsYbx3afEiwVGiijMC7MZQP/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
                                                 { name: "Discrete Mathematics and Graph Theory", code: "0707210301", file: "https://drive.google.com/file/d/1ofnFThdbclis59ePtns2CRJIrRtfiLCi/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
                                                 { name: "Data Structures", code: "0707210303", file: "https://drive.google.com/file/d/1-80h4FeaH97apNU7jHVU9_urjai3Nyuc/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
-                                                { name: "Computer Organisation", code: "0707210302", file: "https://drive.google.com/file/d/1qM7myQduSoANcSkoz8zquS4PTKHYLlYL/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
+                                                { name: "Computer Organization", code: "0707210302", file: "https://drive.google.com/file/d/1qM7myQduSoANcSkoz8zquS4PTKHYLlYL/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
                                             ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
@@ -127,7 +127,7 @@ const SIT_ARCHIVE_DATA = {
                                                 { name: "Programming Paradigms", code: "0707210305", file: "https://drive.google.com/file/d/1YJxoUbP0jAuGWPB8ewIsA4ZXlMdRVQeD/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Discrete Mathematics and Graph Theory", code: "0707210301", file: "https://drive.google.com/file/d/1frt_us4ahO37xfZuIEfSZuFEQLEOlFAG/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Data Structures", code: "0707210303", file: "https://drive.google.com/file/d/1cVRTeDXT2rFdKVjQ5HgswrZ9Xcn0gAMU/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
-                                                { name: "Computer Organisation", code: "0707210302", file: "https://drive.google.com/file/d/12dDxIymcOtVFWmn1Q2Xk9alxMJhMhDcO/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" }
+                                                { name: "Computer Organization", code: "0707210302", file: "https://drive.google.com/file/d/12dDxIymcOtVFWmn1Q2Xk9alxMJhMhDcO/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" }
                                             ]
                                         }
                                     }
@@ -963,7 +963,7 @@ const SIT_ARCHIVE_DATA = {
                                                 { name: "Programming Paradigms", code: "0707240305", file: "https://drive.google.com/file/d/1kPyN4niXNFniu7fAxx5Bz3oNFprkcp2L/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
                                                 { name: "Discrete Mathematics and Graph Theory", code: "0707240301", file: "https://drive.google.com/file/d/178Z5S84rtoTUDPhGgR__-1QGbDIIV08e/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
                                                 { name: "Data Structures", code: "0707240303", file: "https://drive.google.com/file/d/1bEEtmdoQV38wD3qylqyC4nGTGEdpyV3c/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" },
-                                                { name: "Computer Organisation", code: "0707240302", file: "https://drive.google.com/file/d/15l_mgXF-GAYm690jqa8zLMsTeuQUK7x4/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
+                                                { name: "Computer Organization", code: "0707240302", file: "https://drive.google.com/file/d/15l_mgXF-GAYm690jqa8zLMsTeuQUK7x4/view?usp=drivesdk", type: "End-Sem", dateAdded: "2026-09-14" }
                                             ]
                                         },
                                         "Mid-Sem (Unit Tests)": {
@@ -985,7 +985,7 @@ const SIT_ARCHIVE_DATA = {
                                                 { name: "Programming Paradigms", code: "0707240305", file: "https://drive.google.com/file/d/1QXcrRMrft-PZANgF2z_ghA2Wg2ZUgmL6/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Discrete Mathematics and Graph Theory", code: "0707240301", file: "https://drive.google.com/file/d/1YxFEWkl9UfXptwTKkmfgqPa_teWDpWkf/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
                                                 { name: "Data Structures", code: "0707240303", file: "https://drive.google.com/file/d/1p0dJg1ofJlY6ZDfWnZQxnQ2BN1zOu59f/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" },
-                                                { name: "Computer Organisation", code: "0707240302", file: "https://drive.google.com/file/d/1VGBfIl_cN9TgYvHz9ukQRlWIKz-M_ncf/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" }
+                                                { name: "Computer Organization", code: "0707240302", file: "https://drive.google.com/file/d/1VGBfIl_cN9TgYvHz9ukQRlWIKz-M_ncf/view?usp=drivesdk", type: "Backlog", dateAdded: "2026-09-14" }
                                             ]
                                         }
                                     }

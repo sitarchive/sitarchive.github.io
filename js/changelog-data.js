@@ -1,14 +1,16 @@
-/* =====================================================
-   SIT ARCHIVE - CHANGELOG DATA
-   Add new entries to the top of the relevant month's
-   `entries` array (or add a new month block at the top).
-   ===================================================== */
-
 const CHANGELOG_DATA = [
     {
         "month": "October 2026",
         "subtitle": "Latest updates",
         "entries": [
+            {
+                "date": "Oct 02, 2026",
+                "color": "blue",
+                "icon": "speed",
+                "badgeText": "Performance & Polish",
+                "title": "Codebase Audit & UI Enhancements",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We completed a full codebase audit and implemented several optimizations to improve the user experience.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Eliminated Theme Flash:</strong> Fixed an issue where the site would briefly flash white before loading the dark theme. Dark mode now applies instantly.</li><li><strong>Smoother Animations:</strong> Enabled rich UI animations (tilt cards, magnetic buttons) across the site while respecting system 'prefers-reduced-motion' settings.</li><li><strong>Memory Optimization:</strong> Fixed a background event listener leak in the navigation menu to improve long-term browser performance.</li><li><strong>Data Consistency:</strong> Corrected subject naming (Computer Organization) for better search accuracy and cleaned up changelog history.</li></ul>"
+            },
             {
                 "date": "Oct 02, 2026",
                 "color": "blue",
@@ -61,7 +63,7 @@ const CHANGELOG_DATA = [
                 "icon": "person",
                 "badgeText": "New Feature",
                 "title": "Cloud Sync & Accounts (Optional)",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">You can now sign in to SIT Archive to sync your bookmarks and recently viewed papers across all your devices. Sign-in is completely optional — the site works exactly as before without an account.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Google Sign-In:</strong> One-tap login with your Google account. No password required.</li><li><strong>Cloud Bookmarks:</strong> Bookmarks are now synced to the cloud for logged-in users and persist across devices.</li><li><strong>Cloud History:</strong> Your Recently Viewed papers are backed up to your account automatically.</li><li><strong>Profile Page:</strong> New dedicated profile page showing your bookmarks, history, and account settings.</li><li><strong>Nav Login Button:</strong> A sign-in button now appears in the navigation bar on all pages. When signed in, your avatar is shown instead.</li></ul>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">You can now sign in to SIT Archive to sync your bookmarks and recently viewed papers across all your devices. Sign-in is completely optional \u2014 the site works exactly as before without an account.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Google Sign-In:</strong> One-tap login with your Google account. No password required.</li><li><strong>Cloud Bookmarks:</strong> Bookmarks are now synced to the cloud for logged-in users and persist across devices.</li><li><strong>Cloud History:</strong> Your Recently Viewed papers are backed up to your account automatically.</li><li><strong>Profile Page:</strong> New dedicated profile page showing your bookmarks, history, and account settings.</li><li><strong>Nav Login Button:</strong> A sign-in button now appears in the navigation bar on all pages. When signed in, your avatar is shown instead.</li></ul>"
             },
             {
                 "date": "Sep 29, 2026",
@@ -79,7 +81,6 @@ const CHANGELOG_DATA = [
                 "title": "Mobile Viewport & Layout Fixes",
                 "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've rolled out a hotfix to address a few layout quirks on mobile devices and smaller screens.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Fixed Horizontal Scroll Bug:</strong> Resolved an issue where long text strings could cause the page to stretch wider than the screen on mobile devices, leading to a blank white gap on the right side.</li><li><strong>Smooth Hover States:</strong> Removed a jarring layout shift (shaking effect) that occasionally occurred when hovering over horizontal scrolling cards.</li><li><strong>Global Container Locks:</strong> Applied strict overflow constraints across the site to guarantee a rigid, app-like feel on iOS and Android browsers.</li></ul>"
             },
-
             {
                 "date": "Sep 28, 2026",
                 "color": "red",
@@ -118,7 +119,7 @@ const CHANGELOG_DATA = [
                 "icon": "computer",
                 "badgeText": "CST Update",
                 "title": "CST 2024-28 End-Sem Upgrades",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Added and fully upgraded 17 End-Sem papers for the SIT Hyderabad CST 2024-28 batch across Semesters 1, 2, 3, and 4.</p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\"><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 & 2 End-Sem</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Programming and Problem Solving</li><li>• Physics for Computer Engineers</li><li>• Mathematics I</li><li>• Communication Skills</li><li>• Statistics and Probability</li><li>• Programming in C</li><li>• Mathematics II</li><li>• Chemistry</li><li>• Basic Electrical Engineering</li></ul></div><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 3 & 4 End-Sem</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Sensors and Microcontrollers</li><li>• Programming Paradigms</li><li>• Discrete Mathematics</li><li>• Data Structures</li><li>• Computer Organisation</li><li>• Operating Systems</li><li>• Engineering Mathematics III</li><li>• Database Management Systems</li></ul></div></div>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Added and fully upgraded 17 End-Sem papers for the SIT Hyderabad CST 2024-28 batch across Semesters 1, 2, 3, and 4.</p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\"><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 & 2 End-Sem</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>\u2022 Programming and Problem Solving</li><li>\u2022 Physics for Computer Engineers</li><li>\u2022 Mathematics I</li><li>\u2022 Communication Skills</li><li>\u2022 Statistics and Probability</li><li>\u2022 Programming in C</li><li>\u2022 Mathematics II</li><li>\u2022 Chemistry</li><li>\u2022 Basic Electrical Engineering</li></ul></div><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 3 & 4 End-Sem</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>\u2022 Sensors and Microcontrollers</li><li>\u2022 Programming Paradigms</li><li>\u2022 Discrete Mathematics</li><li>\u2022 Data Structures</li><li>\u2022 Computer Organisation</li><li>\u2022 Operating Systems</li><li>\u2022 Engineering Mathematics III</li><li>\u2022 Database Management Systems</li></ul></div></div>"
             },
             {
                 "date": "Sep 14, 2026",
@@ -126,7 +127,7 @@ const CHANGELOG_DATA = [
                 "icon": "computer",
                 "badgeText": "CSE Update",
                 "title": "CSE 2024-28 End-Sem Upgrades",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Added and fully upgraded 17 End-Sem papers for the SIT Hyderabad CSE 2024-28 batch across Semesters 1, 2, 3, and 4.</p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\"><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 & 2 End-Sem</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Programming and Problem Solving</li><li>• Mathematics I</li><li>• Chemistry</li><li>• Basic Electrical Engineering</li><li>• Statistics and Probability</li><li>• Programming in C</li><li>• Physics for Computer Engineers</li><li>• Mathematics II</li><li>• Communication Skills</li></ul></div><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 3 & 4 End-Sem</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Sensors and Microcontrollers</li><li>• Programming Paradigms</li><li>• Discrete Mathematics</li><li>• Data Structures</li><li>• Computer Organisation</li><li>• Operating Systems</li><li>• Engineering Mathematics III</li><li>• Database Management Systems</li></ul></div></div>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Added and fully upgraded 17 End-Sem papers for the SIT Hyderabad CSE 2024-28 batch across Semesters 1, 2, 3, and 4.</p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\"><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 & 2 End-Sem</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>\u2022 Programming and Problem Solving</li><li>\u2022 Mathematics I</li><li>\u2022 Chemistry</li><li>\u2022 Basic Electrical Engineering</li><li>\u2022 Statistics and Probability</li><li>\u2022 Programming in C</li><li>\u2022 Physics for Computer Engineers</li><li>\u2022 Mathematics II</li><li>\u2022 Communication Skills</li></ul></div><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 3 & 4 End-Sem</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>\u2022 Sensors and Microcontrollers</li><li>\u2022 Programming Paradigms</li><li>\u2022 Discrete Mathematics</li><li>\u2022 Data Structures</li><li>\u2022 Computer Organisation</li><li>\u2022 Operating Systems</li><li>\u2022 Engineering Mathematics III</li><li>\u2022 Database Management Systems</li></ul></div></div>"
             },
             {
                 "date": "Sep 14, 2026",
@@ -134,7 +135,7 @@ const CHANGELOG_DATA = [
                 "icon": "auto_awesome",
                 "badgeText": "End-Sem Update",
                 "title": "CSE & CSE-AIML 2025-29 End-Sem Papers",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Added and upgraded 18 End-Sem papers across CSE and CSE-AIML (2025-29 batch).</p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\"><div><h4 class=\"text-xs font-bold text-primary mb-2\">CSE Sem 1 & 2</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Fundamentals of Quantum Physics</li><li>• Digital Electronics and Logic Design</li><li>• Calculus</li><li>• Programming Paradigm and Problem Solving</li><li>• Software Engineering</li><li>• Python Programming</li><li>• Microcontrollers and Sensors</li><li>• Linear Algebra</li><li>• Computer Architecture and Organisation</li></ul></div><div><h4 class=\"text-xs font-bold text-primary mb-2\">CSE-AIML Sem 1 & 2</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Programming in C</li><li>• Linear Algebra</li><li>• Digital Electronics and Logic Design</li><li>• Chemistry</li><li>• Statistics for Data Science</li><li>• Self Management I</li><li>• Physics for Computer Engineers</li><li>• Intro to AI and Python Programming</li><li>• Calculus</li></ul></div></div>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Added and upgraded 18 End-Sem papers across CSE and CSE-AIML (2025-29 batch).</p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\"><div><h4 class=\"text-xs font-bold text-primary mb-2\">CSE Sem 1 & 2</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>\u2022 Fundamentals of Quantum Physics</li><li>\u2022 Digital Electronics and Logic Design</li><li>\u2022 Calculus</li><li>\u2022 Programming Paradigm and Problem Solving</li><li>\u2022 Software Engineering</li><li>\u2022 Python Programming</li><li>\u2022 Microcontrollers and Sensors</li><li>\u2022 Linear Algebra</li><li>\u2022 Computer Architecture and Organisation</li></ul></div><div><h4 class=\"text-xs font-bold text-primary mb-2\">CSE-AIML Sem 1 & 2</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>\u2022 Programming in C</li><li>\u2022 Linear Algebra</li><li>\u2022 Digital Electronics and Logic Design</li><li>\u2022 Chemistry</li><li>\u2022 Statistics for Data Science</li><li>\u2022 Self Management I</li><li>\u2022 Physics for Computer Engineers</li><li>\u2022 Intro to AI and Python Programming</li><li>\u2022 Calculus</li></ul></div></div>"
             },
             {
                 "date": "Sep 14, 2026",
@@ -142,7 +143,7 @@ const CHANGELOG_DATA = [
                 "icon": "computer",
                 "badgeText": "CST Update",
                 "title": "CST 2024-28 Backlog Papers Added",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Added 24 new Backlog question papers across Semesters 1, 2, and 3 for the CST 2024-28 batch.</p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\"><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Programming and Problem Solving</li><li>• Physics for Computer Engineers (2x)</li><li>• Mathematics - I (3x)</li><li>• Communication Skills (3x)</li></ul></div><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 2 & 3</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Statistics and Probability (2x)</li><li>• Programming in C (2x)</li><li>• Mathematics - II (2x)</li><li>• Chemistry (2x)</li><li>• Basic Electrical (2x)</li><li>• Sensors and Microcontrollers</li><li>• Programming Paradigms</li><li>• Discrete Mathematics</li><li>• Data Structures</li><li>• Computer Organisation</li></ul></div></div>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Added 24 new Backlog question papers across Semesters 1, 2, and 3 for the CST 2024-28 batch.</p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\"><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>\u2022 Programming and Problem Solving</li><li>\u2022 Physics for Computer Engineers (2x)</li><li>\u2022 Mathematics - I (3x)</li><li>\u2022 Communication Skills (3x)</li></ul></div><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 2 & 3</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>\u2022 Statistics and Probability (2x)</li><li>\u2022 Programming in C (2x)</li><li>\u2022 Mathematics - II (2x)</li><li>\u2022 Chemistry (2x)</li><li>\u2022 Basic Electrical (2x)</li><li>\u2022 Sensors and Microcontrollers</li><li>\u2022 Programming Paradigms</li><li>\u2022 Discrete Mathematics</li><li>\u2022 Data Structures</li><li>\u2022 Computer Organisation</li></ul></div></div>"
             },
             {
                 "date": "Sep 14, 2026",
@@ -150,7 +151,7 @@ const CHANGELOG_DATA = [
                 "icon": "psychology",
                 "badgeText": "CSE-AIML Update",
                 "title": "CSE-AIML 2025-29 Backlog Papers Added",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Added and upgraded 4 Backlog papers for CSE-AIML 2025-29.</p><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Programming in C</li><li>• Linear Algebra</li><li>• Digital Electronics and Logic Design</li><li>• Chemistry</li></ul></div>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Added and upgraded 4 Backlog papers for CSE-AIML 2025-29.</p><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>\u2022 Programming in C</li><li>\u2022 Linear Algebra</li><li>\u2022 Digital Electronics and Logic Design</li><li>\u2022 Chemistry</li></ul></div>"
             },
             {
                 "date": "Sep 14, 2026",
@@ -158,7 +159,7 @@ const CHANGELOG_DATA = [
                 "icon": "history",
                 "badgeText": "CSE Update",
                 "title": "CSE 2025-29 Backlog Papers Added",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Added 1 new paper and upgraded 3 existing Backlog papers for CSE 2025-29.</p><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Programming Paradigm and Problem Solving</li><li>• Fundamentals of Quantum Physics</li><li>• Digital Electronics and Logic Design</li><li>• Calculus</li></ul></div>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Added 1 new paper and upgraded 3 existing Backlog papers for CSE 2025-29.</p><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>\u2022 Programming Paradigm and Problem Solving</li><li>\u2022 Fundamentals of Quantum Physics</li><li>\u2022 Digital Electronics and Logic Design</li><li>\u2022 Calculus</li></ul></div>"
             },
             {
                 "date": "Sep 14, 2026",
@@ -166,7 +167,7 @@ const CHANGELOG_DATA = [
                 "icon": "history",
                 "badgeText": "CSE Update",
                 "title": "CSE 2024-28 Backlog Papers Added",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Added 19 high-quality Backlog question papers for CSE 2024-28.</p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\"><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Mathematics - I (3x)</li><li>• Chemistry (2x)</li><li>• Basic Electrical Engineering (3x)</li></ul></div><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 2 & 3</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Statistics and Probability (2x)</li><li>• Programming in C (2x)</li><li>• Mathematics - II (3x)</li><li>• Probability for Data Science</li><li>• Database Concepts</li><li>• Data Structures and Algorithms</li><li>• Principles of Operating Systems</li><li>• Software Engineering</li></ul></div></div>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Added 19 high-quality Backlog question papers for CSE 2024-28.</p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\"><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>\u2022 Mathematics - I (3x)</li><li>\u2022 Chemistry (2x)</li><li>\u2022 Basic Electrical Engineering (3x)</li></ul></div><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 2 & 3</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>\u2022 Statistics and Probability (2x)</li><li>\u2022 Programming in C (2x)</li><li>\u2022 Mathematics - II (3x)</li><li>\u2022 Probability for Data Science</li><li>\u2022 Database Concepts</li><li>\u2022 Data Structures and Algorithms</li><li>\u2022 Principles of Operating Systems</li><li>\u2022 Software Engineering</li></ul></div></div>"
             },
             {
                 "date": "Sep 14, 2026",
@@ -182,7 +183,7 @@ const CHANGELOG_DATA = [
                 "icon": "library_books",
                 "badgeText": "Massive Update",
                 "title": "AIML 2024-28 End-Sem Papers Added",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Added 15 new high-quality End-Sem question papers for AIML 2024-28, spanning across Semesters 1, 2, 3, and 4. Several older papers were also upgraded.</p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\"><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 & 2</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Linear Algebra</li><li>• Intro to AI & Python</li><li>• Chemistry</li><li>• Basic Electrical Engineering</li><li>• Programming in C</li><li>• Statistics for Data Science</li><li>• Physics</li><li>• Communication Skills</li><li>• Calculus</li></ul></div><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 3 & 4</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Probability for Data Science</li><li>• Database Concepts</li><li>• Data Structures and Algorithms</li><li>• Unsupervised Learning</li><li>• Supervised Machine Learning</li><li>• Discrete Mathematics</li></ul></div></div>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Added 15 new high-quality End-Sem question papers for AIML 2024-28, spanning across Semesters 1, 2, 3, and 4. Several older papers were also upgraded.</p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\"><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 & 2</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>\u2022 Linear Algebra</li><li>\u2022 Intro to AI & Python</li><li>\u2022 Chemistry</li><li>\u2022 Basic Electrical Engineering</li><li>\u2022 Programming in C</li><li>\u2022 Statistics for Data Science</li><li>\u2022 Physics</li><li>\u2022 Communication Skills</li><li>\u2022 Calculus</li></ul></div><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 3 & 4</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>\u2022 Probability for Data Science</li><li>\u2022 Database Concepts</li><li>\u2022 Data Structures and Algorithms</li><li>\u2022 Unsupervised Learning</li><li>\u2022 Supervised Machine Learning</li><li>\u2022 Discrete Mathematics</li></ul></div></div>"
             },
             {
                 "date": "Sep 14, 2026",
@@ -222,7 +223,7 @@ const CHANGELOG_DATA = [
                 "icon": "upload_file",
                 "badgeText": "Papers Added",
                 "title": "Massive Backlog Upload (AIML)",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Uploaded a huge batch of Backlog exam papers for the AIML 2024-28 batch across Semesters 1, 2, and 3. All attempts have been clearly labelled for easy studying.</p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\"><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 Backlogs</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Linear Algebra (Nov '25, May '25, Nov '26)</li><li>• Intro to AI &amp; Python (Nov '25, May '25, June '26)</li><li>• Chemistry</li><li>• Basic Electrical Engineering</li></ul></div><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 2 &amp; 3 Backlogs</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>• Statistics for Data Science (Nov '25, June '26)</li><li>• Calculus (Nov '25, June '26)</li><li>• Physics</li><li>• Programming in C</li><li>• Sem 3: Probability, DBMS, DSA</li></ul></div></div>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Uploaded a huge batch of Backlog exam papers for the AIML 2024-28 batch across Semesters 1, 2, and 3. All attempts have been clearly labelled for easy studying.</p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\"><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 Backlogs</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>\u2022 Linear Algebra (Nov '25, May '25, Nov '26)</li><li>\u2022 Intro to AI &amp; Python (Nov '25, May '25, June '26)</li><li>\u2022 Chemistry</li><li>\u2022 Basic Electrical Engineering</li></ul></div><div><h4 class=\"text-xs font-bold text-primary mb-2\">Sem 2 &amp; 3 Backlogs</h4><ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\"><li>\u2022 Statistics for Data Science (Nov '25, June '26)</li><li>\u2022 Calculus (Nov '25, June '26)</li><li>\u2022 Physics</li><li>\u2022 Programming in C</li><li>\u2022 Sem 3: Probability, DBMS, DSA</li></ul></div></div>"
             },
             {
                 "date": "Sep 13, 2026",
@@ -295,31 +296,6 @@ const CHANGELOG_DATA = [
         "subtitle": "Previous updates",
         "entries": [
             {
-                "date": "Sep 29, 2026",
-                "color": "green",
-                "icon": "route",
-                "badgeText": "Bug Fixes",
-                "title": "Navigation & Preview Sync",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've resolved a few routing and state synchronization issues with the new Bookmarks and Recently Viewed features.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Homepage Previews Sync:</strong> Previewing a Trending or Recently Added paper directly from the homepage now correctly adds it to your Recently Viewed list.</li><li><strong>Navigation Bug Fixed:</strong> Fixed an issue where clicking on a Recently Viewed paper card would redirect to the homepage instead of navigating to the paper's specific folder.</li><li><strong>Robust Internal Routing:</strong> Upgraded the internal search and bookmark tracking to use strict database keys instead of display names, ensuring deeper stability when folder names change.</li></ul>"
-            },
-            {
-                "date": "Sep 28, 2026",
-                "color": "blue",
-                "icon": "bug_report",
-                "badgeText": "Bug Fixes",
-                "title": "Mobile Viewport & Layout Fixes",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've rolled out a hotfix to address a few layout quirks on mobile devices and smaller screens.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Fixed Horizontal Scroll Bug:</strong> Resolved an issue where long text strings could cause the page to stretch wider than the screen on mobile devices, leading to a blank white gap on the right side.</li><li><strong>Smooth Hover States:</strong> Removed a jarring layout shift (shaking effect) that occasionally occurred when hovering over horizontal scrolling cards.</li><li><strong>Global Container Locks:</strong> Applied strict overflow constraints across the site to guarantee a rigid, app-like feel on iOS and Android browsers.</li></ul>"
-            },
-
-            {
-                "date": "Sep 28, 2026",
-                "color": "red",
-                "icon": "bookmark",
-                "badgeText": "New Features",
-                "title": "Bookmarks & Recently Viewed",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've introduced two powerful new ways to keep track of your study materials across sessions without needing an account.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Bookmarks:</strong> Save your most important papers by clicking the bookmark icon on any paper card. Access your personalized list instantly using the new Bookmarks toggle.</li><li><strong>Recently Viewed:</strong> Never lose track of what you were studying. The new Recently Viewed section automatically remembers the last 15 papers you've opened and keeps them easily accessible on the browse page.</li><li><strong>Mobile Optimizations:</strong> Refined the layout to ensure new feature controls look great and remain easy to tap on smaller screens.</li></ul>"
-            },
-            {
                 "date": "Aug 09, 2026",
                 "color": "green",
                 "icon": "upload_file",
@@ -333,31 +309,6 @@ const CHANGELOG_DATA = [
         "month": "July 2026",
         "subtitle": "Previous updates",
         "entries": [
-            {
-                "date": "Sep 29, 2026",
-                "color": "green",
-                "icon": "route",
-                "badgeText": "Bug Fixes",
-                "title": "Navigation & Preview Sync",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've resolved a few routing and state synchronization issues with the new Bookmarks and Recently Viewed features.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Homepage Previews Sync:</strong> Previewing a Trending or Recently Added paper directly from the homepage now correctly adds it to your Recently Viewed list.</li><li><strong>Navigation Bug Fixed:</strong> Fixed an issue where clicking on a Recently Viewed paper card would redirect to the homepage instead of navigating to the paper's specific folder.</li><li><strong>Robust Internal Routing:</strong> Upgraded the internal search and bookmark tracking to use strict database keys instead of display names, ensuring deeper stability when folder names change.</li></ul>"
-            },
-            {
-                "date": "Sep 28, 2026",
-                "color": "blue",
-                "icon": "bug_report",
-                "badgeText": "Bug Fixes",
-                "title": "Mobile Viewport & Layout Fixes",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've rolled out a hotfix to address a few layout quirks on mobile devices and smaller screens.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Fixed Horizontal Scroll Bug:</strong> Resolved an issue where long text strings could cause the page to stretch wider than the screen on mobile devices, leading to a blank white gap on the right side.</li><li><strong>Smooth Hover States:</strong> Removed a jarring layout shift (shaking effect) that occasionally occurred when hovering over horizontal scrolling cards.</li><li><strong>Global Container Locks:</strong> Applied strict overflow constraints across the site to guarantee a rigid, app-like feel on iOS and Android browsers.</li></ul>"
-            },
-
-            {
-                "date": "Sep 28, 2026",
-                "color": "red",
-                "icon": "bookmark",
-                "badgeText": "New Features",
-                "title": "Bookmarks & Recently Viewed",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've introduced two powerful new ways to keep track of your study materials across sessions without needing an account.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Bookmarks:</strong> Save your most important papers by clicking the bookmark icon on any paper card. Access your personalized list instantly using the new Bookmarks toggle.</li><li><strong>Recently Viewed:</strong> Never lose track of what you were studying. The new Recently Viewed section automatically remembers the last 15 papers you've opened and keeps them easily accessible on the browse page.</li><li><strong>Mobile Optimizations:</strong> Refined the layout to ensure new feature controls look great and remain easy to tap on smaller screens.</li></ul>"
-            },
             {
                 "date": "Jul 30, 2026",
                 "color": "purple",
@@ -476,7 +427,7 @@ const CHANGELOG_DATA = [
                 "icon": "checklist",
                 "badgeText": "Refinement",
                 "title": "\"What's Missing\" Curated to Real Gaps, Added to Every Page's Nav",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Follow-up on the What's Missing page from earlier today, based on actual known gaps rather than a blind scan of empty folders.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\"><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">checklist</span>The page previously auto-flagged every empty folder in the data, including future semesters nobody has reached yet and Mid-Sem categories nobody tracks. It's now a hand-curated list of exactly 22 categories that genuinely still need papers — including a few that are partially filled, not just fully empty</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">menu</span>Added the Missing link to the navigation on every page (not just Browse), desktop and mobile</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">smartphone</span>Verified the mobile menu still opens/closes correctly on every page after the nav change</li></ul>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Follow-up on the What's Missing page from earlier today, based on actual known gaps rather than a blind scan of empty folders.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\"><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">checklist</span>The page previously auto-flagged every empty folder in the data, including future semesters nobody has reached yet and Mid-Sem categories nobody tracks. It's now a hand-curated list of exactly 22 categories that genuinely still need papers \u2014 including a few that are partially filled, not just fully empty</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">menu</span>Added the Missing link to the navigation on every page (not just Browse), desktop and mobile</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">smartphone</span>Verified the mobile menu still opens/closes correctly on every page after the nav change</li></ul>"
             },
             {
                 "date": "Jul 20, 2026",
@@ -484,7 +435,7 @@ const CHANGELOG_DATA = [
                 "icon": "travel_explore",
                 "badgeText": "New Feature",
                 "title": "Shareable Browse Links, \"What's Missing\" Page, and Search Visibility",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">More improvements aimed directly at making it easier to find papers and know what still needs uploading.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\"><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">link</span>Browse Papers now syncs your current folder to the URL, so links can be shared or bookmarked directly to a specific institute/branch/batch/semester/category, and refreshing the page no longer resets you to the top</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">travel_explore</span>New What's Missing page lists every subject/semester/category that still has zero papers, with a one-click button to submit the one you have</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">manage_search</span>Added a sitemap, robots.txt, canonical URLs, and social preview (Open Graph/Twitter) tags across every page so the archive is easier to find via search and looks right when shared as a link</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">rule</span>Removed \"Internals\" and \"Supplementary\" from the Submit page's exam type options — they weren't real categories anywhere on the site, so picking them had nowhere to go; \"Backlog\" covers the same case</li></ul>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">More improvements aimed directly at making it easier to find papers and know what still needs uploading.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\"><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">link</span>Browse Papers now syncs your current folder to the URL, so links can be shared or bookmarked directly to a specific institute/branch/batch/semester/category, and refreshing the page no longer resets you to the top</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">travel_explore</span>New What's Missing page lists every subject/semester/category that still has zero papers, with a one-click button to submit the one you have</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">manage_search</span>Added a sitemap, robots.txt, canonical URLs, and social preview (Open Graph/Twitter) tags across every page so the archive is easier to find via search and looks right when shared as a link</li><li class=\"flex items-center gap-2\"><span class=\"material-symbols-outlined text-[14px] text-primary\">rule</span>Removed \"Internals\" and \"Supplementary\" from the Submit page's exam type options \u2014 they weren't real categories anywhere on the site, so picking them had nowhere to go; \"Backlog\" covers the same case</li></ul>"
             },
             {
                 "date": "Jul 20, 2026",
@@ -516,7 +467,7 @@ const CHANGELOG_DATA = [
                 "icon": "account_tree",
                 "badgeText": "Structure Update",
                 "title": "Full 8-Semester Structure & Backlog Category Added",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Every existing batch across CSE, CSE AIML, AIML, and CST now has all 8 semesters\n                                    scaffolded, and every semester includes an <span class=\"font-medium text-text-light dark:text-text-dark\">End-Sem</span>, <span class=\"font-medium text-text-light dark:text-text-dark\">Mid-Sem (Unit\n                                        Tests)</span>, and new <span class=\"font-medium text-text-light dark:text-text-dark\">Backlog</span>\n                                    category. Empty categories are ready and will be filled in as more papers are\n                                    uploaded.\n                                </p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">folder</span>\n                                        CSE (2024-28, 2025-29), CSE AIML (2025-29), AIML (2024-28), CST (2024-28) →\n                                        Sem 1-8\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">history</span>\n                                        Backlog category added alongside End-Sem and Mid-Sem in every semester\n                                    </li>\n</ul>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Every existing batch across CSE, CSE AIML, AIML, and CST now has all 8 semesters\n                                    scaffolded, and every semester includes an <span class=\"font-medium text-text-light dark:text-text-dark\">End-Sem</span>, <span class=\"font-medium text-text-light dark:text-text-dark\">Mid-Sem (Unit\n                                        Tests)</span>, and new <span class=\"font-medium text-text-light dark:text-text-dark\">Backlog</span>\n                                    category. Empty categories are ready and will be filled in as more papers are\n                                    uploaded.\n                                </p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">folder</span>\n                                        CSE (2024-28, 2025-29), CSE AIML (2025-29), AIML (2024-28), CST (2024-28) \u2192\n                                        Sem 1-8\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">history</span>\n                                        Backlog category added alongside End-Sem and Mid-Sem in every semester\n                                    </li>\n</ul>"
             }
         ]
     },
@@ -525,36 +476,11 @@ const CHANGELOG_DATA = [
         "subtitle": "Latest updates",
         "entries": [
             {
-                "date": "Sep 29, 2026",
-                "color": "green",
-                "icon": "route",
-                "badgeText": "Bug Fixes",
-                "title": "Navigation & Preview Sync",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've resolved a few routing and state synchronization issues with the new Bookmarks and Recently Viewed features.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Homepage Previews Sync:</strong> Previewing a Trending or Recently Added paper directly from the homepage now correctly adds it to your Recently Viewed list.</li><li><strong>Navigation Bug Fixed:</strong> Fixed an issue where clicking on a Recently Viewed paper card would redirect to the homepage instead of navigating to the paper's specific folder.</li><li><strong>Robust Internal Routing:</strong> Upgraded the internal search and bookmark tracking to use strict database keys instead of display names, ensuring deeper stability when folder names change.</li></ul>"
-            },
-            {
-                "date": "Sep 28, 2026",
-                "color": "blue",
-                "icon": "bug_report",
-                "badgeText": "Bug Fixes",
-                "title": "Mobile Viewport & Layout Fixes",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've rolled out a hotfix to address a few layout quirks on mobile devices and smaller screens.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Fixed Horizontal Scroll Bug:</strong> Resolved an issue where long text strings could cause the page to stretch wider than the screen on mobile devices, leading to a blank white gap on the right side.</li><li><strong>Smooth Hover States:</strong> Removed a jarring layout shift (shaking effect) that occasionally occurred when hovering over horizontal scrolling cards.</li><li><strong>Global Container Locks:</strong> Applied strict overflow constraints across the site to guarantee a rigid, app-like feel on iOS and Android browsers.</li></ul>"
-            },
-
-            {
-                "date": "Sep 28, 2026",
-                "color": "red",
-                "icon": "bookmark",
-                "badgeText": "New Features",
-                "title": "Bookmarks & Recently Viewed",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've introduced two powerful new ways to keep track of your study materials across sessions without needing an account.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Bookmarks:</strong> Save your most important papers by clicking the bookmark icon on any paper card. Access your personalized list instantly using the new Bookmarks toggle.</li><li><strong>Recently Viewed:</strong> Never lose track of what you were studying. The new Recently Viewed section automatically remembers the last 15 papers you've opened and keeps them easily accessible on the browse page.</li><li><strong>Mobile Optimizations:</strong> Refined the layout to ensure new feature controls look great and remain easy to tap on smaller screens.</li></ul>"
-            },
-            {
                 "date": "Jun 7, 2026",
                 "color": "orange",
                 "icon": "space_bar",
                 "badgeText": "Bug Fix",
-                "title": "Nav Spacing Fixed — Theme Toggle Gap Corrected",
+                "title": "Nav Spacing Fixed \u2014 Theme Toggle Gap Corrected",
                 "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">\n                                    Fixed excessive gap between the last nav link (\"Feedback\") and the theme toggle\n                                    button. Restored the original <code class=\"text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded\">justify-between</code>\n                                    layout on the outer nav container and reverted the desktop nav to <code class=\"text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded\">gap-8</code>\n                                    spacing, matching the original design. Also fixed correct nav link order across all 11 pages.\n                                </p>"
             },
             {
@@ -563,7 +489,7 @@ const CHANGELOG_DATA = [
                 "icon": "phone_iphone",
                 "badgeText": "Bug Fix",
                 "title": "Mobile Layout & Performance Fixes",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">\n                                    Fixed two <a class=\"text-primary hover:underline font-medium\" href=\"docs.html\">Docs\n                                        page</a> mobile issues: (1) Nav was missing\n                                    <code class=\"text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded\">hidden md:flex</code>\n                                    so all desktop links showed on mobile causing horizontal overflow — rebuilt the nav\n                                    with proper responsive structure and logo. (2) The\n                                    <code class=\"text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded\">pre</code>\n                                    folder-tree code block was pushing the flex layout wider than the viewport — fixed\n                                    by adding\n                                    <code class=\"text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded\">min-w-0</code>\n                                    to the main flex item so code blocks scroll horizontally instead of expanding the\n                                    page. Also disabled heavy GPU animations (blur orbs, dot grid) on mobile to fix\n                                    homepage scroll lag.\n                                </p>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">\n                                    Fixed two <a class=\"text-primary hover:underline font-medium\" href=\"docs.html\">Docs\n                                        page</a> mobile issues: (1) Nav was missing\n                                    <code class=\"text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded\">hidden md:flex</code>\n                                    so all desktop links showed on mobile causing horizontal overflow \u2014 rebuilt the nav\n                                    with proper responsive structure and logo. (2) The\n                                    <code class=\"text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded\">pre</code>\n                                    folder-tree code block was pushing the flex layout wider than the viewport \u2014 fixed\n                                    by adding\n                                    <code class=\"text-xs bg-bg-light-tertiary dark:bg-bg-dark-tertiary px-1 rounded\">min-w-0</code>\n                                    to the main flex item so code blocks scroll horizontally instead of expanding the\n                                    page. Also disabled heavy GPU animations (blur orbs, dot grid) on mobile to fix\n                                    homepage scroll lag.\n                                </p>"
             },
             {
                 "date": "Jun 7, 2026",
@@ -571,7 +497,7 @@ const CHANGELOG_DATA = [
                 "icon": "animation",
                 "badgeText": "Enhancement",
                 "title": "Rich Animations Added Site-Wide",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">\n                                    Added a full suite of animations inspired by Linear, Vercel, and Stripe — ambient\n                                    cursor glow, animated scroll progress bar, card spotlight (mouse-tracking inner glow),\n                                    smooth page transitions, staggered folder card reveals on Browse, floating gradient\n                                    orbs in the hero, button shimmer streaks, an animated live-status dot in the footer,\n                                    and auto scroll-reveal on sections across all 11 pages.\n                                </p>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">\n                                    Added a full suite of animations inspired by Linear, Vercel, and Stripe \u2014 ambient\n                                    cursor glow, animated scroll progress bar, card spotlight (mouse-tracking inner glow),\n                                    smooth page transitions, staggered folder card reveals on Browse, floating gradient\n                                    orbs in the hero, button shimmer streaks, an animated live-status dot in the footer,\n                                    and auto scroll-reveal on sections across all 11 pages.\n                                </p>"
             },
             {
                 "date": "Jun 7, 2026",
@@ -587,7 +513,7 @@ const CHANGELOG_DATA = [
                 "icon": "rate_review",
                 "badgeText": "New Feature",
                 "title": "Feedback Page Added",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">\n                                    Students can now submit feedback, report bugs, request missing papers, or share\n                                    suggestions directly via the new <a class=\"text-primary hover:underline font-medium\" href=\"feedback.html\">Feedback page</a>. The form\n                                    opens your email client with everything pre-filled — just hit send. Added to the nav\n                                    and footer across all pages.\n                                </p>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">\n                                    Students can now submit feedback, report bugs, request missing papers, or share\n                                    suggestions directly via the new <a class=\"text-primary hover:underline font-medium\" href=\"feedback.html\">Feedback page</a>. The form\n                                    opens your email client with everything pre-filled \u2014 just hit send. Added to the nav\n                                    and footer across all pages.\n                                </p>"
             },
             {
                 "date": "Jun 6, 2026",
@@ -612,37 +538,12 @@ const CHANGELOG_DATA = [
         "subtitle": "Recent updates",
         "entries": [
             {
-                "date": "Sep 29, 2026",
-                "color": "green",
-                "icon": "route",
-                "badgeText": "Bug Fixes",
-                "title": "Navigation & Preview Sync",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've resolved a few routing and state synchronization issues with the new Bookmarks and Recently Viewed features.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Homepage Previews Sync:</strong> Previewing a Trending or Recently Added paper directly from the homepage now correctly adds it to your Recently Viewed list.</li><li><strong>Navigation Bug Fixed:</strong> Fixed an issue where clicking on a Recently Viewed paper card would redirect to the homepage instead of navigating to the paper's specific folder.</li><li><strong>Robust Internal Routing:</strong> Upgraded the internal search and bookmark tracking to use strict database keys instead of display names, ensuring deeper stability when folder names change.</li></ul>"
-            },
-            {
-                "date": "Sep 28, 2026",
-                "color": "blue",
-                "icon": "bug_report",
-                "badgeText": "Bug Fixes",
-                "title": "Mobile Viewport & Layout Fixes",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've rolled out a hotfix to address a few layout quirks on mobile devices and smaller screens.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Fixed Horizontal Scroll Bug:</strong> Resolved an issue where long text strings could cause the page to stretch wider than the screen on mobile devices, leading to a blank white gap on the right side.</li><li><strong>Smooth Hover States:</strong> Removed a jarring layout shift (shaking effect) that occasionally occurred when hovering over horizontal scrolling cards.</li><li><strong>Global Container Locks:</strong> Applied strict overflow constraints across the site to guarantee a rigid, app-like feel on iOS and Android browsers.</li></ul>"
-            },
-
-            {
-                "date": "Sep 28, 2026",
-                "color": "red",
-                "icon": "bookmark",
-                "badgeText": "New Features",
-                "title": "Bookmarks & Recently Viewed",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've introduced two powerful new ways to keep track of your study materials across sessions without needing an account.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Bookmarks:</strong> Save your most important papers by clicking the bookmark icon on any paper card. Access your personalized list instantly using the new Bookmarks toggle.</li><li><strong>Recently Viewed:</strong> Never lose track of what you were studying. The new Recently Viewed section automatically remembers the last 15 papers you've opened and keeps them easily accessible on the browse page.</li><li><strong>Mobile Optimizations:</strong> Refined the layout to ensure new feature controls look great and remain easy to tap on smaller screens.</li></ul>"
-            },
-            {
                 "date": "Jan 26, 2026",
                 "color": "blue",
                 "icon": "library_add",
                 "badgeText": "Mass Update",
                 "title": "Comprehensive Paper Addition",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Added 16+ new papers and updated links for CST, CSE, and AIML branches (2024-28\n                                    Batch).\n                                </p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\">\n<div>\n<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 (Mid &amp; End)</h4>\n<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li>• Mathematics-I (Mid/End)</li>\n<li>• Programming &amp; Problem Solving</li>\n<li>• Critical Thinking</li>\n<li>• Basic Electrical Engineering</li>\n</ul>\n</div>\n<div>\n<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 2 (Mid &amp; End)</h4>\n<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li>• Programming in C (End)</li>\n<li>• Basic Electrical Engineering (Mid)</li>\n</ul>\n</div>\n</div>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Added 16+ new papers and updated links for CST, CSE, and AIML branches (2024-28\n                                    Batch).\n                                </p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\">\n<div>\n<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 (Mid &amp; End)</h4>\n<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li>\u2022 Mathematics-I (Mid/End)</li>\n<li>\u2022 Programming &amp; Problem Solving</li>\n<li>\u2022 Critical Thinking</li>\n<li>\u2022 Basic Electrical Engineering</li>\n</ul>\n</div>\n<div>\n<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 2 (Mid &amp; End)</h4>\n<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li>\u2022 Programming in C (End)</li>\n<li>\u2022 Basic Electrical Engineering (Mid)</li>\n</ul>\n</div>\n</div>"
             },
             {
                 "date": "Jan 26, 2026",
@@ -658,7 +559,7 @@ const CHANGELOG_DATA = [
                 "icon": "add",
                 "badgeText": "New Branch",
                 "title": "AIML Branch Added",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Added new AIML branch under SIT Hyderabad with 2024-28 batch.\n                                </p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">folder</span>\n                                        AIML → 2024-28 → Sem 1, 2, 3, 4\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>\n                                        Sem 2 End-Sem: Programming in C\n                                    </li>\n</ul>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Added new AIML branch under SIT Hyderabad with 2024-28 batch.\n                                </p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">folder</span>\n                                        AIML \u2192 2024-28 \u2192 Sem 1, 2, 3, 4\n                                    </li>\n<li class=\"flex items-center gap-2\">\n<span class=\"material-symbols-outlined text-[14px] text-primary\">description</span>\n                                        Sem 2 End-Sem: Programming in C\n                                    </li>\n</ul>"
             },
             {
                 "date": "Jan 26, 2026",
@@ -666,7 +567,7 @@ const CHANGELOG_DATA = [
                 "icon": "upload_file",
                 "badgeText": "Papers Added",
                 "title": "CST 2024-28 Sem 1 & 2 Papers",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Added multiple papers for CST branch Semester 1 and 2.\n                                </p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\">\n<div>\n<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 End-Sem</h4>\n<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li>• Mathematics-I</li>\n<li>• Programming and Problem Solving</li>\n<li>• Basic Electrical and Electronics Engineering</li>\n</ul>\n</div>\n<div>\n<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 Mid-Sem</h4>\n<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li>• Basic Electrical and Electronics Engineering</li>\n<li>• Critical Thinking</li>\n<li>• Programming and Problem Solving</li>\n<li>• Mathematics-I</li>\n</ul>\n</div>\n</div>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Added multiple papers for CST branch Semester 1 and 2.\n                                </p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\">\n<div>\n<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 End-Sem</h4>\n<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li>\u2022 Mathematics-I</li>\n<li>\u2022 Programming and Problem Solving</li>\n<li>\u2022 Basic Electrical and Electronics Engineering</li>\n</ul>\n</div>\n<div>\n<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 1 Mid-Sem</h4>\n<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li>\u2022 Basic Electrical and Electronics Engineering</li>\n<li>\u2022 Critical Thinking</li>\n<li>\u2022 Programming and Problem Solving</li>\n<li>\u2022 Mathematics-I</li>\n</ul>\n</div>\n</div>"
             },
             {
                 "date": "Jan 25, 2026",
@@ -674,7 +575,7 @@ const CHANGELOG_DATA = [
                 "icon": "upload_file",
                 "badgeText": "Papers Added",
                 "title": "CSE 2024-28 Sem 2 & 3 Papers",
-                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Added papers for CSE branch Semester 2 and 3.\n                                </p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\">\n<div>\n<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 2 End-Sem</h4>\n<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li>• Programming in C</li>\n</ul>\n</div>\n<div>\n<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 3 End-Sem</h4>\n<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li>• Sensors and Microcontrollers</li>\n<li>• Programming Paradigms</li>\n<li>• Discrete Mathematics</li>\n<li>• Data Structures</li>\n<li>• Computer Organization</li>\n</ul>\n</div>\n</div>"
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">\n                                    Added papers for CSE branch Semester 2 and 3.\n                                </p><div class=\"grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children\">\n<div>\n<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 2 End-Sem</h4>\n<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li>\u2022 Programming in C</li>\n</ul>\n</div>\n<div>\n<h4 class=\"text-xs font-bold text-primary mb-2\">Sem 3 End-Sem</h4>\n<ul class=\"text-xs text-text-light-muted dark:text-text-dark-muted space-y-1\">\n<li>\u2022 Sensors and Microcontrollers</li>\n<li>\u2022 Programming Paradigms</li>\n<li>\u2022 Discrete Mathematics</li>\n<li>\u2022 Data Structures</li>\n<li>\u2022 Computer Organization</li>\n</ul>\n</div>\n</div>"
             },
             {
                 "date": "Jan 25, 2026",

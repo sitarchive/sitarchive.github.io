@@ -145,13 +145,6 @@ window.NavAuth = (() => {
             const el = document.getElementById(id);
             if (el) el.innerHTML = html.trim();
         });
-
-        // Close dropdown on outside click
-        document.addEventListener('click', (e) => {
-            const wrap = document.getElementById('nav-user-dropdown-wrap');
-            const menu = document.getElementById('nav-user-dropdown');
-            if (wrap && menu && !wrap.contains(e.target)) menu.classList.add('hidden');
-        }, true);
     }
 
     function toggleUserDropdown() {
@@ -173,3 +166,10 @@ window.NavAuth = (() => {
 })();
 
 document.addEventListener('DOMContentLoaded', () => NavAuth.init());
+
+// Close dropdown on outside click (bind once globally)
+document.addEventListener('click', (e) => {
+    const wrap = document.getElementById('nav-user-dropdown-wrap');
+    const menu = document.getElementById('nav-user-dropdown');
+    if (wrap && menu && !wrap.contains(e.target)) menu.classList.add('hidden');
+}, true);
