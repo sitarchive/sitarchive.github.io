@@ -6,8 +6,30 @@
 
 const CHANGELOG_DATA = [
     {
-        "month": "September 2026",
+        "month": "October 2026",
         "subtitle": "Latest updates",
+        "entries": [
+            {
+                "date": "Oct 02, 2026",
+                "color": "blue",
+                "icon": "bug_report",
+                "badgeText": "Bug Fix",
+                "title": "Profile Page Loading Fix",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Fixed a race condition where the profile page would briefly flash the sign-in screen before loading your account, even when you were already logged in. The page now waits for session verification to complete before rendering, so you'll see your profile load cleanly every time.</p>"
+            },
+            {
+                "date": "Oct 02, 2026",
+                "color": "red",
+                "icon": "security",
+                "badgeText": "Security",
+                "title": "OAuth Token URL Leak Prevention",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted\">Fixed a security issue where the OAuth access token was briefly visible in the browser URL bar after login. The URL is now scrubbed instantly before the page renders, preventing token leakage if the URL is copied or shared.</p>"
+            }
+        ]
+    },
+    {
+        "month": "September 2026",
+        "subtitle": "Previous updates",
         "entries": [
             {
                 "date": "Sep 30, 2026",
