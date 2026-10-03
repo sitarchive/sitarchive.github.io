@@ -78,7 +78,7 @@ window.NavAuth = (() => {
     // ── Mobile top bar: compact icon (same as desktop) ────────────────────────
     function _renderGuestMobileIcon() {
         return `<a href="profile.html" title="Sign In"
-            class="flex items-center justify-center w-9 h-9 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors">
+            class="flex items-center justify-center w-10 h-10 rounded-lg bg-bg-light-secondary dark:bg-bg-dark-secondary border border-border-light dark:border-border-dark hover:border-primary/50 hover:text-primary transition-colors">
             <span class="material-symbols-outlined text-[20px]">login</span>
         </a>`;
     }
@@ -89,11 +89,11 @@ window.NavAuth = (() => {
         const name = _getDisplayName(user);
         return avatar
             ? `<a href="profile.html" title="${name}"
-                class="flex items-center justify-center w-9 h-9 rounded-lg border-2 border-primary/40 overflow-hidden">
+                class="flex items-center justify-center w-10 h-10 rounded-lg border-2 border-primary/40 overflow-hidden">
                 <img src="${avatar}" alt="${name}" class="w-full h-full object-cover">
                </a>`
             : `<a href="profile.html" title="${name}"
-                class="flex items-center justify-center w-9 h-9 rounded-lg bg-primary text-white text-[11px] font-bold border-2 border-primary/50">
+                class="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-white text-[11px] font-bold border-2 border-primary/50">
                 ${initials}
                </a>`;
     }
