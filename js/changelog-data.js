@@ -5,6 +5,14 @@ const CHANGELOG_DATA = [
         "entries": [
             {
                 "date": "Oct 03, 2026",
+                "color": "orange",
+                "icon": "build",
+                "badgeText": "Bug Fix",
+                "title": "Changelog Page Mobile Nav Fix",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">Fixed a structural HTML issue specific to the Changelog page where a duplicate wrapper element caused the mobile navigation icons (theme toggle, profile avatar, and hamburger menu) to be completely hidden on mobile devices.</p>"
+            },
+            {
+                "date": "Oct 03, 2026",
                 "color": "indigo",
                 "icon": "smartphone",
                 "badgeText": "UI/UX Update",
