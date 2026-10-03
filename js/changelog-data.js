@@ -4,6 +4,14 @@ const CHANGELOG_DATA = [
         "subtitle": "Latest updates",
         "entries": [
             {
+                "date": "Oct 03, 2026",
+                "color": "indigo",
+                "icon": "smartphone",
+                "badgeText": "UI/UX Update",
+                "title": "Mobile Navigation Enhancements",
+                "bodyHtml": "<p class=\"text-sm text-text-light-muted dark:text-text-dark-muted mb-3\">We've completely smoothed out the mobile viewing experience with a polished navigation bar.</p><ul class=\"text-sm text-text-light-muted dark:text-text-dark-muted space-y-2\"><li><strong>Fixed Layout Wrapping:</strong> Resolved a formatting issue that caused the menu and profile icons to awkwardly wrap to a second line on mobile devices.</li><li><strong>Bigger Touch Targets:</strong> Increased and standardized the size of the hamburger menu and avatar icons so they are much easier to tap and perfectly aligned.</li></ul>"
+            },
+            {
                 "date": "Oct 02, 2026",
                 "color": "green",
                 "icon": "verified_user",
